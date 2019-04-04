@@ -7,15 +7,15 @@
 #include <fstream>
 #include <iostream>
 
-//NOT REQUIRED
+// NOT REQUIRED
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
 
-#include "Graphics.h"
 #include "DebugUtilities.h"
-#include "WindowCallbacks.h"
+#include "Graphics.h"
 #include "MainLoopCallbacks.h"
+#include "WindowCallbacks.h"
 #include "stb_image.h"
 
 #ifdef _WIN32
@@ -36,15 +36,17 @@ int main(int argc, char* argv[])
         return -1;
     }
 
+    Shader_Init();
+
     // FULLSCREEN
     // GLFWwindow* window = glfwCreateWindow(640, 480, "My Title",
     // glfwGetPrimaryMonitor(), NULL);
 
     long frames = 0;
 
-    double t0 = glfwGetTime();
-    double t1;
-    float  dt;
+    // double t0 = glfwGetTime();
+    // double t1;
+    // float  dt;
 
     glfwSwapInterval(1);
 
@@ -53,6 +55,9 @@ int main(int argc, char* argv[])
     {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(ALL_BUFFERS);  // Clear initial state
+
+        glUseProgram(shaderProgram);
+
         // t1 = glfwGetTime();
         // dt = (float)(t1 - t0);
         // t0 = t1;
@@ -63,13 +68,18 @@ int main(int argc, char* argv[])
         // do shit?
         //  WRITE TO FRAME BUFFER
 
-        /*TIME_THIS(glBlitFramebuffer(0, 0, g_width, g_height, 0, 0, g_width, g_height, GL_COLOR_BUFFER_BIT, GL_NEAREST);, "blit");*/
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        glBindVertexArray(0);
+
+        /*TIME_THIS(glBlitFramebuffer(0, 0, g_width, g_height, 0, 0, g_width, g_height, GL_COLOR_BUFFER_BIT, GL_NEAREST);,
+         * "blit");*/
 
         TIME_THIS(glfwSwapBuffers(window);, "swap");
 
         frames++;
 
-		// pretty sure this is unessecary
+        // pretty sure this is unessecary
         // TIME_THIS(glFinish();, "glfinish");
 
         // THIS SHOULD BE ON ANOTHER THREAD
