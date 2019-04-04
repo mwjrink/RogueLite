@@ -83,6 +83,8 @@ bool GLFW_Init(int w_width, int w_height)
     glfwSetCursorPosCallback(window, MouseMoveCallback);
     glfwSetFramebufferSizeCallback(window, FramebufferSizeCallback);
 
+	glViewport(0, 0, w_width, w_height);
+
     return true;
 }
 
@@ -92,3 +94,4 @@ bool Init(int w_width, int w_height)
     if (!GL_Init()) return false;
     return true;
 }
+

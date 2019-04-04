@@ -134,7 +134,13 @@
   <ItemGroup>
     <ClInclude Include="DebugUtilities.h" />
     <ClInclude Include="Graphics.h" />
+    <ClInclude Include="MainLoopCallbacks.h" />
+    <ClInclude Include="Renderable.h" />
+    <ClInclude Include="stb_image.h" />
     <ClInclude Include="WindowCallbacks.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\TestSprite.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

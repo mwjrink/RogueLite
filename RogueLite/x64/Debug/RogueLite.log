@@ -1,0 +1,4 @@
+﻿  Main.cpp
+C:\Development\C++\RogueLite\RogueLite\Main.cpp(47): warning C4101: 'dt': unreferenced local variable
+C:\Development\C++\RogueLite\RogueLite\Main.cpp(46): warning C4101: 't1': unreferenced local variable
+  RogueLite.vcxproj -> C:\Development\C++\RogueLite\x64\Debug\RogueLite.exe

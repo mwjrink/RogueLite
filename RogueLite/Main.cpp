@@ -7,9 +7,16 @@
 #include <fstream>
 #include <iostream>
 
+//NOT REQUIRED
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
+
 #include "Graphics.h"
 #include "DebugUtilities.h"
 #include "WindowCallbacks.h"
+#include "MainLoopCallbacks.h"
+#include "stb_image.h"
 
 #ifdef _WIN32
 // Math functions
@@ -44,6 +51,7 @@ int main(int argc, char* argv[])
     double time_start = glfwGetTime();
     while (!glfwWindowShouldClose(window))
     {
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(ALL_BUFFERS);  // Clear initial state
         // t1 = glfwGetTime();
         // dt = (float)(t1 - t0);
@@ -82,7 +90,3 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
-void Update(float dt) {}
-
-void Render(float dt) { glClear(GL_COLOR_BUFFER_BIT); }

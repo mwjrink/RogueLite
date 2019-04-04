@@ -13,4 +13,6 @@ void FramebufferSizeCallback(GLFWwindow* Window, int Width, int Height)
 {
     //g_width  = Width;
     //g_height = Height;
+
+    glViewport(0, 0, Width, Height);
 }
