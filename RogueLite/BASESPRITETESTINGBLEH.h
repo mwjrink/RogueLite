@@ -10,7 +10,8 @@ Renderable r;
 
 auto INIT_TEST_SPRITE()
 {
-    r.Tile_Sheet = Create_TileSheet(LoadTexture("Resources/SpriteSheet.png", true), glm::ivec2(4, 4));
-    r.position   = glm::vec2(0.0f, 0.0f);
-    r.size       = glm::vec2(r.Tile_Sheet.texture.width, r.Tile_Sheet.texture.height);
+    r.Tile_Sheet = Create_TileSheet(LoadTexture("Resources/TestSprite.png", true), glm::ivec2(4, 4));
+    r.position   = glm::vec2(960-240, 540-135);
+    r.size       = glm::vec2(480, 270);
+    r.scale      = 1.0f;
 }

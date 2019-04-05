@@ -151,7 +151,7 @@ bool Shader_Init()
         glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
         //...
         // BLEH
-        //return false;
+        // return false;
     }
 
     glDeleteShader(vertexShader);
@@ -160,7 +160,7 @@ bool Shader_Init()
     return true;
 }
 
-bool SPRITE_RENDER_INIT()
+void Sprite_Render_Init()
 {
     // glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
@@ -188,13 +188,11 @@ bool SPRITE_RENDER_INIT()
     glBindVertexArray(0);
 
     glm::mat4 projection =
-        glm::ortho(0.0f, static_cast<GLfloat>(Window_Width), static_cast<GLfloat>(Window_Height), 0.0f, -1.0f, 1.0f);
+        glm::ortho(0.0f, static_cast<GLfloat>(Window_Width), 0.0f, static_cast<GLfloat>(Window_Height), -1.0f, 1.0f);
 
     glUseProgram(shaderProgram);
     glUniform1i(glGetUniformLocation(shaderProgram, "image"), 0);
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-
-    return true;
 }
 
 bool Init(int w_width, int w_height)
@@ -202,7 +200,7 @@ bool Init(int w_width, int w_height)
     if (!GLFW_Init(w_width, w_height)) return false;
     if (!GL_Init()) return false;
     if (!Shader_Init()) return false;
-    SPRITE_RENDER_INIT();
+    Sprite_Render_Init();
     return true;
 }
 
@@ -211,16 +209,19 @@ void DrawSprite(GLuint shader_program, unsigned int texture, glm::vec2 position,
 {
     // Prepare transformations
     glUseProgram(shader_program);
-    glm::mat4 model = glm::translate(model, glm::vec3(position, 0.0f));
 
-    if (rotate != 0.0f)
+    glm::mat4 model = glm::mat4(1.0f);
+    model           = glm::translate(model, glm::vec3(position, 0.0f));
+
+    if ((fmod(rotate, 360)) != 0.0f && scale != 1.0f)
     {
         model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.0f));
-        model = glm::rotate(model, rotate, glm::vec3(0.0f, 0.0f, 1.0f));
+        if ((fmod(rotate, 360)) != 0.0f) model = glm::rotate(model, glm::radians(rotate), glm::vec3(0.0f, 0.0f, 1.0f));
+        if (scale != 1.0f) model = glm::scale(model, glm::vec3(scale, scale, scale));  // Last scale
         model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, 0.0f));
     }
 
-    model = glm::scale(model, glm::vec3(size, 1.0f / scale));  // Last scale
+    model = glm::scale(model, glm::vec3(size, 1.0f));  // Last scale
 
     glUniformMatrix4fv(glGetUniformLocation(shader_program, "model"), 1, GL_FALSE, glm::value_ptr(model));
 
@@ -233,14 +234,15 @@ void DrawSprite(GLuint shader_program, unsigned int texture, glm::vec2 position,
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
-    // TODO: enable alpha channel
-    // glEnable(GL_BLEND);
-    // glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+     glEnable(GL_BLEND);
+     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     // TODO: change to draw elements with indices, it is more efficient, most of the time (only for overlapping vertices)
     // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
 void DrawRenderable(Renderable r, unsigned int shader_program)
 {
-    DrawSprite(shader_program, r.Tile_Sheet.texture.id, r.position, r.size, r.degrees_rotation, 1.0f, glm::vec3(1.0f));
+    DrawSprite(shader_program, r.Tile_Sheet.texture.id, r.position, r.size, r.degrees_rotation, r.scale, glm::vec3(1.0f));
 }

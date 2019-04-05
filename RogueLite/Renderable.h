@@ -11,6 +11,6 @@ class Renderable
     TileSheet Tile_Sheet;
     glm::vec2 position;
     glm::vec2 size;
-    float     degrees_rotation;
-    float     scale;
+    float     degrees_rotation = 0.0f;
+    float     scale            = 1.0f;
 };
