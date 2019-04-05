@@ -15,8 +15,8 @@
 
 GLFWwindow* window;
 
+GLuint       VAO, VBO, EBO;
 unsigned int shaderProgram;
-unsigned int VAO, VBO, EBO;
 unsigned int texture;
 
 bool GL_Init()
@@ -118,91 +118,107 @@ bool Shader_Init()
     GL_STREAM_DRAW : the data will change every time it is drawn.
     */
 
-    unsigned int vertexShader;
-    vertexShader = glCreateShader(GL_VERTEX_SHADER);
-
-    std::ifstream program_file("VertexShader.glsl");
-    std::string   vertex_src(std::istreambuf_iterator<char>(program_file), (std::istreambuf_iterator<char>()));
-    program_file.close();
-
-    std::ifstream program_file2("FragmentShader.glsl");
-    std::string   fragment_src(std::istreambuf_iterator<char>(program_file2), (std::istreambuf_iterator<char>()));
-    program_file.close();
-
-    auto vertex_gl_src   = vertex_src.c_str();
-    auto fragment_gl_src = fragment_src.c_str();
-
-    glShaderSource(vertexShader, 1, &vertex_gl_src, NULL);
-    glCompileShader(vertexShader);
-
-    int  success;
-    char infoLog[512];
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-
-    if (!success)
+    // Initialize Shaders
     {
-        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+        unsigned int vertexShader;
+        vertexShader = glCreateShader(GL_VERTEX_SHADER);
+
+        std::ifstream program_file("VertexShader.glsl");
+        std::string   vertex_src(std::istreambuf_iterator<char>(program_file), (std::istreambuf_iterator<char>()));
+        program_file.close();
+
+        std::ifstream program_file2("FragmentShader.glsl");
+        std::string   fragment_src(std::istreambuf_iterator<char>(program_file2), (std::istreambuf_iterator<char>()));
+        program_file.close();
+
+        auto vertex_gl_src   = vertex_src.c_str();
+        auto fragment_gl_src = fragment_src.c_str();
+
+        glShaderSource(vertexShader, 1, &vertex_gl_src, NULL);
+        glCompileShader(vertexShader);
+
+        int  success;
+        char infoLog[512];
+        glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+
+        if (!success)
+        {
+            glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+            std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+        }
+
+        unsigned int fragmentShader;
+        fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+        glShaderSource(fragmentShader, 1, &fragment_gl_src, NULL);
+        glCompileShader(fragmentShader);
+
+        shaderProgram = glCreateProgram();
+
+        glAttachShader(shaderProgram, vertexShader);
+        glAttachShader(shaderProgram, fragmentShader);
+        glLinkProgram(shaderProgram);
+
+        glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+        if (!success)
+        {
+            glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+            //...
+        }
+
+        glDeleteShader(vertexShader);
+        glDeleteShader(fragmentShader);
     }
 
-    unsigned int fragmentShader;
-    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragment_gl_src, NULL);
-    glCompileShader(fragmentShader);
+    // float vertices[] = {
+    //    // positions          // colors           // texture coords
+    //    0.1f,  0.1f,  0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f,  // top right
+    //    0.1f,  -0.1f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,  // bottom right
+    //    -0.1f, -0.1f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,  // bottom left
+    //    -0.1f, 0.1f,  0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f   // top left
+    //};
 
-    shaderProgram = glCreateProgram();
+    GLfloat vertices[] = {// Pos      // Tex
+                          0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
 
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-    if (!success)
-    {
-        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-        //...
-    }
-
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-
-    float vertices[] = {
-        // positions          // colors           // texture coords
-        0.5f,  0.5f,  0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f,  // top right
-        0.5f,  -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,  // bottom left
-        -0.5f, 0.5f,  0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f   // top left
-    };
-
-    unsigned int indices[] = {
-        // note that we start from 0!
-        0, 1, 3,  // first triangle
-        1, 2, 3   // second triangle
-    };
+                          0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f};
 
     glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &EBO);
     glGenBuffers(1, &VBO);
-
-    glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-    // position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glBindVertexArray(VAO);
     glEnableVertexAttribArray(0);
-    // color attribute
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-    // texture coord attribute
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
 
-	// TEXTURES
+    // 460x600
+
+    // glGenVertexArrays(1, &VAO);
+    // glGenBuffers(1, &EBO);
+    // glGenBuffers(1, &VBO);
+
+    // glBindVertexArray(VAO);
+
+    // glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    // glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    // glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+    //// position attribute
+    // glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    // glEnableVertexAttribArray(0);
+    //// color attribute
+    // glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    // glEnableVertexAttribArray(1);
+    //// texture coord attribute
+    // glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    // glEnableVertexAttribArray(2);
+
+    // TEXTURES
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
     // set the texture wrapping parameters
@@ -215,7 +231,7 @@ bool Shader_Init()
     // load image, create texture and generate mipmaps
     int width, height, nrChannels;
     stbi_set_flip_vertically_on_load(true);  // tell stb_image.h to flip loaded texture's on the y-axis.
-	//FileSystem::getPath("resources/textures/container.jpg").c_str()
+                                             // FileSystem::getPath("resources/textures/container.jpg").c_str()
     unsigned char* data = stbi_load("Resources/TestSprite.png", &width, &height, &nrChannels, 0);
     if (data)
     {
@@ -231,8 +247,15 @@ bool Shader_Init()
     glUseProgram(shaderProgram);
     glUniform1i(glGetUniformLocation(shaderProgram, "texture1"), 0);
 
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
+
+    glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(1920), static_cast<GLfloat>(1080), 0.0f, -1.0f, 1.0f);
+
+    glUseProgram(shaderProgram);
+    glUniform1i(glGetUniformLocation(shaderProgram, "image"), 0);
+    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+
+    // glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    // glEnableVertexAttribArray(2);
 
     //// REPEAT?
     // glBindTexture(GL_TEXTURE_2D, texture);
@@ -240,4 +263,35 @@ bool Shader_Init()
     //   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
     return true;
+}
+
+void DrawSprite(unsigned int texture, glm::vec2 position, glm::vec2 size = glm::vec2(10, 10), GLfloat rotate = 0.0f,
+                glm::vec3 color = glm::vec3(1.0f))
+{
+    // Prepare transformations
+    glUseProgram(shaderProgram);
+    glm::mat4 model;
+    model = glm::translate(model, glm::vec3(position, 0.0f));
+
+    if (rotate != 0.0f)
+    {
+        model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.0f));
+        model = glm::rotate(model, rotate, glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, 0.0f));
+    }
+
+    model = glm::scale(model, glm::vec3(size, 1.0f));  // Last scale
+
+    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(model));
+
+    // Render textured quad
+    glUniform3f(glGetUniformLocation(shaderProgram, "spriteColor"), color.x, color.y, color.z);
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture);
+
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
 }

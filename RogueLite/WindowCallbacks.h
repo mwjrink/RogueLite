@@ -1,5 +1,8 @@
 #pragma once
 
+#include <GLFW/glfw3.h>
+#include "InputManager.h"
+
 void KeyCallback(GLFWwindow* Window, int Key, int Scancode, int Action, int Mods)
 {
     if (Key == GLFW_KEY_ESCAPE) glfwSetWindowShouldClose(Window, true);

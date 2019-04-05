@@ -6,6 +6,7 @@
 #include <chrono>
 #include <fstream>
 #include <iostream>
+#include <thread>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -42,6 +43,9 @@ int main(int argc, char* argv[])
 
     Shader_Init();
 
+    auto thread_number = std::thread::hardware_concurrency();
+    if (thread_number == 0) fprintf(stderr, "failed to detect maximum concurrency");
+
     // FULLSCREEN
     // GLFWwindow* window = glfwCreateWindow(640, 480, "My Title",
     // glfwGetPrimaryMonitor(), NULL);
@@ -72,26 +76,29 @@ int main(int argc, char* argv[])
         // do shit?
         //  WRITE TO FRAME BUFFER
 
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture);
+        // glActiveTexture(GL_TEXTURE0);
+        // glBindTexture(GL_TEXTURE_2D, texture);
 
-        //// create transformations
-        //glm::mat4 transform = glm::mat4(1.0f);
-        //transform           = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
-        //transform           = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+        // create transformations
+        // glm::mat4 transform = glm::mat4(1.0f);
+        // transform           = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
+        // transform           = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
 
-		glm::mat4 transform = glm::mat4(1.0f);
-        transform           = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
-        transform           = glm::scale(transform, glm::vec3(0.5, 0.5, 0.5));
+        // glm::mat4 transform = glm::mat4(1.0f);
+
+        // transform           = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        // transform           = glm::scale(transform, glm::vec3(0.5, 0.5, 0.5));
 
         // render container
-        glUseProgram(shaderProgram);
+        // glUseProgram(shaderProgram);
 
-        unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        // unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
+        // glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
 
-        glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        // glBindVertexArray(VAO);
+        // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+        DrawSprite(texture, glm::vec2(200, 200), glm::vec2(300, 400), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
 
         /*TIME_THIS(glBlitFramebuffer(0, 0, g_width, g_height, 0, 0, g_width, g_height, GL_COLOR_BUFFER_BIT, GL_NEAREST);,
          * "blit");*/

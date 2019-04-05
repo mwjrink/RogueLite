@@ -2,4 +2,6 @@
 
 void Update(float dt) {}
 
-void Render(float dt) {}
+void Render(float dt) {
+
+}
