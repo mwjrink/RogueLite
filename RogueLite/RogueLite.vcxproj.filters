@@ -43,16 +43,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Resources\TestSprite.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="FragmentShader.glsl">
       <Filter>Shaders</Filter>
     </None>
     <None Include="VertexShader.glsl">
       <Filter>Shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\TestSprite.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
