@@ -132,9 +132,11 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BASESPRITETESTINGBLEH.h" />
     <ClInclude Include="DebugUtilities.h" />
     <ClInclude Include="Delegate.h" />
     <ClInclude Include="DelegateBase.h" />
+    <ClInclude Include="GLTexture.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MainLoopCallbacks.h" />
@@ -150,6 +152,7 @@
     <None Include="FragmentShader.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\SpriteSheet.png" />
     <Image Include="Resources\TestSprite.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

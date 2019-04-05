@@ -59,6 +59,12 @@
     <ClInclude Include="TileSheet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GLTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BASESPRITETESTINGBLEH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="FragmentShader.glsl">
@@ -70,6 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\TestSprite.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\SpriteSheet.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

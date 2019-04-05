@@ -1,14 +1,16 @@
 #pragma once
 
-// TEXTURE
-// Screen X, Y
+#include <GL/gl3w.h>
+#include <glm/glm.hpp>
 
-// RENDER METHOD
+#include "TileSheet.h"
 
 class Renderable
 {
-    unsigned int texture;
-    float        x_position, y_position, width, height;
-    float        degrees_rotation;
-    float        scale;
+  public:
+    TileSheet Tile_Sheet;
+    glm::vec2 position;
+    glm::vec2 size;
+    float     degrees_rotation;
+    float     scale;
 };

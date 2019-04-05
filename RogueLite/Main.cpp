@@ -22,6 +22,9 @@
 #include "MainLoopCallbacks.h"
 #include "WindowCallbacks.h"
 #include "stb_image.h"
+#include "Renderable.h"
+
+#include "BASESPRITETESTINGBLEH.h"
 
 #ifdef _WIN32
 // Math functions
@@ -41,20 +44,22 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    Shader_Init();
+    // TODO: thread pooling and work queue
+    // auto thread_number = std::thread::hardware_concurrency();
+    // if (thread_number == 0)
+    //    fprintf(stderr, "failed to detect maximum concurrency");
 
-    auto thread_number = std::thread::hardware_concurrency();
-    if (thread_number == 0) fprintf(stderr, "failed to detect maximum concurrency");
-
-    // FULLSCREEN
+    // TODO: FULLSCREEN
     // GLFWwindow* window = glfwCreateWindow(640, 480, "My Title",
     // glfwGetPrimaryMonitor(), NULL);
 
     long frames = 0;
 
-    // double t0 = glfwGetTime();
-    // double t1;
-    // float  dt;
+	INIT_TEST_SPRITE();
+
+     double t0 = glfwGetTime();
+     double t1;
+     float  dt;
 
     glfwSwapInterval(1);
 
@@ -66,12 +71,12 @@ int main(int argc, char* argv[])
 
         glUseProgram(shaderProgram);
 
-        // t1 = glfwGetTime();
-        // dt = (float)(t1 - t0);
-        // t0 = t1;
+         t1 = glfwGetTime();
+         dt = (float)(t1 - t0);
+         t0 = t1;
 
-        // Update(dt);
-        // Render(dt);
+         Update(dt);
+         Render(dt);
 
         // do shit?
         //  WRITE TO FRAME BUFFER
@@ -97,8 +102,6 @@ int main(int argc, char* argv[])
 
         // glBindVertexArray(VAO);
         // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-        DrawSprite(texture, glm::vec2(200, 200), glm::vec2(300, 400), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
 
         /*TIME_THIS(glBlitFramebuffer(0, 0, g_width, g_height, 0, 0, g_width, g_height, GL_COLOR_BUFFER_BIT, GL_NEAREST);,
          * "blit");*/
