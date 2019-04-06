@@ -178,10 +178,10 @@ void Sprite_Render_Init()
     //};
 
     float vertices[] = {
-        1.0f, 1.0f, 0.0f,  // top right
-        1.0f, 0.0f, 0.0f,  // bottom right
-        0.0f, 0.0f, 0.0f,  // bottom left
-        0.0f, 1.0f, 0.0f   // top left
+        1.0f, 1.0f, 0.0f, /*Texture*/ 1.0f, 1.0f,  // top right
+        1.0f, 0.0f, 0.0f, /*Texture*/ 1.0f, 0.0f,  // bottom right
+        0.0f, 0.0f, 0.0f, /*Texture*/ 0.0f, 0.0f,  // bottom left
+        0.0f, 1.0f, 0.0f, /*Texture*/ 0.0f, 1.0f   // top left
     };
 
     unsigned int indices[] = {
@@ -201,8 +201,11 @@ void Sprite_Render_Init()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    // texture coord attribute
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex
     // buffer object so afterwards we can safely unbind
@@ -286,7 +289,7 @@ void DrawSprite(GLuint shader_program, unsigned int texture, glm::vec2 position,
     // Render textured quad
     glUniform3f(glGetUniformLocation(shader_program, "spriteColor"), color.x, color.y, color.z);
 
-    // glUniform4f(glGetUniformLocation(shader_program, "textures_uvs"), uvs.x, uvs.y, uvs.z, uvs.w);
+    glUniform4f(glGetUniformLocation(shader_program, "texture_uvs"), uvs.x, uvs.y, uvs.z, uvs.w);
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture);
