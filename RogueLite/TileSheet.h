@@ -20,7 +20,7 @@ TileSheet Create_TileSheet(const GLTexture& texture, const glm::ivec2& tileDims)
     return sheet;
 }
 
-glm::ivec4 getUVs(TileSheet sheet, int index)
+glm::vec4 getUVs(TileSheet sheet, int index)
 {
     int xTile = index % sheet.dims.x;
     int yTile = index / sheet.dims.x;
@@ -31,5 +31,5 @@ glm::ivec4 getUVs(TileSheet sheet, int index)
     uvs.z = 1.0f / (float)sheet.dims.x;
     uvs.w = 1.0f / (float)sheet.dims.y;
 
-	return uvs;
+    return uvs;
 }

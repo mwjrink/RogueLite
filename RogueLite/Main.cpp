@@ -20,9 +20,9 @@
 #include "DebugUtilities.h"
 #include "Graphics.h"
 #include "MainLoopCallbacks.h"
+#include "Renderable.h"
 #include "WindowCallbacks.h"
 #include "stb_image.h"
-#include "Renderable.h"
 
 #include "BASESPRITETESTINGBLEH.h"
 
@@ -55,28 +55,23 @@ int main(int argc, char* argv[])
 
     long frames = 0;
 
-	INIT_TEST_SPRITE();
+    INIT_TEST_SPRITE();
 
-     double t0 = glfwGetTime();
-     double t1;
-     float  dt;
+    double t0 = glfwGetTime();
+    double t1;
+    float  dt;
 
     glfwSwapInterval(1);
 
     double time_start = glfwGetTime();
     while (!glfwWindowShouldClose(window))
     {
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(ALL_BUFFERS);  // Clear initial state
+        t1 = glfwGetTime();
+        dt = (float)(t1 - t0);
+        t0 = t1;
 
-        glUseProgram(shaderProgram);
-
-         t1 = glfwGetTime();
-         dt = (float)(t1 - t0);
-         t0 = t1;
-
-         Update(dt);
-         Render(dt);
+        Update(dt);
+        Render(dt);
 
         // do shit?
         //  WRITE TO FRAME BUFFER
@@ -106,8 +101,6 @@ int main(int argc, char* argv[])
         /*TIME_THIS(glBlitFramebuffer(0, 0, g_width, g_height, 0, 0, g_width, g_height, GL_COLOR_BUFFER_BIT, GL_NEAREST);,
          * "blit");*/
 
-        TIME_THIS(glfwSwapBuffers(window);, "swap");
-
         frames++;
 
         // pretty sure this is unessecary
@@ -117,6 +110,10 @@ int main(int argc, char* argv[])
         // THIS MUST BE ON THE MAIN THREAD APPARENTLY
         TIME_THIS(glfwPollEvents();, "poll events");
     }
+
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
 
     // Not necessary due to terminate
     // glfwDestroyWindow(window);
