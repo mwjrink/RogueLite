@@ -26,16 +26,16 @@ namespace input
             return false;
     }
 
-    // bool copy_add(int val, delegate_type* callback)
-    //{
-    //    if (callbacks[val] == nullptr)
-    //    {
-    //        callbacks[val] = new delegate_type(callback);
-    //        return true;
-    //    }
-    //    else
-    //        return false;
-    //}
+    bool copy_add(int val, delegate_type* callback)
+    {
+        if (callbacks[val] == nullptr)
+        {
+            callbacks[val] = new delegate_type(*callback);
+            return true;
+        }
+        else
+            return false;
+    }
 
     // WILL DELETE WHEN REMOVED
     bool remove(int val)

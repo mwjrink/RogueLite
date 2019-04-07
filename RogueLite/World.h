@@ -10,8 +10,8 @@ namespace world
     // class Player;
 
     // Player              player;
-    level::Level        current_level;
-    std::vector<Entity> entities;
+    level::Level                 current_level;
+    std::vector<physics::Entity> entities;
 
     void Update(float dt) {}
 

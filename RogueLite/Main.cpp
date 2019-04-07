@@ -29,17 +29,17 @@ auto INIT_TEST_SPRITE()
     world::current_level.width  = 16;
     world::current_level.height = 9;
 
-    // input::delegate_type dLambda = [](int key, int action) {
-    //    if (key == GLFW_KEY_W) r.position.y += 5;
-    //    if (key == GLFW_KEY_A) r.position.x -= 5;
-    //    if (key == GLFW_KEY_S) r.position.y -= 5;
-    //    if (key == GLFW_KEY_D) r.position.x += 5;
-    //};
-    // input::copy_add(GLFW_KEY_W, &dLambda);
-    // input::copy_add(GLFW_KEY_A, &dLambda);
-    // input::copy_add(GLFW_KEY_S, &dLambda);
-    // input::copy_add(GLFW_KEY_D, &dLambda);
-    // input::copy_add(GLFW_KEY_D, &dLambda);
+    input::delegate_type dLambda = [](int key, int action) {
+        if (key == GLFW_KEY_W) r.position.y += 5;
+        if (key == GLFW_KEY_A) r.position.x -= 5;
+        if (key == GLFW_KEY_S) r.position.y -= 5;
+        if (key == GLFW_KEY_D) r.position.x += 5;
+    };
+    input::copy_add(GLFW_KEY_W, &dLambda);
+    input::copy_add(GLFW_KEY_A, &dLambda);
+    input::copy_add(GLFW_KEY_S, &dLambda);
+    input::copy_add(GLFW_KEY_D, &dLambda);
+    input::copy_add(GLFW_KEY_D, &dLambda);
 
     level::Init(&world::current_level);
 }
