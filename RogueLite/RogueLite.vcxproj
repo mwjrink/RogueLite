@@ -132,7 +132,6 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BASESPRITETESTINGBLEH.h" />
     <ClInclude Include="Creature.h" />
     <ClInclude Include="DebugUtilities.h" />
     <ClInclude Include="Delegate.h" />

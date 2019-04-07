@@ -1,7 +1,4 @@
 ﻿  Main.cpp
-C:\Development\C++\RogueLite\RogueLite\Level.h(31): error C2065: 'shaderProgram': undeclared identifier
-C:\Development\C++\RogueLite\RogueLite\Level.h(31): error C3861: 'DrawRenderable': identifier not found
-C:\Development\C++\RogueLite\RogueLite\MainLoopCallbacks.h(6): error C2084: function 'void Update(float)' already has a body
-  C:\Development\C++\RogueLite\RogueLite\World.h(16): note: see previous definition of 'Update'
-C:\Development\C++\RogueLite\RogueLite\MainLoopCallbacks.h(17): error C2653: 'world': is not a class or namespace name
-C:\Development\C++\RogueLite\RogueLite\Main.cpp(47): error C2065: 'Update': undeclared identifier
+     Creating library C:\Development\C++\RogueLite\x64\Debug\RogueLite.lib and object C:\Development\C++\RogueLite\x64\Debug\RogueLite.exp
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  RogueLite.vcxproj -> C:\Development\C++\RogueLite\x64\Debug\RogueLite.exe

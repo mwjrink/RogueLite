@@ -62,16 +62,10 @@
     <ClInclude Include="GLTexture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BASESPRITETESTINGBLEH.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="World.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Creature.h">
@@ -81,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Effect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
