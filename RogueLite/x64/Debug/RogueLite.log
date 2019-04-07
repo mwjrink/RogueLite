@@ -1,4 +1,0 @@
-﻿  Main.cpp
-     Creating library C:\Development\C++\RogueLite\x64\Debug\RogueLite.lib and object C:\Development\C++\RogueLite\x64\Debug\RogueLite.exp
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  RogueLite.vcxproj -> C:\Development\C++\RogueLite\x64\Debug\RogueLite.exe
