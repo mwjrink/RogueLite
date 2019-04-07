@@ -309,6 +309,13 @@ void DrawSprite(GLuint shader_program, unsigned int texture, glm::vec2 position,
 
 void DrawRenderable(Renderable r, unsigned int shader_program)
 {
-    DrawSprite(shader_program, r.Tile_Sheet.texture.id, r.position, r.size, r.degrees_rotation, r.scale, glm::vec3(1.0f),
-               getUVs(r.Tile_Sheet, r.current_tile_index));
+    DrawSprite(shader_program, r.tile_sheet.texture.id, r.position, r.size, r.degrees_rotation, r.scale, glm::vec3(1.0f),
+               getUVs(r.tile_sheet, r.current_tile_index));
+}
+
+void Cleanup()
+{
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
 }

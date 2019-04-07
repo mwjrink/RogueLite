@@ -133,12 +133,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BASESPRITETESTINGBLEH.h" />
+    <ClInclude Include="Creature.h" />
     <ClInclude Include="DebugUtilities.h" />
     <ClInclude Include="Delegate.h" />
     <ClInclude Include="DelegateBase.h" />
+    <ClInclude Include="Effect.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="GLTexture.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="MainLoopCallbacks.h" />
     <ClInclude Include="MultiCastDelegate.h" />
     <ClInclude Include="Renderable.h" />
@@ -146,6 +151,7 @@
     <ClInclude Include="ThreadPool.h" />
     <ClInclude Include="TileSheet.h" />
     <ClInclude Include="WindowCallbacks.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="VertexShader.glsl" />
