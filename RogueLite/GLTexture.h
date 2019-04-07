@@ -24,13 +24,15 @@ auto LoadTexture(std::string texture_path, bool flip_vertically)
                     GL_REPEAT);  // set texture wrapping to GL_REPEAT (default wrapping method)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     // set texture filtering parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    // glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    // glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     // load image, create texture and generate mipmaps
 
     int width, height, nrChannels;
     stbi_set_flip_vertically_on_load(flip_vertically);  // tell stb_image.h to flip loaded texture's on the y-axis.
-                                             // FileSystem::getPath("resources/textures/container.jpg").c_str()
+                                                        // FileSystem::getPath("resources/textures/container.jpg").c_str()
     unsigned char* data = stbi_load(texture_path.c_str(), &width, &height, &nrChannels, 0);
     if (data)
     {
