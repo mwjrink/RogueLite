@@ -7,12 +7,12 @@
 
 class Renderable
 {
-    // private:
-    //  class aframe
-    //  {
-    //      unsigned int frame_index;
-    //      aframe*      next_frame;
-    //  };
+  private:
+    class aframe
+    {
+        unsigned int frame_index;
+        aframe*      next_frame;
+    };
 
   public:
     // TODO: shader_ptr<TileSheet>;
@@ -23,5 +23,5 @@ class Renderable
     float        degrees_rotation = 0.0f;
     float        scale            = 1.0f;
 
-    // aframe* current_frame;
+    aframe* current_frame;
 };

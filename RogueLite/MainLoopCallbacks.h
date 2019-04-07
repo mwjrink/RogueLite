@@ -5,7 +5,7 @@
 
 void Update(float dt) {}
 
-void dd(Renderable rr) { DrawRenderable(rr, shaderProgram); }
+void dd(Renderable rr) { graphics::DrawRenderable(rr, graphics::shaderProgram); }
 
 void Render(Renderable r)
 {
@@ -15,8 +15,8 @@ void Render(Renderable r)
                                    // glClear(ALL_BUFFERS);          // Clear initial state
 
     world::Render();
-    DrawRenderable(r, shaderProgram);
+    graphics::DrawRenderable(r, graphics::shaderProgram);
 
-    glfwSwapBuffers(window);
+    glfwSwapBuffers(graphics::window);
     return;
 }

@@ -2,7 +2,7 @@
 
 #include "Entity.h"
 
-class Creature : Entity
+class Creature : physics::Entity
 {
     int max_health;
     int current_health;

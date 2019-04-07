@@ -14,6 +14,7 @@ namespace level
         unsigned int  width, height;
     };
 
+    // renderable used to draw the tiles to the screen
     Renderable r;
 
     void Init(Level* target)
@@ -34,7 +35,7 @@ namespace level
 
                 r.current_tile_index = render_target->map[x + y * render_target->width];
 
-                DrawRenderable(r, shaderProgram);
+                graphics::DrawRenderable(r, graphics::shaderProgram);
             }
     }
 

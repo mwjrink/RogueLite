@@ -3,9 +3,12 @@
 #ifndef GL3W_INCLUDED
 #define GL3W_INCLUDED
 #include <GL/gl3w.h>
+#include <GL/glcorearb.h>
+#include <GL/src/gl3w.c>
 #endif
 
 #include <GLFW/glfw3.h>
+
 //#include <thread>
 
 #include "Graphics.h"
@@ -39,20 +42,15 @@ auto INIT_TEST_SPRITE()
     input::copy_add(GLFW_KEY_A, &dLambda);
     input::copy_add(GLFW_KEY_S, &dLambda);
     input::copy_add(GLFW_KEY_D, &dLambda);
-    input::copy_add(GLFW_KEY_D, &dLambda);
 
     level::Init(&world::current_level);
 }
 
 int main(int argc, char* argv[])
 {
-    if (!Init(1920, 1080))
-    {
-        std::cin.get();
-        return -1;
-    }
+    if (!graphics::Init(1920, 1080)) return -1;
 
-    input::delegate_type dLambda = [](int key, int action) { glfwSetWindowShouldClose(window, true); };
+    input::delegate_type dLambda = [](int key, int action) { glfwSetWindowShouldClose(graphics::window, true); };
     input::add(GLFW_KEY_ESCAPE, new input::delegate_type(dLambda));
 
     // TODO: thread pooling and work queue
@@ -70,13 +68,18 @@ int main(int argc, char* argv[])
     double t1;
     float  dt;
 
+    // VSYNC: 1 = enabled, 0 = disabled
     glfwSwapInterval(1);
 
-    while (!glfwWindowShouldClose(window))
+    unsigned int frames = 0;
+    while (!glfwWindowShouldClose(graphics::window))
     {
         t1 = glfwGetTime();
         dt = (float)(t1 - t0);
         t0 = t1;
+
+        frames += 1 / dt;
+        frames /= 2;
 
         Update(dt);
         Render(r);
@@ -86,7 +89,7 @@ int main(int argc, char* argv[])
         glfwPollEvents();
     }
 
-    Cleanup();
+    graphics::Cleanup();
 
     // Not necessary due to terminate
     // glfwDestroyWindow(window);
@@ -96,4 +99,4 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-void handle_escape(int key, int action) { glfwSetWindowShouldClose(window, true); }
+void handle_escape(int key, int action) { glfwSetWindowShouldClose(graphics::window, true); }

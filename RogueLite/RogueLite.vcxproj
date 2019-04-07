@@ -77,6 +77,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)GLFW\include;$(SolutionDir)GL3W\build\include;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>
+      </ForcedIncludeFiles>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -91,6 +94,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)GLFW\include;$(SolutionDir)GL3W\build\include;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>
+      </ForcedIncludeFiles>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -106,6 +112,9 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles>
+      </ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,6 +130,9 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles>
+      </ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,14 +142,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Tilesheet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Creature.h" />
     <ClInclude Include="DebugUtilities.h" />
-    <ClInclude Include="Delegate.h" />
-    <ClInclude Include="DelegateBase.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GLTexture.h" />
@@ -145,11 +156,13 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="Libraries\Delegate.h" />
+    <ClInclude Include="Libraries\DelegateBase.h" />
+    <ClInclude Include="Libraries\MultiCastDelegate.h" />
+    <ClInclude Include="Libraries\stb_image.h" />
+    <ClInclude Include="Libraries\ThreadPool.h" />
     <ClInclude Include="MainLoopCallbacks.h" />
-    <ClInclude Include="MultiCastDelegate.h" />
     <ClInclude Include="Renderable.h" />
-    <ClInclude Include="stb_image.h" />
-    <ClInclude Include="ThreadPool.h" />
     <ClInclude Include="TileSheet.h" />
     <ClInclude Include="WindowCallbacks.h" />
     <ClInclude Include="World.h" />
