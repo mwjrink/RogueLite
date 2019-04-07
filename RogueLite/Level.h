@@ -14,12 +14,18 @@ namespace level
         unsigned int  width, height;
     };
 
-    void RenderLevel(Level* render_target)
+    Renderable r;
+
+    void Init(Level* target)
     {
-        Renderable r = Renderable();
+        r            = Renderable();
         r.tile_sheet = Create_TileSheet(LoadTexture("Resources/BasicLevelTextures.png", false), glm::ivec2(2, 2));
         r.position   = glm::vec2(0.0f, 0.0f);
+        r.size       = glm::vec2(1920.0f / 16.0f, 1080.0f / 9.0f);
+    }
 
+    void RenderLevel(Level* render_target)
+    {
         for (unsigned int y = 0; y < render_target->height; y++)
             for (unsigned int x = 0; x < render_target->width; x++)
             {
@@ -32,9 +38,9 @@ namespace level
             }
     }
 
-    unsigned int  base_map_width  = 10;
-    unsigned int  base_map_height = 10;
-    unsigned int* base_map        = new unsigned int[16 * 9]{
+    unsigned int         base_map_width  = 10;
+    unsigned int         base_map_height = 10;
+    static unsigned int* base_map        = new unsigned int[16 * 9]{
         3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,  //..................................................
         3, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3,  //..................................................
         3, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3,  //..................................................
@@ -51,7 +57,7 @@ namespace level
     // 2 = grass;
     // 3 = earth / stone;
 
-    unsigned int* collision_map = new unsigned int[16 * 9]{
+    static unsigned int* collision_map = new unsigned int[16 * 9]{
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  //..................................................
         1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,  //..................................................
         1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,  //..................................................

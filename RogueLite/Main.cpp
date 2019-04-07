@@ -16,7 +16,7 @@ Renderable r;
 
 auto INIT_TEST_SPRITE()
 {
-    r.tile_sheet = Create_TileSheet(LoadTexture("Resources/SpriteSheet.png", true), glm::ivec2(4, 4));
+    r.tile_sheet = Create_TileSheet(LoadTexture("Resources/SpriteSheet.png", false), glm::ivec2(4, 4));
     // r.position   = glm::vec2(1720.0f, 980.0f);
     r.position           = glm::vec2(100.0f, 100.0f);
     r.size               = glm::vec2(100.0f, 100.0f);
@@ -27,6 +27,8 @@ auto INIT_TEST_SPRITE()
     world::current_level.map    = level::base_map;
     world::current_level.width  = 16;
     world::current_level.height = 9;
+
+    level::Init(&world::current_level);
 }
 
 int main(int argc, char* argv[])
