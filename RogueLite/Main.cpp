@@ -88,8 +88,6 @@ int main(int argc, char* argv[])
         Update(dt);
         Render(r, camera);
 
-        // TODO: THIS SHOULD BE ON ANOTHER THREAD
-        // THIS MUST BE ON THE MAIN THREAD APPARENTLY
         glfwPollEvents();
     }
 

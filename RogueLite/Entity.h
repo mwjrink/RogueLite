@@ -20,7 +20,7 @@ namespace physics
     };
 
     /// Physics Logic
-    class Entity : Renderable
+    struct Entity : public Renderable
     {
         glm::vec3       velocity;
         float           mass;

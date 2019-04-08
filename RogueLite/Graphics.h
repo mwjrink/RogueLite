@@ -143,7 +143,7 @@ namespace graphics
         {
             glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
 
-            fprintf(stdout, "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n0x%x\n", infoLog);
+            fprintf(stdout, "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n%s", infoLog);
             // return false;
         }
 

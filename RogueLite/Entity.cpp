@@ -14,8 +14,7 @@ namespace physics
 
     bool check_tile_collisions(Entity e, glm::vec3 new_position, unsigned int* collision_map)
     {
-        "hello";
-        "hello";
+        // dsagfd
         return false;
     }
 }  // namespace physics

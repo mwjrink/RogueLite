@@ -6,8 +6,6 @@
 
 void Update(float dt) {}
 
-void dd(Renderable rr) { graphics::DrawRenderable(rr, graphics::shaderProgram); }
-
 void Render(Renderable r, Camera camera)
 {
     UpdateViewMatrix(camera.view_matrix, camera.position, camera.zoom);

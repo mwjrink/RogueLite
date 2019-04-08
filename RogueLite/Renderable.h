@@ -1,8 +1,5 @@
 #pragma once
 
-#include <GL/gl3w.h>
-#include <glm/glm.hpp>
-
 #include "TileSheet.h"
 
 class Renderable
