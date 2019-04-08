@@ -1,1 +1,0 @@
-C:/Development/Microsoft Visual Studio/2017/Community/Common7/IDE/VC/VCTargets
