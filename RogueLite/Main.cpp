@@ -15,8 +15,10 @@
 #include "InputManager.h"
 #include "MainLoopCallbacks.h"
 #include "World.h"
+#include "Camera.h"
 
 Renderable r;
+Camera     camera;
 
 auto INIT_TEST_SPRITE()
 {
@@ -81,8 +83,10 @@ int main(int argc, char* argv[])
         frames += 1 / dt;
         frames /= 2;
 
+		LockCamera(camera, r);
+
         Update(dt);
-        Render(r);
+        Render(r, camera);
 
         glfwPollEvents();
     }
