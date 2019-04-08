@@ -3,6 +3,7 @@
 #include <vector>
 #include "Entity.h"
 #include "Level.h"
+#include "QuadTree.h"
 
 namespace world
 {
@@ -10,9 +11,9 @@ namespace world
     // class Player;
 
     // Player              player;
-    level::Level                 current_level;
-    float                        width, height;
-    std::vector<physics::Entity> entities;
+    level::Level       current_level;
+    float              width, height;
+    quad_tree::Branch* collision_tree;
 
     void Update(float dt) {}
 

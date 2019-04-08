@@ -11,11 +11,11 @@
 
 //#include <thread>
 
+#include "Camera.h"
 #include "Graphics.h"
 #include "InputManager.h"
 #include "MainLoopCallbacks.h"
 #include "World.h"
-#include "Camera.h"
 
 Renderable r;
 Camera     camera;
@@ -24,21 +24,24 @@ auto INIT_TEST_SPRITE()
 {
     r.tile_sheet = Create_TileSheet(LoadTexture("Resources/SpriteSheet.png", false), glm::ivec2(4, 4));
     // r.position   = glm::vec2(1720.0f, 980.0f);
-    r.position           = glm::vec2(900.0f, 500.0f);
+    r.position           = glm::vec2(500.0f, 300.0f);
     r.size               = glm::vec2(100.0f, 100.0f);
     r.scale              = 1.0f;
     r.current_tile_index = 0;
 
     world::current_level        = level::Level();
     world::current_level.map    = level::base_map;
-    world::current_level.width  = 16;
-    world::current_level.height = 9;
+    world::current_level.width  = 24.0f;
+    world::current_level.height = 17.0f;
+
+    world::width  = 2880.0f;
+    world::height = 2040.0f;
 
     input::delegate_type dLambda = [](int key, int action) {
-        if (key == GLFW_KEY_W) r.position.y += 5;
-        if (key == GLFW_KEY_A) r.position.x -= 5;
-        if (key == GLFW_KEY_S) r.position.y -= 5;
-        if (key == GLFW_KEY_D) r.position.x += 5;
+        if (key == GLFW_KEY_W) r.position.y += 15;
+        if (key == GLFW_KEY_A) r.position.x -= 15;
+        if (key == GLFW_KEY_S) r.position.y -= 15;
+        if (key == GLFW_KEY_D) r.position.x += 15;
     };
     input::copy_add(GLFW_KEY_W, &dLambda);
     input::copy_add(GLFW_KEY_A, &dLambda);
@@ -80,10 +83,10 @@ int main(int argc, char* argv[])
         dt = (float)(t1 - t0);
         t0 = t1;
 
-        frames += 1 / dt;
+        frames += (int)(1.0f / dt);
         frames /= 2;
 
-		LockCamera(camera, r);
+        LockCamera(camera, r);
 
         Update(dt);
         Render(r, camera);

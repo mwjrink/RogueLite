@@ -150,6 +150,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="Tilesheet.cpp" />
   </ItemGroup>
   <ItemGroup>

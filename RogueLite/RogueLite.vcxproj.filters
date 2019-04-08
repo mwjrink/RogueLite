@@ -33,6 +33,9 @@
     <ClCompile Include="GLTexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QuadTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graphics.h">
@@ -92,12 +95,9 @@
     <ClInclude Include="Libraries\DelegateBase.h">
       <Filter>Libraries</Filter>
     </ClInclude>
-<<<<<<< HEAD
-=======
     <ClInclude Include="QuadTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
->>>>>>> aa3acc7f164c2deb8242e9118a2eb229cb846bb9
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>

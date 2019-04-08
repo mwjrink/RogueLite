@@ -1,8 +1,13 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include "Graphics.h"
 #include "Renderable.h"
+
+#include "World.h"
 
 class Camera
 {
@@ -35,11 +40,18 @@ glm::vec2 ScreenToWorld(glm::vec2 position, glm::vec2 camera_position, float zoo
 void LockCamera(Camera& camera, Renderable r)
 {
     glm::vec2 new_position;
-	new_position.x        = r.position.x + r.size.x / 2 - graphics::Window_Width / 2 / camera.zoom;
-    new_position.y        = r.position.y + r.size.y / 2 - graphics::Window_Height / 2 / camera.zoom;
-    new_position		 *= camera.zoom;
+    new_position.x = r.position.x + r.size.x / 2 - graphics::Window_Width / 2 / camera.zoom;
+    new_position.y = r.position.y + r.size.y / 2 - graphics::Window_Height / 2 / camera.zoom;
+    new_position *= camera.zoom;
 
+    // could do std::min and std::max but this way saves the memory setting most of the time
     if (new_position.x < 0) new_position.x = 0;
     if (new_position.y < 0) new_position.y = 0;
+
+    if (new_position.x > world::width - graphics::Window_Width / camera.zoom)
+        new_position.x = world::width - graphics::Window_Width / camera.zoom;
+    if (new_position.y > world::height - graphics::Window_Height / camera.zoom)
+        new_position.y = world::height - graphics::Window_Height / camera.zoom;
+
     camera.position = new_position;
 }
