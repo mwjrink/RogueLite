@@ -28,6 +28,7 @@ namespace physics
         glm::vec3       world_space_position;
         bool*           collision_map;
         unsigned int    collision_map_width, collision_map_height;
+        unsigned int    bounding_box_width, bounding_box_height;
     };
 
     void move(Entity e, glm::vec3 new_position);
