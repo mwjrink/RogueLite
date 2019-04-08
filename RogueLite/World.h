@@ -11,6 +11,7 @@ namespace world
 
     // Player              player;
     level::Level                 current_level;
+    float                        width, height;
     std::vector<physics::Entity> entities;
 
     void Update(float dt) {}

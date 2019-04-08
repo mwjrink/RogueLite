@@ -5,8 +5,6 @@
 
 void Update(float dt) {}
 
-void dd(Renderable rr) { graphics::DrawRenderable(rr, graphics::shaderProgram); }
-
 void Render(Renderable r)
 {
     // glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
