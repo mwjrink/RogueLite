@@ -147,6 +147,7 @@
     <ClCompile Include="Tilesheet.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Creature.h" />
     <ClInclude Include="DebugUtilities.h" />
     <ClInclude Include="Effect.h" />

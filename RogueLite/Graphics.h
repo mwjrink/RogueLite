@@ -327,6 +327,11 @@ namespace graphics
                    getUVs(r.tile_sheet, r.current_tile_index));
     }
 
+	void SetViewMatrix(glm::mat4 view)
+	{
+        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(view));
+	}
+
     void Cleanup()
     {
         glDeleteVertexArrays(1, &VAO);
