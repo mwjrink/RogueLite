@@ -8,7 +8,7 @@
 
 void Update(float dt) {}
 
-void Render(Renderable r, Camera camera)
+void Render(Renderable r, Camera camera/*, Renderable* rs, int size*/)
 {
     UpdateViewMatrix(camera.view_matrix, camera.position, camera.zoom);
     graphics::SetViewMatrix(camera.view_matrix);
@@ -20,6 +20,11 @@ void Render(Renderable r, Camera camera)
     // TODO: this takes the most time by far
     world::Render();
     graphics::DrawRenderable(r, graphics::shaderProgram);
+
+	/*
+	for (int i = 0; i < size; i++) 
+		graphics::DrawRenderable(rs[i], graphics::shaderProgram);
+	*/
 
     graphics::DrawBatch();
     glfwSwapBuffers(graphics::window);
