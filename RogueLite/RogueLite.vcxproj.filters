@@ -126,5 +126,8 @@
     <Image Include="Resources\SpriteSheet.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\BasicLevelTextures.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

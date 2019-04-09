@@ -32,6 +32,10 @@ namespace graphics
     GLuint       buffers[3];
     unsigned int shaderProgram;
 
+    std::vector<glm::mat4> modelMatrices;
+    std::vector<glm::vec3> spriteColors;
+    std::vector<glm::vec4> textureUvs;
+
     // unsigned int batch_texture_id;
 
     void SetViewMatrix(glm::mat4 view);
@@ -180,10 +184,6 @@ namespace graphics
         return true;
     }
 
-    std::vector<glm::mat4> modelMatrices;
-    std::vector<glm::vec3> spriteColors;
-    std::vector<glm::vec4> textureUvs;
-
     void Sprite_Render_Init()
     {
         float vertices[] = {
@@ -290,6 +290,7 @@ namespace graphics
     }
 
     // TODOL remove shader_program argument
+    // TODO name this method properly
     inline void DrawSprite(GLuint shader_program, glm::vec2 position, glm::vec2 size, GLfloat rotate, GLfloat scale,
                            glm::vec3 color, glm::vec4 uvs)
     {
@@ -313,6 +314,7 @@ namespace graphics
     }
 
     // TODO: profile the render loop, performance is lost (vector operations?)
+    // TODO name this method properly
     void DrawBatch()
     {
         glUseProgram(shaderProgram);
@@ -340,6 +342,7 @@ namespace graphics
         textureUvs.clear();
     }
 
+    // TODO name this method properly
     inline void DrawRenderable(Renderable r, unsigned int shader_program)
     {
         DrawSprite(shader_program, r.position, r.size, r.degrees_rotation, r.scale, glm::vec3(1.0f),

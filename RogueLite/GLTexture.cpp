@@ -68,9 +68,9 @@ unsigned int GenerateAtlas(bool flip_vertically)
         unsigned char* temp_data = stbi_load(paths[i].c_str(), &width, &height, &nrChannels, 0);
         if (temp_data)
         {
-            for (int x = 0; x < width * 4; x++)
-                for (int y = 0; y < height; y++)
-                    full_data[(bins[i].x * 4 + x) + ((y + bins[i].y) * atlas_width * 4)] = temp_data[(x) + (y * width * 4)];
+            for (int y = 0; y < height; y++)
+                memcpy(&full_data[(bins[i].x * 4) + ((y + bins[i].y) * atlas_width * 4)], &temp_data[(y * width * 4)],
+                       size_t(width * 4));
         }
         else
         {
