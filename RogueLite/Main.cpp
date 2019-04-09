@@ -4,7 +4,7 @@
 
 auto INIT_TEST_SPRITE()
 {
-    r.tile_sheet = Create_TileSheet(LoadTexture("Resources/SpriteSheet.png", false), glm::ivec2(4, 4));
+    r.tile_sheet = Create_TileSheet(AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
     // r.position   = glm::vec2(1720.0f, 980.0f);
     r.position           = glm::vec2(500.0f, 300.0f);
     r.size               = glm::vec2(100.0f, 100.0f);
@@ -31,6 +31,8 @@ auto INIT_TEST_SPRITE()
     input::copy_add(GLFW_KEY_D, &dLambda);
 
     level::Init(&world::current_level);
+
+    atlas_texture_id = GenerateAtlas(false);
 }
 
 int main(int argc, char* argv[])
@@ -66,13 +68,17 @@ int main(int argc, char* argv[])
     unsigned int frames = 0;
     while (!glfwWindowShouldClose(graphics::window))
     {
-        t1 = glfwGetTime();
-        dt = (float)(t1 - t0);
-        t0 = t1;
+        {
+            t1 = glfwGetTime();
+            dt = (float)(t1 - t0);
+            t0 = t1;
+        }
 
-        frames += (int)(1.0f / dt);
-        frames /= 2;
-        frames_string << frames << std::endl;
+        {
+            frames += (int)(1.0f / dt);
+            frames /= 2;
+            frames_string << frames << std::endl;
+        }
 
         LockCamera(camera, r);
 

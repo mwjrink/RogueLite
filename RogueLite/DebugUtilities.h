@@ -1,6 +1,8 @@
 #pragma once
 
-#define disable_timing true
+#include <chrono>
+
+#define disable_timing false
 #define TIME_THIS(T, D)                                                                           \
     {                                                                                             \
         if (disable_timing)                                                                       \

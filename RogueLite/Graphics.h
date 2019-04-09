@@ -32,7 +32,7 @@ namespace graphics
     GLuint       buffers[3];
     unsigned int shaderProgram;
 
-    unsigned int batch_texture_id;
+    // unsigned int batch_texture_id;
 
     void SetViewMatrix(glm::mat4 view);
 
@@ -66,7 +66,7 @@ namespace graphics
         return true;
     }
 
-    bool GLFW_Init(int w_width, int w_height)
+    inline bool GLFW_Init(int w_width, int w_height)
     {
         if (!glfwInit())
         {
@@ -123,7 +123,7 @@ namespace graphics
         return true;
     }
 
-    bool Shader_Init()
+    inline bool Shader_Init()
     {
         unsigned int vertexShader;
         vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -198,6 +198,10 @@ namespace graphics
             1, 2, 3   // second triangle
         };
 
+        modelMatrices.push_back(glm::mat4(1.0f));
+        spriteColors.push_back(glm::vec3(1.0f));
+        textureUvs.push_back(glm::vec4(1.0f));
+
         glGenVertexArrays(1, &VAO);
         glGenBuffers(1, &VBO);
         glGenBuffers(1, &EBO);
@@ -248,6 +252,31 @@ namespace graphics
         glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(3 * sizeof(glm::vec4)));
         glVertexAttribDivisor(7, 1);
 
+        // set attribute pointers for matrix (4 times vec4)
+        glEnableVertexAttribArray(4);
+        glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)0);
+        glEnableVertexAttribArray(5);
+        glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(glm::vec4)));
+        glEnableVertexAttribArray(6);
+        glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(2 * sizeof(glm::vec4)));
+        glEnableVertexAttribArray(7);
+        glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(3 * sizeof(glm::vec4)));
+
+        glVertexAttribDivisor(4, 1);
+        glVertexAttribDivisor(5, 1);
+        glVertexAttribDivisor(6, 1);
+        glVertexAttribDivisor(7, 1);
+
+        glEnableVertexAttribArray(2);
+        glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)0);
+
+        glVertexAttribDivisor(2, 1);
+
+        glEnableVertexAttribArray(3);
+        glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
+
+        glVertexAttribDivisor(3, 1);
+
         // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex
         // buffer object so afterwards we can safely unbind
         glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -269,7 +298,7 @@ namespace graphics
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }  // namespace graphics
 
-    bool Init(int w_width, int w_height)
+    inline bool Init(int w_width, int w_height)
     {
         if (!GLFW_Init(w_width, w_height)) return false;
         if (!GL_Init()) return false;
@@ -278,9 +307,8 @@ namespace graphics
         return true;
     }
 
-    void DrawSprite(GLuint shader_program, unsigned int texture, glm::vec2 position, glm::vec2 size = glm::vec2(10, 10),
-                    GLfloat rotate = 0.0f, GLfloat scale = 1.0f, glm::vec3 color = glm::vec3(1.0f),
-                    glm::vec4 uvs = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f))
+    inline void DrawSprite(GLuint shader_program, glm::vec2 position, glm::vec2 size, GLfloat rotate, GLfloat scale,
+                           glm::vec3 color, glm::vec4 uvs)
     {
         // Prepare transformations
         glm::mat4 model = glm::mat4(1.0f);
@@ -299,8 +327,6 @@ namespace graphics
         modelMatrices.push_back(model);
         spriteColors.push_back(color);
         textureUvs.push_back(uvs);
-
-        batch_texture_id = texture;
     }
 
     // TODO: profile the render loop, performance is lost (vector operations?)
@@ -320,7 +346,7 @@ namespace graphics
         glBufferData(GL_ARRAY_BUFFER, amount * sizeof(glm::mat4), &modelMatrices[0], GL_STREAM_DRAW);
 
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, batch_texture_id);
+        glBindTexture(GL_TEXTURE_2D, atlas_texture_id);
 
         glBindVertexArray(VAO);
         glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, amount);
@@ -329,12 +355,11 @@ namespace graphics
         modelMatrices.clear();
         spriteColors.clear();
         textureUvs.clear();
-        batch_texture_id = -1;
     }
 
-    void DrawRenderable(Renderable r, unsigned int shader_program)
+    inline void DrawRenderable(Renderable r, unsigned int shader_program)
     {
-        DrawSprite(shader_program, r.tile_sheet.texture.id, r.position, r.size, r.degrees_rotation, r.scale, glm::vec3(1.0f),
+        DrawSprite(shader_program, r.position, r.size, r.degrees_rotation, r.scale, glm::vec3(1.0f),
                    getUVs(r.tile_sheet, r.current_tile_index));
     }
 
@@ -351,7 +376,7 @@ namespace graphics
         glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     }
 
-    void Cleanup()
+    inline void Cleanup()
     {
         glDeleteVertexArrays(1, &VAO);
         glDeleteBuffers(1, &VBO);

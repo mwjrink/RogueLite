@@ -4,6 +4,8 @@
 #include "Graphics.h"
 #include "World.h"
 
+#include "DebugUtilities.h"
+
 void Update(float dt) {}
 
 void Render(Renderable r, Camera camera)
@@ -11,11 +13,11 @@ void Render(Renderable r, Camera camera)
     UpdateViewMatrix(camera.view_matrix, camera.position, camera.zoom);
     graphics::SetViewMatrix(camera.view_matrix);
 
-    // glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    // Clear initial state
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);  // Clear initial state
-                                   // glClear(ALL_BUFFERS);          // Clear initial state
+    glClear(GL_COLOR_BUFFER_BIT);  // glClear(ALL_BUFFERS);
 
+    // TODO: this takes the most time by far
     world::Render();
     graphics::DrawBatch();
 

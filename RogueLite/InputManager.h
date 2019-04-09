@@ -9,13 +9,13 @@ namespace input
 
     auto callbacks = std::unordered_map<int, delegate_type*>();
 
-    void handle(int key, int action)
+    inline void handle(int key, int action)
     {
         auto func = callbacks[key];
         if (func) (*func)(key, action);
     }
 
-    bool add(int val, delegate_type* callback)
+    inline bool add(int val, delegate_type* callback)
     {
         if (callbacks[val] == nullptr)
         {
@@ -26,7 +26,7 @@ namespace input
             return false;
     }
 
-    bool copy_add(int val, delegate_type* callback)
+    inline bool copy_add(int val, delegate_type* callback)
     {
         if (callbacks[val] == nullptr)
         {
@@ -38,7 +38,7 @@ namespace input
     }
 
     // WILL DELETE WHEN REMOVED
-    bool remove(int val)
+    inline bool remove(int val)
     {
         if (callbacks[val] != nullptr)
         {

@@ -8,10 +8,10 @@
 class TileSheet
 {
   public:
-    GLTexture  texture;
+    GLTexture* texture;
     glm::ivec2 sprite_dimensions;
 };
 
-TileSheet Create_TileSheet(const GLTexture& texture, const glm::ivec2& tileDims);
+TileSheet Create_TileSheet(GLTexture* texture, const glm::ivec2& tileDims);
 
 glm::vec4 getUVs(TileSheet sheet, int index);
