@@ -19,11 +19,9 @@ void Render(Renderable r, Camera camera)
 
     // TODO: this takes the most time by far
     world::Render();
-    graphics::DrawBatch();
-
     graphics::DrawRenderable(r, graphics::shaderProgram);
-    graphics::DrawBatch();
 
+    graphics::DrawBatch();
     glfwSwapBuffers(graphics::window);
     return;
 }

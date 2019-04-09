@@ -107,6 +107,9 @@
     <ClInclude Include="ShelfPack.h">
       <Filter>Libraries</Filter>
     </ClInclude>
+    <ClInclude Include="Libraries\stb_image_write.h">
+      <Filter>Libraries</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="FragmentShader.glsl">

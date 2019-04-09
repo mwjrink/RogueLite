@@ -4,6 +4,9 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "Libraries/stb_image.h"
 
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "Libraries/stb_image_write.h"
+
 int    current_max_id   = 0;
 GLuint atlas_texture_id = -1;
 
@@ -66,7 +69,13 @@ unsigned int GenerateAtlas(bool flip_vertically)
         unsigned char* temp_data = stbi_load(paths[i].c_str(), &width, &height, &nrChannels, 0);
         if (temp_data)
         {
-            memcpy(&full_data[bins[i].x * 4 + bins[i].y * atlas_width * 4], temp_data, size_t(width * height * 4));
+            for (int x = 0; x < width * 4; x++)
+                for (int y = 0; y < height; y++)
+                {
+                    full_data[(bins[i].x * 4 + x) + ((y + bins[i].y) * atlas_width * 4)] = temp_data[(x) + (y * width * 4)];
+                }
+
+            // memcpy(&full_data[bins[i].x * 4 + bins[i].y * atlas_width * 4], temp_data, size_t(width * height * 4));
         }
         else
         {
@@ -88,6 +97,9 @@ unsigned int GenerateAtlas(bool flip_vertically)
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, atlas_width, atlas_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, full_data);
     glGenerateMipmap(GL_TEXTURE_2D);
+
+    // OUTPUT ATLAS FOR DEBUGGING
+    // stbi_write_png("Resources/Atlas.png", atlas_width, atlas_height, 4, full_data, atlas_width * 4);
 
     delete[] full_data;
 

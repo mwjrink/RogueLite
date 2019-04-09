@@ -168,6 +168,7 @@
     <ClInclude Include="Libraries\DelegateBase.h" />
     <ClInclude Include="Libraries\MultiCastDelegate.h" />
     <ClInclude Include="Libraries\stb_image.h" />
+    <ClInclude Include="Libraries\stb_image_write.h" />
     <ClInclude Include="Libraries\ThreadPool.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="MainLoopCallbacks.h" />
