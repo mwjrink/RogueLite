@@ -13,7 +13,7 @@ class Camera
 {
   public:
     glm::vec2 position;
-    float     zoom = 2;
+    float     zoom = 1;
     glm::mat4 view_matrix;
 };
 
