@@ -4,16 +4,17 @@
 #include "Graphics.h"
 #include "InputManager.h"
 
-void KeyCallback(GLFWwindow* Window, int Key, int Scancode, int Action, int Mods) { input::handle(Key, Action); }
+inline void KeyCallback(GLFWwindow* Window, int Key, int Scancode, int Action, int Mods) { input::handle(Key, Action); }
 
-void MouseButtonCallback(GLFWwindow* Window, int Button, int Action, int Mods) {}
+inline void MouseButtonCallback(GLFWwindow* Window, int Button, int Action, int Mods) {}
 
-void MouseMoveCallback(GLFWwindow* Window, double X, double Y) {}
+inline void MouseMoveCallback(GLFWwindow* Window, double X, double Y) {}
 
-void FramebufferSizeCallback(GLFWwindow* Window, int Width, int Height)
+inline void FramebufferSizeCallback(GLFWwindow* Window, int Width, int Height)
 {
-    /*Window_Width = Width;
-    Window_Height = Height;*/
+    // graphics::Window_Width  = Width;
+    // graphics::Window_Height = Height;
 
+    // graphics::SetProjectionMatrix();
     glViewport(0, 0, Width, Height);
 }

@@ -1,8 +1,8 @@
 #pragma once
 
+#include "Camera.h"
 #include "Graphics.h"
 #include "World.h"
-#include "Camera.h"
 
 void Update(float dt) {}
 
@@ -17,7 +17,10 @@ void Render(Renderable r, Camera camera)
                                    // glClear(ALL_BUFFERS);          // Clear initial state
 
     world::Render();
+    graphics::DrawBatch();
+
     graphics::DrawRenderable(r, graphics::shaderProgram);
+    graphics::DrawBatch();
 
     glfwSwapBuffers(graphics::window);
     return;

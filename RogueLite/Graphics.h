@@ -29,7 +29,14 @@ namespace graphics
     unsigned int Window_Width, Window_Height;
 
     GLuint       VAO, VBO, EBO;
+    GLuint       buffers[3];
     unsigned int shaderProgram;
+
+    unsigned int batch_texture_id;
+
+    void SetViewMatrix(glm::mat4 view);
+
+    void SetProjectionMatrix();
 
     bool GL_Init()
     {
@@ -173,22 +180,12 @@ namespace graphics
         return true;
     }
 
+    std::vector<glm::mat4> modelMatrices;
+    std::vector<glm::vec3> spriteColors;
+    std::vector<glm::vec4> textureUvs;
+
     void Sprite_Render_Init()
     {
-        /*
-        GL_STATIC_DRAW : the data will most likely not change at all or very rarely.
-        GL_DYNAMIC_DRAW : the data is likely to change a lot.
-        GL_STREAM_DRAW : the data will change every time it is drawn.
-        */
-
-        // THIS MAKES OBJECTS ORIGIN THE BOTTOM LEFT CORNER OF THE OBJECT
-        // GLfloat vertices[] = {
-        //    1.0f, 1.0f, 0.0f,  // top right
-        //    1.0f, 0.0f, 0.0f,  // bottom right
-        //    0.0f, 0.0f, 0.0f,  // bottom left
-        //    0.0f, 1.0f, 0.0f   // top left
-        //};
-
         float vertices[] = {
             1.0f, 1.0f, 0.0f, /*Texture*/ 1.0f, 0.0f,  // top right
             1.0f, 0.0f, 0.0f, /*Texture*/ 1.0f, 1.0f,  // bottom right
@@ -204,20 +201,52 @@ namespace graphics
         glGenVertexArrays(1, &VAO);
         glGenBuffers(1, &VBO);
         glGenBuffers(1, &EBO);
+        glGenBuffers(3, buffers);
+
         // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
         glBindVertexArray(VAO);
 
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+
         // texture coord attribute
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
         glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+
+        glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
+        // glBufferData(GL_ARRAY_BUFFER, 1 * sizeof(glm::vec4), &textureUvs[0], GL_STREAM_DRAW);
+        glEnableVertexAttribArray(2);
+        glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)0);
+        glVertexAttribDivisor(2, 1);
+
+        glBindBuffer(GL_ARRAY_BUFFER, buffers[1]);
+        // glBufferData(GL_ARRAY_BUFFER, 1 * sizeof(glm::vec3), &spriteColors[0], GL_STREAM_DRAW);
+        glEnableVertexAttribArray(3);
+        glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
+        glVertexAttribDivisor(3, 1);
+
+        // set attribute pointers for matrix (4 times vec4)
+        glBindBuffer(GL_ARRAY_BUFFER, buffers[2]);
+        // glBufferData(GL_ARRAY_BUFFER, 1 * sizeof(glm::mat4), &modelMatrices[0], GL_STREAM_DRAW);
+        glEnableVertexAttribArray(4);
+        glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)0);
+        glVertexAttribDivisor(4, 1);
+
+        glEnableVertexAttribArray(5);
+        glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(glm::vec4)));
+        glVertexAttribDivisor(5, 1);
+
+        glEnableVertexAttribArray(6);
+        glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(2 * sizeof(glm::vec4)));
+        glVertexAttribDivisor(6, 1);
+
+        glEnableVertexAttribArray(7);
+        glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(3 * sizeof(glm::vec4)));
+        glVertexAttribDivisor(7, 1);
 
         // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex
         // buffer object so afterwards we can safely unbind
@@ -231,45 +260,14 @@ namespace graphics
         // when it's not directly necessary.
         glBindVertexArray(0);
 
-        // glGenBuffers(1, &EBO);
-        // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        // glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-        //// glGenVertexArrays(1, &VAO);
-        //// glGenBuffers(1, &VBO);
-
-        //// glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        //// glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-        //// glBindVertexArray(VAO);
-        //// glEnableVertexAttribArray(0);
-        //// glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
-        //// glBindBuffer(GL_ARRAY_BUFFER, 0);
-        //// glBindVertexArray(0);
-
-        // glBindVertexArray(VAO);
-        // glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        // glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-        // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        // glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-        // glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-        // glEnableVertexAttribArray(0);
-
-        glm::mat4 projection =
-            glm::ortho(0.0f, static_cast<GLfloat>(Window_Width), 0.0f, static_cast<GLfloat>(Window_Height), -1.0f, 1.0f);
-
         glUseProgram(shaderProgram);
         glUniform1i(glGetUniformLocation(shaderProgram, "image"), 0);
-        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
-        // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-        // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+        SetProjectionMatrix();
 
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    }
+    }  // namespace graphics
 
     bool Init(int w_width, int w_height)
     {
@@ -292,33 +290,46 @@ namespace graphics
         {
             model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.0f));
             if ((fmod(rotate, 360)) != 0.0f) model = glm::rotate(model, glm::radians(rotate), glm::vec3(0.0f, 0.0f, 1.0f));
-            if (scale != 1.0f) model = glm::scale(model, glm::vec3(scale, scale, scale));  // Last scale
+            if (scale != 1.0f) model = glm::scale(model, glm::vec3(scale, scale, scale));
             model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, 0.0f));
         }
 
         model = glm::scale(model, glm::vec3(size, 1.0f));  // Last scale
 
-        glUniformMatrix4fv(glGetUniformLocation(shader_program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        modelMatrices.push_back(model);
+        spriteColors.push_back(color);
+        textureUvs.push_back(uvs);
 
-        // Render textured quad
-        glUniform3f(glGetUniformLocation(shader_program, "spriteColor"), color.x, color.y, color.z);
+        batch_texture_id = texture;
+    }
 
-        glUniform4f(glGetUniformLocation(shader_program, "texture_uvs"), uvs.x, uvs.y, uvs.z, uvs.w);
+    // TODO: profile the render loop, performance is lost (vector operations?)
+    void DrawBatch()
+    {
+        glUseProgram(shaderProgram);
+
+        unsigned int amount = (unsigned int)modelMatrices.size();
+
+        glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
+        glBufferData(GL_ARRAY_BUFFER, amount * sizeof(glm::vec4), &textureUvs[0], GL_STREAM_DRAW);
+
+        glBindBuffer(GL_ARRAY_BUFFER, buffers[1]);
+        glBufferData(GL_ARRAY_BUFFER, amount * sizeof(glm::vec3), &spriteColors[0], GL_STREAM_DRAW);
+
+        glBindBuffer(GL_ARRAY_BUFFER, buffers[2]);
+        glBufferData(GL_ARRAY_BUFFER, amount * sizeof(glm::mat4), &modelMatrices[0], GL_STREAM_DRAW);
 
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture);
+        glBindTexture(GL_TEXTURE_2D, batch_texture_id);
 
-        // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-
-        glUseProgram(shader_program);
         glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, amount);
+        glBindVertexArray(0);
 
-        // glBindVertexArray(VAO);
-        // glDrawArrays(GL_TRIANGLES, 0, 6);
-
-        // TODO: change to draw elements with indices, it is more efficient, most of the time (only for overlapping vertices)
-        // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        modelMatrices.clear();
+        spriteColors.clear();
+        textureUvs.clear();
+        batch_texture_id = -1;
     }
 
     void DrawRenderable(Renderable r, unsigned int shader_program)
@@ -327,10 +338,18 @@ namespace graphics
                    getUVs(r.tile_sheet, r.current_tile_index));
     }
 
-	void SetViewMatrix(glm::mat4 view)
-	{
+    void SetViewMatrix(glm::mat4 view)
+    {
         glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(view));
-	}
+    }
+
+    void SetProjectionMatrix()
+    {
+        glUseProgram(shaderProgram);
+        glm::mat4 projection =
+            glm::ortho(0.0f, static_cast<GLfloat>(Window_Width), 0.0f, static_cast<GLfloat>(Window_Height), -1.0f, 1.0f);
+        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+    }
 
     void Cleanup()
     {

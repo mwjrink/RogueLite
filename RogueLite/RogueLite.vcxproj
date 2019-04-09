@@ -169,9 +169,11 @@
     <ClInclude Include="Libraries\MultiCastDelegate.h" />
     <ClInclude Include="Libraries\stb_image.h" />
     <ClInclude Include="Libraries\ThreadPool.h" />
+    <ClInclude Include="Main.h" />
     <ClInclude Include="MainLoopCallbacks.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="Renderable.h" />
+    <ClInclude Include="ShelfPack.h" />
     <ClInclude Include="TileSheet.h" />
     <ClInclude Include="WindowCallbacks.h" />
     <ClInclude Include="World.h" />

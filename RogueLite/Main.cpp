@@ -1,24 +1,6 @@
 #pragma once
 
-#ifndef GL3W_INCLUDED
-#define GL3W_INCLUDED
-#include <GL/gl3w.h>
-#include <GL/glcorearb.h>
-#include <GL/src/gl3w.c>
-#endif
-
-#include <GLFW/glfw3.h>
-
-//#include <thread>
-
-#include "Camera.h"
-#include "Graphics.h"
-#include "InputManager.h"
-#include "MainLoopCallbacks.h"
-#include "World.h"
-
-Renderable r;
-Camera     camera;
+#include "Main.h"
 
 auto INIT_TEST_SPRITE()
 {
@@ -31,8 +13,8 @@ auto INIT_TEST_SPRITE()
 
     world::current_level        = level::Level();
     world::current_level.map    = level::base_map;
-    world::current_level.width  = 24.0f;
-    world::current_level.height = 17.0f;
+    world::current_level.width  = 24;
+    world::current_level.height = 17;
 
     world::width  = 2880.0f;
     world::height = 2040.0f;
@@ -73,8 +55,13 @@ int main(int argc, char* argv[])
     double t1;
     float  dt;
 
+    /*GLint big_boy_max;
+    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &big_boy_max);*/
+
     // VSYNC: 1 = enabled, 0 = disabled
-    glfwSwapInterval(1);
+    glfwSwapInterval(0);
+
+    std::stringstream frames_string;
 
     unsigned int frames = 0;
     while (!glfwWindowShouldClose(graphics::window))
@@ -85,6 +72,7 @@ int main(int argc, char* argv[])
 
         frames += (int)(1.0f / dt);
         frames /= 2;
+        frames_string << frames << std::endl;
 
         LockCamera(camera, r);
 
@@ -95,6 +83,8 @@ int main(int argc, char* argv[])
     }
 
     graphics::Cleanup();
+
+    std::cout << frames_string.str();
 
     // Not necessary due to terminate
     // glfwDestroyWindow(window);
