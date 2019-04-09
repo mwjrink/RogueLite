@@ -13,7 +13,7 @@ class Camera
 {
   public:
     glm::vec2 position;
-    float     zoom = 1;
+    float     zoom = 2;
     glm::mat4 view_matrix;
 };
 
@@ -42,16 +42,15 @@ void LockCamera(Camera& camera, Renderable r)
     glm::vec2 new_position;
     new_position.x = r.position.x + r.size.x / 2 - graphics::Window_Width / 2 / camera.zoom;
     new_position.y = r.position.y + r.size.y / 2 - graphics::Window_Height / 2 / camera.zoom;
-    new_position *= camera.zoom;
 
     // could do std::min and std::max but this way saves the memory setting most of the time
     if (new_position.x < 0) new_position.x = 0;
     if (new_position.y < 0) new_position.y = 0;
 
-    if (new_position.x > world::width - graphics::Window_Width / camera.zoom)
+	if (new_position.x > world::width - graphics::Window_Width / camera.zoom)
         new_position.x = world::width - graphics::Window_Width / camera.zoom;
     if (new_position.y > world::height - graphics::Window_Height / camera.zoom)
         new_position.y = world::height - graphics::Window_Height / camera.zoom;
 
-    camera.position = new_position;
+    camera.position = new_position * camera.zoom;
 }

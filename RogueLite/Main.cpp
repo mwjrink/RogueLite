@@ -74,11 +74,13 @@ int main(int argc, char* argv[])
             t0 = t1;
         }
 
+		/*
         {
             frames += (int)(1.0f / dt);
             frames /= 2;
             frames_string << frames << std::endl;
         }
+		*/
 
         LockCamera(camera, r);
 
@@ -90,7 +92,7 @@ int main(int argc, char* argv[])
 
     graphics::Cleanup();
 
-    std::cout << frames_string.str();
+    //std::cout << frames_string.str();
 
     // Not necessary due to terminate
     // glfwDestroyWindow(window);
