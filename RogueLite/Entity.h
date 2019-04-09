@@ -22,7 +22,7 @@ namespace physics
     /// Physics Logic
     struct Entity : public Renderable
     {
-        glm::vec3       velocity;
+        glm::vec2       velocity;
         float           mass;
         Collision_Index collision_index;
         glm::vec3       world_space_position;
@@ -38,4 +38,8 @@ namespace physics
 
     bool check_tile_collisions(Entity e, glm::vec3 new_position, unsigned int* collision_map);
 
+    void increment_velocity_up(Entity e);
+    void increment_velocity_down(Entity e);
+    void increment_velocity_left(Entity e);
+    void increment_velocity_right(Entity e);
 }  // namespace physics

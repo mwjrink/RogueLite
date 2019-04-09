@@ -2,15 +2,20 @@
 
 #include "Main.h"
 
+Renderable r;
+Camera     camera;
+
 auto INIT_TEST_SPRITE()
 {
+    /*
     r.tile_sheet = Create_TileSheet(AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
     // r.position   = glm::vec2(1720.0f, 980.0f);
     r.position           = glm::vec2(500.0f, 300.0f);
     r.size               = glm::vec2(100.0f, 100.0f);
     r.scale              = 1.0f;
     r.current_tile_index = 0;
-
+	*/
+    player::player_init(world::player);
     world::current_level        = level::Level();
     world::current_level.map    = level::base_map;
     world::current_level.width  = 24;
@@ -18,17 +23,6 @@ auto INIT_TEST_SPRITE()
 
     world::width  = 2880.0f;
     world::height = 2040.0f;
-
-    input::delegate_type dLambda = [](int key, int action) {
-        if (key == GLFW_KEY_W) r.position.y += 15;
-        if (key == GLFW_KEY_A) r.position.x -= 15;
-        if (key == GLFW_KEY_S) r.position.y -= 15;
-        if (key == GLFW_KEY_D) r.position.x += 15;
-    };
-    input::copy_add(GLFW_KEY_W, &dLambda);
-    input::copy_add(GLFW_KEY_A, &dLambda);
-    input::copy_add(GLFW_KEY_S, &dLambda);
-    input::copy_add(GLFW_KEY_D, &dLambda);
 
     level::Init(&world::current_level);
 
@@ -102,7 +96,7 @@ int main(int argc, char* argv[])
 
         Update(dt);
         // Render(r, camera, renderables, meme);
-        Render(r, camera);
+        Render(world::player, camera);
 
         glfwPollEvents();
     }

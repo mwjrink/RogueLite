@@ -17,4 +17,15 @@ namespace physics
         // dsagfd
         return false;
     }
+
+	void move(Entity e, float dt)
+    {
+        e.velocity = glm::normalize(e.velocity);
+        e.position += e.velocity * dt;
+    }
+
+    void increment_velocity_up(Entity e) { e.velocity.y++; }
+    void increment_velocity_down(Entity e) { e.velocity.y--; }
+    void increment_velocity_left(Entity e) { e.velocity.x--; }
+    void increment_velocity_right(Entity e) { e.velocity.x++; }
 }  // namespace physics

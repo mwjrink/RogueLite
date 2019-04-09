@@ -147,9 +147,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Creature.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GLTexture.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="Tilesheet.cpp" />
   </ItemGroup>
@@ -172,6 +175,7 @@
     <ClInclude Include="Libraries\ThreadPool.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="MainLoopCallbacks.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="ShelfPack.h" />

@@ -2,10 +2,18 @@
 
 #include "Entity.h"
 
-struct Creature : public physics::Entity
+namespace creature
 {
-    int max_health;
-    int current_health;
+    struct Creature : public physics::Entity
+    {
+        int max_health;
+        int current_health;
 
-    int speed;
-};
+        float speed;
+    };
+
+	void increment_velocity_up(Creature c);
+    void increment_velocity_down(Creature c);
+    void increment_velocity_left(Creature c);
+    void increment_velocity_right(Creature c);
+}  // namespace creature

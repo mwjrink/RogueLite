@@ -19,6 +19,5 @@
 #include "InputManager.h"
 #include "MainLoopCallbacks.h"
 #include "World.h"
+#include "Player.h"
 
-Renderable r;
-Camera     camera;

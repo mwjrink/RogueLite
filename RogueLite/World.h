@@ -4,13 +4,11 @@
 #include "Entity.h"
 #include "Level.h"
 #include "QuadTree.h"
+#include "Player.h"
 
 namespace world
 {
-    // TODO: MAKE THESE CLASSES
-    // class Player;
-
-    // Player              player;
+    player::Player             player;
     level::Level       current_level;
     float              width, height;
     quad_tree::Branch* collision_tree;
