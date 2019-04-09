@@ -171,6 +171,8 @@ namespace quad_tree
         return b.entities;
     }
 
+    // TODO: remove function
+
     // std::vector<physics::Entity*> get_all(Branch& b)
     //{
     //    auto result = std::vector<physics::Entity*>();

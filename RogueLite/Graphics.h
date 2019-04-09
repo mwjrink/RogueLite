@@ -289,7 +289,7 @@ namespace graphics
         return true;
     }
 
-    // TODOL remove shader_program argument
+    // TODO remove shader_program argument
     // TODO name this method properly
     inline void DrawSprite(GLuint shader_program, glm::vec2 position, glm::vec2 size, GLfloat rotate, GLfloat scale,
                            glm::vec3 color, glm::vec4 uvs)

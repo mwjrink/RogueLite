@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Main.h"
-#include "vld.h"
 
 auto INIT_TEST_SPRITE()
 {
@@ -54,8 +53,8 @@ int main(int argc, char* argv[])
 
     INIT_TEST_SPRITE();
 
-	/*
-	const int        meme = 30000;
+    /*
+    const int        meme = 30000;
     auto renderables = new Renderable[meme];
 
     srand(time(NULL));
@@ -68,7 +67,7 @@ int main(int argc, char* argv[])
         renderables[i].scale              = ((rand() % 3) + 1) * 0.5;
         renderables[i].current_tile_index = rand() % 4;
     }
-	*/
+    */
 
     double t0 = glfwGetTime();
     double t1;
@@ -102,7 +101,7 @@ int main(int argc, char* argv[])
         LockCamera(camera, r);
 
         Update(dt);
-        //Render(r, camera, renderables, meme);
+        // Render(r, camera, renderables, meme);
         Render(r, camera);
 
         glfwPollEvents();
@@ -110,7 +109,7 @@ int main(int argc, char* argv[])
 
     graphics::Cleanup();
 
-	//delete[] renderables;
+    // delete[] renderables;
 
     // std::cout << frames_string.str();
 
