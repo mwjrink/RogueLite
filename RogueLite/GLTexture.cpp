@@ -46,7 +46,7 @@ unsigned int GenerateAtlas(bool flip_vertically)
     run_options.inPlace         = true;
     mapbox::ShelfPack sprite(10, 10, creation_options);
 
-    sprite.pack(bins, run_options);
+    auto __ = sprite.pack(bins, run_options);
 
     sprite.shrink();
 
@@ -64,18 +64,13 @@ unsigned int GenerateAtlas(bool flip_vertically)
 
         int width, height, nrChannels;
         stbi_set_flip_vertically_on_load(flip_vertically);  // tell stb_image.h to flip loaded texture's on the y-axis.
-                                                            //
         // FileSystem::getPath("resources/textures/container.jpg").c_str()
         unsigned char* temp_data = stbi_load(paths[i].c_str(), &width, &height, &nrChannels, 0);
         if (temp_data)
         {
             for (int x = 0; x < width * 4; x++)
                 for (int y = 0; y < height; y++)
-                {
                     full_data[(bins[i].x * 4 + x) + ((y + bins[i].y) * atlas_width * 4)] = temp_data[(x) + (y * width * 4)];
-                }
-
-            // memcpy(&full_data[bins[i].x * 4 + bins[i].y * atlas_width * 4], temp_data, size_t(width * height * 4));
         }
         else
         {

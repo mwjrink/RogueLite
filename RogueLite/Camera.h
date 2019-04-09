@@ -13,7 +13,7 @@ class Camera
 {
   public:
     glm::vec2 position;
-    float     zoom = 1;
+    float     zoom = 1.0f;
     glm::mat4 view_matrix;
 };
 
@@ -52,5 +52,6 @@ void LockCamera(Camera& camera, Renderable r)
     if (new_position.y > world::height - graphics::Window_Height / camera.zoom)
         new_position.y = world::height - graphics::Window_Height / camera.zoom;
 
+    // accounts for projection matrix being full screen size
     camera.position = new_position * camera.zoom;
 }
