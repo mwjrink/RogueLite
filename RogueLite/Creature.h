@@ -12,8 +12,10 @@ namespace creature
         float speed;
     };
 
-	void increment_velocity_up(Creature c);
-    void increment_velocity_down(Creature c);
-    void increment_velocity_left(Creature c);
-    void increment_velocity_right(Creature c);
+    void move(Creature& c, float dt);
+
+	void increment_velocity_up(Creature& c);
+    void increment_velocity_down(Creature& c);
+    void increment_velocity_left(Creature& c);
+    void increment_velocity_right(Creature& c);
 }  // namespace creature

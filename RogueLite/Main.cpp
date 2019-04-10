@@ -7,7 +7,6 @@ Camera     camera;
 
 auto INIT_TEST_SPRITE()
 {
-    
     r.tile_sheet = Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
     // r.position   = glm::vec2(1720.0f, 980.0f);
     r.position           = glm::vec2(500.0f, 300.0f);
@@ -15,8 +14,7 @@ auto INIT_TEST_SPRITE()
     r.scale              = 1.0f;
     r.current_tile_index = 0;
 	
-	
-    //player::player_init(world::player);
+    player::player_init(world::player);
     world::current_level        = level::Level();
     world::current_level.map    = level::base_map;
     world::current_level.width  = 24;
@@ -29,6 +27,9 @@ auto INIT_TEST_SPRITE()
 
     gltexture::atlas_texture_id = gltexture::GenerateAtlas(false);
 }
+
+void Update(player::Player& p, float dt);
+void Render(Renderable& r, Camera camera /*, Renderable* rs, int size*/);
 
 int main(int argc, char* argv[])
 {
@@ -48,7 +49,7 @@ int main(int argc, char* argv[])
 
     INIT_TEST_SPRITE();
 
-    
+    /*
     const int        meme = 30000;
     auto renderables = new Renderable[meme];
 
@@ -62,7 +63,7 @@ int main(int argc, char* argv[])
         renderables[i].scale              = ((rand() % 3) + 1) * 0.5;
         renderables[i].current_tile_index = rand() % 4;
     }
-    
+    */
 
     double t0 = glfwGetTime();
     double t1;
@@ -95,16 +96,17 @@ int main(int argc, char* argv[])
 
         LockCamera(camera, r);
 
-        Update(dt);
-        Render(r, camera, renderables, meme);
-        //Render(world::player, camera);
+		// TODO: MAKE IT ANYTHING BUT THIS!
+        Update(world::player, dt);
+        //Render(r, camera, renderables, meme);
+        Render(world::player, camera);
 
         glfwPollEvents();
     }
 
     graphics::Cleanup();
 
-    delete[] renderables;
+    //delete[] renderables;
 
     // std::cout << frames_string.str();
 
@@ -115,5 +117,32 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+
+void Update(player::Player& p, float dt)
+{
+	player::move(p, dt);
+}
+
+void Render(Renderable& r, Camera camera /*, Renderable* rs, int size*/)
+{
+    UpdateViewMatrix(camera.view_matrix, camera.position, camera.zoom);
+    graphics::SetViewMatrix(camera.view_matrix);
+
+    // Clear initial state
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);  // glClear(ALL_BUFFERS);
+
+    // TODO: this takes the most time by far
+    world::Render();
+    graphics::DrawRenderable(r, graphics::shaderProgram);
+
+    /*for (int i = 0; i < size; i++)
+        graphics::DrawRenderable(rs[i], graphics::shaderProgram);*/
+
+    graphics::DrawBatch();
+    glfwSwapBuffers(graphics::window);
+    return;
+}
+
 
 void handle_escape(int key, int action) { glfwSetWindowShouldClose(graphics::window, true); }

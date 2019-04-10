@@ -8,13 +8,13 @@
 
 namespace world
 {
-    player::Player             player;
-    level::Level       current_level;
-    float              width, height;
-    quad_tree::Branch* collision_tree;
+    extern player::Player             player;
+    extern level::Level       current_level;
+    extern float              width, height;
+    extern quad_tree::Branch* collision_tree;
 
-    void Update(float dt) {}
+    void Update(float dt);
 
-    void Render() { level::RenderLevel(&current_level); }
+    void Render();
 
 }  // namespace world
