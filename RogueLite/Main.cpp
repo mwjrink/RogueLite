@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
 
     srand(time(NULL));
 
-	renderables[0] = world::player;
+    renderables[0] = world::player;
 
     for (int i = 1; i < meme; i++)
     {
@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
         renderables[i].scale              = ((rand() % 3) + 1) * 0.5;
         renderables[i].current_tile_index = rand() % 4;
     }
-	*/
+    */
 
     double t0 = glfwGetTime();
     double t1;
@@ -103,9 +103,9 @@ int main(int argc, char* argv[])
         Process();
 
         // TODO: MAKE IT ANYTHING BUT THIS!
-		
+
         Update(world::player, dt);
-        //Render(r, camera, renderables, meme);
+        // Render(r, camera, renderables, meme);
         Render(world::player, camera);
 
         glfwPollEvents();
@@ -113,7 +113,7 @@ int main(int argc, char* argv[])
 
     graphics::Cleanup();
 
-    //delete[] renderables;
+    // delete[] renderables;
 
     // std::cout << frames_string.str();
 
@@ -161,8 +161,7 @@ void Render(Renderable& r, Camera camera, Renderable* rs, int size)
     world::Render();
     graphics::DrawRenderable(r, graphics::shaderProgram);
 
-    for (int i = 0; i < size; i++)
-        graphics::DrawRenderable(rs[i], graphics::shaderProgram);
+    for (int i = 0; i < size; i++) graphics::DrawRenderable(rs[i], graphics::shaderProgram);
 
     graphics::DrawBatch();
     glfwSwapBuffers(graphics::window);

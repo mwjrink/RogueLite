@@ -19,11 +19,7 @@ namespace input
         int key;
         int action;
 
-		bool operator==(const Event& other) const
-        {
-            if (key == other.key && action == other.action) return true;
-            return false;
-		}
+        bool operator==(const Event& other) const { return key == other.key && action == other.action; }
     };
 
     struct umap_event_hash

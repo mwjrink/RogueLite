@@ -59,7 +59,7 @@ namespace player
     void set_unit_velocity_down(Player& p) { p.velocity.y = -1; }
     void set_unit_velocity_left(Player& p) { p.velocity.x = -1; }
     void set_unit_velocity_right(Player& p) { p.velocity.x = 1; }
-    void stop_velocity_up(Player& p) { p.velocity.y = (p.velocity.y > 0)? 0 : p.velocity.y; }
+    void stop_velocity_up(Player& p) { p.velocity.y = (p.velocity.y > 0) ? 0 : p.velocity.y; }
     void stop_velocity_down(Player& p) { p.velocity.y = (p.velocity.y < 0) ? 0 : p.velocity.y; }
     void stop_velocity_left(Player& p) { p.velocity.x = (p.velocity.x < 0) ? 0 : p.velocity.x; }
     void stop_velocity_right(Player& p) { p.velocity.x = (p.velocity.x > 0) ? 0 : p.velocity.x; }

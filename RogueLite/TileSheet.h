@@ -9,7 +9,9 @@ class TileSheet
 {
   public:
     gltexture::GLTexture* texture;
-    glm::ivec2 sprite_dimensions;
+    glm::ivec2            sprite_dimensions;
+    unsigned int          sprite_width;
+    unsigned int          sprite_height;
 };
 
 TileSheet Create_TileSheet(gltexture::GLTexture* texture, const glm::ivec2& tileDims);
