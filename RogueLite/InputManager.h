@@ -47,9 +47,9 @@ namespace input
     bool copy_add_event(int key, int action, delegate_type* callback);
     bool remove_event(int key, int action);
 
-    void handle_event(int key, int action);
+    /*void handle_event(int key, int action);
     bool add_event(int val, delegate_type* callback);
     bool copy_add_event(int val, delegate_type* callback);
-    bool remove_event(int val);
+    bool remove_event(int val);*/
 
 }  // namespace input
