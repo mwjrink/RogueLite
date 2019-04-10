@@ -26,7 +26,7 @@ auto INIT_TEST_SPRITE()
 
     level::Init(&world::current_level);
 
-    atlas_texture_id = GenerateAtlas(false);
+    gltexture::atlas_texture_id = gltexture::GenerateAtlas(false);
 }
 
 int main(int argc, char* argv[])

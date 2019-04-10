@@ -1,6 +1,6 @@
 #include "TileSheet.h"
 
-TileSheet Create_TileSheet(GLTexture* texture, const glm::ivec2& tileDims)
+TileSheet Create_TileSheet(gltexture::GLTexture* texture, const glm::ivec2& tileDims)
 {
     auto sheet              = TileSheet();
     sheet.texture           = texture;

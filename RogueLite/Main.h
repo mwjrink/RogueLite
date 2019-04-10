@@ -7,7 +7,10 @@
 //#include <GL/src/gl3w.c>
 //#endif
 
+//#ifndef GLFW_INCLUDED
+//#define GLFW_INCLUDED
 //#include <GLFW/glfw3.h>
+//#endif
 
 //#include <thread>
 

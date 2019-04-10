@@ -4,7 +4,7 @@ namespace player
 {
     void player_init(Player& p)
 	{
-        p.tile_sheet = Create_TileSheet(AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
+        p.tile_sheet = Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
         // r.position   = glm::vec2(1720.0f, 980.0f);
         p.position           = glm::vec2(500.0f, 300.0f);
         p.size               = glm::vec2(100.0f, 100.0f);
