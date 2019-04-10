@@ -30,7 +30,8 @@ auto INIT_TEST_SPRITE()
 
 void Process();
 void Update(player::Player& p, float dt);
-void Render(Renderable& r, Camera camera /*, Renderable* rs, int size*/);
+void Render(Renderable& r, Camera camera);
+void Render(Renderable& r, Camera camera, Renderable* rs, int size);
 
 int main(int argc, char* argv[])
 {
@@ -51,20 +52,22 @@ int main(int argc, char* argv[])
     INIT_TEST_SPRITE();
 
     /*
-    const int        meme = 30000;
+    const int        meme = 0001;
     auto renderables = new Renderable[meme];
 
     srand(time(NULL));
 
-    for (int i = 0; i < meme; i++)
+	renderables[0] = world::player;
+
+    for (int i = 1; i < meme; i++)
     {
         renderables[i].tile_sheet         = r.tile_sheet;
-        renderables[i].position		      = glm::vec2(rand() % 2880, rand() % 2040);
+        renderables[i].position		      = glm::vec2((rand() % 2880) / 3, (rand() % 2040) / 3);
         renderables[i].size               = glm::vec2(100.0f, 100.0f);
         renderables[i].scale              = ((rand() % 3) + 1) * 0.5;
         renderables[i].current_tile_index = rand() % 4;
     }
-    */
+	*/
 
     double t0 = glfwGetTime();
     double t1;
@@ -101,7 +104,7 @@ int main(int argc, char* argv[])
 
         // TODO: MAKE IT ANYTHING BUT THIS!
         Update(world::player, dt);
-        // Render(r, camera, renderables, meme);
+        //Render(r, camera, renderables, meme);
         Render(world::player, camera);
 
         glfwPollEvents();
@@ -109,7 +112,7 @@ int main(int argc, char* argv[])
 
     graphics::Cleanup();
 
-    // delete[] renderables;
+    //delete[] renderables;
 
     // std::cout << frames_string.str();
 
@@ -125,7 +128,7 @@ void Process() { input::update_controller(input::controller); }
 
 void Update(player::Player& p, float dt) { player::move(p, dt); }
 
-void Render(Renderable& r, Camera camera /*, Renderable* rs, int size*/)
+void Render(Renderable& r, Camera camera)
 {
     UpdateViewMatrix(camera.view_matrix, camera.position, camera.zoom);
     graphics::SetViewMatrix(camera.view_matrix);
@@ -138,8 +141,27 @@ void Render(Renderable& r, Camera camera /*, Renderable* rs, int size*/)
     world::Render();
     graphics::DrawRenderable(r, graphics::shaderProgram);
 
-    /*for (int i = 0; i < size; i++)
-        graphics::DrawRenderable(rs[i], graphics::shaderProgram);*/
+    graphics::DrawBatch();
+    glfwSwapBuffers(graphics::window);
+    return;
+}
+
+// TEST RENDER FUNCTION
+void Render(Renderable& r, Camera camera, Renderable* rs, int size)
+{
+    UpdateViewMatrix(camera.view_matrix, camera.position, camera.zoom);
+    graphics::SetViewMatrix(camera.view_matrix);
+
+    // Clear initial state
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);  // glClear(ALL_BUFFERS);
+
+    // TODO: this takes the most time by far
+    world::Render();
+    graphics::DrawRenderable(r, graphics::shaderProgram);
+
+    for (int i = 0; i < size; i++)
+        graphics::DrawRenderable(rs[i], graphics::shaderProgram);
 
     graphics::DrawBatch();
     glfwSwapBuffers(graphics::window);

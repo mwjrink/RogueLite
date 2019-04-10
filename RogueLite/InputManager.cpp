@@ -12,8 +12,8 @@ namespace input
 
     void update_controller(Controller& c)
     {
-        // +1 to array size to avoid to increase the writable size to 1396 instead of 1392
-        c.key_states[GLFW_KEY_LAST+1] = {};	// avoids buffer overrun (which would literally break the game)
+        // *2 to array size to avoid to increase the writable size from 1392 to x amount (it varies for some reason)
+        c.key_states[GLFW_KEY_LAST*2] = {};	// avoids buffer overrun (which would literally break the game)
 
         // Update key states and handle single-key events
         for (int i = 0; i < GLFW_KEY_LAST; i++)

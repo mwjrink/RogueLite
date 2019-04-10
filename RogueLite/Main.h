@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <ctime>
 
 #include "Camera.h"
 #include "Graphics.h"
