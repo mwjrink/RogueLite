@@ -7,15 +7,15 @@ Camera     camera;
 
 auto INIT_TEST_SPRITE()
 {
-    /*
-    r.tile_sheet = Create_TileSheet(AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
+    
+    r.tile_sheet = Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
     // r.position   = glm::vec2(1720.0f, 980.0f);
     r.position           = glm::vec2(500.0f, 300.0f);
     r.size               = glm::vec2(100.0f, 100.0f);
     r.scale              = 1.0f;
     r.current_tile_index = 0;
-	*/
-    player::player_init(world::player);
+	
+    //player::player_init(world::player);
     world::current_level        = level::Level();
     world::current_level.map    = level::base_map;
     world::current_level.width  = 24;
@@ -96,7 +96,7 @@ int main(int argc, char* argv[])
 
         Update(dt);
         // Render(r, camera, renderables, meme);
-        Render(world::player, camera);
+        Render(r, camera);
 
         glfwPollEvents();
     }

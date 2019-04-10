@@ -1,6 +1,13 @@
 #pragma once
 
+#ifndef GL3W_INCLUDED
+#define GL3W_INCLUDED
 #include <GL/gl3w.h>
+#include <GL/glcorearb.h>
+#include <GL/src/gl3w.c>
+#endif
+
+#include <GLFW/glfw3.h>
 
 #include <stdio.h>
 #include <fstream>

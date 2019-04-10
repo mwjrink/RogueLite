@@ -8,7 +8,7 @@
 
 namespace world
 {
-    player::Player             player;
+    //player::Player             player;
     level::Level       current_level;
     float              width, height;
     quad_tree::Branch* collision_tree;
