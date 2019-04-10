@@ -1,5 +1,6 @@
 #pragma once
 
+#include <GL/gl3w.h>
 #include <vector>
 
 #include "Graphics.h"

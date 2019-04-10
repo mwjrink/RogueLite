@@ -1,5 +1,7 @@
 #include "Graphics.h"
 
+#define ALL_BUFFERS GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT
+
 namespace graphics
 {
     GLFWwindow* window;

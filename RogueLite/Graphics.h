@@ -1,7 +1,6 @@
 #pragma once
 
 #include <GL/gl3w.h>
-#include <GLFW/glfw3.h>
 
 #include <stdio.h>
 #include <fstream>
@@ -14,8 +13,6 @@
 #include "Renderable.h"
 #include "TileSheet.h"
 #include "WindowCallbacks.h"
-
-#define ALL_BUFFERS GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT
 
 namespace graphics
 {
