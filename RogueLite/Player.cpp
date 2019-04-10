@@ -51,7 +51,6 @@ namespace player
 
     void move(Player& p, float dt)
     {
-        std::cout << p.velocity.x << " | " << p.velocity.y << std::endl;
         if (p.velocity.x != 0.0f || p.velocity.y != 0.0f) p.velocity = glm::normalize(p.velocity);
         p.position += p.velocity * p.speed * dt;
     }

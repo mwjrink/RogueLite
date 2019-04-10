@@ -103,6 +103,7 @@ int main(int argc, char* argv[])
         Process();
 
         // TODO: MAKE IT ANYTHING BUT THIS!
+		
         Update(world::player, dt);
         //Render(r, camera, renderables, meme);
         Render(world::player, camera);
