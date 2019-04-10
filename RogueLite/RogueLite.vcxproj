@@ -149,8 +149,10 @@
   <ItemGroup>
     <ClCompile Include="Creature.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="glad.c" />
     <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />

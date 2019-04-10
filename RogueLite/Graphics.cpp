@@ -76,15 +76,15 @@ namespace graphics
         glfwMakeContextCurrent(window);
         glfwGetFramebufferSize(window, &w_width, &w_height);
 
-        if (gl3wInit())
+        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) || !gladLoadGL()) // Pretty sure only the second one is necessary but whatever :)
         {
-            fprintf(stderr, "gl3wInit() failed.\n");
+            fprintf(stderr, "OpenGL context initialization failed.");
             return false;
         }
 
-        if (!gl3wIsSupported(4, 6))
+        if (!GLAD_GL_VERSION_3_0)
         {
-            fprintf(stderr, "Opengl 4.6 not supported.\n");
+            fprintf(stderr, "OpenGL version not supported.\n");
             return false;
         }
 

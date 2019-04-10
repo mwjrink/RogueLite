@@ -15,12 +15,13 @@ auto INIT_TEST_SPRITE()
     r.scale              = 1.0f;
     r.current_tile_index = 0;
 	
+	
     //player::player_init(world::player);
     world::current_level        = level::Level();
     world::current_level.map    = level::base_map;
     world::current_level.width  = 24;
     world::current_level.height = 17;
-
+	
     world::width  = 2880.0f;
     world::height = 2040.0f;
 
@@ -47,7 +48,7 @@ int main(int argc, char* argv[])
 
     INIT_TEST_SPRITE();
 
-    /*
+    
     const int        meme = 30000;
     auto renderables = new Renderable[meme];
 
@@ -61,7 +62,7 @@ int main(int argc, char* argv[])
         renderables[i].scale              = ((rand() % 3) + 1) * 0.5;
         renderables[i].current_tile_index = rand() % 4;
     }
-    */
+    
 
     double t0 = glfwGetTime();
     double t1;
@@ -95,15 +96,15 @@ int main(int argc, char* argv[])
         LockCamera(camera, r);
 
         Update(dt);
-        // Render(r, camera, renderables, meme);
-        Render(r, camera);
+        Render(r, camera, renderables, meme);
+        //Render(world::player, camera);
 
         glfwPollEvents();
     }
 
     graphics::Cleanup();
 
-    // delete[] renderables;
+    delete[] renderables;
 
     // std::cout << frames_string.str();
 
