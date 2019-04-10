@@ -13,13 +13,13 @@ auto INIT_TEST_SPRITE()
     r.size               = glm::vec2(100.0f, 100.0f);
     r.scale              = 1.0f;
     r.current_tile_index = 0;
-	
+
     player::player_init(world::player);
     world::current_level        = level::Level();
     world::current_level.map    = level::base_map;
     world::current_level.width  = 24;
     world::current_level.height = 17;
-	
+
     world::width  = 2880.0f;
     world::height = 2040.0f;
 
@@ -28,6 +28,7 @@ auto INIT_TEST_SPRITE()
     gltexture::atlas_texture_id = gltexture::GenerateAtlas(false);
 }
 
+void Process();
 void Update(player::Player& p, float dt);
 void Render(Renderable& r, Camera camera /*, Renderable* rs, int size*/);
 
@@ -36,7 +37,7 @@ int main(int argc, char* argv[])
     if (!graphics::Init(1920, 1080)) return -1;
 
     input::delegate_type dLambda = [](int key, int action) { glfwSetWindowShouldClose(graphics::window, true); };
-    input::add(GLFW_KEY_ESCAPE, new input::delegate_type(dLambda));
+    input::add_event(GLFW_KEY_ESCAPE, GLFW_PRESS, new input::delegate_type(dLambda));
 
     // TODO: thread pooling and work queue
     // auto thread_number = std::thread::hardware_concurrency();
@@ -94,11 +95,13 @@ int main(int argc, char* argv[])
         }
         */
 
-        LockCamera(camera, r);
+        LockCamera(camera, world::player);
 
-		// TODO: MAKE IT ANYTHING BUT THIS!
+        Process();
+
+        // TODO: MAKE IT ANYTHING BUT THIS!
         Update(world::player, dt);
-        //Render(r, camera, renderables, meme);
+        // Render(r, camera, renderables, meme);
         Render(world::player, camera);
 
         glfwPollEvents();
@@ -106,7 +109,7 @@ int main(int argc, char* argv[])
 
     graphics::Cleanup();
 
-    //delete[] renderables;
+    // delete[] renderables;
 
     // std::cout << frames_string.str();
 
@@ -118,10 +121,9 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-void Update(player::Player& p, float dt)
-{
-	player::move(p, dt);
-}
+void Process() { input::update_controller(input::controller); }
+
+void Update(player::Player& p, float dt) { player::move(p, dt); }
 
 void Render(Renderable& r, Camera camera /*, Renderable* rs, int size*/)
 {
@@ -143,6 +145,5 @@ void Render(Renderable& r, Camera camera /*, Renderable* rs, int size*/)
     glfwSwapBuffers(graphics::window);
     return;
 }
-
 
 void handle_escape(int key, int action) { glfwSetWindowShouldClose(graphics::window, true); }

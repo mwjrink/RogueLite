@@ -13,15 +13,19 @@ namespace player
         int max_health;
         int current_health;
 
-        float                speed;
+        float speed;
     };
 
     void player_init(Player& p);
 
     void move(Player& p, float dt);
 
-    void increment_velocity_up(Player& p);
-    void increment_velocity_down(Player& p);
-    void increment_velocity_left(Player& p);
-    void increment_velocity_right(Player& p);
+    void set_unit_velocity_up(Player& p);
+    void set_unit_velocity_down(Player& p);
+    void set_unit_velocity_left(Player& p);
+    void set_unit_velocity_right(Player& p);
+    void stop_velocity_up(Player& p);
+    void stop_velocity_down(Player& p);
+    void stop_velocity_left(Player& p);
+    void stop_velocity_right(Player& p);
 }  // namespace player

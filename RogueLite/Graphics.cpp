@@ -90,7 +90,7 @@ namespace graphics
 
         printf("OpenGL %s, GLSL %s\n", glGetString(GL_VERSION), glGetString(GL_SHADING_LANGUAGE_VERSION));
 
-        glfwSetKeyCallback(window, KeyCallback);
+        //glfwSetKeyCallback(window, KeyCallback);
         glfwSetMouseButtonCallback(window, MouseButtonCallback);
         glfwSetCursorPosCallback(window, MouseMoveCallback);
         glfwSetFramebufferSizeCallback(window, FramebufferSizeCallback);
