@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glad/glad.h>
+
 #include <GLFW/glfw3.h>
 
 #include "Entity.h"
@@ -20,12 +21,12 @@ namespace player
 
     void move(Player& p, float dt);
 
-    void set_unit_velocity_up(Player& p);
-    void set_unit_velocity_down(Player& p);
-    void set_unit_velocity_left(Player& p);
-    void set_unit_velocity_right(Player& p);
-    void stop_velocity_up(Player& p);
-    void stop_velocity_down(Player& p);
-    void stop_velocity_left(Player& p);
-    void stop_velocity_right(Player& p);
+    void set_unit_velocity_up(int _, int __);
+    void set_unit_velocity_down(int _, int __);
+    void set_unit_velocity_left(int _, int __);
+    void set_unit_velocity_right(int _, int __);
+    void stop_velocity_up(int _, int __);
+    void stop_velocity_down(int _, int __);
+    void stop_velocity_left(int _, int __);
+    void stop_velocity_right(int _, int __);
 }  // namespace player

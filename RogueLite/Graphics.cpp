@@ -16,7 +16,7 @@ namespace graphics
     std::vector<glm::vec3> spriteColors;
     std::vector<glm::vec4> textureUvs;
 
-	// unsigned int batch_texture_id;
+    // unsigned int batch_texture_id;
 
     bool GL_Init()
     {
@@ -76,7 +76,8 @@ namespace graphics
         glfwMakeContextCurrent(window);
         glfwGetFramebufferSize(window, &w_width, &w_height);
 
-        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) || !gladLoadGL()) // Pretty sure only the second one is necessary but whatever :)
+        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) ||
+            !gladLoadGL())  // Pretty sure only the second one is necessary but whatever :)
         {
             fprintf(stderr, "OpenGL context initialization failed.");
             return false;
@@ -90,7 +91,7 @@ namespace graphics
 
         printf("OpenGL %s, GLSL %s\n", glGetString(GL_VERSION), glGetString(GL_SHADING_LANGUAGE_VERSION));
 
-        //glfwSetKeyCallback(window, KeyCallback);
+        glfwSetKeyCallback(window, KeyCallback);
         glfwSetMouseButtonCallback(window, MouseButtonCallback);
         glfwSetCursorPosCallback(window, MouseMoveCallback);
         glfwSetFramebufferSizeCallback(window, FramebufferSizeCallback);
@@ -268,7 +269,7 @@ namespace graphics
     // TODO remove shader_program argument
     // TODO name this method properly
     void DrawSprite(GLuint shader_program, glm::vec2 position, glm::vec2 size, GLfloat rotate, GLfloat scale,
-                           glm::vec3 color, glm::vec4 uvs)
+                    glm::vec3 color, glm::vec4 uvs)
     {
         // Prepare transformations
         glm::mat4 model = glm::mat4(1.0f);
@@ -344,4 +345,4 @@ namespace graphics
         glDeleteBuffers(1, &VBO);
         glDeleteBuffers(1, &EBO);
     }
-}
+}  // namespace graphics
