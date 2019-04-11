@@ -37,6 +37,6 @@ void LockCamera(Camera& camera, Renderable r)
 
     // accounts for projection matrix being full screen size
     camera.position = new_position * camera.zoom;
-    camera.position.x = (int)camera.position.x;
-    camera.position.y = (int)camera.position.y;
+    //camera.position.x = (int)(camera.position.x+0.5);
+    //camera.position.y = (int)(camera.position.y+0.5);
 }

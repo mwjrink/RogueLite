@@ -24,6 +24,7 @@ namespace physics
     {
         glm::vec2       velocity;
         float           mass;
+        float           inverse_mass;
         Collision_Index collision_index;
         glm::vec3       world_space_position;
         bool*           collision_map;

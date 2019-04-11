@@ -15,7 +15,6 @@ namespace player
         p.current_tile_index = 0;
         p.speed              = 480.0f;
 
-        // TODO: ABOLISH THIS SYSTEM IN FAVOUR OF POLLING :'(
         // input::delegate_type dLambda = [](int key, int action) {
         //    switch (action)
         //    {

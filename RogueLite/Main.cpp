@@ -28,7 +28,7 @@ auto INIT_TEST_SPRITE()
     gltexture::atlas_texture_id = gltexture::GenerateAtlas(false);
 }
 
-void Process();
+//void Process();
 void Update(player::Player& p, float dt);
 void Render(Renderable& r, Camera camera);
 void Render(Renderable& r, Camera camera, Renderable* rs, int size);
