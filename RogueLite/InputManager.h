@@ -47,6 +47,5 @@ namespace input
     // bool add_event(int val, delegate_type* callback);
     // bool copy_add_event(int val, delegate_type* callback);
     // bool remove_event(int val);
->>>>>>> 473e7ab8157d555751de66b87982ef9235525e41
 
 }  // namespace input
