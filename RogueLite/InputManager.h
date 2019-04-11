@@ -9,10 +9,10 @@
 
 namespace input
 {
-    struct Controller
+    /*struct Controller
     {
         int key_states[GLFW_KEY_LAST];
-    };
+    };*/
 
     struct Event
     {
@@ -35,17 +35,17 @@ namespace input
     // extern std::unordered_map<int, delegate_type*> callbacks;
     extern std::unordered_map<Event, delegate_type*, umap_event_hash> callbacks;
 
-    extern Controller controller;
+    // extern Controller controller;
 
-    void update_controller(Controller& c);
-    void handle_event(Controller& c, int key, int action);
-    void add_event(int key, int action, delegate_type* callback);
+    // void update_controller(Controller& c);
+    void handle_event(/*Controller& c, */ int key, int action);
+    bool add_event(int key, int action, delegate_type* callback);
     bool copy_add_event(int key, int action, delegate_type* callback);
     bool remove_event(int key, int action);
 
-    void handle_event(int key, int action);
-    bool add_event(int val, delegate_type* callback);
-    bool copy_add_event(int val, delegate_type* callback);
-    bool remove_event(int val);
+    // void handle_event(int key, int action);
+    // bool add_event(int val, delegate_type* callback);
+    // bool copy_add_event(int val, delegate_type* callback);
+    // bool remove_event(int val);
 
 }  // namespace input

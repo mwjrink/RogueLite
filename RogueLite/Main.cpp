@@ -100,14 +100,19 @@ int main(int argc, char* argv[])
 
         LockCamera(camera, world::player);
 
-        Process();
+        // Process();
 
         // TODO: MAKE IT ANYTHING BUT THIS!
 
         Update(world::player, dt);
         // Render(r, camera, renderables, meme);
+
+        // TODO pass or store a visible rect for render skipping
+        // (only render whats visible/send it to GPU)
         Render(world::player, camera);
 
+        // For precision, could run this continuously on main
+        // thread until some other asynch op. is complete
         glfwPollEvents();
     }
 
@@ -125,7 +130,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-void Process() { input::update_controller(input::controller); }
+// void Process() { input::update_controller(input::controller); }
 
 void Update(player::Player& p, float dt) { player::move(p, dt); }
 

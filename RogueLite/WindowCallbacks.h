@@ -4,7 +4,10 @@
 #include "Graphics.h"
 #include "InputManager.h"
 
-//inline void KeyCallback(GLFWwindow* Window, int Key, int Scancode, int Action, int Mods) { input::handle_event(Key, Action); }
+inline void KeyCallback(GLFWwindow* Window, int Key, int Scancode, int Action, int Mods)
+{
+    input::handle_event(Key, Action);
+}
 
 inline void MouseButtonCallback(GLFWwindow* Window, int Button, int Action, int Mods) {}
 
