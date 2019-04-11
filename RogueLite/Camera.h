@@ -23,4 +23,3 @@ glm::vec2 WorldToScreen(glm::vec2 position, glm::vec2 camera_position, float zoo
 glm::vec2 ScreenToWorld(glm::vec2 position, glm::vec2 camera_position, float zoom);
 
 void LockCamera(Camera& camera, Renderable r);
-

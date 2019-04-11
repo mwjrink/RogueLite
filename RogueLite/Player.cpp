@@ -6,15 +6,23 @@ namespace player
 {
     void player_init(Player& p)
     {
-        p.tile_sheet = Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
+        p.tile_sheet = Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/NPC.png"), glm::ivec2(9, 8));
         // r.position   = glm::vec2(1720.0f, 980.0f);
-        p.position           = glm::vec2(500.0f, 300.0f);
+        p.position           = glm::vec2(1250.0f, 500.0f);
         p.velocity           = glm::vec2(0.0f, 0.0f);
-        p.size               = glm::vec2(100.0f, 100.0f);
+        p.size               = glm::vec2(48.0f, 48.0f);
         p.scale              = 1.0f;
         p.current_tile_index = 0;
-        p.speed              = 480.0f;
+        p.speed              = 192.0f;
 
+        float timing                                                    = 0.3f;
+        p.current_frame                                                 = new Renderable::aframe(0, timing);
+        p.current_frame->next_frame                                     = new Renderable::aframe(1, timing);
+        p.current_frame->next_frame->next_frame                         = new Renderable::aframe(2, timing);
+        p.current_frame->next_frame->next_frame->next_frame             = new Renderable::aframe(1, timing);
+        p.current_frame->next_frame->next_frame->next_frame->next_frame = p.current_frame;
+
+        // TODO: ABOLISH THIS SYSTEM IN FAVOUR OF POLLING :'(
         // input::delegate_type dLambda = [](int key, int action) {
         //    switch (action)
         //    {
@@ -54,14 +62,16 @@ namespace player
         if (p.velocity.x != 0.0f || p.velocity.y != 0.0f) p.position += glm::normalize(p.velocity) * p.speed * dt;
     }
 
-    /*void set_unit_velocity_up(int _, int __) { world::player.velocity.y = 1; }
+    /*
+    void set_unit_velocity_up(int _, int __) { world::player.velocity.y = 1; }
     void set_unit_velocity_down(int _, int __) { world::player.velocity.y = -1; }
     void set_unit_velocity_left(int _, int __) { world::player.velocity.x = -1; }
     void set_unit_velocity_right(int _, int __) { world::player.velocity.x = 1; }
     void stop_velocity_up(int _, int __) { world::player.velocity.y = std::min(world::player.velocity.y, 0.0f); }
     void stop_velocity_down(int _, int __) { world::player.velocity.y = std::max(world::player.velocity.y, 0.0f); }
     void stop_velocity_left(int _, int __) { world::player.velocity.x = std::max(world::player.velocity.x, 0.0f); }
-    void stop_velocity_right(int _, int __) { world::player.velocity.x = std::min(world::player.velocity.x, 0.0f); }*/
+    void stop_velocity_right(int _, int __) { world::player.velocity.x = std::min(world::player.velocity.x, 0.0f); }
+    */
 
     void set_unit_velocity_up(int _, int __) { world::player.velocity.y++; }
     void set_unit_velocity_down(int _, int __) { world::player.velocity.y--; }

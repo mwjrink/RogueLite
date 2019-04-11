@@ -15,7 +15,7 @@ namespace quad_tree
     void add_entity(Branch& b, physics::Entity* e)
     {
         if (!b.split)
-            if (b.entities.size() == entity_threshold)
+            if (b.entities.size() >= entity_threshold)
                 split(b);
             else
                 return b.entities.push_back(e);
@@ -169,6 +169,64 @@ namespace quad_tree
         }
 
         return b.entities;
+    }
+
+    void remove_entity(Branch& b, physics::Entity* e)
+    {
+        Branch *current = &b, *parent = &b;
+        while (true)
+        {
+            if (b.split)
+            {
+                if (current->top_left && is_in_branch(*current->top_left, e))
+                {
+                    parent  = current;
+                    current = current->top_left;
+                    continue;
+                }
+                else if (current->top_right && is_in_branch(*current->top_right, e))
+                {
+                    parent  = current;
+                    current = current->top_right;
+                    continue;
+                }
+                else if (current->bot_left && is_in_branch(*current->bot_left, e))
+                {
+                    parent  = current;
+                    current = current->bot_left;
+                    continue;
+                }
+                else if (current->bot_right && is_in_branch(*current->bot_right, e))
+                {
+                    parent  = current;
+                    current = current->bot_right;
+                    continue;
+                }
+            }
+
+            break;
+        }
+
+        std::remove(current->entities.begin(), current->entities.end(), e);
+
+        if (parent == current) return;
+
+        if (parent->split)
+        {
+            if (parent->top_left->entities.empty() && parent->top_right->entities.empty() &&
+                parent->bot_left->entities.empty() && parent->bot_right->entities.empty())
+            {
+                parent->split = false;
+                delete parent->top_left;
+                parent->top_left = nullptr;
+                delete parent->top_right;
+                parent->top_right = nullptr;
+                delete parent->bot_left;
+                parent->bot_left = nullptr;
+                delete parent->bot_right;
+                parent->bot_right = nullptr;
+            }
+        }
     }
 
     // TODO: remove function

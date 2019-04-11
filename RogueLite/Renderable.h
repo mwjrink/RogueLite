@@ -2,13 +2,18 @@
 
 #include "TileSheet.h"
 
-class Renderable
+struct Renderable
 {
-  private:
-    class aframe
+  public:
+    struct aframe
     {
         unsigned int frame_index;
-        aframe*      next_frame;
+        aframe*      next_frame   = nullptr;
+        float        current_time = 0.5f;
+        float        max_time     = 0.5f;
+
+        aframe(unsigned int i) : frame_index(i) {}
+        aframe(unsigned int i, float m) : frame_index(i), current_time(m), max_time(m) {}
     };
 
   public:
@@ -22,3 +27,5 @@ class Renderable
 
     aframe* current_frame;
 };
+
+void update_animations(Renderable& r, float dt);
