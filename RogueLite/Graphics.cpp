@@ -326,17 +326,20 @@ namespace graphics
                    getUVs(r.tile_sheet, r.current_tile_index));
     }
 
+    glm::mat4 projection;
+
     void SetViewMatrix(glm::mat4 view)
     {
-        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(view));
+        auto result = projection * view;
+        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection_view"), 1, GL_FALSE, glm::value_ptr(result));
     }
 
     void SetProjectionMatrix()
     {
-        glUseProgram(shaderProgram);
-        glm::mat4 projection =
+        // glUseProgram(shaderProgram);
+        projection =
             glm::ortho(0.0f, static_cast<GLfloat>(Window_Width), 0.0f, static_cast<GLfloat>(Window_Height), -1.0f, 1.0f);
-        glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+        // glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     }
 
     void Cleanup()
