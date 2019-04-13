@@ -30,6 +30,8 @@ namespace quad_tree
 
     bool is_in_branch(Branch& b, physics::Entity* e, glm::vec2 old_position);
 
+    bool is_in_branch(Branch& b, physics::Entity* e, float old_scale);
+
     // TODO: split smartly, if necessary
     void split(Branch& b);
 
@@ -38,5 +40,7 @@ namespace quad_tree
 
     std::vector<physics::Entity*> get_collidable(Branch& b, physics::Entity* e);
 
-    // std::vector<physics::Entity*> get_all(Branch& b);
+    std::vector<physics::Entity*> get_visible(Branch& b, glm::vec4& viewport);
+
+    void scale_entity(Branch& b, physics::Entity* e, float old_scale);
 }  // namespace quad_tree

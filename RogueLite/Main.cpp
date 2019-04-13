@@ -51,31 +51,29 @@ int main(int argc, char* argv[])
 
     INIT_TEST_SPRITE();
 
-    /*
-    const int        meme = 0001;
-    auto renderables = new Renderable[meme];
+    // const int meme        = 150000;
+    // auto      renderables = new Renderable[meme];
 
-    srand(time(NULL));
+    // srand(time(NULL));
 
-    renderables[0] = world::player;
+    // renderables[0] = world::player;
 
-    for (int i = 1; i < meme; i++)
-    {
-        renderables[i].tile_sheet         = r.tile_sheet;
-        renderables[i].position		      = glm::vec2((rand() % 2880) / 3, (rand() % 2040) / 3);
-        renderables[i].size               = glm::vec2(100.0f, 100.0f);
-        renderables[i].scale              = ((rand() % 3) + 1) * 0.5;
-        renderables[i].current_tile_index = rand() % 4;
-    }
-    */
+    // for (int i = 1; i < meme; i++)
+    //{
+    //    renderables[i].tile_sheet         = r.tile_sheet;
+    //    renderables[i].position           = glm::vec2((rand() % (int)world::width), (rand() % (int)world::height));
+    //    renderables[i].size               = glm::vec2(100.0f, 100.0f);
+    //    renderables[i].scale              = ((rand() % 3) + 1) * 0.5;
+    //    renderables[i].current_tile_index = rand() % 4;
+    //}
 
     double t0 = glfwGetTime();
     double t1;
     float  dt;
 
-    GLint big_boy_max;
-    glGetIntegerv(GL_MAX_ARRAY_TEXTURE_LAYERS, &big_boy_max);
-    std::cout << big_boy_max << std::endl;
+    // GLint big_boy_max;
+    // glGetIntegerv(GL_MAX_ARRAY_TEXTURE_LAYERS, &big_boy_max);
+    // std::cout << big_boy_max << std::endl;
     // GL_MAX_ARRAY_TEXTURE_LAYERS
     // Max: 2048
     // Nick:
