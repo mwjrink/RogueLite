@@ -23,7 +23,7 @@ auto INIT_TEST_SPRITE()
     world::width  = 1920.0f;
     world::height = 1088.0f;
 
-	world::collision_tree = &quad_tree::Create_Tree(world::width, world::height);
+    world::collision_tree = quad_tree::Create_Tree(world::width, world::height);
 
     level::Init(&world::current_level);
 
@@ -33,7 +33,7 @@ auto INIT_TEST_SPRITE()
 // void Process();
 void Update(player::Player& p, float dt);
 void Render(Renderable& r, Camera camera);
-void Render(Renderable& r, Camera camera, Renderable* rs, int size);
+void Render(Renderable& r, Camera camera, physics::Entity* rs, int size);
 
 int main(int argc, char* argv[])
 {
@@ -53,19 +53,21 @@ int main(int argc, char* argv[])
 
     INIT_TEST_SPRITE();
 
-    const int meme        = 30000;
-    auto      renderables = new physics::Entity[meme];
+    const int meme     = 30000;
+    auto      entities = new physics::Entity[meme];
 
     srand(time(NULL));
 
     for (int i = 0; i < meme; i++)
     {
-        renderables[i].tile_sheet         = r.tile_sheet;
-        renderables[i].position           = glm::vec2((rand() % (int)world::width), (rand() % (int)world::height));
-        renderables[i].size               = glm::vec2(100.0f, 100.0f);
-        renderables[i].scale              = ((rand() % 3) + 1) * 0.5;
-        renderables[i].current_tile_index = rand() % 4;
-        quad_tree::add_entity(*world::collision_tree, &renderables[i]);
+        entities[i].tile_sheet          = r.tile_sheet;
+        entities[i].position            = glm::vec2((rand() % (int)world::width), (rand() % (int)world::height));
+        entities[i].size                = glm::vec2(100.0f, 100.0f);
+        entities[i].bounding_box_width  = 100.0f;
+        entities[i].bounding_box_height = 100.0f;
+        entities[i].scale               = ((rand() % 3) + 1) * 0.5;
+        entities[i].current_tile_index  = rand() % 4;
+        quad_tree::add_entity(*world::collision_tree, &entities[i]);
     }
 
     double t0 = glfwGetTime();
@@ -110,7 +112,7 @@ int main(int argc, char* argv[])
         // TODO: MAKE IT ANYTHING BUT THIS!
 
         Update(world::player, dt);
-        Render(world::player, camera, renderables, meme);
+        Render(world::player, camera, entities, meme);
 
         // TODO pass or store a visible rect for render skipping
         // (only render whats visible/send it to GPU)
@@ -123,7 +125,7 @@ int main(int argc, char* argv[])
 
     graphics::Cleanup();
 
-    delete[] renderables;
+    delete[] entities;
 
     // std::cout << frames_string.str();
 
@@ -162,13 +164,13 @@ void Render(Renderable& r, Camera camera)
 }
 
 // TEST RENDER FUNCTION
-void Render(Renderable& r, Camera camera, Renderable* rs, int size)
+void Render(Renderable& r, Camera camera, physics::Entity* rs, int size)
 {
     UpdateViewMatrix(camera.view_matrix, camera.position, camera.zoom);
     graphics::SetViewMatrix(camera.view_matrix);
 
     glm::vec4 viewport = get_viewport(camera);
-    quad_tree::get_visible(*world::collision_tree, viewport);
+    auto      visible  = quad_tree::get_visible(*world::collision_tree, viewport);
 
     // Clear initial state
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -178,7 +180,7 @@ void Render(Renderable& r, Camera camera, Renderable* rs, int size)
     world::Render();
     graphics::DrawRenderable(r, graphics::shaderProgram);
 
-    for (int i = 0; i < size; i++) graphics::DrawRenderable(rs[i], graphics::shaderProgram);
+    for (auto e : visible) graphics::DrawRenderable(*e, graphics::shaderProgram);
 
     graphics::DrawBatch();
     glfwSwapBuffers(graphics::window);

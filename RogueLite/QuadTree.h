@@ -22,7 +22,7 @@ namespace quad_tree
         Branch* bot_right = nullptr;
     };
 
-    Branch Create_Tree(float width, float height);
+    Branch* Create_Tree(float width, float height);
 
     void add_entity(Branch& b, physics::Entity* e);
 

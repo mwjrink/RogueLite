@@ -2,14 +2,15 @@
 
 namespace quad_tree
 {
-    Branch Create_Tree(float width, float height)
+    Branch* Create_Tree(float width, float height)
     {
-        auto b  = Branch();
-        b.min_x = 0.0f;
-        b.min_y = 0.0f;
-        b.max_x = width;
-        b.max_y = height;
-        b.entities = std::vector<physics::Entity*>();
+        auto b      = new Branch();
+        b->min_x    = 0.0f;
+        b->min_y    = 0.0f;
+        b->max_x    = width;
+        b->max_y    = height;
+        b->split    = false;
+        b->entities = std::vector<physics::Entity*>();
         return b;
     }
 
@@ -63,35 +64,41 @@ namespace quad_tree
     // TODO: split smartly, if necessary
     void split(Branch& b)
     {
-        b.top_left        = new Branch();
-        b.top_left->max_y = b.max_y;
-        b.top_left->min_y = (b.max_y - b.min_y) / 2.0f;
-        b.top_left->max_x = (b.max_x - b.min_x) / 2.0f;
-        b.top_left->min_x = b.min_x;
+        b.top_left           = new Branch();
+        b.top_left->max_y    = b.max_y;
+        b.top_left->min_y    = (b.max_y - b.min_y) / 2.0f + b.min_y;
+        b.top_left->max_x    = (b.max_x - b.min_x) / 2.0f + b.min_x;
+        b.top_left->min_x    = b.min_x;
+        b.top_left->entities = std::vector<physics::Entity*>();
 
-        b.top_right        = new Branch();
-        b.top_right->max_y = b.max_y;
-        b.top_right->min_y = (b.max_y - b.min_y) / 2.0f;
-        b.top_right->max_x = b.max_x;
-        b.top_right->min_x = (b.max_x - b.min_x) / 2.0f;
+        b.top_right           = new Branch();
+        b.top_right->max_y    = b.max_y;
+        b.top_right->min_y    = (b.max_y - b.min_y) / 2.0f + b.min_y;
+        b.top_right->max_x    = b.max_x;
+        b.top_right->min_x    = (b.max_x - b.min_x) / 2.0f + b.min_x;
+        b.top_right->entities = std::vector<physics::Entity*>();
 
-        b.bot_left        = new Branch();
-        b.bot_left->max_y = (b.max_y - b.min_y) / 2.0f;
-        b.bot_left->min_y = b.min_y;
-        b.bot_left->max_x = (b.max_x - b.min_x) / 2.0f;
-        b.bot_left->min_x = b.min_x;
+        b.bot_left           = new Branch();
+        b.bot_left->max_y    = (b.max_y - b.min_y) / 2.0f + b.min_y;
+        b.bot_left->min_y    = b.min_y;
+        b.bot_left->max_x    = (b.max_x - b.min_x) / 2.0f + b.min_x;
+        b.bot_left->min_x    = b.min_x;
+        b.bot_left->entities = std::vector<physics::Entity*>();
 
-        b.bot_right        = new Branch();
-        b.bot_right->max_y = (b.max_y - b.min_y) / 2.0f;
-        b.bot_right->min_y = b.min_y;
-        b.bot_right->max_x = b.max_x;
-        b.bot_right->min_x = (b.max_x - b.min_x) / 2.0f;
+        b.bot_right           = new Branch();
+        b.bot_right->max_y    = (b.max_y - b.min_y) / 2.0f + b.min_y;
+        b.bot_right->min_y    = b.min_y;
+        b.bot_right->max_x    = b.max_x;
+        b.bot_right->min_x    = (b.max_x - b.min_x) / 2.0f + b.min_x;
+        b.bot_right->entities = std::vector<physics::Entity*>();
 
-        for (auto i = b.entities.size() - 1; i >= 0; i--)
+        b.split = true;
+
+        for (unsigned int i = b.entities.size(); i > 0; i--)
         {
-            auto current = b.entities[i];
-            b.entities.erase(b.entities.begin() + i);
-            add_entity(b, b.entities[i]);
+            auto current = b.entities[i - 1];
+            b.entities.erase(b.entities.begin() + i - 1);
+            add_entity(b, current);
         }
     }
 
