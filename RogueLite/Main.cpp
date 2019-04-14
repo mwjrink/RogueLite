@@ -51,21 +51,19 @@ int main(int argc, char* argv[])
 
     INIT_TEST_SPRITE();
 
-    // const int meme        = 150000;
-    // auto      renderables = new Renderable[meme];
+     const int meme        = 30000;
+     auto      renderables = new Renderable[meme];
 
-    // srand(time(NULL));
+     srand(time(NULL));
 
-    // renderables[0] = world::player;
-
-    // for (int i = 1; i < meme; i++)
-    //{
-    //    renderables[i].tile_sheet         = r.tile_sheet;
-    //    renderables[i].position           = glm::vec2((rand() % (int)world::width), (rand() % (int)world::height));
-    //    renderables[i].size               = glm::vec2(100.0f, 100.0f);
-    //    renderables[i].scale              = ((rand() % 3) + 1) * 0.5;
-    //    renderables[i].current_tile_index = rand() % 4;
-    //}
+     for (int i = 0; i < meme; i++)
+    {
+        renderables[i].tile_sheet         = r.tile_sheet;
+        renderables[i].position           = glm::vec2((rand() % (int)world::width / 3), (rand() % (int)world::height / 3));
+        renderables[i].size               = glm::vec2(100.0f, 100.0f);
+        renderables[i].scale              = ((rand() % 3) + 1) * 0.5;
+        renderables[i].current_tile_index = rand() % 4;
+    }
 
     double t0 = glfwGetTime();
     double t1;
@@ -109,11 +107,11 @@ int main(int argc, char* argv[])
         // TODO: MAKE IT ANYTHING BUT THIS!
 
         Update(world::player, dt);
-        // Render(r, camera, renderables, meme);
+        Render(world::player, camera, renderables, meme);
 
         // TODO pass or store a visible rect for render skipping
         // (only render whats visible/send it to GPU)
-        Render(world::player, camera);
+        //Render(world::player, camera);
 
         // For precision, could run this continuously on main
         // thread until some other asynch op. is complete
