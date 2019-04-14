@@ -40,7 +40,7 @@ namespace quad_tree
 
     std::vector<physics::Entity*> get_collidable(Branch& b, physics::Entity* e);
 
-    std::vector<physics::Entity*> get_visible(Branch& b, glm::vec4& viewport);
+    std::vector<physics::Entity*> get_visible(Branch& b, const glm::vec4& viewport);
 
     void scale_entity(Branch& b, physics::Entity* e, float old_scale);
 }  // namespace quad_tree

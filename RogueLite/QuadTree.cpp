@@ -9,6 +9,7 @@ namespace quad_tree
         b.min_y = 0.0f;
         b.max_x = width;
         b.max_y = height;
+        b.entities = std::vector<physics::Entity*>();
         return b;
     }
 

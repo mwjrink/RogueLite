@@ -23,6 +23,8 @@ auto INIT_TEST_SPRITE()
     world::width  = 1920.0f;
     world::height = 1088.0f;
 
+	world::collision_tree = &quad_tree::Create_Tree(world::width, world::height);
+
     level::Init(&world::current_level);
 
     gltexture::atlas_texture_id = gltexture::GenerateAtlas(false);
@@ -51,18 +53,19 @@ int main(int argc, char* argv[])
 
     INIT_TEST_SPRITE();
 
-     const int meme        = 30000;
-     auto      renderables = new Renderable[meme];
+    const int meme        = 30000;
+    auto      renderables = new physics::Entity[meme];
 
-     srand(time(NULL));
+    srand(time(NULL));
 
-     for (int i = 0; i < meme; i++)
+    for (int i = 0; i < meme; i++)
     {
         renderables[i].tile_sheet         = r.tile_sheet;
-        renderables[i].position           = glm::vec2((rand() % (int)world::width / 3), (rand() % (int)world::height / 3));
+        renderables[i].position           = glm::vec2((rand() % (int)world::width), (rand() % (int)world::height));
         renderables[i].size               = glm::vec2(100.0f, 100.0f);
         renderables[i].scale              = ((rand() % 3) + 1) * 0.5;
         renderables[i].current_tile_index = rand() % 4;
+        quad_tree::add_entity(*world::collision_tree, &renderables[i]);
     }
 
     double t0 = glfwGetTime();
@@ -111,7 +114,7 @@ int main(int argc, char* argv[])
 
         // TODO pass or store a visible rect for render skipping
         // (only render whats visible/send it to GPU)
-        //Render(world::player, camera);
+        // Render(world::player, camera);
 
         // For precision, could run this continuously on main
         // thread until some other asynch op. is complete
@@ -120,7 +123,7 @@ int main(int argc, char* argv[])
 
     graphics::Cleanup();
 
-    // delete[] renderables;
+    delete[] renderables;
 
     // std::cout << frames_string.str();
 
@@ -163,6 +166,9 @@ void Render(Renderable& r, Camera camera, Renderable* rs, int size)
 {
     UpdateViewMatrix(camera.view_matrix, camera.position, camera.zoom);
     graphics::SetViewMatrix(camera.view_matrix);
+
+    glm::vec4 viewport = get_viewport(camera);
+    quad_tree::get_visible(*world::collision_tree, viewport);
 
     // Clear initial state
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);

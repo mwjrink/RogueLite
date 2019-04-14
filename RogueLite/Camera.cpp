@@ -41,7 +41,7 @@ void LockCamera(Camera& camera, Renderable r)
     // camera.position.y = (int)(camera.position.y+0.5);
 }
 
-inline glm::vec4 get_viewport(Camera& c)
+glm::vec4 get_viewport(Camera& c)
 {
     auto result = glm::vec4(c.position.x + graphics::Window_Width * (1.0f - 1.0f / c.zoom) / 2.0f,
                             c.position.y + graphics::Window_Height * (1.0f - 1.0f / c.zoom) / 2.0f,  //.....

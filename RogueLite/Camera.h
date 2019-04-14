@@ -24,4 +24,4 @@ glm::vec2 ScreenToWorld(glm::vec2 position, glm::vec2 camera_position, float zoo
 
 void LockCamera(Camera& camera, Renderable r);
 
-inline glm::vec4 get_viewport(Camera& c);
+glm::vec4 get_viewport(Camera& c);
