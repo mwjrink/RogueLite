@@ -176,6 +176,10 @@
     <ClInclude Include="Libraries\Delegate.h" />
     <ClInclude Include="Libraries\DelegateBase.h" />
     <ClInclude Include="Libraries\MultiCastDelegate.h" />
+    <ClInclude Include="Libraries\RapidXML\rapidxml.hpp" />
+    <ClInclude Include="Libraries\RapidXML\rapidxml_iterators.hpp" />
+    <ClInclude Include="Libraries\RapidXML\rapidxml_print.hpp" />
+    <ClInclude Include="Libraries\RapidXML\rapidxml_utils.hpp" />
     <ClInclude Include="Libraries\stb_image.h" />
     <ClInclude Include="Libraries\stb_image_write.h" />
     <ClInclude Include="Libraries\ThreadPool.h" />

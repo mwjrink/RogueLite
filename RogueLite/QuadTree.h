@@ -16,6 +16,18 @@ namespace quad_tree
         float                         min_y = 0, max_y = FLT_MAX;
         bool                          split = false;
 
+        ~Branch()
+        {
+            if (split)
+            {
+                if (top_left) delete top_left;
+                if (bot_left) delete bot_left;
+                if (top_right) delete top_right;
+                if (bot_right) delete bot_right;
+            }
+        }
+
+        // TODO: these should be unique_ptr
         Branch* top_left  = nullptr;
         Branch* bot_left  = nullptr;
         Branch* top_right = nullptr;

@@ -2,38 +2,29 @@
 
 #include "Main.h"
 
-Renderable r;
-Camera     camera;
+// Renderable r;
+Camera camera;
 
 auto INIT_TEST_SPRITE()
 {
-    r.tile_sheet = Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
-    // r.position   = glm::vec2(1720.0f, 980.0f);
-    r.position           = glm::vec2(500.0f, 300.0f);
-    r.size               = glm::vec2(48.0f, 48.0f);
-    r.scale              = 1.0f;
-    r.current_tile_index = 0;
+    // r.tile_sheet = Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
+    //// r.position   = glm::vec2(1720.0f, 980.0f);
+    // r.position           = glm::vec2(500.0f, 300.0f);
+    // r.size               = glm::vec2(48.0f, 48.0f);
+    // r.scale              = 1.0f;
+    // r.current_tile_index = 0;
 
     player::player_init(world::player);
-    world::current_level        = level::Level();
-    world::current_level.map    = level::base_map;
-    world::current_level.width  = level::base_map_width;
-    world::current_level.height = level::base_map_height;
 
-    world::width  = 1920.0f;
-    world::height = 1088.0f;
-
-    world::collision_tree = quad_tree::Create_Tree(world::width, world::height);
-
-    level::Init(&world::current_level);
+    world::UpdateCurrentLevel(level::Load_Level("Maps/Town.tmx"));
 
     gltexture::atlas_texture_id = gltexture::GenerateAtlas(false);
 }
 
 // void Process();
-void Update(player::Player& p, float dt);
-void Render(Renderable& r, Camera camera);
-void Render(Renderable& r, Camera camera, physics::Entity* rs, int size);
+void Update(float dt);
+void Render(Camera camera);
+// void Render(Renderable& r, Camera camera, physics::Entity* rs, int size);
 
 int main(int argc, char* argv[])
 {
@@ -53,22 +44,22 @@ int main(int argc, char* argv[])
 
     INIT_TEST_SPRITE();
 
-    const int meme     = 30000;
-    auto      entities = new physics::Entity[meme];
+    // const int meme     = 30000;
+    // auto      entities = new physics::Entity[meme];
 
-    srand(time(NULL));
+    // srand(time(NULL));
 
-    for (int i = 0; i < meme; i++)
-    {
-        entities[i].tile_sheet          = r.tile_sheet;
-        entities[i].position            = glm::vec2((rand() % (int)world::width), (rand() % (int)world::height));
-        entities[i].size                = glm::vec2(100.0f, 100.0f);
-        entities[i].bounding_box_width  = 100.0f;
-        entities[i].bounding_box_height = 100.0f;
-        entities[i].scale               = ((rand() % 3) + 1) * 0.5;
-        entities[i].current_tile_index  = rand() % 4;
-        quad_tree::add_entity(*world::collision_tree, &entities[i]);
-    }
+    // for (int i = 0; i < meme; i++)
+    //{
+    //    entities[i].tile_sheet          = r.tile_sheet;
+    //    entities[i].position            = glm::vec2((rand() % (int)world::width), (rand() % (int)world::height));
+    //    entities[i].size                = glm::vec2(100.0f, 100.0f);
+    //    entities[i].bounding_box_width  = 100.0f;
+    //    entities[i].bounding_box_height = 100.0f;
+    //    entities[i].scale               = ((rand() % 3) + 1) * 0.5;
+    //    entities[i].current_tile_index  = rand() % 4;
+    //    quad_tree::add_entity(*world::collision_tree, &entities[i]);
+    //}
 
     double t0 = glfwGetTime();
     double t1;
@@ -105,18 +96,14 @@ int main(int argc, char* argv[])
         }
         */
 
-        LockCamera(camera, world::player);
-
         // Process();
 
         // TODO: MAKE IT ANYTHING BUT THIS!
 
-        Update(world::player, dt);
-        Render(world::player, camera, entities, meme);
+        Update(dt);
+        // Render(world::player, camera, entities, meme);
 
-        // TODO pass or store a visible rect for render skipping
-        // (only render whats visible/send it to GPU)
-        // Render(world::player, camera);
+        Render(camera);
 
         // For precision, could run this continuously on main
         // thread until some other asynch op. is complete
@@ -125,7 +112,7 @@ int main(int argc, char* argv[])
 
     graphics::Cleanup();
 
-    delete[] entities;
+    // delete[] entities;
 
     // std::cout << frames_string.str();
 
@@ -139,14 +126,16 @@ int main(int argc, char* argv[])
 
 // void Process() { input::update_controller(input::controller); }
 
-void Update(player::Player& p, float dt)
+void Update(float dt)
 {
-    player::move(p, dt);
-    update_animations(p, dt);
+    player::move(world::player, dt);
+    update_animations(world::player, dt);
 }
 
-void Render(Renderable& r, Camera camera)
+void Render(Camera camera)
 {
+    LockCamera(camera, world::player);
+
     UpdateViewMatrix(camera.view_matrix, camera.position, camera.zoom);
     graphics::SetViewMatrix(camera.view_matrix);
 
@@ -154,9 +143,12 @@ void Render(Renderable& r, Camera camera)
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);  // glClear(ALL_BUFFERS);
 
+    glm::vec4 viewport = get_viewport(camera);
+    auto      visible  = quad_tree::get_visible(*world::collision_tree, viewport);
+
     // TODO: this takes the most time by far
     world::Render();
-    graphics::DrawRenderable(r, graphics::shaderProgram);
+    for (auto e : visible) graphics::DrawRenderable(*e, graphics::shaderProgram);
 
     graphics::DrawBatch();
     glfwSwapBuffers(graphics::window);
@@ -164,27 +156,27 @@ void Render(Renderable& r, Camera camera)
 }
 
 // TEST RENDER FUNCTION
-void Render(Renderable& r, Camera camera, physics::Entity* rs, int size)
-{
-    UpdateViewMatrix(camera.view_matrix, camera.position, camera.zoom);
-    graphics::SetViewMatrix(camera.view_matrix);
-
-    glm::vec4 viewport = get_viewport(camera);
-    auto      visible  = quad_tree::get_visible(*world::collision_tree, viewport);
-
-    // Clear initial state
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);  // glClear(ALL_BUFFERS);
-
-    // TODO: this takes the most time by far
-    world::Render();
-    graphics::DrawRenderable(r, graphics::shaderProgram);
-
-    for (auto e : visible) graphics::DrawRenderable(*e, graphics::shaderProgram);
-
-    graphics::DrawBatch();
-    glfwSwapBuffers(graphics::window);
-    return;
-}
+// void Render(Renderable& r, Camera camera, physics::Entity* rs, int size)
+//{
+//    UpdateViewMatrix(camera.view_matrix, camera.position, camera.zoom);
+//    graphics::SetViewMatrix(camera.view_matrix);
+//
+//    glm::vec4 viewport = get_viewport(camera);
+//    auto      visible  = quad_tree::get_visible(*world::collision_tree, viewport);
+//
+//    // Clear initial state
+//    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+//    glClear(GL_COLOR_BUFFER_BIT);  // glClear(ALL_BUFFERS);
+//
+//    // TODO: this takes the most time by far
+//    world::Render();
+//    graphics::DrawRenderable(r, graphics::shaderProgram);
+//
+//    for (auto e : visible) graphics::DrawRenderable(*e, graphics::shaderProgram);
+//
+//    graphics::DrawBatch();
+//    glfwSwapBuffers(graphics::window);
+//    return;
+//}
 
 void handle_escape(int key, int action) { glfwSetWindowShouldClose(graphics::window, true); }
