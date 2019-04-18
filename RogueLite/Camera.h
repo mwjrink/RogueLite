@@ -12,7 +12,7 @@ class Camera
 {
   public:
     glm::vec2 position;
-    float     zoom = 1.0f;
+    float     zoom = 2.0f;
     glm::mat4 view_matrix;
 };
 
@@ -23,3 +23,5 @@ glm::vec2 WorldToScreen(glm::vec2 position, glm::vec2 camera_position, float zoo
 glm::vec2 ScreenToWorld(glm::vec2 position, glm::vec2 camera_position, float zoom);
 
 void LockCamera(Camera& camera, Renderable r);
+
+glm::vec4 get_viewport(Camera& c);

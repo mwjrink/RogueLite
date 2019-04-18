@@ -37,6 +37,18 @@ void LockCamera(Camera& camera, Renderable r)
 
     // accounts for projection matrix being full screen size
     camera.position = new_position * camera.zoom;
-    //camera.position.x = (int)(camera.position.x+0.5);
-    //camera.position.y = (int)(camera.position.y+0.5);
+    // camera.position.x = (int)(camera.position.x+0.5);
+    // camera.position.y = (int)(camera.position.y+0.5);
+}
+
+glm::vec4 get_viewport(Camera& c)
+{
+    auto result = glm::vec4(c.position.x + graphics::Window_Width * (1.0f - 1.0f / c.zoom) / 2.0f,
+                            c.position.y + graphics::Window_Height * (1.0f - 1.0f / c.zoom) / 2.0f,  //.....
+                            0.0f, 0.0f);
+
+    result.z = result.x + graphics::Window_Width / c.zoom;
+    result.w = result.y + graphics::Window_Height / c.zoom;
+
+    return result;
 }

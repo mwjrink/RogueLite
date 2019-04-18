@@ -2,13 +2,15 @@
 
 namespace quad_tree
 {
-    Branch Create_Tree(float width, float height)
+    Branch* Create_Tree(float width, float height)
     {
-        auto b  = Branch();
-        b.min_x = 0.0f;
-        b.min_y = 0.0f;
-        b.max_x = width;
-        b.max_y = height;
+        auto b      = new Branch();
+        b->min_x    = 0.0f;
+        b->min_y    = 0.0f;
+        b->max_x    = width;
+        b->max_y    = height;
+        b->split    = false;
+        b->entities = std::vector<physics::Entity*>();
         return b;
     }
 
@@ -34,48 +36,69 @@ namespace quad_tree
 
     bool is_in_branch(Branch& b, physics::Entity* e)
     {
-        return (e->world_space_position.x + e->bounding_box_width < b.max_x && e->world_space_position.x > b.min_x &&
-                e->world_space_position.y + e->bounding_box_width > b.max_y && e->world_space_position.y < b.min_y);
+        auto r = glm::length(glm::vec2(e->bounding_box_width * e->scale, e->bounding_box_height * e->scale));
+        return (e->position.x + e->bounding_box_width / 2 + r < b.max_x &&
+                e->position.x + e->bounding_box_width / 2 - r > b.min_x &&
+                e->position.y + e->bounding_box_height / 2 + r < b.max_y &&
+                e->position.y + e->bounding_box_width / 2 - r > b.min_y);
     }
 
     bool is_in_branch(Branch& b, physics::Entity* e, glm::vec2 old_position)
     {
-        return (old_position.x + e->bounding_box_width < b.max_x && old_position.x > b.min_x &&
-                old_position.y + e->bounding_box_width > b.max_y && old_position.y < b.min_y);
+        auto r = glm::length(glm::vec2(e->bounding_box_width * e->scale, e->bounding_box_height * e->scale));
+        return (old_position.x + e->bounding_box_width / 2 + r < b.max_x &&
+                old_position.x + e->bounding_box_width / 2 - r > b.min_x &&
+                old_position.y + e->bounding_box_height / 2 + r < b.max_y &&
+                old_position.y + e->bounding_box_width / 2 - r > b.min_y);
+    }
+
+    bool is_in_branch(Branch& b, physics::Entity* e, float old_scale)
+    {
+        auto r = glm::length(glm::vec2(e->bounding_box_width * old_scale, e->bounding_box_height * old_scale));
+        return (e->position.x + e->bounding_box_width / 2 + r < b.max_x &&
+                e->position.x + e->bounding_box_width / 2 - r > b.min_x &&
+                e->position.y + e->bounding_box_height / 2 + r < b.max_y &&
+                e->position.y + e->bounding_box_width / 2 - r > b.min_y);
     }
 
     // TODO: split smartly, if necessary
     void split(Branch& b)
     {
-        b.top_left        = new Branch();
-        b.top_left->max_y = b.max_y;
-        b.top_left->min_y = (b.max_y - b.min_y) / 2.0f;
-        b.top_left->max_x = (b.max_x - b.min_x) / 2.0f;
-        b.top_left->min_x = b.min_x;
+        b.top_left           = new Branch();
+        b.top_left->max_y    = b.max_y;
+        b.top_left->min_y    = (b.max_y - b.min_y) / 2.0f + b.min_y;
+        b.top_left->max_x    = (b.max_x - b.min_x) / 2.0f + b.min_x;
+        b.top_left->min_x    = b.min_x;
+        b.top_left->entities = std::vector<physics::Entity*>();
 
-        b.top_right        = new Branch();
-        b.top_right->max_y = b.max_y;
-        b.top_right->min_y = (b.max_y - b.min_y) / 2.0f;
-        b.top_right->max_x = b.max_x;
-        b.top_right->min_x = (b.max_x - b.min_x) / 2.0f;
+        b.top_right           = new Branch();
+        b.top_right->max_y    = b.max_y;
+        b.top_right->min_y    = (b.max_y - b.min_y) / 2.0f + b.min_y;
+        b.top_right->max_x    = b.max_x;
+        b.top_right->min_x    = (b.max_x - b.min_x) / 2.0f + b.min_x;
+        b.top_right->entities = std::vector<physics::Entity*>();
 
-        b.bot_left        = new Branch();
-        b.bot_left->max_y = (b.max_y - b.min_y) / 2.0f;
-        b.bot_left->min_y = b.min_y;
-        b.bot_left->max_x = (b.max_x - b.min_x) / 2.0f;
-        b.bot_left->min_x = b.min_x;
+        b.bot_left           = new Branch();
+        b.bot_left->max_y    = (b.max_y - b.min_y) / 2.0f + b.min_y;
+        b.bot_left->min_y    = b.min_y;
+        b.bot_left->max_x    = (b.max_x - b.min_x) / 2.0f + b.min_x;
+        b.bot_left->min_x    = b.min_x;
+        b.bot_left->entities = std::vector<physics::Entity*>();
 
-        b.bot_right        = new Branch();
-        b.bot_right->max_y = (b.max_y - b.min_y) / 2.0f;
-        b.bot_right->min_y = b.min_y;
-        b.bot_right->max_x = b.max_x;
-        b.bot_right->min_x = (b.max_x - b.min_x) / 2.0f;
+        b.bot_right           = new Branch();
+        b.bot_right->max_y    = (b.max_y - b.min_y) / 2.0f + b.min_y;
+        b.bot_right->min_y    = b.min_y;
+        b.bot_right->max_x    = b.max_x;
+        b.bot_right->min_x    = (b.max_x - b.min_x) / 2.0f + b.min_x;
+        b.bot_right->entities = std::vector<physics::Entity*>();
 
-        for (auto i = b.entities.size() - 1; i >= 0; i--)
+        b.split = true;
+
+        for (unsigned int i = b.entities.size(); i > 0; i--)
         {
-            auto current = b.entities[i];
-            b.entities.erase(b.entities.begin() + i);
-            add_entity(b, b.entities[i]);
+            auto current = b.entities[i - 1];
+            b.entities.erase(b.entities.begin() + i - 1);
+            add_entity(b, current);
         }
     }
 
@@ -117,7 +140,66 @@ namespace quad_tree
 
         if (parent == current) return;
 
-        if (is_in_branch(b, e)) return;
+        if (is_in_branch(*current, e)) return;
+
+        std::remove(current->entities.begin(), current->entities.end(), e);
+
+        if (b.split)
+        {
+            if (b.top_left && is_in_branch(*b.top_left, e))
+                add_entity(*b.top_left, e);
+            else if (b.top_right && is_in_branch(*b.top_right, e))
+                add_entity(*b.top_right, e);
+            else if (b.bot_left && is_in_branch(*b.bot_left, e))
+                add_entity(*b.bot_left, e);
+            else if (b.bot_right && is_in_branch(*b.bot_right, e))
+                add_entity(*b.bot_right, e);
+            else
+                b.entities.push_back(e);
+        }
+        else
+            b.entities.push_back(e);
+    }
+
+    void scale_entity(Branch& b, physics::Entity* e, float old_scale)
+    {
+        Branch *current = &b, *parent = &b;
+        while (true)
+        {
+            if (b.split)
+            {
+                if (current->top_left && is_in_branch(*current->top_left, e, old_scale))
+                {
+                    parent  = current;
+                    current = current->top_left;
+                    continue;
+                }
+                else if (current->top_right && is_in_branch(*current->top_right, e, old_scale))
+                {
+                    parent  = current;
+                    current = current->top_right;
+                    continue;
+                }
+                else if (current->bot_left && is_in_branch(*current->bot_left, e, old_scale))
+                {
+                    parent  = current;
+                    current = current->bot_left;
+                    continue;
+                }
+                else if (current->bot_right && is_in_branch(*current->bot_right, e, old_scale))
+                {
+                    parent  = current;
+                    current = current->bot_right;
+                    continue;
+                }
+            }
+
+            break;
+        }
+
+        if (parent == current) return;
+
+        if (is_in_branch(*current, e)) return;
 
         std::remove(current->entities.begin(), current->entities.end(), e);
 
@@ -229,40 +311,77 @@ namespace quad_tree
         }
     }
 
-    // TODO: remove function
+    std::vector<physics::Entity*> get_visible(Branch& b, const glm::vec4& viewport)
+    {
+        Branch* current = &b;
+        while (true)
+        {
+            if (b.split)
+            {
+                if (current->top_left && viewport.z <= current->top_left->max_x && viewport.x >= current->top_left->min_x &&
+                    viewport.w <= current->top_left->max_y && viewport.y >= current->top_left->min_y)
+                {
+                    current = current->top_left;
+                    continue;
+                }
+                if (current->top_right && viewport.z <= current->top_right->max_x &&
+                    viewport.x >= current->top_right->min_x && viewport.w <= current->top_right->max_y &&
+                    viewport.y >= current->top_right->min_y)
+                {
+                    current = current->top_right;
+                    continue;
+                }
+                if (current->bot_left && viewport.z <= current->bot_left->max_x && viewport.x >= current->bot_left->min_x &&
+                    viewport.w <= current->bot_left->max_y && viewport.y >= current->bot_left->min_y)
+                {
+                    current = current->bot_left;
+                    continue;
+                }
+                if (current->bot_right && viewport.z <= current->bot_right->max_x &&
+                    viewport.x >= current->bot_right->min_x && viewport.w <= current->bot_right->max_y &&
+                    viewport.y >= current->bot_right->min_y)
+                {
+                    current = current->bot_right;
+                    continue;
+                }
+            }
 
-    // std::vector<physics::Entity*> get_all(Branch& b)
-    //{
-    //    auto result = std::vector<physics::Entity*>();
+            break;
+        }
 
-    //    if (split)
-    //    {
-    //        if (b.top_left)
-    //        {
-    //            auto add = get_all(*b.top_left);
-    //            result.insert(result.end(), add.begin(), add.end());
-    //        }
+        auto result = std::vector<physics::Entity*>(b.entities);
 
-    //        if (b.top_right)
-    //        {
-    //            auto add = get_all(*b.top_right);
-    //            result.insert(result.end(), add.begin(), add.end());
-    //        }
+        if (current->split)
+        {
+            if (current->top_left)
+            {
+                auto add = get_visible(*current->top_left, glm::vec4(viewport.x, current->top_left->min_y,
+                                                                     current->top_left->max_x, viewport.w));
+                result.insert(result.end(), add.begin(), add.end());
+            }
 
-    //        if (b.bot_left)
-    //        {
-    //            auto add = get_all(*b.bot_left);
-    //            result.insert(result.end(), add.begin(), add.end());
-    //        }
+            if (current->top_right)
+            {
+                auto add = get_visible(*current->top_right, glm::vec4(current->top_right->min_x, current->top_right->min_y,
+                                                                      viewport.z, viewport.w));
+                result.insert(result.end(), add.begin(), add.end());
+            }
 
-    //        if (b.bot_right)
-    //        {
-    //            auto add = get_all(*b.bot_right);
-    //            result.insert(result.end(), add.begin(), add.end());
-    //        }
-    //    }
+            if (current->bot_left)
+            {
+                auto add = get_visible(*current->bot_left, glm::vec4(viewport.x, viewport.y, current->bot_left->max_x,
+                                                                     current->bot_left->max_y));
+                result.insert(result.end(), add.begin(), add.end());
+            }
 
-    //    result.insert(result.end(), b.entities.begin(), b.entities.end());
-    //    return result;
-    //}
+            if (current->bot_right)
+            {
+                auto add = get_visible(*current->bot_right, glm::vec4(current->bot_right->min_x, viewport.y,
+                                                                      current->bot_right->max_y, viewport.z));
+                result.insert(result.end(), add.begin(), add.end());
+            }
+        }
+
+        return result;
+    }
 }  // namespace quad_tree
