@@ -144,11 +144,12 @@ void Render(Camera camera)
     glClear(GL_COLOR_BUFFER_BIT);  // glClear(ALL_BUFFERS);
 
     glm::vec4 viewport = get_viewport(camera);
-    auto      visible  = quad_tree::get_visible(*world::collision_tree, viewport);
+    //auto      visible  = quad_tree::get_visible(*world::collision_tree, viewport);
 
     // TODO: this takes the most time by far
     world::Render();
-    for (auto e : visible) graphics::DrawRenderable(*e, graphics::shaderProgram);
+    // for (auto e : visible) graphics::DrawRenderable(*e, graphics::shaderProgram);
+    graphics::DrawRenderable(world::player, graphics::shaderProgram);
 
     graphics::DrawBatch();
     glfwSwapBuffers(graphics::window);
