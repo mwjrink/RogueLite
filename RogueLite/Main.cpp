@@ -2,21 +2,21 @@
 
 #include "Main.h"
 
-// Renderable r;
+Renderable r;
 Camera camera;
 
 auto INIT_TEST_SPRITE()
 {
-    // r.tile_sheet = Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
-    //// r.position   = glm::vec2(1720.0f, 980.0f);
-    // r.position           = glm::vec2(500.0f, 300.0f);
-    // r.size               = glm::vec2(48.0f, 48.0f);
-    // r.scale              = 1.0f;
-    // r.current_tile_index = 0;
+     r.tile_sheet = Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
+    // r.position   = glm::vec2(1720.0f, 980.0f);
+     r.position           = glm::vec2(500.0f, 300.0f);
+     r.size               = glm::vec2(48.0f, 48.0f);
+     r.scale              = 1.0f;
+     r.current_tile_index = 0;
 
     player::player_init(world::player);
 
-    world::UpdateCurrentLevel(level::Load_Level("Maps/Town.tmx"));
+    //world::UpdateCurrentLevel(level::Load_Level("Maps/Town.tmx"));
 
     gltexture::atlas_texture_id = gltexture::GenerateAtlas(false);
 }

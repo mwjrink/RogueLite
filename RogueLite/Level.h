@@ -26,5 +26,5 @@ namespace level
     // 2 = grass;
     // 3 = earth / stone;
 
-    Level Load_Level(std::string file_path);
+    //Level Load_Level(std::string file_path);
 }  // namespace level
