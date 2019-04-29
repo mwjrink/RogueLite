@@ -21,10 +21,15 @@ namespace level
     void Init(Level* target);
     void RenderLevel(Level* render_target);
 
+    extern unsigned int base_map_width;
+    extern unsigned int base_map_height;
+
+    extern unsigned int* base_map;
+
     // 0 = water;
     // 1 = lava;
     // 2 = grass;
     // 3 = earth / stone;
 
-    //Level Load_Level(std::string file_path);
+    // Level Load_Level(std::string file_path);
 }  // namespace level

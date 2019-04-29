@@ -292,8 +292,9 @@ namespace graphics
 
     // TODO: profile the render loop, performance is lost (vector operations?)
     // TODO: name this method properly
-    // TODO: store a mac amount variable and use glBufferSubdata if it is less,
+    // TODO: store a max amount variable and use glBufferSubdata if it is less,
     //		 glBufferData if it is more (the latter reallocates)
+    // TODO: Use buffer mapping
     void DrawBatch()
     {
         glUseProgram(shaderProgram);
