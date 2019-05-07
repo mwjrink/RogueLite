@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "QuadTree.h"
+#include "LGrid.h"
 #include "World.h"
 
 namespace player
@@ -64,7 +64,7 @@ namespace player
     {
         auto old_position = p.position;
         if (p.velocity.x != 0.0f || p.velocity.y != 0.0f) p.position += glm::normalize(p.velocity) * p.speed * dt;
-        //quad_tree::move_entity(*world::collision_tree, &p, old_position);
+        // quad_tree::move_entity(*world::collision_tree, &p, old_position);
     }
 
     /*

@@ -2,18 +2,18 @@
 
 #include <vector>
 #include "Entity.h"
+#include "LGrid.h"
 #include "Level.h"
 #include "Player.h"
-#include "QuadTree.h"
 
 namespace world
 {
     extern player::Player player;
     extern level::Level   current_level;
-    extern float          width, height;
+    extern unsigned int   width, height;
 
     // TODO: this should be a unique_ptr
-    extern quad_tree::Branch* collision_tree;
+    extern quad_tree::LGrid* collision_tree;
 
     void Update(float dt);
 

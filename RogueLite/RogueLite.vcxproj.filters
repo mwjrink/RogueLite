@@ -19,6 +19,15 @@
     <Filter Include="Libraries">
       <UniqueIdentifier>{3b46b258-80bf-42a5-a1e8-d41356645952}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Libraries\llvm">
+      <UniqueIdentifier>{7906f88a-754f-469a-a897-e20a486d6c3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Libraries">
+      <UniqueIdentifier>{fda4dae1-0a4a-48a0-a49c-0281a9564f55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Libraries\llvm">
+      <UniqueIdentifier>{b252d17f-2f22-4af1-9a97-faf59184f6b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -31,9 +40,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GLTexture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QuadTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
@@ -62,6 +68,15 @@
     </ClCompile>
     <ClCompile Include="Renderable.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LGrid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallVector.cpp">
+      <Filter>Source Files\Libraries\llvm</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorHandling.cpp">
+      <Filter>Source Files\Libraries\llvm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +137,6 @@
     <ClInclude Include="Libraries\DelegateBase.h">
       <Filter>Libraries</Filter>
     </ClInclude>
-    <ClInclude Include="QuadTree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -151,6 +163,51 @@
     </ClInclude>
     <ClInclude Include="Libraries\RapidXML\rapidxml_utils.hpp">
       <Filter>Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="LGrid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Loose-Double-Grid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\boost_1_70_0\boost\container\small_vector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\llvm\SmallVector.h">
+      <Filter>Libraries\llvm</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\llvm\iterator_range.h">
+      <Filter>Libraries\llvm</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\llvm\Compiler.h">
+      <Filter>Libraries\llvm</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\llvm\ErrorHandling.h">
+      <Filter>Libraries\llvm</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\llvm\MathExtras.h">
+      <Filter>Libraries\llvm</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\llvm\MemAlloc.h">
+      <Filter>Libraries\llvm</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\llvm\type_traits.h">
+      <Filter>Libraries\llvm</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\llvm\AlignOf.h">
+      <Filter>Libraries\llvm</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\llvm\llvm-config.h">
+      <Filter>Libraries\llvm</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\llvm\SwapByteOrder.h">
+      <Filter>Libraries\llvm</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\llvm\DataTypes.h">
+      <Filter>Libraries\llvm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

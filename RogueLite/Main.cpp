@@ -22,10 +22,10 @@ auto INIT_TEST_SPRITE()
     world::current_level.height = level::base_map_height;
     world::current_level.layers = 1;
 
-    world::width  = 1920.0f;
-    world::height = 1088.0f;
+    world::width  = 1920;
+    world::height = 1088;
 
-    world::collision_tree = quad_tree::Create_Tree(world::width, world::height);
+    world::collision_tree = quad_tree::lgrid_create(world::width, world::height, 0, 0, world::width, world::height);
 
     level::Init(&world::current_level);
 
