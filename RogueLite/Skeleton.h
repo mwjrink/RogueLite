@@ -6,7 +6,6 @@
 #include "Graphics.h"
 //#include "TileSheet.h"
 #include "Renderable.h"
-#include "World.h"
 
 //#define h 1
 //#define p 2
@@ -57,18 +56,10 @@ namespace proc_anim
         Skeleton();
     };
 
-    void move(glm::vec3 direction, float dt);
+    void move(Skeleton& s, float dt);
 
     void render(Skeleton& s);
 
-    Skeleton::Node get_head(Skeleton& s);
+    Skeleton::Node& get_head(Skeleton& s);
 
-    void set_unit_velocity_up(int _, int __) { world::skeleton.get_head().velocity.y++; }
-    void set_unit_velocity_down(int _, int __) { world::skeleton.get_head().velocity.y--; }
-    void set_unit_velocity_left(int _, int __) { world::skeleton.get_head().x--; }
-    void set_unit_velocity_right(int _, int __) { world::skeleton.get_head().x++; }
-    void stop_velocity_up(int _, int __) { world::skeleton.get_head().y--; }
-    void stop_velocity_down(int _, int __) { world::skeleton.get_head().y++; }
-    void stop_velocity_left(int _, int __) { world::skeleton.get_head().x++; }
-    void stop_velocity_right(int _, int __) { world::skeleton.get_head().x--; }
 }  // namespace proc_anim

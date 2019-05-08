@@ -3,8 +3,7 @@
 #include "Main.h"
 
 // Renderable r;
-proc_anim::Skeleton s;
-Camera              camera;
+Camera camera;
 
 auto INIT_TEST_SPRITE()
 {
@@ -17,7 +16,7 @@ auto INIT_TEST_SPRITE()
 
     // player::player_init(world::player);
 
-    s = proc_anim::Skeleton();
+    world::skeleton = proc_anim::Skeleton();
 
     world::current_level        = level::Level();
     world::current_level.map    = level::base_map;
@@ -144,8 +143,8 @@ int main(int argc, char* argv[])
 
 void Update(float dt)
 {
-    player::move(world::player, dt);
-    s.move();
+    // player::move(world::player, dt);
+    proc_anim::move(world::skeleton, dt);
 }
 
 void Render(Camera camera)
@@ -165,7 +164,8 @@ void Render(Camera camera)
     // TODO: this takes the most time by far
     world::Render();
     // for (auto e : visible) graphics::DrawRenderable(*e, graphics::shaderProgram);
-    graphics::DrawRenderable(world::player, graphics::shaderProgram);
+    // graphics::DrawRenderable(world::skeleton, graphics::shaderProgram);
+    proc_anim::render(world::skeleton);
 
     graphics::DrawBatch();
     glfwSwapBuffers(graphics::window);

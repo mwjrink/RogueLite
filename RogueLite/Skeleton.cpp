@@ -1,15 +1,19 @@
 #include "Skeleton.h"
 
+#include "World.h"
+
+#include <iostream>
+
 namespace proc_anim
 {
-    void set_unit_velocity_up(int _, int __) { world::skeleton.get_head(world::skeleton).velocity.y++; }
-    void set_unit_velocity_down(int _, int __) { world::skeleton.get_head(world::skeleton).velocity.y--; }
-    void set_unit_velocity_left(int _, int __) { world::skeleton.get_head(world::skeleton).velocity.x--; }
-    void set_unit_velocity_right(int _, int __) { world::skeleton.get_head(world::skeleton).velocity.x++; }
-    void stop_velocity_up(int _, int __) { world::skeleton.get_head(world::skeleton).velocity.y--; }
-    void stop_velocity_down(int _, int __) { world::skeleton.get_head(world::skeleton).velocity.y++; }
-    void stop_velocity_left(int _, int __) { world::skeleton.get_head(world::skeleton).velocity.x++; }
-    void stop_velocity_right(int _, int __) { world::skeleton.get_head(world::skeleton).velocity.x--; }
+    void set_unit_velocity_up(int _, int __) { get_head(world::skeleton).velocity.y++; }
+    void set_unit_velocity_down(int _, int __) { get_head(world::skeleton).velocity.y--; }
+    void set_unit_velocity_left(int _, int __) { get_head(world::skeleton).velocity.x--; }
+    void set_unit_velocity_right(int _, int __) { get_head(world::skeleton).velocity.x++; }
+    void stop_velocity_up(int _, int __) { get_head(world::skeleton).velocity.y--; }
+    void stop_velocity_down(int _, int __) { get_head(world::skeleton).velocity.y++; }
+    void stop_velocity_left(int _, int __) { get_head(world::skeleton).velocity.x++; }
+    void stop_velocity_right(int _, int __) { get_head(world::skeleton).velocity.x--; }
 
     Skeleton::Skeleton()
     {
@@ -19,21 +23,14 @@ namespace proc_anim
         r.size               = glm::vec2(16.0f, 16.0f);
         r.scale              = 1.0f;
         r.current_tile_index = 0;
+        speed                = 192.0f;
+        dist                 = 100.0f;
 
         float x = 500, y = 500;
         for (int i = 0; i < 8; i++)
         {
             nodes.push_back(Node(x + dist * i, y, 1.0f));
         }
-
-        p.tile_sheet = Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/NPC.png"), glm::ivec2(9, 8));
-        // r.position   = glm::vec2(1720.0f, 980.0f);
-        p.position           = glm::vec2(1250.0f, 500.0f);
-        p.velocity           = glm::vec2(0.0f, 0.0f);
-        p.size               = glm::vec2(48.0f, 48.0f);
-        p.scale              = 1.0f;
-        p.current_tile_index = 0;
-        p.speed              = 192.0f;
 
         // TODO: ABOLISH THIS SYSTEM IN FAVOUR OF POLLING :'(
         // input::delegate_type dLambda = [](int key, int action) {
@@ -60,14 +57,14 @@ namespace proc_anim
         //    }
         //};
 
-        input::copy_add_event(GLFW_KEY_W, GLFW_PRESS, &input::delegate_type::create<&player::set_unit_velocity_up>());
-        input::copy_add_event(GLFW_KEY_A, GLFW_PRESS, &input::delegate_type::create<&player::set_unit_velocity_left>());
-        input::copy_add_event(GLFW_KEY_S, GLFW_PRESS, &input::delegate_type::create<&player::set_unit_velocity_down>());
-        input::copy_add_event(GLFW_KEY_D, GLFW_PRESS, &input::delegate_type::create<&player::set_unit_velocity_right>());
-        input::copy_add_event(GLFW_KEY_W, GLFW_RELEASE, &input::delegate_type::create<&player::stop_velocity_up>());
-        input::copy_add_event(GLFW_KEY_A, GLFW_RELEASE, &input::delegate_type::create<&player::stop_velocity_left>());
-        input::copy_add_event(GLFW_KEY_S, GLFW_RELEASE, &input::delegate_type::create<&player::stop_velocity_down>());
-        input::copy_add_event(GLFW_KEY_D, GLFW_RELEASE, &input::delegate_type::create<&player::stop_velocity_right>());
+        input::copy_add_event(GLFW_KEY_W, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_up>());
+        input::copy_add_event(GLFW_KEY_A, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_left>());
+        input::copy_add_event(GLFW_KEY_S, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_down>());
+        input::copy_add_event(GLFW_KEY_D, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_right>());
+        input::copy_add_event(GLFW_KEY_W, GLFW_RELEASE, &input::delegate_type::create<&proc_anim::stop_velocity_up>());
+        input::copy_add_event(GLFW_KEY_A, GLFW_RELEASE, &input::delegate_type::create<&proc_anim::stop_velocity_left>());
+        input::copy_add_event(GLFW_KEY_S, GLFW_RELEASE, &input::delegate_type::create<&proc_anim::stop_velocity_down>());
+        input::copy_add_event(GLFW_KEY_D, GLFW_RELEASE, &input::delegate_type::create<&proc_anim::stop_velocity_right>());
     }
 
     void move(Skeleton& s, float dt)
@@ -79,13 +76,16 @@ namespace proc_anim
 
         for (auto i = 1; i < s.nodes.size(); i++)
         {
-            auto dir = s.nodes[i].position - s.nodes[i - 1].position;
-            if (glm::length(dir) > s.dist) s.nodes[i].velocity += glm::normalize(dir);
+            auto dir = s.nodes[i - 1].position - s.nodes[i].position;
+            if (glm::length(dir) > s.dist)
+                s.nodes[i].velocity += glm::normalize(dir);
+            else
+                s.nodes[i].velocity = glm::vec2(0.0f);
         }
 
-        for (auto e : s.nodes)
+        for (auto it = s.nodes.begin(); it != s.nodes.end(); it++)
         {
-            e.position += e.velocity * s.speed * dt;
+            it->position += it->velocity * s.speed * dt;
         }
     }
 
@@ -99,6 +99,6 @@ namespace proc_anim
         }
     }
 
-    Skeleton::Node get_head(Skeleton& s) { return s.nodes[s.headIndex]; }
+    Skeleton::Node& get_head(Skeleton& s) { return s.nodes[s.headIndex]; }
 
 }  // namespace proc_anim
