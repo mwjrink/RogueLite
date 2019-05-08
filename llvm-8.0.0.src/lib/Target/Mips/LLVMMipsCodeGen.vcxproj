@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4BFFF46B-F315-31A0-8DC0-CF5DEA8AC73F}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>LLVMMipsCodeGen</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\Debug\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LLVMMipsCodeGen.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LLVMMipsCodeGen</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\Release\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LLVMMipsCodeGen.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LLVMMipsCodeGen</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\MinSizeRel\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">LLVMMipsCodeGen.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">LLVMMipsCodeGen</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\RelWithDebInfo\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">LLVMMipsCodeGen.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">LLVMMipsCodeGen</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/Target/Mips/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/Target/Mips/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/Target/Mips/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/Target/Mips/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/Target/Mips/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/Target/Mips/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/Target/Mips/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/Target/Mips/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/Target/Mips/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/Target/Mips/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/Target/Mips/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/Target/Mips/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16FrameLowering.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16HardFloat.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16HardFloatInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16InstrInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16ISelDAGToDAG.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16ISelLowering.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16RegisterInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsAnalyzeImmediate.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsAsmPrinter.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsCallLowering.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsCCState.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsConstantIslandPass.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsDelaySlotFiller.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsExpandPseudo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsFastISel.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsInstrInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsInstructionSelector.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsISelDAGToDAG.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsISelLowering.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsFrameLowering.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsLegalizerInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsBranchExpansion.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsMCInstLower.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsMachineFunction.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsModuleISelDAGToDAG.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsOptimizePICCall.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsOs16.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsPreLegalizerCombiner.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsRegisterBankInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsRegisterInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSEFrameLowering.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSEInstrInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSEISelDAGToDAG.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSEISelLowering.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSERegisterInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSubtarget.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsTargetMachine.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsTargetObjectFile.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MicroMipsSizeReduction.cpp" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MicroMips32r6InstrFormats.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MicroMips32r6InstrInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MicroMipsDSPInstrFormats.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MicroMipsDSPInstrInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MicroMipsInstrFPU.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MicroMipsInstrFormats.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MicroMipsInstrInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16InstrFormats.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16InstrInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips32r6InstrFormats.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips32r6InstrInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips64InstrInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips64r6InstrInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsCallingConv.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsCondMov.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsDSPInstrFormats.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsDSPInstrInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsEVAInstrFormats.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsEVAInstrInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsInstrFPU.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsInstrFormats.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsInstrInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsMSAInstrFormats.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsMSAInstrInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsMTInstrFormats.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsMTInstrInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsRegisterBanks.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsRegisterInfo.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSchedule.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsScheduleGeneric.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsScheduleP5600.td" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16FrameLowering.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16HardFloatInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16ISelDAGToDAG.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16ISelLowering.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16InstrInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\Mips16RegisterInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsAnalyzeImmediate.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsAsmPrinter.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsCCState.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsCallLowering.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsFrameLowering.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsISelDAGToDAG.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsISelLowering.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsInstrInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsLegalizerInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsMCInstLower.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsMachineFunction.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsOptionRecord.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsRegisterBankInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsRegisterInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSEFrameLowering.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSEISelDAGToDAG.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSEISelLowering.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSEInstrInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSERegisterInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsSubtarget.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsTargetMachine.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsTargetObjectFile.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsTargetStreamer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\ZERO_CHECK.vcxproj">
+      <Project>{90165466-42DF-3D9F-B105-0F123B7BB010}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Mips\MipsCommonTableGen.vcxproj">
+      <Project>{859ACA63-4531-30F5-AA56-936B807EADF4}</Project>
+      <Name>MipsCommonTableGen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\IR\intrinsics_gen.vcxproj">
+      <Project>{45316575-41FB-3FE8-B46C-4754B8907212}</Project>
+      <Name>intrinsics_gen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

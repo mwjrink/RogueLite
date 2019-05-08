@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{65B08170-FDB7-306A-AAF7-06F69C5299FF}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>LLVMXRay</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\Debug\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LLVMXRay.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LLVMXRay</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\Release\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LLVMXRay.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LLVMXRay</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\MinSizeRel\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">LLVMXRay.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">LLVMXRay</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\RelWithDebInfo\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">LLVMXRay.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">LLVMXRay</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/XRay/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/XRay/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/XRay/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/XRay/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/XRay/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/XRay/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/XRay/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/XRay/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/XRay/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/XRay/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/XRay/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/XRay/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\BlockIndexer.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\BlockPrinter.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\BlockVerifier.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\FDRRecordProducer.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\FDRRecords.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\FDRTraceExpander.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\FDRTraceWriter.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\FileHeaderReader.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\InstrumentationMap.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\LogBuilderConsumer.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\Profile.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\RecordInitializer.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\RecordPrinter.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\XRay\Trace.cpp" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\APFloat.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\APInt.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\APSInt.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\AllocatorList.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Any.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ArrayRef.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\BitVector.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\BitmaskEnum.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\BreadthFirstIterator.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\CachedHashString.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\DAGDeltaAlgorithm.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\DeltaAlgorithm.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\DenseMap.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\DenseMapInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\DenseSet.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\DepthFirstIterator.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\EpochTracker.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\EquivalenceClasses.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\FoldingSet.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\FunctionExtras.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\GraphTraits.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Hashing.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ImmutableList.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ImmutableMap.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ImmutableSet.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\IndexedMap.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\IntEqClasses.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\IntervalMap.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\IntrusiveRefCntPtr.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\MapVector.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\None.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Optional.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PackedVector.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PointerEmbeddedInt.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PointerIntPair.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PointerSumType.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PointerUnion.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PostOrderIterator.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PriorityQueue.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PriorityWorklist.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SCCIterator.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\STLExtras.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ScopeExit.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ScopedHashTable.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Sequence.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SetOperations.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SetVector.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SmallBitVector.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SmallPtrSet.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SmallSet.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SmallString.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SmallVector.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SparseBitVector.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SparseMultiSet.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SparseSet.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Statistic.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\StringExtras.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\StringMap.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\StringRef.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\StringSet.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\StringSwitch.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\TinyPtrVector.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Triple.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Twine.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\UniqueVector.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\VariadicFunction.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\bit.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\edit_distance.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ilist.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ilist_base.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ilist_iterator.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ilist_node.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ilist_node_base.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ilist_node_options.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\iterator.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\iterator_range.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\simple_ilist.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\BlockIndexer.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\BlockPrinter.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\BlockVerifier.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\FDRLogBuilder.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\FDRRecordConsumer.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\FDRRecordProducer.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\FDRRecords.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\FDRTraceExpander.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\FDRTraceWriter.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\FileHeaderReader.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\Graph.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\InstrumentationMap.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\Profile.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\RecordPrinter.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\Trace.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\XRayRecord.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\XRay\YAMLXRayRecord.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\ZERO_CHECK.vcxproj">
+      <Project>{90165466-42DF-3D9F-B105-0F123B7BB010}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Object\LLVMObject.vcxproj">
+      <Project>{BA49A38F-B477-3115-9F20-C48E45B2EA5A}</Project>
+      <Name>LLVMObject</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\LLVMSupport.vcxproj">
+      <Project>{A6119408-BC57-372D-AFE7-523409ADA724}</Project>
+      <Name>LLVMSupport</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

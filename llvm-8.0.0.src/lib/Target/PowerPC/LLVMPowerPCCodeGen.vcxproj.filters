@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCBoolRetToInt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCAsmPrinter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCBranchSelector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCBranchCoalescing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCCCState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCCTRLoops.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCHazardRecognizers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCInstrInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCISelDAGToDAG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCISelLowering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCEarlyReturn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCFastISel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCFrameLowering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCLoopPreIncPrep.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCMCInstLower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCMachineFunctionInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCMIPeephole.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCRegisterInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCQPXLoadSplat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCSubtarget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCTargetMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCTargetObjectFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCTargetTransformInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCTOCRegDeps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCTLSDynamicCall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCVSXCopy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCReduceCRLogicals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCVSXFMAMutate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCVSXSwapRemoval.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCExpandISEL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCPreEmitPeephole.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\P9InstrResources.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPC.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCCallingConv.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCInstr64Bit.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCInstrAltivec.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCInstrFormats.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCInstrHTM.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCInstrInfo.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCInstrQPX.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCInstrSPE.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCInstrVSX.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCPfmCounters.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCRegisterInfo.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCSchedule.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCSchedule440.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCScheduleA2.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCScheduleE500.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCScheduleE500mc.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCScheduleE5500.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCScheduleG3.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCScheduleG4.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCScheduleG4Plus.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCScheduleG5.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCScheduleP7.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCScheduleP8.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCScheduleP9.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCCCState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCCallingConv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCFrameLowering.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCHazardRecognizers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCISelLowering.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCInstrBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCInstrInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCMachineFunctionInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCPerfectShuffle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCRegisterInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCSubtarget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCTargetMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCTargetObjectFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCTargetStreamer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\PPCTargetTransformInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\PowerPC\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5C0E4F95-0330-331B-AB3E-4F132B1C8D1F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{ED204D02-C785-338D-AC83-7B99B80DA84E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TableGen descriptions">
+      <UniqueIdentifier>{E2A4FB46-CE1B-37FC-8792-7DB4B6E1EA30}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

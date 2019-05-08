@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\fffc9b63dee83c0870f3f8701632e26b\Attributes.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\fffc9b63dee83c0870f3f8701632e26b\IntrinsicEnums.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\fffc9b63dee83c0870f3f8701632e26b\IntrinsicImpl.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\a903abcac63b7e20778eae5b2ac0a474\intrinsics_gen.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\IR\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\IR\CMakeFiles\intrinsics_gen" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E092444D-7ADB-301A-8BF6-4C8D2A250A13}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

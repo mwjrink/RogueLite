@@ -2,10 +2,11 @@
 
 namespace world
 {
-    player::Player    player;
-    level::Level      current_level;
-    unsigned int      width, height;
-    quad_tree::LGrid* collision_tree;
+    player::Player      player;
+    proc_anim::Skeleton skeleton;
+    level::Level        current_level;
+    unsigned int        width, height;
+    quad_tree::LGrid*   collision_tree;
 
     void Update(float dt) {}
 

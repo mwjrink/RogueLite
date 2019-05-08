@@ -1,0 +1,1119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\AArch64TargetParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ARMTargetParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\AMDGPUMetadata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\APFloat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\APInt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\APSInt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ARMBuildAttrs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ARMAttributeParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ARMWinEH.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Allocator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\BinaryStreamError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\BinaryStreamReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\BinaryStreamRef.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\BinaryStreamWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\BlockFrequency.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\BranchProbability.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\BuryPointer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\CachePruning.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\circular_raw_ostream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Chrono.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\COM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\CodeGenCoverage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\CommandLine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Compression.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ConvertUTF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ConvertUTFWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\CrashRecoveryContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\DataExtractor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\DebugCounter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\DeltaAlgorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\DAGDeltaAlgorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\DJB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Error.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ErrorHandling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\FileCheck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\FileUtilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\FileOutputBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\FoldingSet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\FormattedStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\FormatVariadic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\GlobPattern.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\GraphWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Hashing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\InitLLVM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\IntEqClasses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\IntervalMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ItaniumManglingCanonicalizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\JamCRC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\JSON.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\KnownBits.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\LEB128.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\LineIterator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Locale.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\LockFileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\LowLevelType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ManagedStatic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\MathExtras.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\MemoryBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\MD5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\NativeFormatting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Options.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Parallel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\PluginLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\PrettyStackTrace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\RandomNumberGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Regex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ScaledNumber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ScopedPrinter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\SHA1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\SmallPtrSet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\SmallVector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\SourceMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\SpecialCaseList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Statistic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\StringExtras.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\StringMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\StringPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\StringSaver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\StringRef.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\SymbolRemappingReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\SystemUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\TarWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\TargetParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ThreadPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ToolOutputFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\TrigramIndex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Triple.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Twine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unicode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\UnicodeCaseFold.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\VersionTuple.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\VirtualFileSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\WithColor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\YAMLParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\YAMLTraits.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\raw_os_ostream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\raw_ostream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\regcomp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\regerror.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\regexec.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\regfree.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\regstrlcpy.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\xxhash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Atomic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\DynamicLibrary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Errno.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Host.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Memory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Mutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Path.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Process.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Program.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\RWMutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Signals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\TargetRegistry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\ThreadLocal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Threading.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Valgrind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Watchdog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\regex2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\regex_impl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\regutils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\Unix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\COM.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\DynamicLibrary.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\Host.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\Memory.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\Mutex.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\Path.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\Process.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\Program.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\RWMutex.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\Signals.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\ThreadLocal.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\Threading.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Unix\Watchdog.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\WindowsSupport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\COM.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\DynamicLibrary.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\Host.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\Memory.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\Mutex.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\Path.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\Process.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\Program.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\RWMutex.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\Signals.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\ThreadLocal.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\Threading.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\Watchdog.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\Windows\explicit_symbols.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\APFloat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\APInt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\APSInt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\AllocatorList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Any.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ArrayRef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\BitVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\BitmaskEnum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\BreadthFirstIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\CachedHashString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\DAGDeltaAlgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\DeltaAlgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\DenseMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\DenseMapInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\DenseSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\DepthFirstIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\EpochTracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\EquivalenceClasses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\FoldingSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\FunctionExtras.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\GraphTraits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Hashing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ImmutableList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ImmutableMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ImmutableSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\IndexedMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\IntEqClasses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\IntervalMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\IntrusiveRefCntPtr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\MapVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\None.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Optional.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PackedVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PointerEmbeddedInt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PointerIntPair.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PointerSumType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PointerUnion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PostOrderIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PriorityQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\PriorityWorklist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SCCIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\STLExtras.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ScopeExit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ScopedHashTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Sequence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SetOperations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SetVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SmallBitVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SmallPtrSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SmallSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SmallString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SmallVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SparseBitVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SparseMultiSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\SparseSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Statistic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\StringExtras.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\StringMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\StringRef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\StringSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\StringSwitch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\TinyPtrVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Triple.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\Twine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\UniqueVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\VariadicFunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\bit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\edit_distance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ilist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ilist_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ilist_iterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ilist_node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ilist_node_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\ilist_node_options.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\iterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\iterator_range.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\ADT\simple_ilist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\AArch64TargetParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\AMDGPUMetadata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\AMDHSAKernelDescriptor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ARMAttributeParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ARMBuildAttributes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ARMEHABI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ARMTargetParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ARMWinEH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\AlignOf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Allocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ArrayRecycler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Atomic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\AtomicOrdering.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\BinaryByteStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\BinaryItemStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\BinaryStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\BinaryStreamArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\BinaryStreamError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\BinaryStreamReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\BinaryStreamRef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\BinaryStreamWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\BlockFrequency.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\BranchProbability.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\BuryPointer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\CBindingWrapping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\CFGUpdate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\COM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\CachePruning.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Capacity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Casting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\CheckedArithmetic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Chrono.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\CodeGen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\CodeGenCoverage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\CommandLine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Compiler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Compression.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ConvertUTF.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\CrashRecoveryContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\DJB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\DOTGraphTraits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\DataExtractor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\DataTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\DebugCounter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\DynamicLibrary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Endian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\EndianStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Errc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Errno.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Error.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ErrorHandling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ErrorOr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\FileCheck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\FileOutputBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\FileSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\FileUtilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Format.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\FormatAdapters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\FormatCommon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\FormatProviders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\FormatVariadic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\FormatVariadicDetails.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\FormattedStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\GenericDomTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\GenericDomTreeConstruction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\GlobPattern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\GraphWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Host.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\InitLLVM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ItaniumManglingCanonicalizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\JSON.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\JamCRC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\KnownBits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\LEB128.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\LineIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Locale.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\LockFileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\LowLevelTypeImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\MD5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\MSVCErrorWorkarounds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\MachineValueType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ManagedStatic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\MathExtras.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\MemAlloc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\MemoryBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\MipsABIFlags.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Mutex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\MutexGuard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\NativeFormatting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\OnDiskHashTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Options.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Parallel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Path.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\PluginLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\PointerLikeTypeTraits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\PrettyStackTrace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Printable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Process.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Program.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\RWMutex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\RandomNumberGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Recycler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\RecyclingAllocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Regex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Registry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ReverseIteration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\SHA1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\SMLoc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\SaveAndRestore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ScaledNumber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ScopedPrinter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Signals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\SmallVectorMemoryBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\SourceMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\SpecialCaseList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\StringPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\StringSaver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\SwapByteOrder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\SymbolRemappingReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\SystemUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\TarWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\TargetParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\TargetRegistry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\TargetSelect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\TaskQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ThreadLocal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ThreadPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Threading.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\ToolOutputFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\TrailingObjects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\TrigramIndex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\TypeName.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Unicode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\UnicodeCharRanges.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\UniqueLock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Valgrind.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\VersionTuple.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\VirtualFileSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Watchdog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\Win64EH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\WindowsError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\WithColor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\X86DisassemblerDecoderCommon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\YAMLParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\YAMLTraits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\circular_raw_ostream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\raw_os_ostream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\raw_ostream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\raw_sha1_ostream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\type_traits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\xxhash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5C0E4F95-0330-331B-AB3E-4F132B1C8D1F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{ED204D02-C785-338D-AC83-7B99B80DA84E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

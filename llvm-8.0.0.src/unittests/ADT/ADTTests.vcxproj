@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{032754C7-9D66-35B6-A423-D1FC66A2BBBA}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ADTTests</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ADTTests.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ADTTests</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ADTTests.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ADTTests</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ADTTests.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ADTTests</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ADTTests.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ADTTests</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googletest\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;GTEST_LANG_CXX11=1;GTEST_HAS_TR1_TUPLE=0;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;GTEST_LANG_CXX11=1;GTEST_HAS_TR1_TUPLE=0;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googletest\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googletest\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\Debug\lib\LLVMSupport.lib;..\..\Debug\lib\LLVMSupport.lib;..\..\Debug\lib\gtest_main.lib;..\..\Debug\lib\gtest.lib;..\..\Debug\lib\LLVMSupport.lib;psapi.lib;shell32.lib;ole32.lib;uuid.lib;advapi32.lib;delayimp.lib;-delayload:shell32.dll;-delayload:ole32.dll;..\..\Debug\lib\LLVMDemangle.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/Debug/ADTTests.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/Debug/ADTTests.pdb</ProgramDataBaseFile>
+      <StackReserveSize>10000000</StackReserveSize>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googletest\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;GTEST_LANG_CXX11=1;GTEST_HAS_TR1_TUPLE=0;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;GTEST_LANG_CXX11=1;GTEST_HAS_TR1_TUPLE=0;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googletest\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googletest\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\Release\lib\LLVMSupport.lib;..\..\Release\lib\LLVMSupport.lib;..\..\Release\lib\gtest_main.lib;..\..\Release\lib\gtest.lib;..\..\Release\lib\LLVMSupport.lib;psapi.lib;shell32.lib;ole32.lib;uuid.lib;advapi32.lib;delayimp.lib;-delayload:shell32.dll;-delayload:ole32.dll;..\..\Release\lib\LLVMDemangle.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/Release/ADTTests.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/Release/ADTTests.pdb</ProgramDataBaseFile>
+      <StackReserveSize>10000000</StackReserveSize>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googletest\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;GTEST_LANG_CXX11=1;GTEST_HAS_TR1_TUPLE=0;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;GTEST_LANG_CXX11=1;GTEST_HAS_TR1_TUPLE=0;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googletest\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googletest\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\MinSizeRel\lib\LLVMSupport.lib;..\..\MinSizeRel\lib\LLVMSupport.lib;..\..\MinSizeRel\lib\gtest_main.lib;..\..\MinSizeRel\lib\gtest.lib;..\..\MinSizeRel\lib\LLVMSupport.lib;psapi.lib;shell32.lib;ole32.lib;uuid.lib;advapi32.lib;delayimp.lib;-delayload:shell32.dll;-delayload:ole32.dll;..\..\MinSizeRel\lib\LLVMDemangle.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/MinSizeRel/ADTTests.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/MinSizeRel/ADTTests.pdb</ProgramDataBaseFile>
+      <StackReserveSize>10000000</StackReserveSize>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googletest\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;GTEST_LANG_CXX11=1;GTEST_HAS_TR1_TUPLE=0;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;GTEST_LANG_CXX11=1;GTEST_HAS_TR1_TUPLE=0;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googletest\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googletest\include;C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\RelWithDebInfo\lib\LLVMSupport.lib;..\..\RelWithDebInfo\lib\LLVMSupport.lib;..\..\RelWithDebInfo\lib\gtest_main.lib;..\..\RelWithDebInfo\lib\gtest.lib;..\..\RelWithDebInfo\lib\LLVMSupport.lib;psapi.lib;shell32.lib;ole32.lib;uuid.lib;advapi32.lib;delayimp.lib;-delayload:shell32.dll;-delayload:ole32.dll;..\..\RelWithDebInfo\lib\LLVMDemangle.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/RelWithDebInfo/ADTTests.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/RelWithDebInfo/ADTTests.pdb</ProgramDataBaseFile>
+      <StackReserveSize>10000000</StackReserveSize>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/ADT/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\AnyTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\APFloatTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\APIntTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\APSIntTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\ArrayRefTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\BitmaskEnumTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\BitVectorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\BreadthFirstIteratorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\BumpPtrListTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\DAGDeltaAlgorithmTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\DeltaAlgorithmTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\DenseMapTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\DenseSetTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\DepthFirstIteratorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\EquivalenceClassesTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\FoldingSet.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\FunctionExtrasTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\FunctionRefTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\HashingTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\IListBaseTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\IListIteratorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\IListNodeBaseTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\IListNodeTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\IListSentinelTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\IListTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\ImmutableListTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\ImmutableMapTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\ImmutableSetTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\IntEqClassesTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\IntervalMapTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\IntrusiveRefCntPtrTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\IteratorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\MakeUniqueTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\MappedIteratorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\MapVectorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\OptionalTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\PackedVectorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\PointerEmbeddedIntTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\PointerIntPairTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\PointerSumTypeTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\PointerUnionTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\PostOrderIteratorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\PriorityWorklistTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\RangeAdapterTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\SCCIteratorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\STLExtrasTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\ScopeExitTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\SequenceTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\SetVectorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\SimpleIListTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\SmallPtrSetTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\SmallSetTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\SmallStringTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\SmallVectorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\SparseBitVectorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\SparseMultiSetTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\SparseSetTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\StatisticTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\StringExtrasTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\StringMapTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\StringRefTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\StringSwitchTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\TinyPtrVectorTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\TripleTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\TwineTest.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\VariadicFunctionTest.cpp" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\TestGraph.h" />
+    <ResourceCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\resources\windows_version_resource.rc">
+      <SuppressStartupBanner Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</SuppressStartupBanner>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">RC_VERSION_FIELD_1=8;RC_VERSION_FIELD_2=0;RC_VERSION_FIELD_3=0;RC_VERSION_FIELD_4=0;RC_FILE_VERSION=\"8.0.0\";RC_INTERNAL_NAME=\"ADTTests\";RC_PRODUCT_NAME=\"LLVM\";RC_PRODUCT_VERSION=\"8.0.0\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SuppressStartupBanner Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</SuppressStartupBanner>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">RC_VERSION_FIELD_1=8;RC_VERSION_FIELD_2=0;RC_VERSION_FIELD_3=0;RC_VERSION_FIELD_4=0;RC_FILE_VERSION=\"8.0.0\";RC_INTERNAL_NAME=\"ADTTests\";RC_PRODUCT_NAME=\"LLVM\";RC_PRODUCT_VERSION=\"8.0.0\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SuppressStartupBanner Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</SuppressStartupBanner>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">RC_VERSION_FIELD_1=8;RC_VERSION_FIELD_2=0;RC_VERSION_FIELD_3=0;RC_VERSION_FIELD_4=0;RC_FILE_VERSION=\"8.0.0\";RC_INTERNAL_NAME=\"ADTTests\";RC_PRODUCT_NAME=\"LLVM\";RC_PRODUCT_VERSION=\"8.0.0\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SuppressStartupBanner Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</SuppressStartupBanner>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">RC_VERSION_FIELD_1=8;RC_VERSION_FIELD_2=0;RC_VERSION_FIELD_3=0;RC_VERSION_FIELD_4=0;RC_FILE_VERSION=\"8.0.0\";RC_INTERNAL_NAME=\"ADTTests\";RC_PRODUCT_NAME=\"LLVM\";RC_PRODUCT_VERSION=\"8.0.0\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\ZERO_CHECK.vcxproj">
+      <Project>{90165466-42DF-3D9F-B105-0F123B7BB010}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Demangle\LLVMDemangle.vcxproj">
+      <Project>{BA4B55FE-DC11-32BE-9002-A599D7E2E1FB}</Project>
+      <Name>LLVMDemangle</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Support\LLVMSupport.vcxproj">
+      <Project>{A6119408-BC57-372D-AFE7-523409ADA724}</Project>
+      <Name>LLVMSupport</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\gtest.vcxproj">
+      <Project>{1CAC7F22-30D1-3E2D-A617-AE1B3DCEE321}</Project>
+      <Name>gtest</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\unittest\UnitTestMain\gtest_main.vcxproj">
+      <Project>{A8F55643-4E0C-3348-8EDE-4FF8A6CF6FCC}</Project>
+      <Name>gtest_main</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\IR\intrinsics_gen.vcxproj">
+      <Project>{45316575-41FB-3FE8-B46C-4754B8907212}</Project>
+      <Name>intrinsics_gen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\DAGCombiner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\FastISel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\FunctionLoweringInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\InstrEmitter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\LegalizeDAG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\LegalizeFloatTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\LegalizeIntegerTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\LegalizeTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\LegalizeTypesGeneric.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\LegalizeVectorOps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\LegalizeVectorTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\ResourcePriorityQueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\ScheduleDAGFast.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\ScheduleDAGRRList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\ScheduleDAGSDNodes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\ScheduleDAGVLIW.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\SelectionDAGBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\SelectionDAG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\SelectionDAGAddressAnalysis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\SelectionDAGDumper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\SelectionDAGISel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\SelectionDAGPrinter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\SelectionDAGTargetInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\StatepointLowering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\TargetLowering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\InstrEmitter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\LegalizeTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\SDNodeDbgValue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\ScheduleDAGSDNodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\SelectionDAGBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\StatepointLowering.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SelectionDAG\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5C0E4F95-0330-331B-AB3E-4F132B1C8D1F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{ED204D02-C785-338D-AC83-7B99B80DA84E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

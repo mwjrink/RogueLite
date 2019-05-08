@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\AsmWriterTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\AttributesTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\BasicBlockTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\CFGBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\ConstantRangeTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\ConstantsTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\DebugInfoTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\DebugTypeODRUniquingTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\DominatorTreeTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\DominatorTreeBatchUpdatesTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\DomTreeUpdaterTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\FunctionTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\PassBuilderCallbacksTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\IRBuilderTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\InstructionsTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\IntrinsicsTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\LegacyPassManagerTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\MDBuilderTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\ManglerTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\MetadataTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\ModuleTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\PassManagerTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\PatternMatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\TypesTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\UseTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\UserTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\ValueHandleTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\ValueMapTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\ValueTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\VerifierTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\WaymarkTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\CFGBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\resources\windows_version_resource.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5C0E4F95-0330-331B-AB3E-4F132B1C8D1F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{ED204D02-C785-338D-AC83-7B99B80DA84E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

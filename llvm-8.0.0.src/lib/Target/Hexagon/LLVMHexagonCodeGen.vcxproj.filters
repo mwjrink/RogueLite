@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\BitTracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonAsmPrinter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonBitSimplify.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonBitTracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonBlockRanges.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonBranchRelaxation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonCFGOptimizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonCommonGEP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonConstExtenders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonConstPropagation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonCopyToCombine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonEarlyIfConv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonExpandCondsets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonFixupHwLoops.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonFrameLowering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonGenExtract.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonGenInsert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonGenMux.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonGenPredicate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonHardwareLoops.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonHazardRecognizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonInstrInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonISelDAGToDAG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonISelDAGToDAGHVX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonISelLowering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonISelLoweringHVX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonLoopIdiomRecognition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonMachineFunctionInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonMachineScheduler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonMCInstLower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonNewValueJump.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonOptAddrMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonOptimizeSZextends.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonPeephole.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonRDFOpt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonRegisterInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonSelectionDAGInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonSplitConst32AndConst64.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonSplitDouble.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonStoreWidening.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonSubtarget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonTargetMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonTargetObjectFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonTargetTransformInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonVectorLoopCarriedReuse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonVectorPrint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonVExtract.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonVLIWPacketizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\RDFCopy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\RDFDeadCode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\RDFGraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\RDFLiveness.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\RDFRegisters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\Hexagon.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonCallingConv.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepArch.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepIICHVX.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepIICScalar.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepITypes.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepInstrFormats.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepInstrInfo.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepMapAsm2Intrin.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepMappings.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepOperands.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonIICHVX.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonIICScalar.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonInstrFormats.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonInstrFormatsV5.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonInstrFormatsV60.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonInstrFormatsV65.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonIntrinsics.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonIntrinsicsV5.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonIntrinsicsV60.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonMapAsm2IntrinV62.gen.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonMapAsm2IntrinV65.gen.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonOperands.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonPatterns.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonPatternsHVX.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonPatternsV65.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonPseudo.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonRegisterInfo.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonSchedule.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonScheduleV5.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonScheduleV55.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonScheduleV60.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonScheduleV62.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonScheduleV65.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonScheduleV66.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\BitTracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\Hexagon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonAsmPrinter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonBitTracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonBlockRanges.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepArch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepDecoders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepITypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonDepTimingClasses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonFrameLowering.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonHazardRecognizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonISelDAGToDAG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonISelLowering.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonInstrInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonMachineFunctionInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonMachineScheduler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonRegisterInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonSelectionDAGInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonSubtarget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonTargetMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonTargetObjectFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonTargetStreamer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonTargetTransformInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\HexagonVLIWPacketizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\RDFCopy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\RDFDeadCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\RDFGraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\RDFLiveness.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\RDFRegisters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\Hexagon\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5C0E4F95-0330-331B-AB3E-4F132B1C8D1F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{ED204D02-C785-338D-AC83-7B99B80DA84E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TableGen descriptions">
+      <UniqueIdentifier>{E2A4FB46-CE1B-37FC-8792-7DB4B6E1EA30}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

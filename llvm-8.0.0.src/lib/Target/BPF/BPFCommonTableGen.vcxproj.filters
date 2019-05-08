@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\975b7ac790417d727e6a104cca528a6f\BPFGenAsmMatcher.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\975b7ac790417d727e6a104cca528a6f\BPFGenAsmWriter.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\975b7ac790417d727e6a104cca528a6f\BPFGenCallingConv.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\975b7ac790417d727e6a104cca528a6f\BPFGenDAGISel.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\975b7ac790417d727e6a104cca528a6f\BPFGenDisassemblerTables.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\975b7ac790417d727e6a104cca528a6f\BPFGenInstrInfo.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\975b7ac790417d727e6a104cca528a6f\BPFGenMCCodeEmitter.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\975b7ac790417d727e6a104cca528a6f\BPFGenRegisterInfo.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\975b7ac790417d727e6a104cca528a6f\BPFGenSubtargetInfo.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\aa7ee88e683f285eb931729ce4f60322\BPFCommonTableGen.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\BPF\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\BPF\CMakeFiles\BPFCommonTableGen" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E092444D-7ADB-301A-8BF6-4C8D2A250A13}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

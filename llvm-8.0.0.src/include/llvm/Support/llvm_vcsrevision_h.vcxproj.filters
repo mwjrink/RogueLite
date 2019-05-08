@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\8d97b16d4f37a704f1976562b4c1df08\VCSRevision.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\547f429ce6747ba1774f02708045f3e5\llvm_vcsrevision_h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\Support\CMakeFiles\llvm_vcsrevision_h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E092444D-7ADB-301A-8BF6-4C8D2A250A13}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

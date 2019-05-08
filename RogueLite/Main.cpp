@@ -2,19 +2,22 @@
 
 #include "Main.h"
 
-Renderable r;
-Camera     camera;
+// Renderable r;
+proc_anim::Skeleton s;
+Camera              camera;
 
 auto INIT_TEST_SPRITE()
 {
-    r.tile_sheet = Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
-    // r.position   = glm::vec2(1720.0f, 980.0f);
-    r.position           = glm::vec2(500.0f, 300.0f);
-    r.size               = glm::vec2(48.0f, 48.0f);
-    r.scale              = 1.0f;
-    r.current_tile_index = 0;
+    // r.tile_sheet = Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/SpriteSheet.png"), glm::ivec2(4, 4));
+    //// r.position   = glm::vec2(1720.0f, 980.0f);
+    // r.position           = glm::vec2(500.0f, 300.0f);
+    // r.size               = glm::vec2(48.0f, 48.0f);
+    // r.scale              = 1.0f;
+    // r.current_tile_index = 0;
 
-    player::player_init(world::player);
+    // player::player_init(world::player);
+
+    s = proc_anim::Skeleton();
 
     world::current_level        = level::Level();
     world::current_level.map    = level::base_map;
@@ -142,7 +145,7 @@ int main(int argc, char* argv[])
 void Update(float dt)
 {
     player::move(world::player, dt);
-    update_animations(world::player, dt);
+    s.move();
 }
 
 void Render(Camera camera)

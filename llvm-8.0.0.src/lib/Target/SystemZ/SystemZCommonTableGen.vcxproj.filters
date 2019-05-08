@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\6eab8727d46c68247df3f9719dd8ff7d\SystemZGenAsmMatcher.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\6eab8727d46c68247df3f9719dd8ff7d\SystemZGenAsmWriter.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\6eab8727d46c68247df3f9719dd8ff7d\SystemZGenCallingConv.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\6eab8727d46c68247df3f9719dd8ff7d\SystemZGenDAGISel.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\6eab8727d46c68247df3f9719dd8ff7d\SystemZGenDisassemblerTables.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\6eab8727d46c68247df3f9719dd8ff7d\SystemZGenInstrInfo.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\6eab8727d46c68247df3f9719dd8ff7d\SystemZGenMCCodeEmitter.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\6eab8727d46c68247df3f9719dd8ff7d\SystemZGenRegisterInfo.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\6eab8727d46c68247df3f9719dd8ff7d\SystemZGenSubtargetInfo.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\51f6d9c987bd4f627706a8f06c4f15ca\SystemZCommonTableGen.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\SystemZ\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\Target\SystemZ\CMakeFiles\SystemZCommonTableGen" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E092444D-7ADB-301A-8BF6-4C8D2A250A13}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

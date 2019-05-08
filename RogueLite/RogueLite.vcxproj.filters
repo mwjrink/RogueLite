@@ -16,18 +16,6 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{113650c9-57bc-4e14-9f1d-ed1d2f8bf9f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Libraries">
-      <UniqueIdentifier>{3b46b258-80bf-42a5-a1e8-d41356645952}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Libraries\llvm">
-      <UniqueIdentifier>{7906f88a-754f-469a-a897-e20a486d6c3b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Libraries">
-      <UniqueIdentifier>{fda4dae1-0a4a-48a0-a49c-0281a9564f55}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Libraries\llvm">
-      <UniqueIdentifier>{b252d17f-2f22-4af1-9a97-faf59184f6b9}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -72,11 +60,8 @@
     <ClCompile Include="LGrid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SmallVector.cpp">
-      <Filter>Source Files\Libraries\llvm</Filter>
-    </ClCompile>
-    <ClCompile Include="ErrorHandling.cpp">
-      <Filter>Source Files\Libraries\llvm</Filter>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,47 +107,14 @@
     <ClInclude Include="Level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libraries\MultiCastDelegate.h">
-      <Filter>Libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\stb_image.h">
-      <Filter>Libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\ThreadPool.h">
-      <Filter>Libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\Delegate.h">
-      <Filter>Libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\DelegateBase.h">
-      <Filter>Libraries</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShelfPack.h">
-      <Filter>Libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\stb_image_write.h">
-      <Filter>Libraries</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\RapidXML\rapidxml.hpp">
-      <Filter>Libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\RapidXML\rapidxml_iterators.hpp">
-      <Filter>Libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\RapidXML\rapidxml_print.hpp">
-      <Filter>Libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\RapidXML\rapidxml_utils.hpp">
-      <Filter>Libraries</Filter>
     </ClInclude>
     <ClInclude Include="LGrid.h">
       <Filter>Header Files</Filter>
@@ -176,38 +128,8 @@
     <ClInclude Include="..\boost_1_70_0\boost\container\small_vector.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libraries\llvm\SmallVector.h">
-      <Filter>Libraries\llvm</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\llvm\iterator_range.h">
-      <Filter>Libraries\llvm</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\llvm\Compiler.h">
-      <Filter>Libraries\llvm</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\llvm\ErrorHandling.h">
-      <Filter>Libraries\llvm</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\llvm\MathExtras.h">
-      <Filter>Libraries\llvm</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\llvm\MemAlloc.h">
-      <Filter>Libraries\llvm</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\llvm\type_traits.h">
-      <Filter>Libraries\llvm</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\llvm\AlignOf.h">
-      <Filter>Libraries\llvm</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\llvm\llvm-config.h">
-      <Filter>Libraries\llvm</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\llvm\SwapByteOrder.h">
-      <Filter>Libraries\llvm</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\llvm\DataTypes.h">
-      <Filter>Libraries\llvm</Filter>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

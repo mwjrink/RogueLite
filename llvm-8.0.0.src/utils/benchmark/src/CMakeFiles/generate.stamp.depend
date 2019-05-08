@@ -1,0 +1,7 @@
+# CMake generation dependency list for this directory.
+C:/Development/C++/RogueLite/llvm-8.0.0.src/utils/benchmark/cmake/Config.cmake.in
+C:/Development/C++/RogueLite/llvm-8.0.0.src/utils/benchmark/cmake/benchmark.pc.in
+C:/Development/C++/RogueLite/llvm-8.0.0.src/utils/benchmark/src/CMakeLists.txt
+C:/Program Files/CMake/share/cmake-3.14/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/WriteBasicConfigVersionFile.cmake

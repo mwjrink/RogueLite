@@ -7,14 +7,15 @@
 
 //#include <thread>
 
+#include <ctime>
 #include <iostream>
 #include <sstream>
-#include <ctime>
 
 #include "Camera.h"
 #include "Graphics.h"
 #include "InputManager.h"
 #include "MainLoopCallbacks.h"
-#include "World.h"
 #include "Player.h"
+#include "World.h"
 
+#include "Skeleton.h"

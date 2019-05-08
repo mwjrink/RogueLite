@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{64020FA9-29FF-3311-810F-9EDF1CDBC168}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>LLVMCodeGen</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\Debug\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LLVMCodeGen.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LLVMCodeGen</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\Release\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LLVMCodeGen.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LLVMCodeGen</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\MinSizeRel\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">LLVMCodeGen.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">LLVMCodeGen</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\RelWithDebInfo\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">LLVMCodeGen.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">LLVMCodeGen</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:strictStrings -w14062 /EHs-c-</AdditionalOptions>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4141;4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4577;4091;4592;4319;4709;4324</DisableSpecificWarnings>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;GTEST_HAS_RTTI=0;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/CodeGen/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/CodeGen/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/CodeGen/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/CodeGen/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/CodeGen/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/CodeGen/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/CodeGen/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/CodeGen/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/CodeGen/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/CodeGen/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/CodeGen/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/lib/CodeGen/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\AggressiveAntiDepBreaker.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\AllocationOrder.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\Analysis.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\AtomicExpandPass.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\BasicTargetTransformInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\BranchFolding.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\BranchRelaxation.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\BreakFalseDeps.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\BuiltinGCs.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CalcSpillWeights.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CallingConvLower.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CFIInstrInserter.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CodeGen.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CodeGenPrepare.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CriticalAntiDepBreaker.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\DeadMachineInstructionElim.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\DetectDeadLanes.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\DFAPacketizer.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\DwarfEHPrepare.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\EarlyIfConversion.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\EdgeBundles.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ExecutionDomainFix.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ExpandISelPseudos.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ExpandMemCmp.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ExpandPostRAPseudos.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ExpandReductions.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\FaultMaps.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\FEntryInserter.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\FuncletLayout.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\GCMetadata.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\GCMetadataPrinter.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\GCRootLowering.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\GCStrategy.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\GlobalMerge.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\IfConversion.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ImplicitNullChecks.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\IndirectBrExpandPass.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\InlineSpiller.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\InterferenceCache.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\InterleavedAccessPass.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\InterleavedLoadCombinePass.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\IntrinsicLowering.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LatencyPriorityQueue.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LazyMachineBlockFrequencyInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LexicalScopes.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveDebugValues.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveDebugVariables.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveIntervals.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveInterval.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveIntervalUnion.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LivePhysRegs.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveRangeCalc.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveRangeEdit.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveRangeShrink.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveRegMatrix.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveRegUnits.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveStacks.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveVariables.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LLVMTargetMachine.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LocalStackSlotAllocation.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LoopTraversal.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LowLevelType.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LowerEmuTLS.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineBasicBlock.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineBlockFrequencyInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineBlockPlacement.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineBranchProbabilityInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineCombiner.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineCopyPropagation.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineCSE.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineDominanceFrontier.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineDominators.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineFrameInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineFunction.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineFunctionPass.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineFunctionPrinterPass.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineInstrBundle.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineInstr.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineLICM.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineLoopInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineModuleInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineModuleInfoImpls.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineOperand.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineOptimizationRemarkEmitter.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineOutliner.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachinePipeliner.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachinePostDominators.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineRegionInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineRegisterInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineScheduler.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineSink.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineSSAUpdater.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineTraceMetrics.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MachineVerifier.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\PatchableFunction.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MIRPrinter.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MIRPrintingPass.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MacroFusion.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\OptimizePHIs.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ParallelCG.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\PeepholeOptimizer.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\PHIElimination.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\PHIEliminationUtils.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\PostRAHazardRecognizer.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\PostRASchedulerList.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\PreISelIntrinsicLowering.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ProcessImplicitDefs.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\PrologEpilogInserter.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\PseudoSourceValue.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ReachingDefAnalysis.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegAllocBase.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegAllocBasic.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegAllocFast.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegAllocGreedy.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegAllocPBQP.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegisterClassInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegisterCoalescer.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegisterPressure.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegisterScavenging.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RenameIndependentSubregs.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\MIRCanonicalizerPass.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegisterUsageInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegUsageInfoCollector.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegUsageInfoPropagate.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ResetMachineFunctionPass.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SafeStack.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SafeStackColoring.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SafeStackLayout.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ScalarizeMaskedMemIntrin.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ScheduleDAG.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ScheduleDAGInstrs.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ScheduleDAGPrinter.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ScoreboardHazardRecognizer.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ShadowStackGCLowering.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ShrinkWrap.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SjLjEHPrepare.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SlotIndexes.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SpillPlacement.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SplitKit.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\StackColoring.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\StackMapLivenessAnalysis.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\StackMaps.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\StackProtector.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\StackSlotColoring.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\TailDuplication.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\TailDuplicator.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\TargetFrameLoweringImpl.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\TargetInstrInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\TargetLoweringBase.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\TargetLoweringObjectFileImpl.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\TargetOptionsImpl.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\TargetPassConfig.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\TargetRegisterInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\TargetSchedule.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\TargetSubtargetInfo.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\TwoAddressInstructionPass.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\UnreachableBlockElim.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\ValueTypes.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\VirtRegMap.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\WasmEHPrepare.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\WinEHPrepare.cpp" />
+    <ClCompile Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\XRayInstrumentation.cpp" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\AggressiveAntiDepBreaker.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\AllocationOrder.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\AntiDepBreaker.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\BranchFolding.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\CriticalAntiDepBreaker.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\InterferenceCache.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveDebugVariables.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveRangeCalc.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\LiveRangeUtils.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\PHIEliminationUtils.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegAllocBase.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\RegisterCoalescer.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SafeStackColoring.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SafeStackLayout.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SpillPlacement.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\Spiller.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\lib\CodeGen\SplitKit.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\AccelTable.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\Analysis.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\AsmPrinter.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\AsmPrinterHandler.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\AtomicExpandUtils.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\BasicTTIImpl.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\BuiltinGCs.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\CalcSpillWeights.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\CallingConvLower.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\CostTable.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\DAGCombine.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\DFAPacketizer.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\DIE.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\DbgEntityHistoryCalculator.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\DebugHandlerBase.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\DwarfStringPoolEntry.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\EdgeBundles.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ExecutionDomainFix.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ExpandReductions.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\FastISel.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\FaultMaps.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\FunctionLoweringInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\GCMetadata.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\GCMetadataPrinter.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\GCStrategy.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ISDOpcodes.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\IntrinsicLowering.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LatencyPriorityQueue.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LazyMachineBlockFrequencyInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LexicalScopes.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LinkAllAsmWriterComponents.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LinkAllCodegenComponents.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LiveInterval.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LiveIntervalUnion.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LiveIntervals.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LivePhysRegs.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LiveRangeEdit.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LiveRegMatrix.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LiveRegUnits.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LiveStacks.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LiveVariables.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LoopTraversal.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\LowLevelType.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MIRPrinter.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MIRYamlMapping.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachORelocation.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineBasicBlock.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineBlockFrequencyInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineBranchProbabilityInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineCombinerPattern.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineConstantPool.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineDominanceFrontier.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineDominators.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineFrameInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineFunction.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineFunctionPass.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineInstr.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineInstrBuilder.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineInstrBundle.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineInstrBundleIterator.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineJumpTableInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineLoopInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineMemOperand.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineModuleInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineModuleInfoImpls.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineOperand.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineOptimizationRemarkEmitter.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineOutliner.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachinePassRegistry.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachinePipeliner.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachinePostDominators.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineRegionInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineRegisterInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineSSAUpdater.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineScheduler.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MachineTraceMetrics.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\MacroFusion.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\PBQPRAConstraint.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ParallelCG.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\Passes.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\PreISelIntrinsicLowering.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\PseudoSourceValue.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ReachingDefAnalysis.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\RegAllocPBQP.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\RegAllocRegistry.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\RegisterClassInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\RegisterPressure.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\RegisterScavenging.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\RegisterUsageInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ResourcePriorityQueue.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\RuntimeLibcalls.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ScheduleDAG.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ScheduleDAGInstrs.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ScheduleDAGMutation.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ScheduleDFS.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ScheduleHazardRecognizer.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\SchedulerRegistry.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ScoreboardHazardRecognizer.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\SelectionDAG.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\SelectionDAGAddressAnalysis.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\SelectionDAGISel.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\SelectionDAGNodes.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\SelectionDAGTargetInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\SlotIndexes.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\StackMaps.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\StackProtector.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\TailDuplicator.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\TargetCallingConv.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\TargetFrameLowering.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\TargetInstrInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\TargetLowering.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\TargetLoweringObjectFileImpl.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\TargetOpcodes.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\TargetPassConfig.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\TargetRegisterInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\TargetSchedule.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\TargetSubtargetInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\UnreachableBlockElim.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\ValueTypes.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\VirtRegMap.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\WasmEHFuncInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\WinEHFuncInfo.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\CommandFlags.inc" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\PBQP\CostAllocator.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\PBQP\Graph.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\PBQP\Math.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\PBQP\ReductionRules.h" />
+    <ClInclude Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\CodeGen\PBQP\Solution.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\ZERO_CHECK.vcxproj">
+      <Project>{90165466-42DF-3D9F-B105-0F123B7BB010}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\include\llvm\IR\intrinsics_gen.vcxproj">
+      <Project>{45316575-41FB-3FE8-B46C-4754B8907212}</Project>
+      <Name>intrinsics_gen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

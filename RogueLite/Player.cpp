@@ -18,13 +18,6 @@ namespace player
         p.current_tile_index = 0;
         p.speed              = 192.0f;
 
-        float timing                                                    = 0.3f;
-        p.current_frame                                                 = new Renderable::aframe(0, timing);
-        p.current_frame->next_frame                                     = new Renderable::aframe(1, timing);
-        p.current_frame->next_frame->next_frame                         = new Renderable::aframe(2, timing);
-        p.current_frame->next_frame->next_frame->next_frame             = new Renderable::aframe(1, timing);
-        p.current_frame->next_frame->next_frame->next_frame->next_frame = p.current_frame;
-
         // TODO: ABOLISH THIS SYSTEM IN FAVOUR OF POLLING :'(
         // input::delegate_type dLambda = [](int key, int action) {
         //    switch (action)

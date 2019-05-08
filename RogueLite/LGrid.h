@@ -1,7 +1,7 @@
 #pragma once
 
+#include <llvm/ADT/SmallVector.h>
 #include "FreeList.h"
-#include "Libraries/llvm/SmallVector.h"
 
 namespace quad_tree
 {

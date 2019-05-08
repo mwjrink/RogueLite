@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{659D99C6-CC9F-37DA-9A60-5907B21716AB}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>UnitTests</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests;C:\Development\C++\RogueLite\llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/C++/RogueLite/llvm-8.0.0.src -BC:/Development/C++/RogueLite/llvm-8.0.0.src --check-stamp-file C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Development/C++/RogueLite/llvm-8.0.0.src/unittests/CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeLists.txt;C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\ZERO_CHECK.vcxproj">
+      <Project>{90165466-42DF-3D9F-B105-0F123B7BB010}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Target\AArch64\AArch64Tests.vcxproj">
+      <Project>{839DED8E-669D-3FA6-9C44-FCF5E348211F}</Project>
+      <Name>AArch64Tests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ADT\ADTTests.vcxproj">
+      <Project>{032754C7-9D66-35B6-A423-D1FC66A2BBBA}</Project>
+      <Name>ADTTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Analysis\AnalysisTests.vcxproj">
+      <Project>{05D8047D-7AAA-3D4B-978C-1028B305DAD8}</Project>
+      <Name>AnalysisTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\AsmParser\AsmParserTests.vcxproj">
+      <Project>{512EB580-1418-3D1F-9EBA-8345D2467AC6}</Project>
+      <Name>AsmParserTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\BinaryFormat\BinaryFormatTests.vcxproj">
+      <Project>{288DC462-3557-3E4D-8368-D33F3241630F}</Project>
+      <Name>BinaryFormatTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Bitcode\BitcodeTests.vcxproj">
+      <Project>{54ADA5EB-EB25-3ADF-BD5D-17FDB0F1E736}</Project>
+      <Name>BitcodeTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\tools\llvm-cfi-verify\CFIVerifyTests.vcxproj">
+      <Project>{D8BBF4FB-0E2F-39B7-8E6B-8863D3F4CC76}</Project>
+      <Name>CFIVerifyTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CodeGen\CodeGenTests.vcxproj">
+      <Project>{89219D35-71B7-3AAC-9911-2DCBCB5DB5E5}</Project>
+      <Name>CodeGenTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\DebugInfo\CodeView\DebugInfoCodeViewTests.vcxproj">
+      <Project>{29616E39-7124-3B58-9108-0F706FBAEAFE}</Project>
+      <Name>DebugInfoCodeViewTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\DebugInfo\DWARF\DebugInfoDWARFTests.vcxproj">
+      <Project>{07C535D9-D09A-3575-AD1E-FA3C42FFE398}</Project>
+      <Name>DebugInfoDWARFTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\DebugInfo\MSF\DebugInfoMSFTests.vcxproj">
+      <Project>{DEBD16D1-ECB7-3D41-8B10-51F3E731C694}</Project>
+      <Name>DebugInfoMSFTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\DebugInfo\PDB\DebugInfoPDBTests.vcxproj">
+      <Project>{F01A0BF6-C976-3D86-85E1-76509BCBB80C}</Project>
+      <Name>DebugInfoPDBTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Demangle\DemangleTests.vcxproj">
+      <Project>{0D41287E-5464-38AF-9F8B-4D0C23D15F9F}</Project>
+      <Name>DemangleTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Support\DynamicLibrary\DynamicLibraryTests.vcxproj">
+      <Project>{9D22C0AC-AE8B-3315-9D53-24D77CEBBDE4}</Project>
+      <Name>DynamicLibraryTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ExecutionEngine\ExecutionEngineTests.vcxproj">
+      <Project>{BE7D600E-30D7-317E-B069-40D4F1DC8B0B}</Project>
+      <Name>ExecutionEngineTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\FuzzMutate\FuzzMutateTests.vcxproj">
+      <Project>{B9BB8085-A923-356E-A01B-260AC19154FD}</Project>
+      <Name>FuzzMutateTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\CodeGen\GlobalISel\GlobalISelTests.vcxproj">
+      <Project>{D1D26607-037B-36BC-A5A3-B3C8EEAA231C}</Project>
+      <Name>GlobalISelTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Transforms\IPO\IPOTests.vcxproj">
+      <Project>{3EB6030C-E965-3084-8BE0-FF5813CF4579}</Project>
+      <Name>IPOTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\IR\IRTests.vcxproj">
+      <Project>{4A51F12C-BDE3-3AF8-BA5D-8C4559F1EE51}</Project>
+      <Name>IRTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\tools\llvm-exegesis\AArch64\LLVMExegesisAArch64Tests.vcxproj">
+      <Project>{7C64D861-14F6-3366-8A58-9E4D17AC4F65}</Project>
+      <Name>LLVMExegesisAArch64Tests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\tools\llvm-exegesis\ARM\LLVMExegesisARMTests.vcxproj">
+      <Project>{21E44487-CDA4-3EFA-8FE1-601A75C611E6}</Project>
+      <Name>LLVMExegesisARMTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\tools\llvm-exegesis\PowerPC\LLVMExegesisPowerPCTests.vcxproj">
+      <Project>{DED254A4-BF62-361B-A010-DDFD66C90F49}</Project>
+      <Name>LLVMExegesisPowerPCTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\tools\llvm-exegesis\LLVMExegesisTests.vcxproj">
+      <Project>{9D10F9E1-13D8-3048-BCA8-9E7CB598E177}</Project>
+      <Name>LLVMExegesisTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\tools\llvm-exegesis\X86\LLVMExegesisX86Tests.vcxproj">
+      <Project>{E79605D2-55DC-3C44-90E6-3A95B6A64693}</Project>
+      <Name>LLVMExegesisX86Tests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\LineEditor\LineEditorTests.vcxproj">
+      <Project>{C2924D9B-8AE8-356D-8A9D-8F8849CFDF87}</Project>
+      <Name>LineEditorTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Linker\LinkerTests.vcxproj">
+      <Project>{99E36BC5-8EAA-34DF-9A00-590E8A0AE07C}</Project>
+      <Name>LinkerTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ExecutionEngine\MCJIT\MCJITTests.vcxproj">
+      <Project>{DD8D0CF4-FDBF-32E3-9626-73C188BB053A}</Project>
+      <Name>MCJITTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\MC\MCTests.vcxproj">
+      <Project>{FDAB2684-3CF1-3EA2-BA7A-C6235B0B229C}</Project>
+      <Name>MCTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\MI\MITests.vcxproj">
+      <Project>{6B81BAC8-5D69-362A-9A8E-E33E187ED63B}</Project>
+      <Name>MITests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Object\ObjectTests.vcxproj">
+      <Project>{61E3315F-9C58-3D04-BC6D-80DA6FCDC71F}</Project>
+      <Name>ObjectTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ObjectYAML\ObjectYAMLTests.vcxproj">
+      <Project>{CDAAA1A6-B439-3295-BE78-631FCC22F4E9}</Project>
+      <Name>ObjectYAMLTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\OptRemarks\OptRemarksTests.vcxproj">
+      <Project>{B3882F57-5B52-3556-8C34-5F5DC3BE20A0}</Project>
+      <Name>OptRemarksTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Option\OptionTests.vcxproj">
+      <Project>{D6319029-B0DD-3D0B-8680-ACA3174935A9}</Project>
+      <Name>OptionTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ExecutionEngine\Orc\OrcJITTests.vcxproj">
+      <Project>{8E7F099D-CD7F-39BC-8815-DDFC331912C1}</Project>
+      <Name>OrcJITTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Passes\PluginsTests.vcxproj">
+      <Project>{793CFD8A-0A69-39C2-87AB-6538A8BF425C}</Project>
+      <Name>PluginsTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\ProfileData\ProfileDataTests.vcxproj">
+      <Project>{B730A737-0A8D-33B5-9ABE-009140DA2A29}</Project>
+      <Name>ProfileDataTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Transforms\Scalar\ScalarTests.vcxproj">
+      <Project>{728EC92C-D67F-30FC-94FC-9B7A6CF1D4D2}</Project>
+      <Name>ScalarTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Support\SupportTests.vcxproj">
+      <Project>{9960126B-5680-3A1E-AB59-388B40A3C877}</Project>
+      <Name>SupportTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\TextAPI\TextAPITests.vcxproj">
+      <Project>{F5067702-0BFA-3798-8790-A797921EFB39}</Project>
+      <Name>TextAPITests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Transforms\Utils\UtilsTests.vcxproj">
+      <Project>{B884A182-AE0B-378F-B1A6-475EAC670E66}</Project>
+      <Name>UtilsTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Transforms\Vectorize\VectorizeTests.vcxproj">
+      <Project>{43FA0CC7-B4D0-3474-94ED-9F08F9A44EC6}</Project>
+      <Name>VectorizeTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\Target\WebAssembly\WebAssemblyTests.vcxproj">
+      <Project>{D66BD380-3245-3AC9-97D6-2D46327492B7}</Project>
+      <Name>WebAssemblyTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\unittests\XRay\XRayTests.vcxproj">
+      <Project>{F6A6F261-1AF2-3EE3-A6F0-C27830AD5BB4}</Project>
+      <Name>XRayTests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

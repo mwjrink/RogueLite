@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\CMakeFiles\dd2b2523ad402d1b8edebf2ea329dcea\check-lit.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\lit\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Development\C++\RogueLite\llvm-8.0.0.src\utils\lit\CMakeFiles\check-lit" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E092444D-7ADB-301A-8BF6-4C8D2A250A13}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
