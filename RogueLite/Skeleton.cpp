@@ -24,13 +24,18 @@ namespace proc_anim
         r.scale              = 1.0f;
         r.current_tile_index = 0;
         speed                = 192.0f;
-        dist                 = 100.0f;
+        dist                 = 20.0f;
 
         float x = 500, y = 500;
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 16; i++)
         {
-            nodes.push_back(Node(x + dist * i, y, 1.0f));
+            spine_nodes.push_back(Node(x + dist * i, y, 1.0f));
         }
+
+        foot_nodes.push_back(Foot_Node(x + dist * 1, y + 20.0f, 1.0f, 1, 20.0f, false));
+        foot_nodes.push_back(Foot_Node(x + dist * 1, y - 20.0f, 1.0f, 1, 20.0f, true));
+        foot_nodes.push_back(Foot_Node(x + dist * 8, y + 20.0f, 1.0f, 8, 20.0f, false));
+        foot_nodes.push_back(Foot_Node(x + dist * 8, y - 20.0f, 1.0f, 8, 20.0f, true));
 
         // TODO: ABOLISH THIS SYSTEM IN FAVOUR OF POLLING :'(
         // input::delegate_type dLambda = [](int key, int action) {
@@ -69,29 +74,103 @@ namespace proc_anim
 
     void move(Skeleton& s, float dt)
     {
+        // Spine
         auto old_position = get_head(s).position;
         if (get_head(s).velocity.x != 0.0f || get_head(s).velocity.y != 0.0f)
             get_head(s).position += glm::normalize(get_head(s).velocity) * s.speed * dt;
         // quad_tree::move_entity(*world::collision_tree, &p, old_position);
 
-        for (auto i = 1; i < s.nodes.size(); i++)
+        for (auto i = 1; i < s.spine_nodes.size(); i++)
         {
-            auto dir = s.nodes[i - 1].position - s.nodes[i].position;
+            auto dir = s.spine_nodes[i - 1].position - s.spine_nodes[i].position;
             if (glm::length(dir) > s.dist)
-                s.nodes[i].velocity += glm::normalize(dir);
+                s.spine_nodes[i].velocity += glm::normalize(dir);
             else
-                s.nodes[i].velocity = glm::vec2(0.0f);
+                s.spine_nodes[i].velocity = glm::vec2(0.0f);
         }
 
-        for (auto it = s.nodes.begin(); it != s.nodes.end(); it++)
+        for (auto it = s.spine_nodes.begin(); it != s.spine_nodes.end(); it++)
         {
             it->position += it->velocity * s.speed * dt;
         }
+
+        // Feet
+        for (auto f = s.foot_nodes.begin(); f != s.foot_nodes.end(); f++)
+        {
+            // if (f->cooldown > 0)
+            //{
+            //    f->cooldown--;
+            //    continue;
+            //}
+
+            // if (glm::distance(f->position, s.spine_nodes[f->spine_index].position) > f->leg_length)
+            //{
+            //    f->stationary = !f->stationary;
+            //    // f->cooldown   = 5;
+            //}
+
+            // if (f->stationary)
+            //{
+            //    f->velocity = glm::vec2(0.0f);
+            //}
+            // else
+            //{
+            //    // if (s.spine_nodes[f->spine_index].velocity != glm::vec2(0.0f))
+            //    f->velocity = s.spine_nodes[f->spine_index].velocity;
+            //    // glm::normalize(s.spine_nodes[f->spine_index - 1].position - s.spine_nodes[f->spine_index].position);
+            //}
+
+            auto dir = glm::normalize(s.spine_nodes[f->spine_index - 1].position - s.spine_nodes[f->spine_index].position);
+            f->position = s.spine_nodes[f->spine_index].position + dir * f->leg_length * 2.0f +
+                          glm::vec2(-dir.y, dir.x) * (f->direction ? -f->leg_length : f->leg_length);
+        }
+
+        // for (auto it = s.foot_nodes.begin(); it != s.foot_nodes.end(); it++)
+        //{
+        //    it->position += it->velocity * s.speed * 2.0f * dt;
+        //}
+
+        //// Feet
+        // for (auto f = s.foot_nodes.begin(); f != s.foot_nodes.end(); f++)
+        //{
+        //    if (glm::distance(f->position, s.spine_nodes[f->spine_index].position) > f->leg_length)
+        //    {
+        //        f->stationary = !f->stationary;
+        //    }
+
+        //    if (f->stationary)
+        //    {
+        //        f->velocity = glm::vec2(0.0f);
+        //    }
+        //    else
+        //    {
+        //        auto dir =
+        //            glm::normalize(s.spine_nodes[f->spine_index - 1].position - s.spine_nodes[f->spine_index].position);
+        //        f->velocity = glm::normalize((s.spine_nodes[f->spine_index].position + dir * f->leg_length * 2.0f +
+        //                                      glm::vec2(-dir.y, dir.x) * (f->direction ? -f->leg_length : f->leg_length)) -
+        //                                     f->position);
+        //        // if (s.spine_nodes[f->spine_index].velocity != glm::vec2(0.0f))
+        //        // f->velocity = s.spine_nodes[f->spine_index].velocity;
+        //        // glm::normalize(s.spine_nodes[f->spine_index - 1].position - s.spine_nodes[f->spine_index].position);
+        //    }
+        //}
+
+        // for (auto it = s.foot_nodes.begin(); it != s.foot_nodes.end(); it++)
+        //{
+        //    it->position += it->velocity * s.speed * 2.0f * dt;
+        //}
     }
 
     void render(Skeleton& s)
     {
-        for (auto e : s.nodes)
+        for (auto e : s.spine_nodes)
+        {
+            s.r.position = e.position;
+            s.r.scale    = e.radius;
+            graphics::DrawRenderable(s.r, graphics::shaderProgram);
+        }
+
+        for (auto e : s.foot_nodes)
         {
             s.r.position = e.position;
             s.r.scale    = e.radius;
@@ -99,6 +178,6 @@ namespace proc_anim
         }
     }
 
-    Skeleton::Node& get_head(Skeleton& s) { return s.nodes[s.headIndex]; }
+    Skeleton::Node& get_head(Skeleton& s) { return s.spine_nodes[s.headIndex]; }
 
 }  // namespace proc_anim

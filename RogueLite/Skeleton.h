@@ -30,9 +30,8 @@ namespace proc_anim
     class Skeleton
     {
       public:
-        class Node
+        struct Node
         {
-          public:
             glm::vec2 position;
             glm::vec2 velocity;
             float     radius;
@@ -43,6 +42,23 @@ namespace proc_anim
             // connections to other nodes and what kind of connection they are
         };
 
+        struct Foot_Node : public Node
+        {
+            bool           stationary  = false;
+            unsigned short spine_index = 0;
+            float          leg_length;
+            bool           direction;  // true for right side
+            // short          cooldown;
+
+            Foot_Node() = default;
+
+            Foot_Node(float x, float y, float w, unsigned short spine_index, float leg_length, bool direction)
+                : Node(x, y, w), spine_index(spine_index), leg_length(leg_length), direction(direction)
+            {
+                // cooldown = 0;
+            }
+        };
+
         // temp shit
         Renderable r;
         float      dist;
@@ -50,8 +66,9 @@ namespace proc_anim
 
         // temp shit
 
-        llvm::SmallVector<Node, 16> nodes;
-        unsigned short              headIndex = 0;
+        llvm::SmallVector<Node, 16>     spine_nodes;
+        llvm::SmallVector<Foot_Node, 4> foot_nodes;
+        unsigned short                  headIndex = 0;
 
         Skeleton();
     };
