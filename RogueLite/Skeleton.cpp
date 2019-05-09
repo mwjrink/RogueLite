@@ -89,11 +89,6 @@ namespace proc_anim
                 s.spine_nodes[i].velocity = glm::vec2(0.0f);
         }
 
-        for (auto it = s.spine_nodes.begin(); it != s.spine_nodes.end(); it++)
-        {
-            it->position += it->velocity * s.speed * dt;
-        }
-
         // Feet
         for (auto f = s.foot_nodes.begin(); f != s.foot_nodes.end(); f++)
         {
@@ -102,6 +97,46 @@ namespace proc_anim
             //    f->cooldown--;
             //    continue;
             //}
+
+            /************************************************************************************/
+            // check if stationary, if so check if distance > leg_length before moving, if not check if distance > leg_length
+            // after moving and decide not to move instead
+            /************************************************************************************/
+
+            if (f->stationary)
+            {
+                if (glm::distance(f->position, s.spine_nodes[f->spine_index].position) > f->leg_length)
+                {
+                    f->stationary = false;
+                }
+                else
+                {
+                    f->velocity = glm::vec2(0.0f);
+                }
+            }
+
+            if (!f->stationary)
+            {
+                auto dir =
+                    glm::normalize(s.spine_nodes[f->spine_index - 1].position - s.spine_nodes[f->spine_index].position);
+
+                auto step_dest = s.spine_nodes[f->spine_index].position + dir * f->leg_length * 2.0f +
+                                 glm::vec2(-dir.y, dir.x) * (f->direction ? -f->leg_length : f->leg_length);
+
+                f->velocity = glm::normalize(step_dest - f->position);
+
+                auto final_position = f->position + f->velocity * s.speed * 2.0f * dt;
+
+                if (glm::distance(final_position, s.spine_nodes[f->spine_index].position) > f->leg_length)
+                {
+                    f->stationary = true;
+                    f->velocity   = glm::vec2(0.0f);
+                }
+                else
+                {
+                    f->position = final_position;
+                }
+            }
 
             // if (glm::distance(f->position, s.spine_nodes[f->spine_index].position) > f->leg_length)
             //{
@@ -120,9 +155,10 @@ namespace proc_anim
             //    // glm::normalize(s.spine_nodes[f->spine_index - 1].position - s.spine_nodes[f->spine_index].position);
             //}
 
-            auto dir = glm::normalize(s.spine_nodes[f->spine_index - 1].position - s.spine_nodes[f->spine_index].position);
-            f->position = s.spine_nodes[f->spine_index].position + dir * f->leg_length * 2.0f +
-                          glm::vec2(-dir.y, dir.x) * (f->direction ? -f->leg_length : f->leg_length);
+            // auto dir = glm::normalize(s.spine_nodes[f->spine_index - 1].position -
+            // s.spine_nodes[f->spine_index].position); f->position = s.spine_nodes[f->spine_index].position + dir *
+            // f->leg_length * 2.0f +
+            //              glm::vec2(-dir.y, dir.x) * (f->direction ? -f->leg_length : f->leg_length);
         }
 
         // for (auto it = s.foot_nodes.begin(); it != s.foot_nodes.end(); it++)
@@ -159,6 +195,11 @@ namespace proc_anim
         //{
         //    it->position += it->velocity * s.speed * 2.0f * dt;
         //}
+
+        for (auto it = s.spine_nodes.begin(); it != s.spine_nodes.end(); it++)
+        {
+            it->position += it->velocity * s.speed * dt;
+        }
     }
 
     void render(Skeleton& s)
