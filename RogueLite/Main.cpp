@@ -16,7 +16,7 @@ auto INIT_TEST_SPRITE()
 
     // player::player_init(world::player);
 
-    world::skeleton = proc_anim::Skeleton();
+    world::skeleton = proc_anim::HumanoidSkeleton();
 
     world::current_level        = level::Level();
     world::current_level.map    = level::base_map;
@@ -162,7 +162,9 @@ void Render(Camera camera)
     // auto      visible  = quad_tree::get_visible(*world::collision_tree, viewport);
 
     // TODO: this takes the most time by far
-    world::Render();
+
+    // world::Render();
+
     // for (auto e : visible) graphics::DrawRenderable(*e, graphics::shaderProgram);
     // graphics::DrawRenderable(world::skeleton, graphics::shaderProgram);
     proc_anim::render(world::skeleton);

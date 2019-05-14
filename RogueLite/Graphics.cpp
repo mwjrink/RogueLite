@@ -325,8 +325,23 @@ namespace graphics
     // TODO name this method properly
     void DrawRenderable(Renderable r, unsigned int shader_program)
     {
-        DrawSprite(shader_program, r.position, r.size, r.degrees_rotation, r.scale, glm::vec3(1.0f),
+        DrawSprite(shader_program, r.position, r.size, r.degrees_rotation, r.scale, r.color,
                    getUVs(r.tile_sheet, r.current_tile_index));
+    }
+
+    void DrawLine(float x, float y, float xx, float yy, float w)
+    {
+        // GLfloat lineVertices[] = {x, y, 0, xx, yy, 0};
+
+        // glEnable(GL_LINE_SMOOTH);
+        // glPushAttrib(GL_LINE_BIT);
+        // glLineWidth(w);
+        // glEnableClientState(GL_VERTEX_ARRAY);
+        // glVertexPointer(3, GL_FLOAT, 0, lineVertices);
+        // glDrawArrays(GL_LINES, 0, 2);
+        // glDisableClientState(GL_VERTEX_ARRAY);
+        // glPopAttrib();
+        // glDisable(GL_LINE_SMOOTH);
     }
 
     glm::mat4 projection;

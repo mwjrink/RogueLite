@@ -60,6 +60,7 @@ namespace level
             Create_TileSheet(gltexture::AllocateTextureForLoading("Resources/pokemonground.png"), glm::ivec2(32, 32));
         r.position = glm::vec2(0.0f, 0.0f);
         r.size     = glm::vec2(world::width / target->width, world::height / target->height);
+        r.color    = glm::vec3(1.0f);
     }
 
     void RenderLevel(Level* render_target)

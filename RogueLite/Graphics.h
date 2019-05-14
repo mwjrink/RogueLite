@@ -30,12 +30,12 @@ namespace graphics
     extern std::vector<glm::vec3> spriteColors;
     extern std::vector<glm::vec4> textureUvs;
 
-	// unsigned int batch_texture_id;
+    // unsigned int batch_texture_id;
 
     void DrawRenderable(Renderable r, unsigned int shader_program);
     void SetViewMatrix(glm::mat4 view);
 
-	void SetProjectionMatrix();
+    void SetProjectionMatrix();
     bool GL_Init();
     bool GLFW_Init(int w_width, int w_height);
     bool Shader_Init();
@@ -43,6 +43,7 @@ namespace graphics
     bool Init(int w_width, int w_height);
     void DrawSprite(GLuint shader_program, glm::vec2 position, glm::vec2 size, GLfloat rotate, GLfloat scale,
                     glm::vec3 color, glm::vec4 uvs);
+    void DrawLine(float x, float y, float xx, float yy, float w);
     void DrawBatch();
     void Cleanup();
 }  // namespace graphics

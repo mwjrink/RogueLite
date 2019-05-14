@@ -157,13 +157,13 @@
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="HumanoidSkeleton.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LGrid.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderable.cpp" />
-    <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="Tilesheet.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -177,6 +177,7 @@
     <ClInclude Include="FreeList.h" />
     <ClInclude Include="GLTexture.h" />
     <ClInclude Include="Graphics.h" />
+    <ClInclude Include="HumanoidSkeleton.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level.h" />
@@ -186,7 +187,6 @@
     <ClInclude Include="MainLoopCallbacks.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Renderable.h" />
-    <ClInclude Include="Skeleton.h" />
     <ClInclude Include="TileSheet.h" />
     <ClInclude Include="WindowCallbacks.h" />
     <ClInclude Include="World.h" />

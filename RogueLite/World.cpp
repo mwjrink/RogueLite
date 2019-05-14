@@ -3,7 +3,7 @@
 namespace world
 {
     player::Player      player;
-    proc_anim::Skeleton skeleton;
+    proc_anim::HumanoidSkeleton skeleton;
     level::Level        current_level;
     unsigned int        width, height;
     quad_tree::LGrid*   collision_tree;
