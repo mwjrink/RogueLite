@@ -2,6 +2,8 @@
 
 #include "World.h"
 
+#define PI 3.14159265359
+
 namespace proc_anim
 {
     void set_unit_velocity_up(int _, int __) { world::skeleton.heart.velocity.y++; }
@@ -17,7 +19,7 @@ namespace proc_anim
     const glm::vec3 blu = glm::vec3(0.0f, 0.0f, 1.0f);
     const glm::vec3 gre = glm::vec3(0.0f, 1.0f, 0.0f);
 
-    const float looking_angle_y_mult = std::sin(3.14159265359 / 4);
+    const float looking_angle_y_mult = std::sin(PI / 4);
 
     HumanoidSkeleton::HumanoidSkeleton()
     {
@@ -58,6 +60,12 @@ namespace proc_anim
         left_foot  = Foot_Node(450.0f, 137.5f, 0.0f, 0.75f);
         right_foot = Foot_Node(550.0f, 137.5f, 0.0f, 0.75f);
 
+        left_planted      = false;
+        step_destination  = left_foot.position;
+        velocity_at_step  = glm::vec3(0.0f);
+        total_step_travel = 0;
+        max_step_travel   = std::sin(PI / 6) * leg_length * 2.0f;
+
         input::copy_add_event(GLFW_KEY_W, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_up>());
         input::copy_add_event(GLFW_KEY_A, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_left>());
         input::copy_add_event(GLFW_KEY_S, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_down>());
@@ -81,9 +89,10 @@ namespace proc_anim
         }
 
         s.head.position = s.heart.position + glm::vec3(0.0f, 0.0f, s.neck_length);
+        auto left       = glm::vec3(s.facing_direction.y, -s.facing_direction.x, 0.0f);
 
         // Make torso/shoulders to new direction, instead of instant pivoting
-        auto shoulder_direction   = glm::vec3(s.facing_direction.y, -s.facing_direction.x, 0.0f) * s.shoulder_width * 0.5f;
+        auto shoulder_direction   = left * s.shoulder_width * 0.5f;
         s.left_shoulder.position  = s.heart.position + shoulder_direction;
         s.right_shoulder.position = s.heart.position - shoulder_direction;
 
@@ -91,8 +100,16 @@ namespace proc_anim
 
         // FEET
         {
-            s.left_foot.position  = s.pelvis.position + shoulder_direction - glm::vec3(0.0f, 0.0f, s.leg_length);
-            s.right_foot.position = s.pelvis.position - shoulder_direction - glm::vec3(0.0f, 0.0f, s.leg_length);
+            if (s.left_planted)
+            {
+                if (s.total_step_travel >= s.max_step_travel)
+                {
+                    s.left_planted = false;
+                }
+            }
+
+            // s.left_foot.position  = s.pelvis.position + shoulder_direction - glm::vec3(0.0f, 0.0f, s.leg_length);
+            // s.right_foot.position = s.pelvis.position - shoulder_direction - glm::vec3(0.0f, 0.0f, s.leg_length);
 
             // KNEES
             //{

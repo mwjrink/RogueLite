@@ -58,7 +58,10 @@ namespace proc_anim
         float      calf_width;
         */
 
-        bool left_planted = false;
+        bool      left_planted = false;
+        glm::vec2 step_destination;
+        glm::vec3 velocity_at_step;
+        float     total_step_travel;
 
         glm::vec3 facing_direction;
         glm::vec3 moving_direction;
