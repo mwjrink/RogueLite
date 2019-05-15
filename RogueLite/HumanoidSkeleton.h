@@ -26,7 +26,7 @@ namespace proc_anim
 
         struct Foot_Node : public Node
         {
-            bool stationary = false;
+            bool planted = false;
 
             Foot_Node() = default;
 
