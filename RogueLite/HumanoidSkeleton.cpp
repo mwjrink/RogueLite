@@ -28,12 +28,14 @@ namespace proc_anim
         r.scale              = 1.0f;
         r.current_tile_index = 0;
 
-        speed       = 192.0f;
-        arm_length  = 10.0f;
-        leg_length  = 10.0f;
-        neck_length = 10.0f;
+        speed          = 192.0f;
+        arm_length     = 10.0f;
+        leg_length     = 50.0f;
+        neck_length    = 20.0f;
+        shoulder_width = 40.0f;
+        torso_length   = 50.0f;
 
-        facing_direction = glm::vec2(0.0f, -1.0f);
+        facing_direction = glm::vec3(0.0f, -1.0f, 0.0f);
 
         heart = Node(500.0f, 250.0f, 0.0f, 0.0f);
 
@@ -75,91 +77,131 @@ namespace proc_anim
             s.heart.position += s.facing_direction * s.speed * dt;
         }
 
-        s.head.position = s.heart.position + glm::vec3(0.0f, 0.0f, -s.neck_length);
+        s.head.position = s.heart.position + glm::vec3(0.0f, 0.0f, s.neck_length);
+
+        // Make torso/shoulders to new direction, instead of instant pivoting
+        auto shoulder_direction   = glm::vec3(-s.facing_direction.y, s.facing_direction.x, 0.0f) * s.shoulder_width * 0.5f;
+        s.left_shoulder.position  = s.heart.position + shoulder_direction;
+        s.right_shoulder.position = s.heart.position - shoulder_direction;
+
+        s.pelvis.position = s.heart.position - glm::vec3(0.0f, 0.0f, s.torso_length);
+
+        // FEET
+        {
+            // if (s.left_foot.stationary)
+            //{
+            //}
+
+            s.left_foot.position  = s.pelvis.position + shoulder_direction - glm::vec3(0.0f, 0.0f, s.leg_length);
+            s.right_foot.position = s.pelvis.position - shoulder_direction - glm::vec3(0.0f, 0.0f, s.leg_length);
+
+            // KNEES
+            {
+                s.left_knee.position =
+                    s.pelvis.position +
+                    glm::vec3(-s.facing_direction.y, s.facing_direction.x, 0.0f) * s.shoulder_width * 0.25f -
+                    glm::vec3(0.0f, 0.0f, s.leg_length * 0.5f);
+                s.right_knee.position =
+                    s.pelvis.position -
+                    glm::vec3(-s.facing_direction.y, s.facing_direction.x, 0.0f) * s.shoulder_width * 0.25f -
+                    glm::vec3(0.0f, 0.0f, s.leg_length * 0.5f);
+            }
+        }
+
+        // HAND
+        {
+        }
+    }
+
+    glm::vec2 transform_3d_to_render_coords(glm::vec3& coords, float sin_of_viewing_angle, float cos_of_viewing_angle)
+    {
+        return glm::vec2(coords.x, coords.y * sin_of_viewing_angle + coords.z * cos_of_viewing_angle);
     }
 
     void render(HumanoidSkeleton& s)
     {
-        graphics::DrawLine(s.head.position.x, s.head.position.y, s.pelvis.position.x, s.pelvis.position.y, 4.0f);
+        // graphics::DrawLine(s.head.position.x, s.head.position.y, s.pelvis.position.x, s.pelvis.position.y, 4.0f);
 
-        graphics::DrawLine(s.left_shoulder.position.x, s.left_shoulder.position.y, s.right_shoulder.position.x,
-                           s.right_shoulder.position.y, 4.0f);
+        // graphics::DrawLine(s.left_shoulder.position.x, s.left_shoulder.position.y, s.right_shoulder.position.x,
+        //                   s.right_shoulder.position.y, 4.0f);
 
-        graphics::DrawLine(s.left_shoulder.position.x, s.left_shoulder.position.y, s.left_elbow.position.x,
-                           s.left_elbow.position.y, 4.0f);
-        graphics::DrawLine(s.right_shoulder.position.x, s.right_shoulder.position.y, s.right_elbow.position.x,
-                           s.right_elbow.position.y, 4.0f);
+        // graphics::DrawLine(s.left_shoulder.position.x, s.left_shoulder.position.y, s.left_elbow.position.x,
+        //                   s.left_elbow.position.y, 4.0f);
+        // graphics::DrawLine(s.right_shoulder.position.x, s.right_shoulder.position.y, s.right_elbow.position.x,
+        //                   s.right_elbow.position.y, 4.0f);
 
-        graphics::DrawLine(s.left_elbow.position.x, s.left_elbow.position.y, s.left_hand.position.x, s.left_hand.position.y,
-                           4.0f);
-        graphics::DrawLine(s.right_elbow.position.x, s.right_elbow.position.y, s.right_hand.position.x,
-                           s.right_hand.position.y, 4.0f);
+        // graphics::DrawLine(s.left_elbow.position.x, s.left_elbow.position.y, s.left_hand.position.x,
+        // s.left_hand.position.y,
+        //                   4.0f);
+        // graphics::DrawLine(s.right_elbow.position.x, s.right_elbow.position.y, s.right_hand.position.x,
+        //                   s.right_hand.position.y, 4.0f);
 
-        graphics::DrawLine(s.pelvis.position.x, s.pelvis.position.y, s.left_knee.position.x, s.left_knee.position.y, 4.0f);
-        graphics::DrawLine(s.pelvis.position.x, s.pelvis.position.y, s.right_knee.position.x, s.right_knee.position.y, 4.0f);
+        // graphics::DrawLine(s.pelvis.position.x, s.pelvis.position.y, s.left_knee.position.x,
+        // s.left_knee.position.y, 4.0f); graphics::DrawLine(s.pelvis.position.x, s.pelvis.position.y,
+        // s.right_knee.position.x, s.right_knee.position.y, 4.0f);
 
-        graphics::DrawLine(s.left_knee.position.x, s.left_knee.position.y, s.left_foot.position.x, s.left_foot.position.y,
-                           4.0f);
-        graphics::DrawLine(s.right_knee.position.x, s.right_knee.position.y, s.right_foot.position.x,
-                           s.right_foot.position.y, 4.0f);
+        // graphics::DrawLine(s.left_knee.position.x, s.left_knee.position.y, s.left_foot.position.x, s.left_foot.position.y,
+        //                   4.0f);
+        // graphics::DrawLine(s.right_knee.position.x, s.right_knee.position.y, s.right_foot.position.x,
+        //                   s.right_foot.position.y, 4.0f);
 
-        s.r.position = s.head.position;
-        s.r.scale    = s.head.radius;
-        s.r.color    = red;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
-
-        s.r.position = s.left_shoulder.position;
-        s.r.scale    = s.left_shoulder.radius;
-        s.r.color    = gre;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
-
-        s.r.position = s.right_shoulder.position;
-        s.r.scale    = s.right_shoulder.radius;
-        s.r.color    = gre;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
-
-        s.r.position = s.left_elbow.position;
-        s.r.scale    = s.left_elbow.radius;
-        s.r.color    = blu;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
-
-        s.r.position = s.right_elbow.position;
-        s.r.scale    = s.right_elbow.radius;
-        s.r.color    = blu;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
-
-        s.r.position = s.left_hand.position;
-        s.r.scale    = s.left_hand.radius;
-        s.r.color    = red;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
-
-        s.r.position = s.right_hand.position;
-        s.r.scale    = s.right_hand.radius;
-        s.r.color    = red;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
-
-        s.r.position = s.pelvis.position;
-        s.r.scale    = s.pelvis.radius;
-        s.r.color    = gre;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
-
-        s.r.position = s.left_knee.position;
-        s.r.scale    = s.left_knee.radius;
-        s.r.color    = blu;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
-
-        s.r.position = s.right_knee.position;
-        s.r.scale    = s.right_knee.radius;
-        s.r.color    = blu;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
-
-        s.r.position = s.left_foot.position;
+        s.r.position = transform_3d_to_render_coords(s.left_foot.position, looking_angle_y_mult, looking_angle_y_mult);
         s.r.scale    = s.left_foot.radius;
         s.r.color    = red;
         graphics::DrawRenderable(s.r, graphics::shaderProgram);
 
-        s.r.position = s.right_foot.position;
+        s.r.position = transform_3d_to_render_coords(s.right_foot.position, looking_angle_y_mult, looking_angle_y_mult);
         s.r.scale    = s.right_foot.radius;
+        s.r.color    = red;
+        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+
+        s.r.position = transform_3d_to_render_coords(s.left_knee.position, looking_angle_y_mult, looking_angle_y_mult);
+        s.r.scale    = s.left_knee.radius;
+        s.r.color    = blu;
+        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+
+        s.r.position = transform_3d_to_render_coords(s.right_knee.position, looking_angle_y_mult, looking_angle_y_mult);
+        s.r.scale    = s.right_knee.radius;
+        s.r.color    = blu;
+        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+
+        s.r.position = transform_3d_to_render_coords(s.pelvis.position, looking_angle_y_mult, looking_angle_y_mult);
+        s.r.scale    = s.pelvis.radius;
+        s.r.color    = gre;
+        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+
+        s.r.position = transform_3d_to_render_coords(s.left_hand.position, looking_angle_y_mult, looking_angle_y_mult);
+        s.r.scale    = s.left_hand.radius;
+        s.r.color    = red;
+        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+
+        s.r.position = transform_3d_to_render_coords(s.right_hand.position, looking_angle_y_mult, looking_angle_y_mult);
+        s.r.scale    = s.right_hand.radius;
+        s.r.color    = red;
+        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+
+        s.r.position = transform_3d_to_render_coords(s.left_elbow.position, looking_angle_y_mult, looking_angle_y_mult);
+        s.r.scale    = s.left_elbow.radius;
+        s.r.color    = blu;
+        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+
+        s.r.position = transform_3d_to_render_coords(s.right_elbow.position, looking_angle_y_mult, looking_angle_y_mult);
+        s.r.scale    = s.right_elbow.radius;
+        s.r.color    = blu;
+        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+
+        s.r.position = transform_3d_to_render_coords(s.left_shoulder.position, looking_angle_y_mult, looking_angle_y_mult);
+        s.r.scale    = s.left_shoulder.radius;
+        s.r.color    = gre;
+        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+
+        s.r.position = transform_3d_to_render_coords(s.right_shoulder.position, looking_angle_y_mult, looking_angle_y_mult);
+        s.r.scale    = s.right_shoulder.radius;
+        s.r.color    = gre;
+        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+
+        s.r.position = transform_3d_to_render_coords(s.head.position, looking_angle_y_mult, looking_angle_y_mult);
+        s.r.scale    = s.head.radius;
         s.r.color    = red;
         graphics::DrawRenderable(s.r, graphics::shaderProgram);
     }

@@ -58,7 +58,7 @@ namespace proc_anim
         float      calf_width;
         */
 
-        glm::vec2 facing_direction;
+        glm::vec3 facing_direction;
 
         Node heart;
 
