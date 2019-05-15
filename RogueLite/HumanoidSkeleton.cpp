@@ -100,6 +100,12 @@ namespace proc_anim
 
         // FEET
         {
+            // how this is gonna work is that when the foot lifts off of the ground, it is going to calculate a destination
+            // for the step, and the distance from its current position to the step, the current velocity of heart will be
+            // saved in the velocity_at_step field to move the foot, the foot moves towards the destination X and Y, the
+            // foot's z value is calulated as sin(distance to step/distance from starting position); if the current heart
+            // velocity != velocity_at_step, calculate a new step destination that is
+            // (distance_from_start - distance_traveled) far away
             if (s.left_planted)
             {
                 if (s.total_step_travel >= s.max_step_travel)
