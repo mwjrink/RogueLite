@@ -69,18 +69,21 @@ namespace proc_anim
         input::copy_add_event(GLFW_KEY_D, GLFW_RELEASE, &input::delegate_type::create<&proc_anim::stop_velocity_right>());
     }
 
-    void move(HumanoidSkeleton& s, float dt)
+    void move(HumanoidSkeleton& s, float dt, glm::vec3 curs_pos)
     {
+        s.facing_direction =
+            glm::normalize(s.heart.position - glm::vec3(curs_pos.x, curs_pos.y / looking_angle_y_mult, 0.0f));
+
         if (s.heart.velocity.x != 0.0f || s.heart.velocity.y != 0.0f)
         {
-            s.facing_direction = glm::normalize(s.heart.velocity);
-            s.heart.position += s.facing_direction * s.speed * dt;
+            s.moving_direction = glm::normalize(s.heart.velocity);
+            s.heart.position += s.moving_direction * s.speed * dt;
         }
 
         s.head.position = s.heart.position + glm::vec3(0.0f, 0.0f, s.neck_length);
 
         // Make torso/shoulders to new direction, instead of instant pivoting
-        auto shoulder_direction   = glm::vec3(-s.facing_direction.y, s.facing_direction.x, 0.0f) * s.shoulder_width * 0.5f;
+        auto shoulder_direction   = glm::vec3(s.facing_direction.y, -s.facing_direction.x, 0.0f) * s.shoulder_width * 0.5f;
         s.left_shoulder.position  = s.heart.position + shoulder_direction;
         s.right_shoulder.position = s.heart.position - shoulder_direction;
 
@@ -88,64 +91,6 @@ namespace proc_anim
 
         // FEET
         {
-            // auto checked = false;
-            // if (s.left_foot.planted)
-            //{
-            //    if (glm::distance(s.left_foot.position, s.pelvis.position) >= s.leg_length)
-            //    {
-            //        s.left_foot.planted = false;
-            //        checked             = true;
-            //    }
-            //    else
-            //    {
-            //        s.left_foot.velocity = glm::vec3(0.0f);
-            //    }
-            //}
-
-            // if (!s.left_foot.planted)
-            //{
-            //    if (!checked && glm::distance(s.left_foot.position, s.pelvis.position) >= s.leg_length)
-            //    {
-            //        s.left_foot.planted    = true;
-            //        s.left_foot.velocity   = glm::vec3(0.0f);
-            //        s.left_foot.position.z = 0.0f;
-            //    }
-            //    else
-            //    {
-            //        s.left_foot.position += s.facing_direction * s.speed * 2.0f * dt;
-            //        // s.left_foot.position.z = std::sin() * s.leg_length * 0.5f;
-            //    }
-            //}
-
-            // checked = false;
-            // if (s.right_foot.planted)
-            //{
-            //    if (glm::distance(s.right_foot.position, s.pelvis.position) >= s.leg_length)
-            //    {
-            //        s.right_foot.planted = false;
-            //        checked              = true;
-            //    }
-            //    else
-            //    {
-            //        s.right_foot.velocity = glm::vec3(0.0f);
-            //    }
-            //}
-
-            // if (!s.right_foot.planted)
-            //{
-            //    if (!checked && glm::distance(s.right_foot.position, s.pelvis.position) >= s.leg_length)
-            //    {
-            //        s.right_foot.planted    = true;
-            //        s.right_foot.velocity   = glm::vec3(0.0f);
-            //        s.right_foot.position.z = 0.0f;
-            //    }
-            //    else
-            //    {
-            //        s.right_foot.position += s.facing_direction * s.speed * 2.0f * dt;
-            //        // s.left_foot.position.z = std::sin() * s.leg_length * 0.5f;
-            //    }
-            //}
-
             s.left_foot.position  = s.pelvis.position + shoulder_direction - glm::vec3(0.0f, 0.0f, s.leg_length);
             s.right_foot.position = s.pelvis.position - shoulder_direction - glm::vec3(0.0f, 0.0f, s.leg_length);
 
@@ -244,15 +189,15 @@ namespace proc_anim
         s.r.color    = red;
         graphics::DrawRenderable(s.r, graphics::shaderProgram);
 
-        //s.r.position = transform_3d_to_render_coords(s.left_elbow.position, looking_angle_y_mult, looking_angle_y_mult);
-        //s.r.scale    = s.left_elbow.radius;
-        //s.r.color    = blu;
-        //graphics::DrawRenderable(s.r, graphics::shaderProgram);
+        // s.r.position = transform_3d_to_render_coords(s.left_elbow.position, looking_angle_y_mult, looking_angle_y_mult);
+        // s.r.scale    = s.left_elbow.radius;
+        // s.r.color    = blu;
+        // graphics::DrawRenderable(s.r, graphics::shaderProgram);
 
-        //s.r.position = transform_3d_to_render_coords(s.right_elbow.position, looking_angle_y_mult, looking_angle_y_mult);
-        //s.r.scale    = s.right_elbow.radius;
-        //s.r.color    = blu;
-        //graphics::DrawRenderable(s.r, graphics::shaderProgram);
+        // s.r.position = transform_3d_to_render_coords(s.right_elbow.position, looking_angle_y_mult, looking_angle_y_mult);
+        // s.r.scale    = s.right_elbow.radius;
+        // s.r.color    = blu;
+        // graphics::DrawRenderable(s.r, graphics::shaderProgram);
 
         s.r.position = transform_3d_to_render_coords(s.left_shoulder.position, looking_angle_y_mult, looking_angle_y_mult);
         s.r.scale    = s.left_shoulder.radius;
@@ -268,6 +213,12 @@ namespace proc_anim
         s.r.scale    = s.head.radius;
         s.r.color    = red;
         graphics::DrawRenderable(s.r, graphics::shaderProgram);
+
+        // FOR DEBUGGING
+        // s.r.position = transform_3d_to_render_coords(s.heart.position, looking_angle_y_mult, looking_angle_y_mult);
+        // s.r.scale    = 1.0;
+        // s.r.color    = glm::vec3(1.0f, 1.0f, 1.0f);
+        // graphics::DrawRenderable(s.r, graphics::shaderProgram);
     }
 
 }  // namespace proc_anim

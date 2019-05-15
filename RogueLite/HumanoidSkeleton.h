@@ -58,7 +58,10 @@ namespace proc_anim
         float      calf_width;
         */
 
+        bool left_planted = false;
+
         glm::vec3 facing_direction;
+        glm::vec3 moving_direction;
 
         Node heart;
 
@@ -84,7 +87,7 @@ namespace proc_anim
         HumanoidSkeleton();
     };
 
-    void move(HumanoidSkeleton& s, float dt);
+    void move(HumanoidSkeleton& s, float dt, glm::vec3 curs_pos);
 
     void render(HumanoidSkeleton& s);
 

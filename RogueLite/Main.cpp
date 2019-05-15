@@ -25,7 +25,7 @@ auto INIT_TEST_SPRITE()
     world::current_level.layers = 1;
 
     world::width  = 1920;
-    world::height = 1088;
+    world::height = 1080;
 
     world::collision_tree = quad_tree::lgrid_create(world::width, world::height, 0, 0, world::width, world::height);
 
@@ -144,7 +144,9 @@ int main(int argc, char* argv[])
 void Update(float dt)
 {
     // player::move(world::player, dt);
-    proc_anim::move(world::skeleton, dt);
+    double x, y;
+    glfwGetCursorPos(graphics::window, &x, &y);
+    proc_anim::move(world::skeleton, dt, glm::vec3(x, graphics::Window_Height - y, 0.0));
 }
 
 void Render(Camera camera)
