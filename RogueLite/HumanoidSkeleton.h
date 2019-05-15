@@ -62,6 +62,7 @@ namespace proc_anim
         glm::vec2 step_destination;
         glm::vec3 velocity_at_step;
         float     total_step_travel;
+        float     max_step_travel;
 
         glm::vec3 facing_direction;
         glm::vec3 moving_direction;
