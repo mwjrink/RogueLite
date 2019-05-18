@@ -1,0 +1,32 @@
+# Reference: http://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+BasedOnStyle: Google
+
+# Initialization
+Language: Cpp
+
+# Indenting
+TabWidth: 4
+IndentWidth: 4
+UseTab: Never
+AccessModifierOffset: -2
+AlignAfterOpenBracket: true
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: true
+BreakBeforeBraces: Allman
+NamespaceIndentation: All
+
+# Alignment
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AlignEscapedNewlines: Left
+AlignOperands: true
+AlignTrailingComments: true
+ColumnLimit: 125
+
+# Whitespace
+MaxEmptyLinesToKeep: 1
+
+# General Style
+DerivePointerAlignment: false
+PointerAlignment: Left
