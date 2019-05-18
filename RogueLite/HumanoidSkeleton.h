@@ -24,18 +24,6 @@ namespace proc_anim
             // connections to other nodes and what kind of connection they are
         };
 
-        struct Foot_Node : public Node
-        {
-            bool planted = false;
-
-            Foot_Node() = default;
-
-            Foot_Node(float x, float y, float z, float w) : Node(x, y, z, w)
-            {
-                // cooldown = 0;
-            }
-        };
-
         // maybe use an acceleration vector and logarithmically average current velocity, acceleration and a friction value
         Renderable r;
         float      speed;
@@ -61,7 +49,7 @@ namespace proc_anim
         bool      left_planted = false;
         glm::vec2 step_destination;
         glm::vec3 velocity_at_step;
-        float     total_step_travel;
+        float     step_travel;
         float     max_step_travel;
 
         glm::vec3 facing_direction;
@@ -85,8 +73,8 @@ namespace proc_anim
         Node left_knee;
         Node right_knee;
 
-        Foot_Node left_foot;
-        Foot_Node right_foot;
+        Node left_foot;
+        Node right_foot;
 
         HumanoidSkeleton();
     };

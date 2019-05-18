@@ -30,7 +30,7 @@ namespace proc_anim
         r.scale              = 1.0f;
         r.current_tile_index = 0;
 
-        speed          = 192.0f;
+        speed          = 100.0f;
         arm_length     = 40.0f;
         leg_length     = 50.0f;
         neck_length    = 20.0f;
@@ -57,14 +57,14 @@ namespace proc_anim
         left_knee  = Node(475.0f, 187.5f, 0.0f, 0.5f);
         right_knee = Node(525.0f, 187.5f, 0.0f, 0.5f);
 
-        left_foot  = Foot_Node(450.0f, 137.5f, 0.0f, 0.75f);
-        right_foot = Foot_Node(550.0f, 137.5f, 0.0f, 0.75f);
+        left_foot  = Node(450.0f, 137.5f, 0.0f, 0.75f);
+        right_foot = Node(550.0f, 137.5f, 0.0f, 0.75f);
 
-        left_planted      = false;
-        step_destination  = left_foot.position;
-        velocity_at_step  = glm::vec3(0.0f);
-        total_step_travel = 0;
-        max_step_travel   = std::sin(PI / 6) * leg_length * 2.0f;
+        left_planted     = false;
+        step_destination = left_foot.position;
+        velocity_at_step = glm::vec3(0.0f);
+        step_travel      = 0;
+        max_step_travel  = std::sin(PI / 6) * leg_length * speed * 0.02;
 
         input::copy_add_event(GLFW_KEY_W, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_up>());
         input::copy_add_event(GLFW_KEY_A, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_left>());
@@ -108,9 +108,36 @@ namespace proc_anim
             // (distance_from_start - distance_traveled) far away
             if (s.left_planted)
             {
-                if (s.total_step_travel >= s.max_step_travel)
+                if (s.step_travel >= s.max_step_travel)
                 {
-                    s.left_planted = false;
+                    s.left_planted          = false;
+                    s.step_travel           = 0.0f;
+                    s.right_foot.position.z = 0.0f;
+                    s.max_step_travel       = std::sin(PI / 6) * s.leg_length * s.speed * 0.01;
+                }
+                else
+                {
+                    auto dest = s.heart.position + s.moving_direction * s.max_step_travel - shoulder_direction * 2.0f;
+                    s.right_foot.position += glm::normalize(dest - s.right_foot.position) * s.speed * 2.0f;
+                    s.step_travel += s.speed * 2.0f;
+                    //s.right_foot.position.z = 10.0f * std::sin(s.step_travel / s.max_step_travel * PI);
+                }
+            }
+            else
+            {
+                if (s.step_travel >= s.max_step_travel)
+                {
+                    s.left_planted         = true;
+                    s.step_travel          = 0.0f;
+                    s.left_foot.position.z = 0.0f;
+                    s.max_step_travel      = std::sin(PI / 6) * s.leg_length * s.speed * 0.01;
+                }
+                else
+                {
+                    auto dest = s.heart.position + s.moving_direction * s.max_step_travel - shoulder_direction * 2.0f;
+                    s.left_foot.position += glm::normalize(dest - s.left_foot.position) * s.speed * 2.0f;
+                    s.step_travel += s.speed * 2.0f;
+                    // s.left_foot.position.z = 10.0f * std::sin(s.step_travel / s.max_step_travel * PI);
                 }
             }
 
