@@ -1,7 +1,7 @@
 #include "HumanoidSkeleton.h"
 
+#include <iostream>
 #include "World.h"
-
 #define PI 3.14159265359
 
 namespace proc_anim
@@ -106,39 +106,84 @@ namespace proc_anim
             // foot's z value is calulated as sin(distance to step/distance from starting position); if the current heart
             // velocity != velocity_at_step, calculate a new step destination that is
             // (distance_from_start - distance_traveled) far away
-            if (s.left_planted)
+            // if (s.left_planted)
+            //{
+            //    if (s.step_travel >= s.max_step_travel)
+            //    {
+            //        s.left_planted          = false;
+            //        s.step_travel           = 0.0f;
+            //        s.right_foot.position.z = 0.0f;
+            //        s.max_step_travel       = std::sin(PI / 6) * s.leg_length * s.speed * 0.01;
+            //    }
+            //    else
+            //    {
+            //        auto dest = s.heart.position + s.moving_direction * s.max_step_travel - shoulder_direction * 2.0f;
+            //        s.right_foot.position += glm::normalize(dest - s.right_foot.position) * s.speed * 2.0f;
+            //        //s.step_travel += s.speed * 2.0f;
+            //        //s.right_foot.position.z = 10.0f * std::sin(s.step_travel / s.max_step_travel * PI);
+            //    }
+            //}
+            // else
+            //{
+            //    if (s.step_travel >= s.max_step_travel)
+            //    {
+            //        s.left_planted         = true;
+            //        s.step_travel          = 0.0f;
+            //        s.left_foot.position.z = 0.0f;
+            //        s.max_step_travel      = std::sin(PI / 6) * s.leg_length * s.speed * 0.01;
+            //    }
+            //    else
+            //    {
+            //        auto dest = s.heart.position + s.moving_direction * s.max_step_travel - shoulder_direction * 2.0f;
+            //        s.left_foot.position += glm::normalize(dest - s.left_foot.position) * s.speed * 2.0f;
+            //        //s.step_travel += s.speed * 2.0f;
+            //        // s.left_foot.position.z = 10.0f * std::sin(s.step_travel / s.max_step_travel * PI);
+            //    }
+            //}
+
+            // auto dest = s.pelvis.position - glm::vec3(0.0f, 0.0f, s.leg_length) -
+            // shoulder_direction + s.moving_direction * 0.5f * s.leg_length;
+            if (s.heart.velocity != glm::vec3(0.0f))
             {
-                if (s.step_travel >= s.max_step_travel)
+                if (s.left_planted)
                 {
-                    s.left_planted          = false;
-                    s.step_travel           = 0.0f;
-                    s.right_foot.position.z = 0.0f;
-                    s.max_step_travel       = std::sin(PI / 6) * s.leg_length * s.speed * 0.01;
+                    if (s.step_travel >= s.max_step_travel)
+                    {
+                        s.left_planted    = false;
+                        s.step_travel     = -s.leg_length;
+                        s.max_step_travel = s.leg_length;
+                    }
+                    else
+                    {
+                        auto dest = s.pelvis.position - glm::vec3(0.0f, 0.0f, s.leg_length) + shoulder_direction +
+                                    s.moving_direction * s.step_travel;
+                        auto delta           = s.moving_direction * s.speed * dt;
+                        s.left_foot.position = dest + delta;
+						s.step_travel += glm::length(delta);
+                    }
                 }
                 else
                 {
-                    auto dest = s.heart.position + s.moving_direction * s.max_step_travel - shoulder_direction * 2.0f;
-                    s.right_foot.position += glm::normalize(dest - s.right_foot.position) * s.speed * 2.0f;
-                    s.step_travel += s.speed * 2.0f;
-                    //s.right_foot.position.z = 10.0f * std::sin(s.step_travel / s.max_step_travel * PI);
+                    if (s.step_travel >= s.max_step_travel)
+                    {
+                        s.left_planted    = true;
+                        s.step_travel     = -s.leg_length;
+                        s.max_step_travel = s.leg_length;
+                    }
+                    else
+                    {
+                        auto dest = s.pelvis.position - glm::vec3(0.0f, 0.0f, s.leg_length) - shoulder_direction +
+                                    s.moving_direction * s.step_travel;
+                        auto delta            = s.moving_direction * s.speed * dt;
+                        s.right_foot.position = dest + delta;
+                        s.step_travel += glm::length(delta);
+                    }
                 }
             }
             else
             {
-                if (s.step_travel >= s.max_step_travel)
-                {
-                    s.left_planted         = true;
-                    s.step_travel          = 0.0f;
-                    s.left_foot.position.z = 0.0f;
-                    s.max_step_travel      = std::sin(PI / 6) * s.leg_length * s.speed * 0.01;
-                }
-                else
-                {
-                    auto dest = s.heart.position + s.moving_direction * s.max_step_travel - shoulder_direction * 2.0f;
-                    s.left_foot.position += glm::normalize(dest - s.left_foot.position) * s.speed * 2.0f;
-                    s.step_travel += s.speed * 2.0f;
-                    // s.left_foot.position.z = 10.0f * std::sin(s.step_travel / s.max_step_travel * PI);
-                }
+                //s.left_foot.position = s.pelvis.position - glm::vec3(0.0f, 0.0f, s.leg_length) + shoulder_direction;
+                //s.right_foot.position = s.pelvis.position - glm::vec3(0.0f, 0.0f, s.leg_length) - shoulder_direction;
             }
 
             // s.left_foot.position  = s.pelvis.position + shoulder_direction - glm::vec3(0.0f, 0.0f, s.leg_length);
