@@ -37,6 +37,9 @@ namespace proc_anim
         shoulder_width = 40.0f;
         torso_length   = 50.0f;
 
+        calf_length  = leg_length * 0.5f;
+        thigh_length = calf_length;
+
         facing_direction = glm::vec3(0.0f, -1.0f, 0.0f);
 
         heart = Node(500.0f, 250.0f, 0.0f, 0.0f);
@@ -100,49 +103,6 @@ namespace proc_anim
 
         // FEET
         {
-            // how this is gonna work is that when the foot lifts off of the ground, it is going to calculate a destination
-            // for the step, and the distance from its current position to the step, the current velocity of heart will be
-            // saved in the velocity_at_step field to move the foot, the foot moves towards the destination X and Y, the
-            // foot's z value is calulated as sin(distance to step/distance from starting position); if the current heart
-            // velocity != velocity_at_step, calculate a new step destination that is
-            // (distance_from_start - distance_traveled) far away
-            // if (s.left_planted)
-            //{
-            //    if (s.step_travel >= s.max_step_travel)
-            //    {
-            //        s.left_planted          = false;
-            //        s.step_travel           = 0.0f;
-            //        s.right_foot.position.z = 0.0f;
-            //        s.max_step_travel       = std::sin(PI / 6) * s.leg_length * s.speed * 0.01;
-            //    }
-            //    else
-            //    {
-            //        auto dest = s.heart.position + s.moving_direction * s.max_step_travel - shoulder_direction * 2.0f;
-            //        s.right_foot.position += glm::normalize(dest - s.right_foot.position) * s.speed * 2.0f;
-            //        //s.step_travel += s.speed * 2.0f;
-            //        //s.right_foot.position.z = 10.0f * std::sin(s.step_travel / s.max_step_travel * PI);
-            //    }
-            //}
-            // else
-            //{
-            //    if (s.step_travel >= s.max_step_travel)
-            //    {
-            //        s.left_planted         = true;
-            //        s.step_travel          = 0.0f;
-            //        s.left_foot.position.z = 0.0f;
-            //        s.max_step_travel      = std::sin(PI / 6) * s.leg_length * s.speed * 0.01;
-            //    }
-            //    else
-            //    {
-            //        auto dest = s.heart.position + s.moving_direction * s.max_step_travel - shoulder_direction * 2.0f;
-            //        s.left_foot.position += glm::normalize(dest - s.left_foot.position) * s.speed * 2.0f;
-            //        //s.step_travel += s.speed * 2.0f;
-            //        // s.left_foot.position.z = 10.0f * std::sin(s.step_travel / s.max_step_travel * PI);
-            //    }
-            //}
-
-            // auto dest = s.pelvis.position - glm::vec3(0.0f, 0.0f, s.leg_length) -
-            // shoulder_direction + s.moving_direction * 0.5f * s.leg_length;
             if (s.heart.velocity != glm::vec3(0.0f))
             {
                 if (s.left_planted)
@@ -150,25 +110,9 @@ namespace proc_anim
                     if (s.step_travel >= s.max_step_travel)
                     {
                         s.left_planted    = false;
-                        s.step_travel     = -s.leg_length;
-                        s.max_step_travel = s.leg_length;
-                    }
-                    else
-                    {
-                        auto dest = s.pelvis.position - glm::vec3(0.0f, 0.0f, s.leg_length) + shoulder_direction +
-                                    s.moving_direction * s.step_travel;
-                        auto delta           = s.moving_direction * s.speed * dt;
-                        s.left_foot.position = dest + delta;
-						s.step_travel += glm::length(delta);
-                    }
-                }
-                else
-                {
-                    if (s.step_travel >= s.max_step_travel)
-                    {
-                        s.left_planted    = true;
-                        s.step_travel     = -s.leg_length;
-                        s.max_step_travel = s.leg_length;
+						// sin(PI/6) = 0.5
+                        s.step_travel     = -s.leg_length * 0.5f;
+                        s.max_step_travel = s.leg_length * 0.5f;
                     }
                     else
                     {
@@ -176,30 +120,70 @@ namespace proc_anim
                                     s.moving_direction * s.step_travel;
                         auto delta            = s.moving_direction * s.speed * dt;
                         s.right_foot.position = dest + delta;
-                        s.step_travel += glm::length(delta);
+                        s.right_foot.position.z =
+                            std::cos((PI * 0.5f) * s.step_travel / s.max_step_travel) * s.leg_length * 0.5f +
+                            s.pelvis.position.z - s.leg_length * std::cos(PI / 6);
+                        s.step_travel += s.speed*dt;
+                    }
+                }
+                else
+                {
+                    if (s.step_travel >= s.max_step_travel)
+                    {
+                        s.left_planted    = true;
+                        // sin(PI/6) = 0.5
+                        s.step_travel     = -s.leg_length * 0.5f;
+                        s.max_step_travel = s.leg_length * 0.5f;
+                    }
+                    else
+                    {
+                        auto dest = s.pelvis.position - glm::vec3(0.0f, 0.0f, s.leg_length) + shoulder_direction +
+                                    s.moving_direction * s.step_travel;
+                        auto delta           = s.moving_direction * s.speed * dt;
+                        s.left_foot.position = dest + delta;
+                        s.left_foot.position.z =
+                            std::cos((PI * 0.5f) * s.step_travel / s.max_step_travel) * s.leg_length * 0.5f +
+                            s.pelvis.position.z - s.leg_length * std::cos(PI / 6);
+                        s.step_travel += s.speed*dt;
                     }
                 }
             }
-            else
-            {
-                //s.left_foot.position = s.pelvis.position - glm::vec3(0.0f, 0.0f, s.leg_length) + shoulder_direction;
-                //s.right_foot.position = s.pelvis.position - glm::vec3(0.0f, 0.0f, s.leg_length) - shoulder_direction;
-            }
-
-            // s.left_foot.position  = s.pelvis.position + shoulder_direction - glm::vec3(0.0f, 0.0f, s.leg_length);
-            // s.right_foot.position = s.pelvis.position - shoulder_direction - glm::vec3(0.0f, 0.0f, s.leg_length);
 
             // KNEES
-            //{
-            //    s.left_knee.position =
-            //        s.pelvis.position +
-            //        glm::vec3(-s.facing_direction.y, s.facing_direction.x, 0.0f) * s.shoulder_width * 0.25f -
-            //        glm::vec3(0.0f, 0.0f, s.leg_length * 0.5f);
-            //    s.right_knee.position =
-            //        s.pelvis.position -
-            //        glm::vec3(-s.facing_direction.y, s.facing_direction.x, 0.0f) * s.shoulder_width * 0.25f -
-            //        glm::vec3(0.0f, 0.0f, s.leg_length * 0.5f);
-            //}
+            {
+                if (s.left_planted)
+                {
+                    auto  c        = glm::distance(s.pelvis.position, s.right_foot.position);
+                    float angle    = glm::acos((std::pow(s.thigh_length, 2) - std::pow(c, 2) - std::pow(s.calf_length, 2)) /
+                                            (s.calf_length * c * (-2)));
+                    auto  v_offset = s.facing_direction * s.calf_length * std::sin(angle);
+                    s.right_knee.position =
+                        glm::vec3(s.right_foot.position.x - v_offset.x, s.right_foot.position.y - v_offset.y,
+                                  s.right_foot.position.z + s.calf_length * std::cos(angle));
+                    std::cout << c << std::endl;
+                    /*if (angle == 0)
+                    {
+                        s.right_knee.position = glm::vec3(s.right_foot.position.x + c*0.5f, s.right_foot.position.y + c*0.5f,
+                    s.right_foot.position.z);
+                    }*/
+                }
+                else
+                {
+                    auto  c        = glm::distance(s.pelvis.position, s.left_foot.position);
+                    float angle    = glm::acos((std::pow(s.thigh_length, 2) - std::pow(c, 2) - std::pow(s.calf_length, 2)) /
+                                            (s.calf_length * c * (-2)));
+                    auto  v_offset = s.facing_direction * s.calf_length * std::sin(angle);
+                    s.left_knee.position =
+                        glm::vec3(s.left_foot.position.x - v_offset.x, s.left_foot.position.y - v_offset.y,
+                                  s.left_foot.position.z + s.calf_length * std::cos(angle));
+                    std::cout << c << std::endl;
+                    /*if (angle == 0)
+                    {
+                        s.left_knee.position = glm::vec3(s.left_foot.position.x + c * 0.5f,
+                                                          s.left_foot.position.y + c * 0.5f, s.left_foot.position.z);
+                    }*/
+                }
+            }
         }
 
         // HAND
@@ -259,15 +243,15 @@ namespace proc_anim
         s.r.color    = red;
         graphics::DrawRenderable(s.r, graphics::shaderProgram);
 
-        // s.r.position = transform_3d_to_render_coords(s.left_knee.position, looking_angle_y_mult, looking_angle_y_mult);
-        // s.r.scale    = s.left_knee.radius;
-        // s.r.color    = blu;
-        // graphics::DrawRenderable(s.r, graphics::shaderProgram);
+        s.r.position = transform_3d_to_render_coords(s.left_knee.position, looking_angle_y_mult, looking_angle_y_mult);
+        s.r.scale    = s.left_knee.radius;
+        s.r.color    = blu;
+        graphics::DrawRenderable(s.r, graphics::shaderProgram);
 
-        // s.r.position = transform_3d_to_render_coords(s.right_knee.position, looking_angle_y_mult, looking_angle_y_mult);
-        // s.r.scale    = s.right_knee.radius;
-        // s.r.color    = blu;
-        // graphics::DrawRenderable(s.r, graphics::shaderProgram);
+        s.r.position = transform_3d_to_render_coords(s.right_knee.position, looking_angle_y_mult, looking_angle_y_mult);
+        s.r.scale    = s.right_knee.radius;
+        s.r.color    = blu;
+        graphics::DrawRenderable(s.r, graphics::shaderProgram);
 
         s.r.position = transform_3d_to_render_coords(s.pelvis.position, looking_angle_y_mult, looking_angle_y_mult);
         s.r.scale    = s.pelvis.radius;

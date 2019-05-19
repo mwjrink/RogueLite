@@ -32,11 +32,12 @@ namespace proc_anim
         float      shoulder_width;
         float      neck_length;
         float      torso_length;
-        /*
+        
         float      calf_length;
         float      thigh_length;
         float      forearm_length;
         float      upper_arm_length;
+        /*
         float      chest_depth;
         float      waist_width;
         float      stomach_depth;
