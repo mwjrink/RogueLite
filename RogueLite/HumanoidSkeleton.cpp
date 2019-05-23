@@ -2,6 +2,8 @@
 
 #include "World.h"
 
+#include <iostream>
+
 #define PI 3.14159265359
 
 namespace proc_anim
@@ -15,11 +17,34 @@ namespace proc_anim
     void stop_velocity_left(int _, int __) { world::skeleton.heart.velocity.x++; }
     void stop_velocity_right(int _, int __) { world::skeleton.heart.velocity.x--; }
 
+    void reset(int _, int __)
+    {
+        auto s = &world::skeleton;
+
+        s->head.position = s->heart.position + glm::vec3(0.0f, 0.0f, s->neck_length);
+        auto left        = glm::vec3(s->facing_direction.y, -s->facing_direction.x, 0.0f);
+
+        // Make torso/shoulders to new direction, instead of instant pivoting
+        auto shoulder_direction    = left * s->shoulder_width * 0.5f;
+        s->left_shoulder.position  = s->heart.position + shoulder_direction;
+        s->right_shoulder.position = s->heart.position - shoulder_direction;
+
+        s->pelvis.position = s->heart.position - glm::vec3(0.0f, 0.0f, s->torso_length);
+
+        s->left_foot.position = s->pelvis.position + glm::normalize(left + glm::vec3(0.0f, 0.0f, -2)) * s->leg_length;
+
+        s->right_foot.position = s->pelvis.position + glm::normalize(-left + glm::vec3(0.0f, 0.0f, -2)) * s->leg_length;
+    }
+
     const glm::vec3 red = glm::vec3(1.0f, 0.0f, 0.0f);
     const glm::vec3 blu = glm::vec3(0.0f, 0.0f, 1.0f);
     const glm::vec3 gre = glm::vec3(0.0f, 1.0f, 0.0f);
 
     const float looking_angle_y_mult = std::sin(PI / 4);
+
+    const float rootThreeOverTwo = std::sqrt(3) / 2;
+
+    float heartToFootZ;
 
     HumanoidSkeleton::HumanoidSkeleton()
     {
@@ -41,35 +66,39 @@ namespace proc_anim
 
         heart = Node(500.0f, 250.0f, 0.0f, 0.0f);
 
-        head = Node(500.0f, 300.0f, 0.0f, 2.0f);
+        head = Node(500.0f, 250.0f, neck_length, 2.0f);
 
-        left_shoulder  = Node(450.0f, 250.0f, 0.0f, 1.0f);
-        right_shoulder = Node(550.0f, 250.0f, 0.0f, 1.0f);
+        left_shoulder  = Node(480.0f, 250.0f, 0.0f, 1.0f);
+        right_shoulder = Node(520.0f, 250.0f, 0.0f, 1.0f);
 
-        left_elbow  = Node(425.0f, 225.0f, 0.0f, 0.5f);
-        right_elbow = Node(575.0f, 225.0f, 0.0f, 0.5f);
+        // left_elbow  = Node(425.0f, 225.0f, 0.0f, 0.5f);
+        // right_elbow = Node(575.0f, 225.0f, 0.0f, 0.5f);
 
-        left_hand  = Node(425.0f, 200.0f, 0.0f, 0.75f);
-        right_hand = Node(575.0f, 200.0f, 0.0f, 0.75f);
+        left_hand  = Node(425.0f, 250.0f, -arm_length, 0.75f);
+        right_hand = Node(575.0f, 250.0f, -arm_length, 0.75f);
 
-        pelvis = Node(500.0f, 212.5f, 0.0f, 1.0f);
+        pelvis = Node(500.0f, 250.0f, -torso_length, 1.0f);
 
-        left_knee  = Node(475.0f, 187.5f, 0.0f, 0.5f);
-        right_knee = Node(525.0f, 187.5f, 0.0f, 0.5f);
+        // left_knee  = Node(475.0f, 187.5f, 0.0f, 0.5f);
+        // right_knee = Node(525.0f, 187.5f, 0.0f, 0.5f);
 
-        left_foot  = Node(450.0f, 137.5f, 0.0f, 0.75f);
-        right_foot = Node(550.0f, 137.5f, 0.0f, 0.75f);
+        heartToFootZ = -torso_length - leg_length * rootThreeOverTwo;
 
-        left_planted     = false;
-        step_destination = left_foot.position;
-        velocity_at_step = glm::vec3(0.0f);
-        step_travel      = 0;
-        max_step_travel  = std::sin(PI / 6) * leg_length * speed * 0.02;
+        left_foot  = Node(480.0f, 250.0f, heartToFootZ, 0.75f);
+        right_foot = Node(520.0f, 250.0f, heartToFootZ, 0.75f);
+
+        left_planted = false;
+        // step_destination = left_foot.position;
+        // velocity_at_step = glm::vec3(0.0f);
+        // step_travel      = 0;
+        // max_step_travel  = std::sin(PI / 6) * leg_length * speed * 0.02;
 
         input::copy_add_event(GLFW_KEY_W, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_up>());
         input::copy_add_event(GLFW_KEY_A, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_left>());
         input::copy_add_event(GLFW_KEY_S, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_down>());
         input::copy_add_event(GLFW_KEY_D, GLFW_PRESS, &input::delegate_type::create<&proc_anim::set_unit_velocity_right>());
+
+        input::copy_add_event(GLFW_KEY_SPACE, GLFW_PRESS, &input::delegate_type::create<&proc_anim::reset>());
 
         input::copy_add_event(GLFW_KEY_W, GLFW_RELEASE, &input::delegate_type::create<&proc_anim::stop_velocity_up>());
         input::copy_add_event(GLFW_KEY_A, GLFW_RELEASE, &input::delegate_type::create<&proc_anim::stop_velocity_left>());
@@ -99,45 +128,58 @@ namespace proc_anim
         s.pelvis.position = s.heart.position - glm::vec3(0.0f, 0.0f, s.torso_length);
 
         // FEET
+        // Foot.position.z proportional to planted foots distance from the pelvis?
+        // ie. sin(glm::distance((s.foot.position, s.pelvis.position) - rootThreeOverTwo ) / s.leg_length); ??
         {
-            // how this is gonna work is that when the foot lifts off of the ground, it is going to calculate a destination
-            // for the step, and the distance from its current position to the step, the current velocity of heart will be
-            // saved in the velocity_at_step field to move the foot, the foot moves towards the destination X and Y, the
-            // foot's z value is calulated as sin(distance to step/distance from starting position); if the current heart
-            // velocity != velocity_at_step, calculate a new step destination that is
-            // (distance_from_start - distance_traveled) far away
             if (s.left_planted)
             {
-                if (s.step_travel >= s.max_step_travel)
+                if (glm::distance(s.left_foot.position, s.pelvis.position) > s.leg_length)
                 {
                     s.left_planted          = false;
-                    s.step_travel           = 0.0f;
-                    s.right_foot.position.z = 0.0f;
-                    s.max_step_travel       = std::sin(PI / 6) * s.leg_length * s.speed * 0.01;
+                    s.right_foot.position.z = heartToFootZ;
                 }
                 else
                 {
-                    auto dest = s.heart.position + s.moving_direction * s.max_step_travel - shoulder_direction * 2.0f;
-                    s.right_foot.position += glm::normalize(dest - s.right_foot.position) * s.speed * 2.0f;
-                    s.step_travel += s.speed * 2.0f;
-                    //s.right_foot.position.z = 10.0f * std::sin(s.step_travel / s.max_step_travel * PI);
+                    // TODO, why 3? and maybe make it a dynamically changing number?
+                    auto delta = s.speed * dt * 3.0f;
+
+                    auto dest = s.moving_direction * s.leg_length * 0.5f + s.pelvis.position -
+                                glm::vec3(0.0f, 0.0f, s.leg_length * rootThreeOverTwo) - shoulder_direction;
+                    s.right_foot.position += glm::normalize(dest - s.right_foot.position) * delta;
+
+                    // s.right_foot.position.z =
+                    //    -s.torso_length - s.leg_length * rootThreeOverTwo +
+                    //    std::sin(2.0f * PI * glm::distance(glm::vec2(s.right_foot.position), glm::vec2(s.pelvis.position))
+                    //    /
+                    //             s.leg_length) *
+                    //        0.2f * s.leg_length;
+
+                    // std::cout << "right: " << glm::distance(s.right_foot.position, dest) / s.leg_length << std::endl;
                 }
             }
             else
             {
-                if (s.step_travel >= s.max_step_travel)
+                if (glm::distance(s.right_foot.position, s.pelvis.position) > s.leg_length)
                 {
                     s.left_planted         = true;
-                    s.step_travel          = 0.0f;
-                    s.left_foot.position.z = 0.0f;
-                    s.max_step_travel      = std::sin(PI / 6) * s.leg_length * s.speed * 0.01;
+                    s.left_foot.position.z = heartToFootZ;
                 }
                 else
                 {
-                    auto dest = s.heart.position + s.moving_direction * s.max_step_travel - shoulder_direction * 2.0f;
-                    s.left_foot.position += glm::normalize(dest - s.left_foot.position) * s.speed * 2.0f;
-                    s.step_travel += s.speed * 2.0f;
-                    // s.left_foot.position.z = 10.0f * std::sin(s.step_travel / s.max_step_travel * PI);
+                    // TODO, why 3? and maybe make it a dynamically changing number?
+                    auto delta = s.speed * dt * 3.0f;
+
+                    auto dest = s.moving_direction * s.leg_length * 0.5f + s.pelvis.position -
+                                glm::vec3(0.0f, 0.0f, s.leg_length * rootThreeOverTwo) + shoulder_direction;
+                    s.left_foot.position += glm::normalize(dest - s.left_foot.position) * delta;
+
+                    // s.left_foot.position.z =
+                    //    -s.torso_length - s.leg_length * rootThreeOverTwo +
+                    //    std::sin(2.0f * PI * glm::distance(glm::vec2(s.left_foot.position), glm::vec2(s.pelvis.position)) /
+                    //             s.leg_length) *
+                    //        0.2f * s.leg_length;
+
+                    // std::cout << "left: " << glm::distance(s.left_foot.position, dest) / s.leg_length << std::endl;
                 }
             }
 
@@ -155,7 +197,7 @@ namespace proc_anim
             //        glm::vec3(-s.facing_direction.y, s.facing_direction.x, 0.0f) * s.shoulder_width * 0.25f -
             //        glm::vec3(0.0f, 0.0f, s.leg_length * 0.5f);
             //}
-        }
+        }  // namespace proc_anim
 
         // HAND
         {
