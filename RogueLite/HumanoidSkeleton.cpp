@@ -1,6 +1,5 @@
 #include "HumanoidSkeleton.h"
 
-#include <iostream>
 #include "World.h"
 
 #include <iostream>
@@ -161,8 +160,7 @@ namespace proc_anim
                     // std::cout << "right: " << glm::distance(s.right_foot.position, dest) / s.leg_length << std::endl;
                 }
             }
-
-            // KNEES
+            else
             {
                 if (glm::distance(s.right_foot.position, s.pelvis.position) > s.leg_length)
                 {
@@ -261,15 +259,15 @@ namespace proc_anim
         s.r.color    = red;
         graphics::DrawRenderable(s.r, graphics::shaderProgram);
 
-        s.r.position = transform_3d_to_render_coords(s.left_knee.position, looking_angle_y_mult, looking_angle_y_mult);
-        s.r.scale    = s.left_knee.radius;
-        s.r.color    = blu;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+        // s.r.position = transform_3d_to_render_coords(s.left_knee.position, looking_angle_y_mult, looking_angle_y_mult);
+        // s.r.scale    = s.left_knee.radius;
+        // s.r.color    = blu;
+        // graphics::DrawRenderable(s.r, graphics::shaderProgram);
 
-        s.r.position = transform_3d_to_render_coords(s.right_knee.position, looking_angle_y_mult, looking_angle_y_mult);
-        s.r.scale    = s.right_knee.radius;
-        s.r.color    = blu;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+        // s.r.position = transform_3d_to_render_coords(s.right_knee.position, looking_angle_y_mult, looking_angle_y_mult);
+        // s.r.scale    = s.right_knee.radius;
+        // s.r.color    = blu;
+        // graphics::DrawRenderable(s.r, graphics::shaderProgram);
 
         s.r.position = transform_3d_to_render_coords(s.pelvis.position, looking_angle_y_mult, looking_angle_y_mult);
         s.r.scale    = s.pelvis.radius;
