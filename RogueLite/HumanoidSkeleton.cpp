@@ -216,7 +216,7 @@ namespace proc_anim
                     auto v_offset = s.facing_direction * s.calf_length * std::cos(angle);
                     s.right_knee.position =
                         glm::vec3(s.right_foot.position.x - v_offset.x, s.right_foot.position.y - v_offset.y,
-                                  s.right_foot.position.z + s.calf_length * std::sin(angle));
+                                  heartToFootZ + s.calf_length * std::sin(angle));
 
                     std::cout << "theta: " << theta << ", angle: " << angle << std::endl;
 
@@ -238,7 +238,7 @@ namespace proc_anim
                     auto v_offset = s.facing_direction * s.calf_length * std::cos(angle);
                     s.left_knee.position =
                         glm::vec3(s.left_foot.position.x - v_offset.x, s.left_foot.position.y - v_offset.y,
-                                  s.left_foot.position.z + s.calf_length * std::sin(angle));
+                                  heartToFootZ + s.calf_length * std::sin(angle));
 
                     std::cout << "theta: " << theta << ", angle: " << angle << std::endl;
 
