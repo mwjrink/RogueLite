@@ -9,6 +9,16 @@
 
 namespace proc_anim
 {
+    extern const glm::vec3 red;
+    extern const glm::vec3 blu;
+    extern const glm::vec3 gre;
+
+    extern const float looking_angle_y_mult;
+
+    extern const float rootThreeOverTwo;
+
+    extern float heartToFootZ;
+
     class HumanoidSkeleton
     {
       public:
@@ -32,11 +42,11 @@ namespace proc_anim
         float      shoulder_width;
         float      neck_length;
         float      torso_length;
-        
-        float      calf_length;
-        float      thigh_length;
-        float      forearm_length;
-        float      upper_arm_length;
+
+        float calf_length;
+        float thigh_length;
+        float forearm_length;
+        float upper_arm_length;
         /*
         float      chest_depth;
         float      waist_width;
