@@ -62,8 +62,8 @@ namespace proc_anim
         shoulder_width = 40.0f;
         torso_length   = 50.0f;
 
-        calf_length  = leg_length * 0.5f;
-        thigh_length = calf_length;
+        calf_length  = leg_length * 0.45f;
+        thigh_length = leg_length * 0.55f;
 
         facing_direction = glm::vec3(0.0f, -1.0f, 0.0f);
 
@@ -205,20 +205,18 @@ namespace proc_anim
                         std::acos((std::pow(s.thigh_length, 2.0f) - std::pow(c, 2.0f) - std::pow(s.calf_length, 2.0f)) /
                                   (s.calf_length * c * (-2.0f)));
 
-                    if (isnan(theta))
-                    {
-                        theta = 0;
-                    }
+                    if (isnan(theta)) theta = 0;
 
                     float angle =
                         std::acos(glm::dot(s.right_foot.position - s.pelvis.position, s.facing_direction) / c) - theta;
 
                     auto v_offset = s.facing_direction * s.calf_length * std::cos(angle);
                     s.right_knee.position =
-                        glm::vec3(s.right_foot.position.x - v_offset.x, s.right_foot.position.y - v_offset.y,
-                                  heartToFootZ + s.calf_length * std::sin(angle));
+                        s.right_foot.position - v_offset +
+                                            glm::normalize(s.pelvis.position - shoulder_direction * 0.5f - s.right_foot.position) *
+                                                s.calf_length * std::sin(angle);
 
-                    std::cout << "theta: " << theta << ", angle: " << angle << std::endl;
+                    // std::cout << "theta: " << theta << ", angle: " << angle << std::endl;
 
                     /*if (angle == 0)
                     {
@@ -232,15 +230,19 @@ namespace proc_anim
                     float theta =
                         std::acos((std::pow(s.thigh_length, 2.0f) - std::pow(c, 2.0f) - std::pow(s.calf_length, 2.0f)) /
                                   (s.calf_length * c * (-2.0f)));
+
+                    if (isnan(theta)) theta = 0;
+
                     float angle =
                         std::acos(glm::dot(s.left_foot.position - s.pelvis.position, s.facing_direction) / c) - theta;
 
                     auto v_offset = s.facing_direction * s.calf_length * std::cos(angle);
                     s.left_knee.position =
-                        glm::vec3(s.left_foot.position.x - v_offset.x, s.left_foot.position.y - v_offset.y,
-                                  heartToFootZ + s.calf_length * std::sin(angle));
+                        s.left_foot.position - v_offset +
+                        glm::normalize(s.pelvis.position + shoulder_direction * 0.5f - s.left_foot.position) *
+                            s.calf_length * std::sin(angle);
 
-                    std::cout << "theta: " << theta << ", angle: " << angle << std::endl;
+                    // std::cout << "theta: " << theta << ", angle: " << angle << std::endl;
 
                     /*if (angle == 0)
                     {
@@ -270,6 +272,11 @@ namespace proc_anim
     {
         return glm::vec2(coords.x, coords.y * sin_of_viewing_angle + coords.z * cos_of_viewing_angle);
     }
+
+    // glm::vec2 offset_by_size(glm::vec2 input, int widthHeight, float scale)
+    //   {
+    //       return input - glm::vec2(widthHeight * scale * 0.5f);
+    //}
 
     void render(HumanoidSkeleton& s)
     {
@@ -308,15 +315,18 @@ namespace proc_anim
         s.r.color    = red;
         graphics::DrawRenderable(s.r, graphics::shaderProgram);
 
-        s.r.position = transform_3d_to_render_coords(s.left_knee.position, looking_angle_y_mult, looking_angle_y_mult);
-        s.r.scale    = s.left_knee.radius;
-        s.r.color    = blu;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+        // KNEES
+        {
+            s.r.position = transform_3d_to_render_coords(s.left_knee.position, looking_angle_y_mult, looking_angle_y_mult);
+            s.r.scale    = s.left_knee.radius;
+            s.r.color    = blu;
+            graphics::DrawRenderable(s.r, graphics::shaderProgram);
 
-        s.r.position = transform_3d_to_render_coords(s.right_knee.position, looking_angle_y_mult, looking_angle_y_mult);
-        s.r.scale    = s.right_knee.radius;
-        s.r.color    = blu;
-        graphics::DrawRenderable(s.r, graphics::shaderProgram);
+            s.r.position = transform_3d_to_render_coords(s.right_knee.position, looking_angle_y_mult, looking_angle_y_mult);
+            s.r.scale    = s.right_knee.radius;
+            s.r.color    = blu;
+            graphics::DrawRenderable(s.r, graphics::shaderProgram);
+        }
 
         s.r.position = transform_3d_to_render_coords(s.pelvis.position, looking_angle_y_mult, looking_angle_y_mult);
         s.r.scale    = s.pelvis.radius;
@@ -364,5 +374,25 @@ namespace proc_anim
         // s.r.color    = glm::vec3(1.0f, 1.0f, 1.0f);
         // graphics::DrawRenderable(s.r, graphics::shaderProgram);
     }
+
+	// Head
+	// Neck
+	// Torso
+	// Shoulder
+	// Upper-Arm
+	// Forearm
+	// Hand
+	// Thigh
+	// Calf/Shin
+	// Foot
+
+	// Anchor points
+	// Directional Normal or Direction
+
+	// Always Body/Core
+
+	// Materials
+	// Should be all one color, gonna need lighting (probably super basic)
+
 
 }  // namespace proc_anim
