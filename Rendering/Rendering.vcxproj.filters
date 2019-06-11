@@ -46,5 +46,11 @@
     <None Include="1.model_loading.fs">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="cel-shading.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="cel-shading.fs">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
