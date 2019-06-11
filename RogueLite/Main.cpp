@@ -2,6 +2,16 @@
 
 #include "Main.h"
 
+#include "AnimatedModel.h"
+
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
+#include "Model.h"
+
+#include <iostream>
+
 // Renderable r;
 Camera camera;
 
@@ -34,11 +44,16 @@ auto INIT_TEST_SPRITE()
     // world::UpdateCurrentLevel(level::Load_Level("Maps/Town.tmx"));
 
     gltexture::atlas_texture_id = gltexture::GenerateAtlas(false);
+
+	//auto charModel = AnimatedModel();
+
+    //AnimatedModel(GLuint model, gltexture::GLTexture texture, Joint rootJoint, int jointCount);
 }
 
 // void Process();
 void Update(float dt);
 void Render(Camera camera);
+void Render(Model ourModel);
 // void Render(Renderable& r, Camera camera, physics::Entity* rs, int size);
 
 int main(int argc, char* argv[])
@@ -58,6 +73,8 @@ int main(int argc, char* argv[])
     // glfwGetPrimaryMonitor(), NULL);
 
     INIT_TEST_SPRITE();
+
+    auto ourModel = Model("resources/objects/nanosuit/nanosuit.obj");
 
     // const int meme     = 30000;
     // auto      entities = new physics::Entity[meme];
@@ -118,7 +135,8 @@ int main(int argc, char* argv[])
         Update(dt);
         // Render(world::player, camera, entities, meme);
 
-        Render(camera);
+        //Render(camera);
+        Render(ourModel);
 
         // For precision, could run this continuously on main
         // thread until some other asynch op. is complete
@@ -172,6 +190,29 @@ void Render(Camera camera)
     proc_anim::render(world::skeleton);
 
     graphics::DrawBatch();
+    glfwSwapBuffers(graphics::window);
+    return;
+}
+
+void Render(Model model) {
+    // Clear initial state
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);  // glClear(ALL_BUFFERS);
+
+	glUseProgram(graphics::shaderProgram);
+
+	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    glm::mat4 view       = camera.GetViewMatrix();
+    ourShader.setMat4("projection", projection);
+    ourShader.setMat4("view", view);
+
+    // render the loaded model
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));  // translate it down so it's at the center of the scene
+    model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));        // it's a bit too big for our scene, so scale it down
+    ourShader.setMat4("model", model);
+    model.Draw(ourShader);
+
     glfwSwapBuffers(graphics::window);
     return;
 }

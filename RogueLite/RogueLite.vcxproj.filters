@@ -16,6 +16,18 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{113650c9-57bc-4e14-9f1d-ed1d2f8bf9f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\3D-Animations">
+      <UniqueIdentifier>{1f05f539-689e-4d8b-8fa8-be643e1184e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries">
+      <UniqueIdentifier>{c98a14b9-71f5-426d-af4c-5d73ab44ebdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Libraries">
+      <UniqueIdentifier>{487a1ed0-8e5e-48ed-8299-9d36557c2d66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\models">
+      <UniqueIdentifier>{7b666599-c1c8-4a0a-8648-ed40d7689822}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -61,6 +73,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HumanoidSkeleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Joint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -131,6 +155,36 @@
     <ClInclude Include="HumanoidSkeleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Joint.h">
+      <Filter>Header Files\3D-Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedModel.h">
+      <Filter>Header Files\3D-Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\MultiCastDelegate.h">
+      <Filter>Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\stb_image.h">
+      <Filter>Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\stb_image_write.h">
+      <Filter>Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\ThreadPool.h">
+      <Filter>Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\Delegate.h">
+      <Filter>Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\DelegateBase.h">
+      <Filter>Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files\3D-Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Header Files\3D-Animations</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="FragmentShader.glsl">
@@ -139,15 +193,18 @@
     <None Include="VertexShader.glsl">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="AnimatedEntityVertex.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="AnimatedEntityFragment.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Resources\models\model.dae">
+      <Filter>Resource Files\models</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\TestSprite.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Resources\SpriteSheet.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Resources\BasicLevelTextures.png">
+    <Image Include="Resources\node.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

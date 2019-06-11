@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{25377E4B-70B3-4A98-A274-FFF938A610FF}</ProjectGuid>
-    <RootNamespace>RogueLite</RootNamespace>
+    <ProjectGuid>{AD9BD803-5E27-46A4-87A3-34F51429EB1D}</ProjectGuid>
+    <RootNamespace>Rendering</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,24 +70,6 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GLFW\include;$(SolutionDir)GL3W\build\include;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>
-      </ForcedIncludeFiles>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalOptions>/std:c++17 %(AdditionalOptions)</AdditionalOptions>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Configuration)\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -95,15 +77,22 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)assimp-4.1.0\include;$(SolutionDir)GLFW\include;$(SolutionDir)GL3W\build\include;$(SolutionDir)include;$(SolutionDir)llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>
-      </ForcedIncludeFiles>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalOptions>/std:c++17 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;LLVMSupport.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Configuration)\$(Platform);$(SolutionDir)assimp-4.1.0\lib\$(Configuration);$(SolutionDir)llvm-8.0.0.src\$(Configuration)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;LLVMSupport.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -114,18 +103,11 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <ForcedIncludeFiles>
-      </ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>$(SolutionDir)GLFW\include;$(SolutionDir)GL3W\build\include;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/std:c++17 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Configuration)\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -136,11 +118,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <ForcedIncludeFiles>
-      </ForcedIncludeFiles>
       <AdditionalIncludeDirectories>$(SolutionDir)assimp-4.1.0\include;$(SolutionDir)GLFW\include;$(SolutionDir)GL3W\build\include;$(SolutionDir)include;$(SolutionDir)llvm-8.0.0.src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/std:c++17 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,69 +129,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AnimatedModel.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Creature.cpp" />
-    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="glad.c" />
-    <ClCompile Include="GLTexture.cpp" />
-    <ClCompile Include="Graphics.cpp" />
-    <ClCompile Include="HumanoidSkeleton.cpp" />
-    <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="Joint.cpp" />
-    <ClCompile Include="Level.cpp" />
-    <ClCompile Include="LGrid.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Renderable.cpp" />
-    <ClCompile Include="Tilesheet.cpp" />
-    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\boost_1_70_0\boost\container\small_vector.hpp" />
-    <ClInclude Include="AnimatedModel.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Creature.h" />
-    <ClInclude Include="DebugUtilities.h" />
-    <ClInclude Include="Effect.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="FreeList.h" />
-    <ClInclude Include="GLTexture.h" />
-    <ClInclude Include="Graphics.h" />
-    <ClInclude Include="HumanoidSkeleton.h" />
-    <ClInclude Include="InputManager.h" />
-    <ClInclude Include="Item.h" />
-    <ClInclude Include="Joint.h" />
-    <ClInclude Include="Level.h" />
-    <ClInclude Include="LGrid.h" />
-    <ClInclude Include="Libraries\Delegate.h" />
-    <ClInclude Include="Libraries\DelegateBase.h" />
-    <ClInclude Include="Libraries\MultiCastDelegate.h" />
-    <ClInclude Include="Libraries\stb_image.h" />
-    <ClInclude Include="Libraries\stb_image_write.h" />
-    <ClInclude Include="Libraries\ThreadPool.h" />
-    <ClInclude Include="Loose-Double-Grid.h" />
-    <ClInclude Include="Main.h" />
-    <ClInclude Include="MainLoopCallbacks.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Renderable.h" />
-    <ClInclude Include="TileSheet.h" />
-    <ClInclude Include="WindowCallbacks.h" />
-    <ClInclude Include="World.h" />
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="mesh.h" />
+    <ClInclude Include="model.h" />
+    <ClInclude Include="shader.h" />
+    <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AnimatedEntityFragment.glsl" />
-    <None Include="AnimatedEntityVertex.glsl" />
-    <None Include="Resources\models\model.dae" />
-    <None Include="VertexShader.glsl" />
-    <None Include="FragmentShader.glsl" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\node.png" />
+    <None Include="1.model_loading.fs" />
+    <None Include="1.model_loading.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
