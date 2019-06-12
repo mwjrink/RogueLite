@@ -21,6 +21,9 @@
     <ClCompile Include="glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HumanoidSkeleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="model.h">
@@ -38,6 +41,9 @@
     <ClInclude Include="stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HumanoidSkeleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="1.model_loading.vs">
@@ -46,10 +52,10 @@
     <None Include="1.model_loading.fs">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="cel-shading.vs">
+    <None Include="outline-shading.vs">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="cel-shading.fs">
+    <None Include="outline-shading.fs">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

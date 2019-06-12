@@ -38,6 +38,8 @@ class Model
     // constructor, expects a filepath to a 3D model.
     Model(string const& path, bool gamma = false) : gammaCorrection(gamma) { loadModel(path); }
 
+    Model() = default;
+
     // draws the model, and thus all its meshes
     void Draw(Shader shader)
     {
@@ -64,6 +66,11 @@ class Model
 
         // process ASSIMP's root node recursively
         processNode(scene->mRootNode, scene);
+
+		if (scene->HasAnimations())
+        {
+            cout << "ANIMATIONS!!" << endl;
+		}
     }
 
     // processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process

@@ -130,10 +130,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="glad.c" />
+    <ClCompile Include="HumanoidSkeleton.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
+    <ClInclude Include="HumanoidSkeleton.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="model.h" />
     <ClInclude Include="shader.h" />
@@ -142,8 +144,8 @@
   <ItemGroup>
     <None Include="1.model_loading.fs" />
     <None Include="1.model_loading.vs" />
-    <None Include="cel-shading.fs" />
-    <None Include="cel-shading.vs" />
+    <None Include="outline-shading.fs" />
+    <None Include="outline-shading.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
