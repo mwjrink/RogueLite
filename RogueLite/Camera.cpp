@@ -3,7 +3,9 @@
 void UpdateViewMatrix(glm::mat4& view_matrix, glm::vec2 position, float zoom)
 {
     view_matrix = glm::translate(glm::mat4(1.0f), glm::vec3(-position, 0));
-    view_matrix = glm::scale(view_matrix, glm::vec3(zoom, zoom, 0.0f));
+    if (zoom != 1.0f) view_matrix = glm::scale(view_matrix, glm::vec3(zoom, zoom, 0.0f));
+
+    //glm::lookAt(eye, center, glm::vec3(0.0f, 0.0f, 1.0f));
 }
 
 glm::vec2 WorldToScreen(glm::vec2 position, glm::vec2 camera_position, float zoom)

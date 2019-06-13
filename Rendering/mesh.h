@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "Joint.h"
 #include "shader.h"
 
 #include <fstream>
@@ -28,6 +29,10 @@ struct Vertex
     glm::vec3 Tangent;
     // bitangent
     glm::vec3 Bitangent;
+    // jointIndices
+    glm::ivec3 JointIndices;
+    // jointWeights
+    glm::vec3 JointWeights;
 };
 
 struct Texture
@@ -44,16 +49,14 @@ class Mesh
     vector<Vertex>       vertices;
     vector<unsigned int> indices;
     vector<Texture>      textures;
+    vector<Joint>        joints;
     unsigned int         VAO;
 
     /*  Functions  */
     // constructor
-    Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures)
+    Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures, vector<Joint> joints)
+        : vertices(vertices), indices(indices), textures(textures), joints(joints)
     {
-        this->vertices = vertices;
-        this->indices  = indices;
-        this->textures = textures;
-
         // now that we have all the required data, set the vertex buffers and its attribute pointers.
         setupMesh();
     }
@@ -86,6 +89,11 @@ class Mesh
             // and finally bind the texture
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
+
+        vector<glm::mat4> transforms = vector<glm::mat4>(13);
+        for (auto j : joints) transforms.push_back(j.getAnimatedTransform());
+
+        glUniformMatrix4fv(glGetUniformLocation(shader.ID, "jointTransforms"), 13, GL_FALSE, &transforms[0][0][0]);
 
         // draw mesh
         glBindVertexArray(VAO);
@@ -136,6 +144,12 @@ class Mesh
         // vertex bitangent
         glEnableVertexAttribArray(4);
         glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Bitangent));
+        // vertex joint indices
+        glEnableVertexAttribArray(4);
+        glVertexAttribPointer(4, 3, GL_INT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, JointIndices));
+        // vertex joint weights
+        glEnableVertexAttribArray(4);
+        glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, JointWeights));
 
         glBindVertexArray(0);
     }

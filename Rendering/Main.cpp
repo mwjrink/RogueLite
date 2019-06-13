@@ -32,7 +32,7 @@ const unsigned int pixelation_factor = 5;
 const float outline_width = 0.2f;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 float  lastX      = SCR_WIDTH / 2.0f;
 float  lastY      = SCR_HEIGHT / 2.0f;
 bool   firstMouse = true;
@@ -53,6 +53,8 @@ Shader outlineShader;
 Model ourModel;
 
 GLFWwindow* window;
+
+float rot = 0.0f;
 
 int main()
 {
@@ -148,6 +150,8 @@ int main()
         // -----
         processInput(window);
 
+		rot += 0.01f;
+
         // render
         // ------
         render();
@@ -183,6 +187,7 @@ void render()
     glm::mat4 model      = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));  // translate it down so it's at the center of the scene
     model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));        // it's a bit too big for our scene, so scale it down
+    model = glm::rotate(model, rot, glm::vec3(0.0f, 0.0f, 1.0f));
 
     // glDepthFunc(GL_GEQUAL);
     glStencilFunc(GL_ALWAYS, 1, 0xFF);  // all fragments should update the stencil buffer

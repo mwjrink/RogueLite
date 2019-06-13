@@ -66,11 +66,6 @@ class Model
 
         // process ASSIMP's root node recursively
         processNode(scene->mRootNode, scene);
-
-		if (scene->HasAnimations())
-        {
-            cout << "ANIMATIONS!!" << endl;
-		}
     }
 
     // processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process
@@ -84,6 +79,29 @@ class Model
             // the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
             aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
             meshes.push_back(processMesh(mesh, scene));
+
+            //if (mesh->HasBones())
+            //    for (auto it = 0; it < mesh->mNumBones; it++)
+            //    {
+            //        cout << mesh->mBones[it]->mName.C_Str() << endl;
+            //        //mesh->mBones[it]->mOffsetMatrix;
+            //        //mesh->mVertices[it].
+            //    }
+
+            //  Armature_Spine
+            //  Armature_Thigh_L
+            //	Armature_Shin_L
+            //	Armature_Thigh_R
+            //	Armature_Shin_R
+            //	Armature_Shoulder_L
+            //  Armature_Upper_Arm_L
+            //	Armature_Lower_Arm_L
+            //	Armature_Head
+            //	Armature_Shoulder_R
+            //	Armature_Upper_Arm_R
+            //  Armature_Lower_Arm_R
+
+            // mesh.
         }
         // after we've processed all of the meshes (if any) we then recursively process each of the children nodes
         for (unsigned int i = 0; i < node->mNumChildren; i++)
@@ -98,6 +116,8 @@ class Model
         vector<Vertex>       vertices;
         vector<unsigned int> indices;
         vector<Texture>      textures;
+		
+		vector<int> filled = vector<int>(mesh->mNumVertices);
 
         // Walk through each of the mesh's vertices
         for (unsigned int i = 0; i < mesh->mNumVertices; i++)
@@ -139,6 +159,8 @@ class Model
             vector.z         = mesh->mBitangents[i].z;
             vertex.Bitangent = vector;
             vertices.push_back(vertex);
+
+			filled[i] = 0;
         }
         // now wak through each of the mesh's faces (a face is a mesh its triangle) and retrieve the corresponding vertex
         // indices.
@@ -156,6 +178,17 @@ class Model
         // diffuse: texture_diffuseN
         // specular: texture_specularN
         // normal: texture_normalN
+
+		for (auto i = 0; i < mesh->mNumBones; i++)
+        {
+            for (auto j = 0; j < mesh->mBones[i]->mNumWeights; j++)
+            {
+                auto index = mesh->mBones[i]->mWeights[j].mVertexId;
+                vertices[index].JointIndices[filled[index]] = i;
+                vertices[index].JointWeights[filled[index]] = mesh->mBones[i]->mWeights[j].mWeight;
+                filled[index]++;
+            }
+		}
 
         // 1. diffuse maps
         vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
