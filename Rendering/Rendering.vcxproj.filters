@@ -44,6 +44,9 @@
     <ClInclude Include="HumanoidSkeleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Joint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="1.model_loading.vs">
