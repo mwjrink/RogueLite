@@ -17,6 +17,7 @@
 #include <fstream>
 #include <iostream>
 #include <map>
+#include <queue>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -80,7 +81,7 @@ class Model
             aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
             meshes.push_back(processMesh(mesh, scene));
 
-            //if (mesh->HasBones())
+            // if (mesh->HasBones())
             //    for (auto it = 0; it < mesh->mNumBones; it++)
             //    {
             //        cout << mesh->mBones[it]->mName.C_Str() << endl;
@@ -116,8 +117,9 @@ class Model
         vector<Vertex>       vertices;
         vector<unsigned int> indices;
         vector<Texture>      textures;
-		
-		vector<int> filled = vector<int>(mesh->mNumVertices);
+        vector<Joint>        joints;
+
+        vector<int> filled = vector<int>(mesh->mNumVertices);
 
         // Walk through each of the mesh's vertices
         for (unsigned int i = 0; i < mesh->mNumVertices; i++)
@@ -160,7 +162,7 @@ class Model
             vertex.Bitangent = vector;
             vertices.push_back(vertex);
 
-			filled[i] = 0;
+            filled[i] = 0;
         }
         // now wak through each of the mesh's faces (a face is a mesh its triangle) and retrieve the corresponding vertex
         // indices.
@@ -179,16 +181,77 @@ class Model
         // specular: texture_specularN
         // normal: texture_normalN
 
-		for (auto i = 0; i < mesh->mNumBones; i++)
+        for (auto i = 0; i < mesh->mNumBones; i++)
         {
             for (auto j = 0; j < mesh->mBones[i]->mNumWeights; j++)
             {
                 auto index = mesh->mBones[i]->mWeights[j].mVertexId;
+                if (filled[index] >= 2) continue;
                 vertices[index].JointIndices[filled[index]] = i;
                 vertices[index].JointWeights[filled[index]] = mesh->mBones[i]->mWeights[j].mWeight;
                 filled[index]++;
             }
-		}
+        }
+
+        for (auto i = 0; i < mesh->mNumVertices; i++)
+        {
+            auto adjusted = glm::normalize(
+                glm::vec3(vertices[i].JointWeights[0], vertices[i].JointWeights[1], vertices[i].JointWeights[2]));
+            vertices[i].JointWeights[0] = adjusted.x;
+            vertices[i].JointWeights[1] = adjusted.y;
+            vertices[i].JointWeights[2] = adjusted.z;
+        }
+
+        auto to_check = vector<aiNode*>();
+        auto mine     = vector<aiNode*>();
+
+        auto q = queue<aiNode*>();
+        for (auto i = 0; i < scene->mRootNode->mNumChildren; i++)
+        {
+            if ("Armature" == string(scene->mRootNode->mChildren[i]->mName.C_Str()))
+            {
+                q.push(scene->mRootNode->mChildren[i]);
+                break;
+            }
+        }
+
+        // This will break if there is a parent->child loop in the aiNode structure, mainly because if there is, fuck you
+        while (!q.empty())
+        {
+            auto current = q.front();
+            if (current == NULL) continue;
+            cout << current->mName.C_Str() << endl;
+            q.pop();
+            to_check.push_back(current);
+            for (auto i = 0; i < current->mNumChildren; i++) q.push(current->mChildren[i]);
+        }
+
+        // create all of the joints and add them to the joints vector in order so that the IDs line up with the vertex
+        // weights in the shaders
+        for (auto i = 0; i < mesh->mNumBones; i++)
+        {
+            // unsigned int ID, float length, std::string name
+            float length = -1.0f;
+            for (auto node : to_check)
+                if (node->mName == mesh->mBones[i]->mName)
+                {
+                    length = glm::length(convertMatrix(node->mTransformation) * glm::vec4(0, 0, 0, 1));
+                    mine.push_back(node);
+                    break;
+                }
+
+            joints.push_back(Joint(i, length, mesh->mBones[i]->mName.C_Str()));
+        }
+
+        // now set all of the child joints as children and what not
+        for (auto i = 0; i < mesh->mNumBones; i++)
+            for (auto j = 0; j < to_check[i]->mNumChildren; j++)
+                for (auto pot : joints)
+                    if (pot.name == to_check[i]->mChildren[j]->mName.C_Str())
+                    {
+                        joints[i].push_back_child(&pot);
+                        break;
+                    }
 
         // 1. diffuse maps
         vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
@@ -204,7 +267,17 @@ class Model
         textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
         // return a mesh object created from the extracted mesh data
-        return Mesh(vertices, indices, textures);
+        return Mesh(vertices, indices, textures, joints);
+    }
+
+    /**
+     * @param aiMat
+     * @return transposed version of the aiMat to fit into glm's style of doing things
+     */
+    glm::mat4 convertMatrix(const aiMatrix4x4& aiMat)
+    {
+        return {aiMat.a1, aiMat.b1, aiMat.c1, aiMat.d1, aiMat.a2, aiMat.b2, aiMat.c2, aiMat.d2,
+                aiMat.a3, aiMat.b3, aiMat.c3, aiMat.d3, aiMat.a4, aiMat.b4, aiMat.c4, aiMat.d4};
     }
 
     // checks all material textures of a given type and loads the textures if they're not loaded yet.

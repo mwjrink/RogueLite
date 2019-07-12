@@ -5,59 +5,106 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include <String>
+#include <algorithm>
 #include <vector>
 
 using namespace std;
 
 class Joint
 {
-    // parent Joint
-    Joint* parent;
-    // child joints, with positioning relative to this
-    vector<Joint> children;
+  public:
+    unsigned int ID;
 
-    // relative to world space
-    glm::vec3 original_position;
+    std::string name;
+
+    // parent Joint
+    Joint* parent = nullptr;
+    // child joints, with positioning relative to this
+    vector<Joint*> children;
+
     // length of the bone from parent joint to this joint
     const float length;
 
-    glm::vec3 original_dir_vec;
+    // technically I shouldnt need these two to calculate the transforms
 
-    glm::vec3 current_position;
+    // relative to world space
+    // glm::vec4 original_position;
+    // glm::vec4 original_dir_vec;
 
-    glm::mat3 direction_vectors;
+    glm::vec4 current_position;
 
-    glm::vec3 rotations;
+    glm::mat3 direction_vectors = glm::mat3(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0);
 
-    glm::vec3 min_rotations;
-    glm::vec3 max_rotations;
+    glm::vec3 rotations = glm::vec3(0.0);
 
-    void push_child_back(Joint child)
+    glm::vec3 min_rotations = glm::vec3(0.0);
+    glm::vec3 max_rotations = glm::vec3(0.0);
+
+    glm::mat4 rotation_matrix;
+    glm::mat4 translation_matrix;
+    glm::mat4 transformation_matrix;
+    bool      transform_calculated = false;
+
+    // technically min and max rotations should be here too, but IDK how to do this easily so I will fill it later :(
+    // the right way to do this is to make a keyframe for the minimums and maximums then reading those angles in (FUCK THAT
+    // THOUGH)
+    Joint(unsigned int ID, float length, std::string name) : ID(ID), length(length), name(name) {}
+
+    void push_back_child(Joint* child)
     {
+        child->parent = this;
         children.push_back(child);
-        child.parent = this;
     }
 
-    glm::mat4 get_transform_matrix()
+    glm::mat4 create_transform_matrices()
     {
-        auto transform = glm::mat4(1.0f);
-        transform      = glm::translate(transform, get_current_position() - original_position);
+        if (transform_calculated) return transformation_matrix;
 
-		original_position = parent->current_position + original_dir_vec * length;
-		
-		/*current_position + parent->current_position + original_dir_vec * length;*/
+        /*current_position + parent->current_position + original_dir_vec * length;*/
 
-        transform = glm::rotate(transform, rotations.x, direction_vectors[0]);
-        transform = glm::rotate(transform, rotations.y, direction_vectors[1]);
-        transform = glm::rotate(transform, rotations.z, direction_vectors[2]);
+        // original_dir_vec needs to have rotations applied but not translation
+        // rotations from highest parent all the way to this->parent
 
-        return transform;
+        // original_dir_vec, transformed, added to parent current position is this joints current position
+
+        // cache transform matrices per frame ?
+
+        if (parent != nullptr)
+        {
+            parent->create_transform_matrices();
+
+            rotation_matrix = glm::mat4(parent->rotation_matrix);
+        }
+        else
+        {
+            rotation_matrix = glm::mat4(1.0);
+        }
+
+        rotation_matrix =
+            glm::rotate(rotation_matrix, std::clamp(rotations.x, min_rotations.x, max_rotations.x), direction_vectors[0]);
+        rotation_matrix =
+            glm::rotate(rotation_matrix, std::clamp(rotations.y, min_rotations.y, max_rotations.y), direction_vectors[1]);
+        rotation_matrix =
+            glm::rotate(rotation_matrix, std::clamp(rotations.z, min_rotations.z, max_rotations.z), direction_vectors[2]);
+
+        translation_matrix = glm::translate(
+            glm::mat4(1.0), glm::vec3(glm::normalize(rotation_matrix * glm::vec4(0.0, 0.0, 0.0, 1.0))) * length);
+
+		// if this joint does not have a parent, its current_position should be set by moving the model as a whole
+        if (parent != nullptr) current_position = glm::vec4(parent->current_position) * translation_matrix;
+
+        transformation_matrix = glm::mat4(1.0f); //rotation_matrix* translation_matrix;
+        transform_calculated  = true;
+
+        return transformation_matrix;
     }
 
-    glm::vec3 get_current_position()
-    {
-        // get highest parent position and figure out your position based off that
-    }
+    void clear_transform() { transform_calculated = false; }
+
+    // glm::vec3 get_current_position()
+    //{
+    //    // get highest parent position and figure out your position based off that
+    //}
 };
 
 // mat3 direction_vectors (forwards, left, up, gotten from parent)

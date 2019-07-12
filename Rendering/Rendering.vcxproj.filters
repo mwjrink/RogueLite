@@ -41,10 +41,10 @@
     <ClInclude Include="stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HumanoidSkeleton.h">
+    <ClInclude Include="Joint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Joint.h">
+    <ClInclude Include="HumanoidSkeleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

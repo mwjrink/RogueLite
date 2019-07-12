@@ -27,7 +27,7 @@ void render();
 // settings
 const unsigned int SCR_WIDTH         = 1920;
 const unsigned int SCR_HEIGHT        = 1080;
-const unsigned int pixelation_factor = 5;
+const unsigned int pixelation_factor = 1; // for testing the animations, this is gonna be 1
 
 const float outline_width = 0.2f;
 

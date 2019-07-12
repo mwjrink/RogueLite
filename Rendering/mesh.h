@@ -91,7 +91,7 @@ class Mesh
         }
 
         vector<glm::mat4> transforms = vector<glm::mat4>(13);
-        for (auto j : joints) transforms.push_back(j.getAnimatedTransform());
+        for (auto j : joints) transforms.push_back(j.create_transform_matrices());
 
         glUniformMatrix4fv(glGetUniformLocation(shader.ID, "jointTransforms"), 13, GL_FALSE, &transforms[0][0][0]);
 
