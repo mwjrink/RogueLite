@@ -90,10 +90,11 @@ class Mesh
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
 
-        vector<glm::mat4> transforms = vector<glm::mat4>(13);
+		// @Max, 7/12/19, here:
+        auto transforms = vector<glm::mat4>();
         for (auto j : joints) transforms.push_back(j.create_transform_matrices());
-
-        glUniformMatrix4fv(glGetUniformLocation(shader.ID, "jointTransforms"), 13, GL_FALSE, &transforms[0][0][0]);
+		// AAAAAAAAAAAAAAAAGGGHHH, transforms is literally a vec of identity matrices (confirmed) issue has to be sending the data to the gpu somehow
+        glUniformMatrix4fv(glGetUniformLocation(shader.ID, "jointTransforms"), 12, GL_FALSE, &transforms[0][0][0]);
 
         // draw mesh
         glBindVertexArray(VAO);
@@ -145,11 +146,11 @@ class Mesh
         glEnableVertexAttribArray(4);
         glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Bitangent));
         // vertex joint indices
-        glEnableVertexAttribArray(4);
-        glVertexAttribPointer(4, 3, GL_INT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, JointIndices));
+        glEnableVertexAttribArray(5);
+        glVertexAttribPointer(5, 3, GL_INT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, JointIndices));
         // vertex joint weights
-        glEnableVertexAttribArray(4);
-        glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, JointWeights));
+        glEnableVertexAttribArray(6);
+        glVertexAttribPointer(6, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, JointWeights));
 
         glBindVertexArray(0);
     }

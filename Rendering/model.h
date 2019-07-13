@@ -195,11 +195,10 @@ class Model
 
         for (auto i = 0; i < mesh->mNumVertices; i++)
         {
-            auto adjusted = glm::normalize(
-                glm::vec3(vertices[i].JointWeights[0], vertices[i].JointWeights[1], vertices[i].JointWeights[2]));
-            vertices[i].JointWeights[0] = adjusted.x;
-            vertices[i].JointWeights[1] = adjusted.y;
-            vertices[i].JointWeights[2] = adjusted.z;
+            auto adjustment = 1.0f / (vertices[i].JointWeights[0] + vertices[i].JointWeights[1] + vertices[i].JointWeights[2]);
+            vertices[i].JointWeights[0] *= adjustment;
+            vertices[i].JointWeights[1] *= adjustment;
+            vertices[i].JointWeights[2] *= adjustment;
         }
 
         auto to_check = vector<aiNode*>();

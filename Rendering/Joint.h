@@ -90,10 +90,11 @@ class Joint
         translation_matrix = glm::translate(
             glm::mat4(1.0), glm::vec3(glm::normalize(rotation_matrix * glm::vec4(0.0, 0.0, 0.0, 1.0))) * length);
 
-		// if this joint does not have a parent, its current_position should be set by moving the model as a whole
+        // if this joint does not have a parent, its current_position should be set by moving the model as a whole
         if (parent != nullptr) current_position = glm::vec4(parent->current_position) * translation_matrix;
 
-        transformation_matrix = glm::mat4(1.0f); //rotation_matrix* translation_matrix;
+        // @Max, 7/12/19, here:
+        transformation_matrix = glm::mat4(1.0f);  // rotation_matrix* translation_matrix;
         transform_calculated  = true;
 
         return transformation_matrix;
