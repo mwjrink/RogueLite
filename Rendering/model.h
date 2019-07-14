@@ -208,8 +208,8 @@ class Model
                     }
                     else
                     {
-                        vertices[i].JointIndices[filled[i]] = 12;
-                        vertices[i].JointWeights[filled[i]] = 1.0f - weight;
+                        vertices[i].JointIndices[j] = 12;
+                        vertices[i].JointWeights[j] = 1.0f - weight;
                         weight                              = 1.0f;
                     }
                 }
@@ -226,8 +226,8 @@ class Model
             vertices[i].JointWeights[2] *= adjustment;
 
             // cout << filled[i] << endl;
-            /*cout << vertices[i].JointIndices[0] << " " << vertices[i].JointIndices[1] << " " << vertices[i].JointIndices[2]
-                 << endl;*/
+            cout << vertices[i].JointIndices[0] << " " << vertices[i].JointIndices[1] << " " << vertices[i].JointIndices[2]
+                 << endl;
         }
 
         auto to_check = vector<aiNode*>();
