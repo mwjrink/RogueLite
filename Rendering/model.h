@@ -181,12 +181,14 @@ class Model
         // specular: texture_specularN
         // normal: texture_normalN
 
+		// @Max, 13/7/19, this is it, the indices or weights are wrong
+		// ********************************************************************************************************************************************
         for (auto i = 0; i < mesh->mNumBones; i++)
         {
             for (auto j = 0; j < mesh->mBones[i]->mNumWeights; j++)
             {
                 auto index = mesh->mBones[i]->mWeights[j].mVertexId;
-                if (filled[index] >= 2) continue;
+                if (filled[index] > 2) continue;
                 vertices[index].JointIndices[filled[index]] = i;
                 vertices[index].JointWeights[filled[index]] = mesh->mBones[i]->mWeights[j].mWeight;
                 filled[index]++;
@@ -195,10 +197,37 @@ class Model
 
         for (auto i = 0; i < mesh->mNumVertices; i++)
         {
-            auto adjustment = 1.0f / (vertices[i].JointWeights[0] + vertices[i].JointWeights[1] + vertices[i].JointWeights[2]);
+            if (filled[i] < 3)
+            {
+                auto weight = 0.0f;
+                for (auto j = 0; j < 3; j++)
+                {
+                    if (j < filled[i])
+                    {
+                        weight += vertices[i].JointWeights[filled[i]];
+                    }
+                    else
+                    {
+                        vertices[i].JointIndices[filled[i]] = 12;
+                        vertices[i].JointWeights[filled[i]] = 1.0f - weight;
+                        weight                              = 1.0f;
+                    }
+                }
+            }
+        }
+		// ********************************************************************************************************************************************
+
+        for (auto i = 0; i < mesh->mNumVertices; i++)
+        {
+            auto adjustment =
+                1.0f / (vertices[i].JointWeights[0] + vertices[i].JointWeights[1] + vertices[i].JointWeights[2]);
             vertices[i].JointWeights[0] *= adjustment;
             vertices[i].JointWeights[1] *= adjustment;
             vertices[i].JointWeights[2] *= adjustment;
+
+            // cout << filled[i] << endl;
+            /*cout << vertices[i].JointIndices[0] << " " << vertices[i].JointIndices[1] << " " << vertices[i].JointIndices[2]
+                 << endl;*/
         }
 
         auto to_check = vector<aiNode*>();

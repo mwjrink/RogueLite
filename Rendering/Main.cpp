@@ -200,18 +200,19 @@ void render()
         ourModel.Draw(ourShader);
     }
 
-    // glDepthFunc(GL_LEQUAL);
-    glStencilFunc(GL_NOTEQUAL, 1, 0xFF);  // all fragments should update the stencil buffer
-    glStencilMask(0x00);                  // enable writing to the stencil buffer
-    glDisable(GL_DEPTH_TEST);
-    {
-        outlineShader.use();
-        outlineShader.setMat4("projection", projection);
-        outlineShader.setMat4("view", view);
-        outlineShader.setMat4("model", glm::scale(model, glm::vec3(1.0f + outline_width)));
-        outlineShader.setFloat("outline_width", outline_width);
-        ourModel.Draw(outlineShader);
-    }
+	// @Max, 7/12/19, commented out outlining to better debug
+    //// glDepthFunc(GL_LEQUAL);
+    //glStencilFunc(GL_NOTEQUAL, 1, 0xFF);  // all fragments should update the stencil buffer
+    //glStencilMask(0x00);                  // enable writing to the stencil buffer
+    //glDisable(GL_DEPTH_TEST);
+    //{
+    //    outlineShader.use();
+    //    outlineShader.setMat4("projection", projection);
+    //    outlineShader.setMat4("view", view);
+    //    outlineShader.setMat4("model", glm::scale(model, glm::vec3(1.0f + outline_width)));
+    //    outlineShader.setFloat("outline_width", outline_width);
+    //    ourModel.Draw(outlineShader);
+    //}
 
     glStencilMask(0xFF);
     glEnable(GL_DEPTH_TEST);

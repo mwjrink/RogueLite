@@ -90,11 +90,16 @@ class Mesh
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
 
-		// @Max, 7/12/19, here:
+        // @Max, 7/12/19, here:
         auto transforms = vector<glm::mat4>();
         for (auto j : joints) transforms.push_back(j.create_transform_matrices());
-		// AAAAAAAAAAAAAAAAGGGHHH, transforms is literally a vec of identity matrices (confirmed) issue has to be sending the data to the gpu somehow
-        glUniformMatrix4fv(glGetUniformLocation(shader.ID, "jointTransforms"), 12, GL_FALSE, &transforms[0][0][0]);
+        transforms.push_back(glm::mat4(1.0f));
+        // AAAAAAAAAAAAAAAAGGGHHH, transforms is literally a vec of identity matrices (confirmed) issue has to be sending
+        // the data to the gpu somehow this is the same size as the 0 is valid
+        auto location = glGetUniformLocation(shader.ID, "jointTransforms");
+        /*cout << "jointTransforms"
+             << " : " << location << ", ID: " << shader.ID << endl;*/
+        glUniformMatrix4fv(location, 13, GL_FALSE, &transforms[0][0][0]);
 
         // draw mesh
         glBindVertexArray(VAO);
