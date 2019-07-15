@@ -256,7 +256,7 @@ class Model
         // Armature_Spine
         // Armature_Head
         // Armature_Shoulder_L
-		// Armature_Shoulder_R
+        // Armature_Shoulder_R
         // Armature_Thigh_L
         // Armature_Thigh_R
         // Armature_Upper_Arm_L
@@ -280,18 +280,24 @@ class Model
                     break;
                 }
 
-            joints.push_back(Joint(i, length, mesh->mBones[i]->mName.C_Str()));
+            joints.push_back(
+                Joint(i, length, mesh->mBones[i]->mName.C_Str(), convertMatrix(mesh->mBones[i]->mOffsetMatrix)));
         }
 
+		vector<pair<int, int>> parent_children;
+
         // now set all of the child joints as children and what not
-        for (auto i = 0; i < mesh->mNumBones; i++)
+        for (auto i = 0; i < to_check.size(); i++)
             for (auto j = 0; j < to_check[i]->mNumChildren; j++)
-                for (auto pot : joints)
-                    if (pot.name == to_check[i]->mChildren[j]->mName.C_Str())
-                    {
-                        joints[i].push_back_child(&pot);
-                        break;
-                    }
+                for (auto k = 0; k < joints.size(); k++)
+                    for (auto l = 0; l < joints.size(); l++)
+                        if (joints[k].name == to_check[i]->mChildren[j]->mName.C_Str() &&
+                            joints[l].name == to_check[i]->mName.C_Str())
+                        {
+                            joints[l].push_back_child(&joints[k]);
+                            parent_children.push_back(pair<int, int>(l, k));
+                            break;
+                        }
 
         // 1. diffuse maps
         vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
@@ -307,10 +313,11 @@ class Model
         textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
         // return a mesh object created from the extracted mesh data
-        return Mesh(vertices, indices, textures, joints);
+        return Mesh(vertices, indices, textures, joints, parent_children);
     }
 
     /**
+     * @Max, this should be in a utility file or something, specifically for assimp
      * @param aiMat
      * @return transposed version of the aiMat to fit into glm's style of doing things
      */

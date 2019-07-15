@@ -201,6 +201,8 @@ void render()
     }
 
 	// @Max, 7/12/19, commented out outlining to better debug
+	// @Max, 7/15/19, probably gonna do outlining by scaling the 2d sprite and painting it black then painting 
+	// the real sprite to the screen rather than this nonsense, it will be far easier
     //// glDepthFunc(GL_LEQUAL);
     //glStencilFunc(GL_NOTEQUAL, 1, 0xFF);  // all fragments should update the stencil buffer
     //glStencilMask(0x00);                  // enable writing to the stencil buffer

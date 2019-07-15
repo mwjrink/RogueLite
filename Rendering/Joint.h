@@ -31,14 +31,17 @@ class Joint
     // relative to world space
     // glm::vec4 original_position;
     // glm::vec4 original_dir_vec;
+    glm::mat4 offset_matrix;
+    glm::mat4 offset_matrix_inv;
 
     glm::vec4 current_position;
 
-    glm::mat3 direction_vectors = glm::mat3(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0);
+    glm::mat3x4 og_direction_vectors = glm::mat3x4(1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0);
+    glm::mat3   direction_vectors;
 
     glm::vec3 rotations = glm::vec3(0.0);
 
-    glm::vec3 min_rotations = glm::vec3(0.0);
+    glm::vec3 min_rotations = glm::vec3(-6.28318530718f);
     glm::vec3 max_rotations = glm::vec3(6.28318530718f);
 
     glm::mat4 rotation_matrix;
@@ -49,7 +52,10 @@ class Joint
     // technically min and max rotations should be here too, but IDK how to do this easily so I will fill it later :(
     // the right way to do this is to make a keyframe for the minimums and maximums then reading those angles in (FUCK THAT
     // THOUGH)
-    Joint(unsigned int ID, float length, std::string name) : ID(ID), length(length), name(name) {}
+    Joint(unsigned int ID, float length, std::string name, glm::mat4 offset_matrix)
+        : ID(ID), length(length), name(name), offset_matrix(offset_matrix), offset_matrix_inv(glm::inverse(offset_matrix))
+    {
+    }
 
     void push_back_child(Joint* child)
     {
@@ -57,7 +63,9 @@ class Joint
         children.push_back(child);
     }
 
+    void set_x_axis_rotation(float val) { rotations = glm::vec3(val, rotations.y, rotations.z); }
     void set_y_axis_rotation(float val) { rotations = glm::vec3(rotations.x, val, rotations.z); }
+    void set_z_axis_rotation(float val) { rotations = glm::vec3(rotations.x, rotations.y, val); }
 
     glm::mat4 create_transform_matrices()
     {
@@ -72,16 +80,25 @@ class Joint
 
         // cache transform matrices per frame ?
 
-        if (parent != nullptr)
-        {
-            parent->create_transform_matrices();
+        // if (parent != nullptr)
+        //{
+        //    parent->create_transform_matrices();
 
-            rotation_matrix = glm::mat4(parent->rotation_matrix);
-        }
+        //    //rotation_matrix = glm::mat4(parent->rotation_matrix);
+        //}
+        // else
+        //{
+        //}
+
+        if (parent != nullptr)
+            direction_vectors = glm::mat3(glm::vec3(og_direction_vectors[0] * parent->create_transform_matrices()),
+                                          glm::vec3(og_direction_vectors[1] * parent->create_transform_matrices()),
+                                          glm::vec3(og_direction_vectors[2] * parent->create_transform_matrices()));
         else
-        {
-            rotation_matrix = glm::mat4(1.0);
-        }
+            direction_vectors = glm::mat3(glm::vec3(og_direction_vectors[0]), glm::vec3(og_direction_vectors[1]),
+                                          glm::vec3(og_direction_vectors[2]));
+
+        rotation_matrix = glm::mat4(1.0);
 
         rotation_matrix =
             glm::rotate(rotation_matrix, std::clamp(rotations.x, min_rotations.x, max_rotations.x), direction_vectors[0]);
@@ -90,14 +107,20 @@ class Joint
         rotation_matrix =
             glm::rotate(rotation_matrix, std::clamp(rotations.z, min_rotations.z, max_rotations.z), direction_vectors[2]);
 
-        translation_matrix = glm::translate(
-            glm::mat4(1.0), glm::vec3(glm::normalize(rotation_matrix * glm::vec4(0.0, 0.0, 0.0, 1.0))) * length);
+        // translation_matrix = glm::translate(
+        //    glm::mat4(1.0), glm::vec3(glm::normalize(rotation_matrix * glm::vec4(0.0, 0.0, 0.0, 1.0))) * length);
 
-        // if this joint does not have a parent, its current_position should be set by moving the model as a whole
-        if (parent != nullptr) current_position = glm::vec4(parent->current_position) * translation_matrix;
+        //// if this joint does not have a parent, its current_position should be set by moving the model as a whole
+        // if (parent != nullptr) current_position = glm::vec4(parent->current_position) * translation_matrix;
 
-        transformation_matrix = rotation_matrix * translation_matrix;
-        transform_calculated  = true;
+        if (parent != nullptr)
+            transformation_matrix =
+                parent->create_transform_matrices() * offset_matrix_inv * rotation_matrix * offset_matrix;
+        else
+            transformation_matrix = offset_matrix_inv * rotation_matrix * offset_matrix;
+
+        //*translation_matrix;
+        transform_calculated = true;
 
         return transformation_matrix;
     }

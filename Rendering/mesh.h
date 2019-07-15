@@ -57,11 +57,44 @@ class Mesh
 
     /*  Functions  */
     // constructor
-    Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures, vector<Joint> joints)
+    Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures, vector<Joint>& joints,
+         vector<pair<int, int>> parent_children)
         : vertices(vertices), indices(indices), textures(textures), joints(joints)
     {
-        // now that we have all the required data, set the vertex buffers and its attribute pointers.
+		// this is necessary because the memory locations of the joints specifically are different because the vector is copied locally
+        for (auto pc : parent_children) this->joints[pc.first].push_back_child(&this->joints[pc.second]);
+
+        // just graphics stuff, setting up the VAO and dumping the mesh data to video-mem
         setupMesh();
+
+        // Armature
+        // Armature_Spine
+        // Armature_Head
+        // Armature_Shoulder_L
+        // Armature_Shoulder_R
+        // Armature_Thigh_L
+        // Armature_Thigh_R
+        // Armature_Upper_Arm_L
+        // Armature_Upper_Arm_R
+        // Armature_Shin_L
+        // Armature_Shin_R
+        // Armature_Lower_Arm_L
+        // Armature_Lower_Arm_R
+
+        joints_map = unordered_map<string, Joint*>();
+        for (auto i = 0; i < joints.size(); i++) joints_map[this->joints[i].name] = &this->joints[i];
+
+        // joints_map["Armature_Head"]->set_y_axis_rotation(1.0);
+        joints_map["Armature_Thigh_L"]->set_x_axis_rotation(1.0);
+        joints_map["Armature_Thigh_R"]->set_x_axis_rotation(-1.0);
+        joints_map["Armature_Upper_Arm_L"]->set_x_axis_rotation(1.0);
+        joints_map["Armature_Upper_Arm_R"]->set_x_axis_rotation(-1.0);
+
+        joints_map["Armature_Lower_Arm_L"]->set_z_axis_rotation(-1.0);
+        joints_map["Armature_Lower_Arm_R"]->set_z_axis_rotation(-1.0);
+
+        joints_map["Armature_Shin_L"]->set_z_axis_rotation(1.0);
+        joints_map["Armature_Shin_R"]->set_z_axis_rotation(-1.0);
     }
 
     // render the mesh
@@ -92,9 +125,6 @@ class Mesh
             // and finally bind the texture
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
-
-		// @Max, this is setting a random joint to a rotation
-        joints[8].set_y_axis_rotation(1.0);
 
         auto transforms = vector<glm::mat4>();
         for (auto j : joints) transforms.push_back(j.create_transform_matrices());
@@ -159,31 +189,6 @@ class Mesh
         glVertexAttribPointer(6, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, JointWeights));
 
         glBindVertexArray(0);
-
-        // Armature
-        // Armature_Spine
-        // Armature_Head
-        // Armature_Shoulder_L
-        // Armature_Shoulder_R
-        // Armature_Thigh_L
-        // Armature_Thigh_R
-        // Armature_Upper_Arm_L
-        // Armature_Upper_Arm_R
-        // Armature_Shin_L
-        // Armature_Shin_R
-        // Armature_Lower_Arm_L
-        // Armature_Lower_Arm_R
-
-		// @Max, this is a different set of Joints from the ones in the drawMesh that you get the transforms from
-        joints_map = unordered_map<string, Joint*>();
-        for (auto j : joints) joints_map[j.name] = &j;
-
-        joints_map["Armature_Head"]->set_y_axis_rotation(1.0);
-        joints_map["Armature_Shoulder_L"]->set_y_axis_rotation(1.0);
-        joints_map["Armature_Shoulder_R"]->set_y_axis_rotation(1.0);
-        joints_map["Armature_Thigh_L"]->set_y_axis_rotation(1.0);
-        joints_map["Armature_Thigh_R"]->set_y_axis_rotation(1.0);
-        joints_map["Armature_Upper_Arm_L"]->set_y_axis_rotation(1.0);
     }
 };
 #endif
