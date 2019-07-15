@@ -6,6 +6,7 @@
 
 #include <String>
 #include <algorithm>
+#include <iostream>
 #include <vector>
 
 using namespace std;
@@ -38,7 +39,7 @@ class Joint
     glm::vec3 rotations = glm::vec3(0.0);
 
     glm::vec3 min_rotations = glm::vec3(0.0);
-    glm::vec3 max_rotations = glm::vec3(0.0);
+    glm::vec3 max_rotations = glm::vec3(6.28318530718f);
 
     glm::mat4 rotation_matrix;
     glm::mat4 translation_matrix;
@@ -55,6 +56,8 @@ class Joint
         child->parent = this;
         children.push_back(child);
     }
+
+    void set_y_axis_rotation(float val) { rotations = glm::vec3(rotations.x, val, rotations.z); }
 
     glm::mat4 create_transform_matrices()
     {
@@ -93,8 +96,7 @@ class Joint
         // if this joint does not have a parent, its current_position should be set by moving the model as a whole
         if (parent != nullptr) current_position = glm::vec4(parent->current_position) * translation_matrix;
 
-        // @Max, 7/12/19, here:
-        transformation_matrix = glm::mat4(1.0f);  // rotation_matrix* translation_matrix;
+        transformation_matrix = rotation_matrix * translation_matrix;
         transform_calculated  = true;
 
         return transformation_matrix;

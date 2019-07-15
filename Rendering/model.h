@@ -181,8 +181,6 @@ class Model
         // specular: texture_specularN
         // normal: texture_normalN
 
-		// @Max, 13/7/19, this is it, the indices or weights are wrong
-		// ********************************************************************************************************************************************
         for (auto i = 0; i < mesh->mNumBones; i++)
         {
             for (auto j = 0; j < mesh->mBones[i]->mNumWeights; j++)
@@ -195,6 +193,7 @@ class Model
             }
         }
 
+        // this is a huge loop
         for (auto i = 0; i < mesh->mNumVertices; i++)
         {
             if (filled[i] < 3)
@@ -204,18 +203,17 @@ class Model
                 {
                     if (j < filled[i])
                     {
-                        weight += vertices[i].JointWeights[filled[i]];
+                        weight += vertices[i].JointWeights[j];
                     }
                     else
                     {
-                        vertices[i].JointIndices[j] = 12;
+                        vertices[i].JointIndices[j] = mesh->mNumBones;
                         vertices[i].JointWeights[j] = 1.0f - weight;
-                        weight                              = 1.0f;
+                        weight                      = 1.0f;
                     }
                 }
             }
         }
-		// ********************************************************************************************************************************************
 
         for (auto i = 0; i < mesh->mNumVertices; i++)
         {
@@ -226,8 +224,8 @@ class Model
             vertices[i].JointWeights[2] *= adjustment;
 
             // cout << filled[i] << endl;
-            cout << vertices[i].JointIndices[0] << " " << vertices[i].JointIndices[1] << " " << vertices[i].JointIndices[2]
-                 << endl;
+            /*cout << vertices[i].JointIndices[0] << " " << vertices[i].JointIndices[1] << " " << vertices[i].JointIndices[2]
+                 << endl;*/
         }
 
         auto to_check = vector<aiNode*>();
@@ -253,6 +251,20 @@ class Model
             to_check.push_back(current);
             for (auto i = 0; i < current->mNumChildren; i++) q.push(current->mChildren[i]);
         }
+
+        // Armature
+        // Armature_Spine
+        // Armature_Head
+        // Armature_Shoulder_L
+		// Armature_Shoulder_R
+        // Armature_Thigh_L
+        // Armature_Thigh_R
+        // Armature_Upper_Arm_L
+        // Armature_Upper_Arm_R
+        // Armature_Shin_L
+        // Armature_Shin_R
+        // Armature_Lower_Arm_L
+        // Armature_Lower_Arm_R
 
         // create all of the joints and add them to the joints vector in order so that the IDs line up with the vertex
         // weights in the shaders

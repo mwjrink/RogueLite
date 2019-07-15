@@ -14,6 +14,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <unordered_map>
 #include <vector>
 using namespace std;
 
@@ -51,6 +52,8 @@ class Mesh
     vector<Texture>      textures;
     vector<Joint>        joints;
     unsigned int         VAO;
+
+    unordered_map<string, Joint*> joints_map;
 
     /*  Functions  */
     // constructor
@@ -90,16 +93,14 @@ class Mesh
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
 
-        // @Max, 7/12/19, here:
+		// @Max, this is setting a random joint to a rotation
+        joints[8].set_y_axis_rotation(1.0);
+
         auto transforms = vector<glm::mat4>();
         for (auto j : joints) transforms.push_back(j.create_transform_matrices());
         transforms.push_back(glm::mat4(1.0f));
-        // AAAAAAAAAAAAAAAAGGGHHH, transforms is literally a vec of identity matrices (confirmed) issue has to be sending
-        // the data to the gpu somehow this is the same size as the 0 is valid
-        auto location = glGetUniformLocation(shader.ID, "jointTransforms");
-        /*cout << "jointTransforms"
-             << " : " << location << ", ID: " << shader.ID << endl;*/
-        glUniformMatrix4fv(location, 13, GL_FALSE, &transforms[0][0][0]);
+
+        glUniformMatrix4fv(glGetUniformLocation(shader.ID, "jointTransforms"), 13, GL_FALSE, glm::value_ptr(transforms[0]));
 
         // draw mesh
         glBindVertexArray(VAO);
@@ -137,7 +138,7 @@ class Mesh
         // set the vertex attribute pointers
         // vertex Positions
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Position));
         // vertex normals
         glEnableVertexAttribArray(1);
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
@@ -152,12 +153,37 @@ class Mesh
         glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Bitangent));
         // vertex joint indices
         glEnableVertexAttribArray(5);
-        glVertexAttribPointer(5, 3, GL_INT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, JointIndices));
+        glVertexAttribIPointer(5, 3, GL_INT, sizeof(Vertex), (void*)offsetof(Vertex, JointIndices));
         // vertex joint weights
         glEnableVertexAttribArray(6);
         glVertexAttribPointer(6, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, JointWeights));
 
         glBindVertexArray(0);
+
+        // Armature
+        // Armature_Spine
+        // Armature_Head
+        // Armature_Shoulder_L
+        // Armature_Shoulder_R
+        // Armature_Thigh_L
+        // Armature_Thigh_R
+        // Armature_Upper_Arm_L
+        // Armature_Upper_Arm_R
+        // Armature_Shin_L
+        // Armature_Shin_R
+        // Armature_Lower_Arm_L
+        // Armature_Lower_Arm_R
+
+		// @Max, this is a different set of Joints from the ones in the drawMesh that you get the transforms from
+        joints_map = unordered_map<string, Joint*>();
+        for (auto j : joints) joints_map[j.name] = &j;
+
+        joints_map["Armature_Head"]->set_y_axis_rotation(1.0);
+        joints_map["Armature_Shoulder_L"]->set_y_axis_rotation(1.0);
+        joints_map["Armature_Shoulder_R"]->set_y_axis_rotation(1.0);
+        joints_map["Armature_Thigh_L"]->set_y_axis_rotation(1.0);
+        joints_map["Armature_Thigh_R"]->set_y_axis_rotation(1.0);
+        joints_map["Armature_Upper_Arm_L"]->set_y_axis_rotation(1.0);
     }
 };
 #endif

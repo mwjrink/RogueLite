@@ -23,9 +23,8 @@ void main()
 	//vec4 totalNormal = vec4(0.0);
 
 	for(int i=0; i<3; i++){
-		// @Max, 7/12/19, here:
-		// pretty sure this isnt it because you can replace the right side of the equation with mat4(1.0) (identity matrix), and it works fine
 		mat4 jointTransform = jointTransforms[aJointIndices[i]];
+
 		vec4 posePosition = jointTransform * vec4(aPos, 1.0);
 		totalLocalPos += posePosition * aJointWeights[i];
 
