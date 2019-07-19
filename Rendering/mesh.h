@@ -85,16 +85,17 @@ class Mesh
         for (auto i = 0; i < joints.size(); i++) joints_map[this->joints[i].name] = &this->joints[i];
 
         // joints_map["Armature_Head"]->set_y_axis_rotation(1.0);
-        joints_map["Armature_Thigh_L"]->set_x_axis_rotation(1.0);
-        joints_map["Armature_Thigh_R"]->set_x_axis_rotation(-1.0);
-        joints_map["Armature_Upper_Arm_L"]->set_x_axis_rotation(1.0);
-        joints_map["Armature_Upper_Arm_R"]->set_x_axis_rotation(-1.0);
 
-        joints_map["Armature_Lower_Arm_L"]->set_z_axis_rotation(-1.0);
-        joints_map["Armature_Lower_Arm_R"]->set_z_axis_rotation(-1.0);
+        //joints_map["Armature_Thigh_L"]->set_x_axis_rotation(1.0);
+        //joints_map["Armature_Thigh_R"]->set_x_axis_rotation(-1.0);
+        //joints_map["Armature_Shin_L"]->set_z_axis_rotation(1.0);
+        //joints_map["Armature_Shin_R"]->set_z_axis_rotation(-1.0);
 
-        joints_map["Armature_Shin_L"]->set_z_axis_rotation(1.0);
-        joints_map["Armature_Shin_R"]->set_z_axis_rotation(-1.0);
+        //joints_map["Armature_Upper_Arm_L"]->set_x_axis_rotation(1.0);
+        //joints_map["Armature_Upper_Arm_R"]->set_x_axis_rotation(-1.0);
+        //joints_map["Armature_Lower_Arm_L"]->set_z_axis_rotation(-1.0);
+        //joints_map["Armature_Lower_Arm_R"]->set_z_axis_rotation(-1.0);
+
     }
 
     // render the mesh

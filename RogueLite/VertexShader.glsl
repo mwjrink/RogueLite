@@ -16,7 +16,7 @@ void main()
     // gl_InstanceID
 	fSpriteColor = spriteColor;
     TexCoords = aTexCoords * texture_uvs.zw + texture_uvs.xy;
-	// TODO: Maybe save time by projection_view * model on spu, its a per object calculation
+	// TODO: Maybe save time by projection_view * model on cpu, its a per object calculation
     gl_Position = projection_view * model * vec4(vertex, 1.0);
     //gl_Position = vec4(vertex.x, vertex.y, vertex.z, 1.0);
 }
