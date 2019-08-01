@@ -270,21 +270,18 @@ class Model
         // weights in the shaders
         for (auto i = 0; i < mesh->mNumBones; i++)
         {
-            // unsigned int ID, float length, std::string name
-            float length = -1.0f;
             for (auto node : to_check)
                 if (node->mName == mesh->mBones[i]->mName)
                 {
-                    length = glm::length(convertMatrix(node->mTransformation) * glm::vec4(0, 0, 0, 1));
                     mine.push_back(node);
                     break;
                 }
 
-            joints.push_back(
-                Joint(i, length, mesh->mBones[i]->mName.C_Str(), convertMatrix(mesh->mBones[i]->mOffsetMatrix)));
+            joints.push_back(Joint(i, mesh->mBones[i]->mName.C_Str(), convertMatrix(mesh->mBones[i]->mOffsetMatrix),
+                                   convertMatrix(mine.back()->mTransformation)));
         }
 
-		vector<pair<int, int>> parent_children;
+        vector<pair<int, int>> parent_children;
 
         // now set all of the child joints as children and what not
         for (auto i = 0; i < to_check.size(); i++)
@@ -325,6 +322,8 @@ class Model
     {
         return {aiMat.a1, aiMat.b1, aiMat.c1, aiMat.d1, aiMat.a2, aiMat.b2, aiMat.c2, aiMat.d2,
                 aiMat.a3, aiMat.b3, aiMat.c3, aiMat.d3, aiMat.a4, aiMat.b4, aiMat.c4, aiMat.d4};
+        // return {aiMat.a1, aiMat.a2, aiMat.a3, aiMat.a4, aiMat.b1, aiMat.b2, aiMat.b3, aiMat.b4,
+        //        aiMat.c1, aiMat.c2, aiMat.c3, aiMat.c4, aiMat.d1, aiMat.d2, aiMat.d3, aiMat.d4};
     }
 
     // checks all material textures of a given type and loads the textures if they're not loaded yet.

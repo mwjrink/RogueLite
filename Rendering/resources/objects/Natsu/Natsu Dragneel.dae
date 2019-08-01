@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2018-03-22, commit time:14:10, hash:f4dc9f9d68b</authoring_tool>
     </contributor>
-    <created>2019-07-16T12:01:45</created>
-    <modified>2019-07-16T12:01:45</modified>
+    <created>2019-07-26T14:20:22</created>
+    <modified>2019-07-26T14:20:22</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -181,7 +181,7 @@
               <technique profile="blender">
                 <connect sid="connect" type="bool">1</connect>
                 <layer sid="layer" type="string">0</layer>
-                <roll sid="roll" type="float">-0.007636308</roll>
+                <roll sid="roll" type="float">0.1745329</roll>
               </technique>
             </extra>
           </node>
@@ -195,8 +195,9 @@
                   <technique profile="blender">
                     <connect sid="connect" type="bool">1</connect>
                     <layer sid="layer" type="string">0</layer>
+                    <roll sid="roll" type="float">0.6859144</roll>
                     <tip_x sid="tip_x" type="float">-1.443423</tip_x>
-                    <tip_y sid="tip_y" type="float">-0.1640423</tip_y>
+                    <tip_y sid="tip_y" type="float">0</tip_y>
                     <tip_z sid="tip_z" type="float">-1.787576</tip_z>
                   </technique>
                 </extra>
@@ -205,12 +206,14 @@
                 <technique profile="blender">
                   <connect sid="connect" type="bool">1</connect>
                   <layer sid="layer" type="string">0</layer>
+                  <roll sid="roll" type="float">0.6352998</roll>
                 </technique>
               </extra>
             </node>
             <extra>
               <technique profile="blender">
                 <layer sid="layer" type="string">0</layer>
+                <roll sid="roll" type="float">0.03316122</roll>
               </technique>
             </extra>
           </node>
@@ -232,6 +235,7 @@
               <technique profile="blender">
                 <connect sid="connect" type="bool">1</connect>
                 <layer sid="layer" type="string">0</layer>
+                <roll sid="roll" type="float">-0.1745329</roll>
               </technique>
             </extra>
           </node>
@@ -245,8 +249,9 @@
                   <technique profile="blender">
                     <connect sid="connect" type="bool">1</connect>
                     <layer sid="layer" type="string">0</layer>
+                    <roll sid="roll" type="float">-0.6859144</roll>
                     <tip_x sid="tip_x" type="float">1.443423</tip_x>
-                    <tip_y sid="tip_y" type="float">-0.1640423</tip_y>
+                    <tip_y sid="tip_y" type="float">0</tip_y>
                     <tip_z sid="tip_z" type="float">-1.787576</tip_z>
                   </technique>
                 </extra>
@@ -255,12 +260,14 @@
                 <technique profile="blender">
                   <connect sid="connect" type="bool">1</connect>
                   <layer sid="layer" type="string">0</layer>
+                  <roll sid="roll" type="float">-0.6352998</roll>
                 </technique>
               </extra>
             </node>
             <extra>
               <technique profile="blender">
                 <layer sid="layer" type="string">0</layer>
+                <roll sid="roll" type="float">-0.03316122</roll>
               </technique>
             </extra>
           </node>
@@ -269,8 +276,8 @@
             <extra>
               <technique profile="blender">
                 <layer sid="layer" type="string">0</layer>
-                <tip_x sid="tip_x" type="float">-0.0573796</tip_x>
-                <tip_y sid="tip_y" type="float">-0.1885187</tip_y>
+                <tip_x sid="tip_x" type="float">0</tip_x>
+                <tip_y sid="tip_y" type="float">-0.188519</tip_y>
                 <tip_z sid="tip_z" type="float">1.698343</tip_z>
               </technique>
             </extra>

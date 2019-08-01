@@ -6,6 +6,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/string_cast.hpp>
 
 #include "Joint.h"
 #include "shader.h"
@@ -53,7 +54,11 @@ class Mesh
     vector<Joint>        joints;
     unsigned int         VAO;
 
-    unordered_map<string, Joint*> joints_map;
+    unordered_map<string, int> joints_map;
+
+    // TODO @Max: Temporary
+    // maybe leave this to save allocation time?
+    vector<glm::mat4> transforms;
 
     /*  Functions  */
     // constructor
@@ -61,8 +66,11 @@ class Mesh
          vector<pair<int, int>> parent_children)
         : vertices(vertices), indices(indices), textures(textures), joints(joints)
     {
-		// this is necessary because the memory locations of the joints specifically are different because the vector is copied locally
+        // this is necessary because the memory locations of the joints specifically are different because the vector is
+        // copied locally
         for (auto pc : parent_children) this->joints[pc.first].push_back_child(&this->joints[pc.second]);
+
+        for (auto i = 0; i < this->joints.size(); i++) this->joints[i].generate_rotation_vectors();
 
         // just graphics stuff, setting up the VAO and dumping the mesh data to video-mem
         setupMesh();
@@ -81,21 +89,45 @@ class Mesh
         // Armature_Lower_Arm_L
         // Armature_Lower_Arm_R
 
-        joints_map = unordered_map<string, Joint*>();
-        for (auto i = 0; i < joints.size(); i++) joints_map[this->joints[i].name] = &this->joints[i];
+        joints_map = unordered_map<string, int>();
+        for (auto i = 0; i < this->joints.size(); i++) joints_map[this->joints[i].name] = i;
+
+        // for (auto j : joints)
+        //{
+        //    cout << j.name << endl;
+        //    for (int y = 0; y < 4; y++)
+        //    {
+        //        for (int x = 0; x < 4; x++)
+        //        {
+        //            cout << j.offset_matrix[y][x] << " ";
+        //        }
+        //        cout << endl;
+        //    }
+        //    cout << endl;
+        //}
 
         // joints_map["Armature_Head"]->set_y_axis_rotation(1.0);
 
-        //joints_map["Armature_Thigh_L"]->set_x_axis_rotation(1.0);
-        //joints_map["Armature_Thigh_R"]->set_x_axis_rotation(-1.0);
-        //joints_map["Armature_Shin_L"]->set_z_axis_rotation(1.0);
-        //joints_map["Armature_Shin_R"]->set_z_axis_rotation(-1.0);
+        // joints_map["Armature_Thigh_L"]->set_x_axis_rotation(1.0);
+        // joints_map["Armature_Thigh_R"]->set_x_axis_rotation(-1.0);
 
-        //joints_map["Armature_Upper_Arm_L"]->set_x_axis_rotation(1.0);
-        //joints_map["Armature_Upper_Arm_R"]->set_x_axis_rotation(-1.0);
-        //joints_map["Armature_Lower_Arm_L"]->set_z_axis_rotation(-1.0);
-        //joints_map["Armature_Lower_Arm_R"]->set_z_axis_rotation(-1.0);
+        // joints_map["Armature_Thigh_L"]->set_z_axis_rotation(0.5);
+        // joints_map["Armature_Thigh_R"]->set_z_axis_rotation(-0.5);
 
+        // joints_map["Armature_Shin_L"]->set_x_axis_rotation(2.5f);
+        // joints_map["Armature_Shin_R"]->set_x_axis_rotation(2.5f);
+
+        // joints_map["Armature_Upper_Arm_L"]->set_x_axis_rotation(0.4);
+        // joints_map["Armature_Lower_Arm_L"]->set_z_axis_rotation(1.0);
+
+        // this->joints[joints_map["Armature_Upper_Arm_R"]].set_z_axis_rotation(-1.0);
+        // this->joints[joints_map["Armature_Upper_Arm_R"]].set_x_axis_rotation(1.0);
+        // (x axis is in line with shoulder for natsu
+        // joints_map["Armature_Upper_Arm_R"]->set_y_axis_rotation(1.0);
+        // (y axis is forwards for natsu, therefore this rotates this arm up into a T pose position)
+        // joints_map["Armature_Lower_Arm_R"]->set_z_axis_rotation(-1.0);
+
+        transforms = vector<glm::mat4>(joints.size());
     }
 
     // render the mesh
@@ -127,9 +159,19 @@ class Mesh
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
 
-        auto transforms = vector<glm::mat4>();
-        for (auto j : joints) transforms.push_back(j.create_transform_matrices());
+        // the axis are literal x, y, z not arm relative
+        joints[joints_map["Armature_Upper_Arm_R"]].set_y_axis_rotation(0.9);
+        joints[joints_map["Armature_Upper_Arm_R"]].animate_x_axis_rotation(0.01);
+        //joints[joints_map["Armature_Lower_Arm_R"]].set_y_axis_rotation(1.0);
+        //joints[joints_map["Armature_Lower_Arm_R"]].animate_x_axis_rotation(0.01);
+
+        for (auto i = 0; i < this->joints.size(); i++) joints[i].clear_transform();
+
+        // auto transforms = vector<glm::mat4>(joints.size());
+        for (auto i = 0; i < this->joints.size(); i++) transforms[i] = joints[i].create_transform_matrices();
         transforms.push_back(glm::mat4(1.0f));
+
+        // I need to determine if the transforms array is actually different frame by frame to see if ^ is the issue or v is.
 
         glUniformMatrix4fv(glGetUniformLocation(shader.ID, "jointTransforms"), 13, GL_FALSE, glm::value_ptr(transforms[0]));
 
