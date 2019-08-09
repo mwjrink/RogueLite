@@ -7,8 +7,8 @@
 #include <String>
 #include <algorithm>
 #include <iostream>
-#include <vector>
 #include <limits>
+#include <vector>
 
 using namespace std;
 
@@ -39,8 +39,8 @@ class Joint
 
     glm::vec3 rotations = glm::vec3(0.0);
 
-    glm::vec3 min_rotations = glm::vec3(numeric_limits<float>::min()); //glm::vec3(-6.28318530718f);
-    glm::vec3 max_rotations = glm::vec3(numeric_limits<float>::max()); //glm::vec3(6.28318530718f);
+    glm::vec3 min_rotations = glm::vec3(-numeric_limits<float>::max());  // glm::vec3(-6.28318530718f);
+    glm::vec3 max_rotations = glm::vec3(numeric_limits<float>::max());   // glm::vec3(6.28318530718f);
 
     glm::mat4 rotation_matrix;
     glm::mat4 translation_matrix;
@@ -50,6 +50,8 @@ class Joint
     bool      rotation_vecs_generated = false;
     glm::mat4 rot_mat;
     glm::mat4 bone_transform;
+
+    // rotations should be main, secondary, roll
 
     // technically min and max rotations should be here too, but IDK how to do this easily so I will fill it later :(
     // the right way to do this is to make a keyframe for the minimums and maximums then reading those angles in (FUCK THAT
@@ -86,23 +88,67 @@ class Joint
 
     void generate_rotation_vectors()
     {
-        //if (!rotation_vecs_generated)
-        {
-            if (parent != nullptr)
-            {
-                parent->generate_rotation_vectors();
-                bone_transform = parent->bone_transform * bone_transform;
-            }
+        //// if (!rotation_vecs_generated)
+        //{
+        //    // glm::mat4 val;
+        //    if (parent != nullptr)
+        //    {
+        //        parent->generate_rotation_vectors();
+        //        bone_transform = parent->bone_transform * bone_transform;
 
-            auto val  = this->offset_matrix;
-            val[3][0] = 0.0f;
-            val[3][1] = 0.0f;
-            val[3][2] = 0.0f;
+        //        // val = parent->offset_matrix_inv * this->offset_matrix;
+        //    }
+        //    // else
+        //    auto val = this->offset_matrix;
 
-            og_direction_vectors    = val * glm::mat3x4(1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0);
-            //rotation_vecs_generated = true;
-        }
+        //    if (name == "Armature_Lower_Arm_L")
+        //    {
+        //        cout << "this";
+        //    }
+
+        //    auto translation = val[3];
+
+        //    val[3][0] = 0.0f;
+        //    val[3][1] = 0.0f;
+        //    val[3][2] = 0.0f;
+
+        //    auto result = glm::transpose(val) * val;
+        //    if (result == glm::mat4(1.0))
+        //        cout << "oui oui" << endl;
+        //    else
+        //    {
+        //        cout << name << endl;
+        //        for (int y = 0; y < 4; y++)
+        //        {
+        //            for (int x = 0; x < 4; x++)
+        //            {
+        //                cout << val[y][x] << ", ";
+        //            }
+        //            cout << ";" << endl;
+        //        }
+        //        cout << endl;
+        //    }
+
+        //    auto x = val * glm::vec4(1.0, 0.0, 0.0, 1.0);
+        //    auto y = val * glm::vec4(0.0, 1.0, 0.0, 1.0);
+        //    auto z = val * glm::vec4(0.0, 0.0, 1.0, 1.0);
+
+        //    cout << "X: " << x[0] << ", " << x[1] << ", " << x[2] << endl;
+        //    cout << "Y: " << y[0] << ", " << y[1] << ", " << y[2] << endl;
+        //    cout << "Z: " << z[0] << ", " << z[1] << ", " << z[2] << endl;
+        //    cout << "Angle between X & Y = " << std::acos(glm::dot(x, y) / (glm::length(x) * glm::length(y))) << endl;
+        //    cout << "Angle between X & Z = " << std::acos(glm::dot(x, z) / (glm::length(x) * glm::length(z))) << endl;
+        //    cout << "Angle between Y & Z = " << std::acos(glm::dot(y, z) / (glm::length(y) * glm::length(z))) << endl;
+
+        //    cout << endl << endl << endl;
+
+        og_direction_vectors = glm::mat3x4(1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0);
+
+        //    // rotation_vecs_generated = true;
+        //}
     }
+
+    // float dot(glm::vec4 x, glm::vec4 y) { return x[0] * y[0] + x[1] * y[1] + x[2] * y[2] + x[3] * y[3]; }
 
     void set_x_axis_rotation(float val) { rotations[0] = val; }
     void set_y_axis_rotation(float val) { rotations[1] = val; }
@@ -138,12 +184,10 @@ class Joint
         if (parent != nullptr)
         {
             parent->create_transform_matrices();
-            direction_vectors = glm::mat3x4(parent->rotation_matrix * og_direction_vectors[0],
-                                            parent->rotation_matrix * og_direction_vectors[1],
-                                            parent->rotation_matrix * og_direction_vectors[2]);
+            direction_vectors = glm::mat3(parent->rotation_matrix * og_direction_vectors);
         }
         else
-            direction_vectors = glm::mat3x4(og_direction_vectors[0], og_direction_vectors[1], og_direction_vectors[2]);
+            direction_vectors = glm::mat3(og_direction_vectors);
 
         rotation_matrix = glm::mat4(1.0);
 
@@ -161,8 +205,10 @@ class Joint
         // if (parent != nullptr) current_position = glm::vec4(parent->current_position) * translation_matrix;
 
         if (parent != nullptr)
+        {
             transformation_matrix =
                 parent->create_transform_matrices() * offset_matrix_inv * rotation_matrix * offset_matrix;
+        }
         else
             transformation_matrix = offset_matrix_inv * rotation_matrix * offset_matrix;
 

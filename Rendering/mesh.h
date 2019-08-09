@@ -160,10 +160,24 @@ class Mesh
         }
 
         // the axis are literal x, y, z not arm relative
-        joints[joints_map["Armature_Upper_Arm_R"]].set_y_axis_rotation(0.9);
-        joints[joints_map["Armature_Upper_Arm_R"]].animate_x_axis_rotation(0.01);
-        //joints[joints_map["Armature_Lower_Arm_R"]].set_y_axis_rotation(1.0);
-        //joints[joints_map["Armature_Lower_Arm_R"]].animate_x_axis_rotation(0.01);
+        // z axis rotation is primary
+        // x axis rotation is secondary
+        // y axis rotation is roll on the joint
+        // joints[joints_map["Armature_Upper_Arm_R"]].set_x_axis_rotation(0.9);
+        // joints[joints_map["Armature_Upper_Arm_R"]].set_y_axis_rotation(0.9);
+        // joints[joints_map["Armature_Upper_Arm_R"]].set_z_axis_rotation(0.9);
+
+        // dont know why z and x are aligned in funny ways on this joint
+        // joints[joints_map["Armature_Upper_Arm_R"]].animate_x_axis_rotation(0.01);
+        // joints[joints_map["Armature_Upper_Arm_R"]].animate_y_axis_rotation(0.01);
+        // joints[joints_map["Armature_Upper_Arm_R"]].animate_z_axis_rotation(0.01);
+
+        // left upper arm is still messed up in its offset, getting super high or low
+
+        // joints[joints_map["Armature_Lower_Arm_R"]].set_z_axis_rotation(-1.5);
+        // joints[joints_map["Armature_Lower_Arm_L"]].animate_z_axis_rotation(0.01);
+
+        //joints[joints_map["Armature_Thigh_R"]].animate_z_axis_rotation(0.01);
 
         for (auto i = 0; i < this->joints.size(); i++) joints[i].clear_transform();
 
