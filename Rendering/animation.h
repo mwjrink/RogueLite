@@ -20,17 +20,6 @@ using namespace std;
 
 class animation
 {
-  private:
-    struct state
-    {
-        string joint_name;
-        // potentially use out of range values to determine if angle matters or not
-        float x_rotation;  // radians
-        float y_rotation;  // radians
-        float z_rotation;  // radians
-        float time;        // animation start is 0, in seconds
-    };
-
   public:
     enum functions
     {
@@ -39,14 +28,26 @@ class animation
         sin
     };
 
-    //vector<string> affected_joints;
-    vector<state>  key_frames;
+    struct frame
+    {
+        int       next_frame;
+        float     end_time;
+        float     x_rotation;  // radians
+        float     y_rotation;  // radians
+        float     z_rotation;  // radians
+        functions function;
+    };
+
+    vector<frame>  animation_frames;
+    vector<string> affected_joints;
+    vector<int>    current_frame_index;
     functions      function;
     bool           reversible;
-    float          current_time;
     float          cancellable_before;
     float          cancellable_after;
     float          max_time;  // end_time
+
+    float current_time;
 
     animation(vector<string> joint_names, vector<float> x_rotations, vector<float> y_rotations, vector<float> z_rotations,
               vector<float> times, functions function, float max_time, float cancellable_before, float cancellable_after,
@@ -58,8 +59,15 @@ class animation
           cancellable_after(cancellable_after),
           max_time(max_time)
     {
-        key_frames.reserve(joint_names.size());
+        /*key_frames.reserve(joint_names.size());
         for (int i = 0; i < joint_names.size(); i++)
-            key_frames[i] = state{joint_names[i], x_rotations[i], y_rotations[i], z_rotations[i], times[i]};
+        {
+
+        }
+        key_frames[i] = state{joint_names[i], x_rotations[i], y_rotations[i], z_rotations[i], times[i]};*/
     }
+
+	// load animation from file
+	// parse animation from text
+	// apply animation to mesh
 };

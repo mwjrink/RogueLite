@@ -123,9 +123,6 @@ class Mesh
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
 
-		joints[joints_map["Armature_Head"]].set_y_axis_rotation(1.4);
-        //joints[joints_map["Armature_Upper_Arm_R"]].set_x_axis_rotation(0.5);
-
         for (auto i = 0; i < this->joints.size(); i++) joints[i].clear_transform();
 		// these must be separate because the method refers to the parent of the joint, which needs to be cleared
         for (auto i = 0; i < this->joints.size(); i++) transforms[i] = joints[i].create_transform_matrices();

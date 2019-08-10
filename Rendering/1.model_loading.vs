@@ -18,20 +18,10 @@ uniform mat4 jointTransforms[13];
 
 void main()
 {
-	vec4 totalLocalPos = vec4(0.0);
-	// Normals are for lighting
-	//vec4 totalNormal = vec4(0.0);
-
-	for(int i=0; i<3; i++){
-		mat4 jointTransform = jointTransforms[aJointIndices[i]];
-
-		vec4 posePosition = jointTransform * vec4(aPos, 1.0);
-		totalLocalPos += posePosition * aJointWeights[i];
-
-		//vec4 worldNormal = jointTransform * vec4(in_normal, 0.0);
-		//totalNormal += worldNormal * in_weights[i];
-	}
+	mat4 boneTransform = jointTransforms[aJointIndices[0]] * aJointWeights[0];
+	boneTransform += jointTransforms[aJointIndices[1]] * aJointWeights[1];
+	boneTransform += jointTransforms[aJointIndices[2]] * aJointWeights[2];
 
     TexCoords = aTexCoords;
-    gl_Position = projection * view * model * totalLocalPos;
+    gl_Position = projection * view * model * boneTransform * vec4(aPos, 1.0);
 }

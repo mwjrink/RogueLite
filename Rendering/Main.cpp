@@ -10,7 +10,6 @@
 
 #include "stb_image.h"
 
-#include "camera.h"
 #include "model.h"
 #include "shader.h"
 
@@ -19,8 +18,6 @@
 #include <iostream>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
 void render();
 
@@ -32,10 +29,10 @@ const unsigned int pixelation_factor = 1;  // for testing the animations, this i
 const float outline_width = 0.2f;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-float  lastX      = SCR_WIDTH / 2.0f;
-float  lastY      = SCR_HEIGHT / 2.0f;
-bool   firstMouse = true;
+//Camera camera();
+glm::mat4 view =
+    glm::lookAt(glm::vec3(-10.0f, 0.0f, 10.0f), glm::vec3(-10.0f, 0.0f, 10.0f) + glm::vec3(0.707107, 0, -0.707107),
+                glm::vec3(1.0f, 0.0f, 1.0f));
 
 // timing
 float deltaTime = 0.0f;
@@ -43,10 +40,9 @@ float lastFrame = 0.0f;
 
 GLuint fbo, color_rbo, depth_stencil_rbo;
 
-bool cam_mode = false;
 bool outlines_enabled = false;
 
-proc_anim::HumanoidSkeleton character;
+//proc_anim::HumanoidSkeleton character;
 
 Shader ourShader;
 Shader outlineShader;
@@ -84,8 +80,6 @@ int main()
     }
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-    glfwSetCursorPosCallback(window, mouse_callback);
-    glfwSetScrollCallback(window, scroll_callback);
 
     // tell GLFW to capture our mouse
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -184,10 +178,11 @@ void render()
     // glDepthFunc(GL_LEQUAL);
 
     // glEnable(GL_BLEND);
-    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-    glm::mat4 view       = camera.GetViewMatrix();
+	// WTF?
+    glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    //camera.GetViewMatrix();
     glm::mat4 model      = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));  // translate it down so it's at the center of the scene
+    model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.0f));  // translate it down so it's at the center of the scene
     model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));        // it's a bit too big for our scene, so scale it down
     model = glm::rotate(model, rot, glm::vec3(0.0f, 0.0f, 1.0f));
 
@@ -246,38 +241,14 @@ void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) glfwSetWindowShouldClose(window, true);
 
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        if (cam_mode)
-            camera.ProcessKeyboard(FORWARD, deltaTime);
-        else
-            proc_anim::set_unit_velocity_up(&character);
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        if (cam_mode)
-            camera.ProcessKeyboard(BACKWARD, deltaTime);
-        else
-            proc_anim::set_unit_velocity_down(&character);
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        if (cam_mode)
-            camera.ProcessKeyboard(LEFT, deltaTime);
-        else
-            proc_anim::set_unit_velocity_left(&character);
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        if (cam_mode)
-            camera.ProcessKeyboard(RIGHT, deltaTime);
-        else
-            proc_anim::set_unit_velocity_right(&character);
-
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        if (!cam_mode) proc_anim::stop_velocity_up(&character);
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        if (!cam_mode) proc_anim::stop_velocity_down(&character);
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        if (!cam_mode) proc_anim::stop_velocity_left(&character);
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        if (!cam_mode) proc_anim::stop_velocity_right(&character);
-
-    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) cam_mode = true;
-    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_RELEASE) cam_mode = false;
+    //if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+    //    proc_anim::stop_velocity_up(&character);
+    //if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+    //    proc_anim::stop_velocity_down(&character);
+    //if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+    //    proc_anim::stop_velocity_left(&character);
+    //if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+    //    proc_anim::stop_velocity_right(&character);
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
@@ -286,34 +257,11 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     // make sure the viewport matches the new window dimensions; note that width and
     // height will be significantly larger than specified on retina displays.
-    // glViewport(0, 0, width, height);
+    glViewport(0, 0, width, height);
     // SCR_WIDTH = width;
     // SCR_HEIGHT = width;
 }
 
-// glfw: whenever the mouse moves, this callback is called
-// -------------------------------------------------------
-void mouse_callback(GLFWwindow* window, double xpos, double ypos)
-{
-    if (cam_mode)
-    {
-        if (firstMouse)
-        {
-            lastX      = xpos;
-            lastY      = ypos;
-            firstMouse = false;
-        }
+void change_pixelation_factor(int new_value) {
 
-        float xoffset = xpos - lastX;
-        float yoffset = lastY - ypos;  // reversed since y-coordinates go from bottom to top
-
-        lastX = xpos;
-        lastY = ypos;
-
-        camera.ProcessMouseMovement(xoffset, yoffset);
-    }
 }
-
-// glfw: whenever the mouse scroll wheel scrolls, this callback is called
-// ----------------------------------------------------------------------
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) { camera.ProcessMouseScroll(yoffset); }
