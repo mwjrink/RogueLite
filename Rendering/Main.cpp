@@ -27,7 +27,7 @@ void render();
 // settings
 const unsigned int SCR_WIDTH         = 1920;
 const unsigned int SCR_HEIGHT        = 1080;
-const unsigned int pixelation_factor = 1; // for testing the animations, this is gonna be 1
+const unsigned int pixelation_factor = 1;  // for testing the animations, this is gonna be 1
 
 const float outline_width = 0.2f;
 
@@ -44,6 +44,7 @@ float lastFrame = 0.0f;
 GLuint fbo, color_rbo, depth_stencil_rbo;
 
 bool cam_mode = false;
+bool outlines_enabled = false;
 
 proc_anim::HumanoidSkeleton character;
 
@@ -66,7 +67,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_STENCIL_BITS, 0);
     glfwWindowHint(GLFW_DEPTH_BITS, 0);
-    //glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
+    // glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
 
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);  // uncomment this statement to fix compilation on OS X
@@ -151,7 +152,7 @@ int main()
         // -----
         processInput(window);
 
-		rot += 0.01f;
+        rot += 0.01f;
 
         // render
         // ------
@@ -201,21 +202,24 @@ void render()
         ourModel.Draw(ourShader);
     }
 
-	// @Max, 7/12/19, commented out outlining to better debug
-	// @Max, 7/15/19, probably gonna do outlining by scaling the 2d sprite and painting it black then painting 
-	// the real sprite to the screen rather than this nonsense, it will be far easier
-    //// glDepthFunc(GL_LEQUAL);
-    //glStencilFunc(GL_NOTEQUAL, 1, 0xFF);  // all fragments should update the stencil buffer
-    //glStencilMask(0x00);                  // enable writing to the stencil buffer
-    //glDisable(GL_DEPTH_TEST);
-    //{
-    //    outlineShader.use();
-    //    outlineShader.setMat4("projection", projection);
-    //    outlineShader.setMat4("view", view);
-    //    outlineShader.setMat4("model", glm::scale(model, glm::vec3(1.0f + outline_width)));
-    //    outlineShader.setFloat("outline_width", outline_width);
-    //    ourModel.Draw(outlineShader);
-    //}
+    // @Max, 7/12/19, commented out outlining to better debug
+    // @Max, 7/15/19, probably gonna do outlining by scaling the 2d sprite and painting it black then painting
+    // the real sprite to the screen rather than this nonsense, it will be far easier
+    // glDepthFunc(GL_LEQUAL);
+    if (outlines_enabled)
+    {
+        glStencilFunc(GL_NOTEQUAL, 1, 0xFF);  // all fragments should update the stencil buffer
+        glStencilMask(0x00);                  // enable writing to the stencil buffer
+        glDisable(GL_DEPTH_TEST);
+        {
+            outlineShader.use();
+            outlineShader.setMat4("projection", projection);
+            outlineShader.setMat4("view", view);
+            outlineShader.setMat4("model", model);
+            outlineShader.setFloat("outline_width", outline_width);
+            ourModel.Draw(outlineShader);
+        }
+    }
 
     glStencilMask(0xFF);
     glEnable(GL_DEPTH_TEST);

@@ -1,0 +1,16 @@
+rotation limits
+{
+    // TODO: finish the x axis rotations
+    Armature_Spine: z;0.0, 0.0 x;0.0, 0.0
+    Armature_Head: z;-0.7, 0.7 x;-1.0, 1.0
+    Armature_Shoulder_L: z;-0.25, 0.25 x;-0.8, 0.25
+    Armature_Shoulder_R: z;-0.25, 0.25 x;-0.8, 0.25
+    Armature_Thigh_L: z;-2.5, 0.25
+    Armature_Thigh_R: z;-2.5, 0.25
+    Armature_Upper_Arm_L: z;-1.5, 1.5
+    Armature_Upper_Arm_R: z;-1.5, 1.5
+    Armature_Shin_L: z;-2.6, 0.0 x;0.0, 0.0
+    Armature_Shin_R: z;-2.6, 0.0 x;0.0, 0.0
+    Armature_Lower_Arm_L: z;-2.4, 0.0 x;0.0, 0.0
+    Armature_Lower_Arm_R: z;-2.4, 0.0 x;0.0, 0.0
+}

@@ -76,33 +76,8 @@ class Model
         // process each mesh located at the current node
         for (unsigned int i = 0; i < node->mNumMeshes; i++)
         {
-            // the node object only contains indices to index the actual objects in the scene.
-            // the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
             aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
             meshes.push_back(processMesh(mesh, scene));
-
-            // if (mesh->HasBones())
-            //    for (auto it = 0; it < mesh->mNumBones; it++)
-            //    {
-            //        cout << mesh->mBones[it]->mName.C_Str() << endl;
-            //        //mesh->mBones[it]->mOffsetMatrix;
-            //        //mesh->mVertices[it].
-            //    }
-
-            //  Armature_Spine
-            //  Armature_Thigh_L
-            //	Armature_Shin_L
-            //	Armature_Thigh_R
-            //	Armature_Shin_R
-            //	Armature_Shoulder_L
-            //  Armature_Upper_Arm_L
-            //	Armature_Lower_Arm_L
-            //	Armature_Head
-            //	Armature_Shoulder_R
-            //	Armature_Upper_Arm_R
-            //  Armature_Lower_Arm_R
-
-            // mesh.
         }
         // after we've processed all of the meshes (if any) we then recursively process each of the children nodes
         for (unsigned int i = 0; i < node->mNumChildren; i++)
@@ -222,10 +197,6 @@ class Model
             vertices[i].JointWeights[0] *= adjustment;
             vertices[i].JointWeights[1] *= adjustment;
             vertices[i].JointWeights[2] *= adjustment;
-
-            // cout << filled[i] << endl;
-            /*cout << vertices[i].JointIndices[0] << " " << vertices[i].JointIndices[1] << " " << vertices[i].JointIndices[2]
-                 << endl;*/
         }
 
         auto to_check = vector<aiNode*>();
@@ -252,20 +223,6 @@ class Model
             for (auto i = 0; i < current->mNumChildren; i++) q.push(current->mChildren[i]);
         }
 
-        // Armature
-        // Armature_Spine
-        // Armature_Head
-        // Armature_Shoulder_L
-        // Armature_Shoulder_R
-        // Armature_Thigh_L
-        // Armature_Thigh_R
-        // Armature_Upper_Arm_L
-        // Armature_Upper_Arm_R
-        // Armature_Shin_L
-        // Armature_Shin_R
-        // Armature_Lower_Arm_L
-        // Armature_Lower_Arm_R
-
         // create all of the joints and add them to the joints vector in order so that the IDs line up with the vertex
         // weights in the shaders
         for (auto i = 0; i < mesh->mNumBones; i++)
@@ -277,8 +234,10 @@ class Model
                     break;
                 }
 
-            joints.push_back(Joint(i, mesh->mBones[i]->mName.C_Str(), convertMatrix(mesh->mBones[i]->mOffsetMatrix),
-                                   convertMatrix(mine.back()->mTransformation)));
+            joints.push_back(Joint(i, mesh->mBones[i]->mName.C_Str(), convertMatrix(mesh->mBones[i]->mOffsetMatrix)
+				//,
+                                   //convertMatrix(mine.back()->mTransformation)
+			));
         }
 
         vector<pair<int, int>> parent_children;

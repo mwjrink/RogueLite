@@ -19,22 +19,13 @@ class Joint
 
     std::string name;
 
-    // parent Joint
     Joint* parent = nullptr;
-    // child joints, with positioning relative to this
     vector<Joint*> children;
 
-    // technically I shouldnt need these two to calculate the transforms
-
-    // relative to world space
-    // glm::vec4 original_position;
-    // glm::vec4 original_dir_vec;
     glm::mat4 offset_matrix;
     glm::mat4 offset_matrix_inv;
 
-    glm::vec4 current_position;
-
-    glm::mat3x4 og_direction_vectors;
+    glm::mat3x4 og_direction_vectors = glm::mat3x4(1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0);
     glm::mat3   direction_vectors;
 
     glm::vec3 rotations = glm::vec3(0.0);
@@ -43,41 +34,23 @@ class Joint
     glm::vec3 max_rotations = glm::vec3(numeric_limits<float>::max());   // glm::vec3(6.28318530718f);
 
     glm::mat4 rotation_matrix;
-    glm::mat4 translation_matrix;
     glm::mat4 transformation_matrix;
     bool      transform_calculated = false;
 
-    bool      rotation_vecs_generated = false;
-    glm::mat4 rot_mat;
     glm::mat4 bone_transform;
 
-    // rotations should be main, secondary, roll
+    // queue for animation progression?
 
-    // technically min and max rotations should be here too, but IDK how to do this easily so I will fill it later :(
+    // technically min and max rotations should be passed in here too, but IDK how to do this easily so I will figure this out later :(
     // the right way to do this is to make a keyframe for the minimums and maximums then reading those angles in (FUCK THAT
     // THOUGH)
-    Joint(unsigned int ID, std::string name, glm::mat4 offset_matrix, glm::mat4 bone_transform)
+    Joint(unsigned int ID, std::string name, glm::mat4 offset_matrix)//, glm::mat4 bone_transform)
         : ID(ID),
           name(name),
           offset_matrix(offset_matrix),
-          offset_matrix_inv(glm::inverse(offset_matrix)),
-          bone_transform(bone_transform)
+          offset_matrix_inv(glm::inverse(offset_matrix))
+		//, bone_transform(bone_transform)
     {
-        // Im hoping this will apply the roll from the bones on the mesh, to align the direction vectors accordingly
-        // I likely need to calculate the default rotation, ie get the rotation value necessary to make the arms go
-        // out the way they do by grabbing the elbow and shoulder and figuring out the rotation necessary to get the
-        // elbow there from a position straight down.
-
-        // In theory, if you make the right most column 0,0,0,1 that should remove the translation and leave just the
-        // rotation, scale is irrelevant, but we could make the diagnal only ones, reflection is simply a negative scale
-        // in a direction so that is covered.
-
-        // Not sure why these offset matrices have anything but 0,0,0,1 as their bottom row but they do so
-        // making the last row 0,0,0,1 will not have any effect on x,y,z components but will preserve 1 as the w component
-        // doing this makes the matrix orthogonal and means it wont fuck up our direction vectors for rotation.
-        // this->offset_matrix[3][0] = 0.0f;
-        //      this->offset_matrix[3][1] = 0.0f;
-        //      this->offset_matrix[3][2] = 0.0f;
     }
 
     void push_back_child(Joint* child)
@@ -85,70 +58,6 @@ class Joint
         child->parent = this;
         children.push_back(child);
     }
-
-    void generate_rotation_vectors()
-    {
-        //// if (!rotation_vecs_generated)
-        //{
-        //    // glm::mat4 val;
-        //    if (parent != nullptr)
-        //    {
-        //        parent->generate_rotation_vectors();
-        //        bone_transform = parent->bone_transform * bone_transform;
-
-        //        // val = parent->offset_matrix_inv * this->offset_matrix;
-        //    }
-        //    // else
-        //    auto val = this->offset_matrix;
-
-        //    if (name == "Armature_Lower_Arm_L")
-        //    {
-        //        cout << "this";
-        //    }
-
-        //    auto translation = val[3];
-
-        //    val[3][0] = 0.0f;
-        //    val[3][1] = 0.0f;
-        //    val[3][2] = 0.0f;
-
-        //    auto result = glm::transpose(val) * val;
-        //    if (result == glm::mat4(1.0))
-        //        cout << "oui oui" << endl;
-        //    else
-        //    {
-        //        cout << name << endl;
-        //        for (int y = 0; y < 4; y++)
-        //        {
-        //            for (int x = 0; x < 4; x++)
-        //            {
-        //                cout << val[y][x] << ", ";
-        //            }
-        //            cout << ";" << endl;
-        //        }
-        //        cout << endl;
-        //    }
-
-        //    auto x = val * glm::vec4(1.0, 0.0, 0.0, 1.0);
-        //    auto y = val * glm::vec4(0.0, 1.0, 0.0, 1.0);
-        //    auto z = val * glm::vec4(0.0, 0.0, 1.0, 1.0);
-
-        //    cout << "X: " << x[0] << ", " << x[1] << ", " << x[2] << endl;
-        //    cout << "Y: " << y[0] << ", " << y[1] << ", " << y[2] << endl;
-        //    cout << "Z: " << z[0] << ", " << z[1] << ", " << z[2] << endl;
-        //    cout << "Angle between X & Y = " << std::acos(glm::dot(x, y) / (glm::length(x) * glm::length(y))) << endl;
-        //    cout << "Angle between X & Z = " << std::acos(glm::dot(x, z) / (glm::length(x) * glm::length(z))) << endl;
-        //    cout << "Angle between Y & Z = " << std::acos(glm::dot(y, z) / (glm::length(y) * glm::length(z))) << endl;
-
-        //    cout << endl << endl << endl;
-
-        og_direction_vectors = glm::mat3x4(1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0);
-
-        //    // rotation_vecs_generated = true;
-        //}
-    }
-
-    // float dot(glm::vec4 x, glm::vec4 y) { return x[0] * y[0] + x[1] * y[1] + x[2] * y[2] + x[3] * y[3]; }
 
     void set_x_axis_rotation(float val) { rotations[0] = val; }
     void set_y_axis_rotation(float val) { rotations[1] = val; }
@@ -161,25 +70,6 @@ class Joint
     glm::mat4 create_transform_matrices()
     {
         if (transform_calculated) return transformation_matrix;
-
-        /*current_position + parent->current_position + original_dir_vec * length;*/
-
-        // original_dir_vec needs to have rotations applied but not translation
-        // rotations from highest parent all the way to this->parent
-
-        // original_dir_vec, transformed, added to parent current position is this joints current position
-
-        // cache transform matrices per frame ?
-
-        // if (parent != nullptr)
-        //{
-        //    parent->create_transform_matrices();
-
-        //    //rotation_matrix = glm::mat4(parent->rotation_matrix);
-        //}
-        // else
-        //{
-        //}
 
         if (parent != nullptr)
         {
@@ -198,12 +88,6 @@ class Joint
         rotation_matrix =
             glm::rotate(rotation_matrix, std::clamp(rotations.z, min_rotations.z, max_rotations.z), direction_vectors[2]);
 
-        // translation_matrix = glm::translate(
-        //    glm::mat4(1.0), glm::vec3(glm::normalize(rotation_matrix * glm::vec4(0.0, 0.0, 0.0, 1.0))) * length);
-
-        //// if this joint does not have a parent, its current_position should be set by moving the model as a whole
-        // if (parent != nullptr) current_position = glm::vec4(parent->current_position) * translation_matrix;
-
         if (parent != nullptr)
         {
             transformation_matrix =
@@ -212,26 +96,10 @@ class Joint
         else
             transformation_matrix = offset_matrix_inv * rotation_matrix * offset_matrix;
 
-        //*translation_matrix;
         transform_calculated = true;
 
         return transformation_matrix;
     }
 
     void clear_transform() { transform_calculated = false; }
-
-    // glm::vec3 get_current_position()
-    //{
-    //    // get highest parent position and figure out your position based off that
-    //}
 };
-
-// mat3 direction_vectors (forwards, left, up, gotten from parent)
-// vec3 rotations (around the 3 dir_vecs, given based on animation)
-// vec3 position (in worldspace, calculated)
-// vec3 original position
-
-// vec3 min_rotations (minimum angle relative to dir_vecs)
-// vec3 max_rotations (maximum angle relative to dir_vecs)
-
-// queue for animation progression?
