@@ -132,16 +132,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="glad.c" />
-    <ClCompile Include="HumanoidSkeleton.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h" />
-    <ClInclude Include="camera.h" />
-    <ClInclude Include="HumanoidSkeleton.h" />
-    <ClInclude Include="Joint.h" />
+    <ClInclude Include="creature.h" />
+    <ClInclude Include="joint.h" />
+    <ClInclude Include="matrix_helper.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="model.h" />
+    <ClInclude Include="render_helper.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="stb_image.h" />
   </ItemGroup>

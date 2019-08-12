@@ -10,29 +10,34 @@
 
 #include "stb_image.h"
 
+#include "creature.h"
 #include "model.h"
 #include "shader.h"
-
-#include "HumanoidSkeleton.h"
 
 #include <iostream>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow* window);
+void processInput(GLFWwindow* Window, int Key, int Scancode, int Action, int Mods);
+void change_pixelation_factor(int new_value);
 void render();
+void update(float dt);
 
 // settings
-const unsigned int SCR_WIDTH         = 1920;
-const unsigned int SCR_HEIGHT        = 1080;
-const unsigned int pixelation_factor = 1;  // for testing the animations, this is gonna be 1
+unsigned int scr_width         = 1920;
+unsigned int scr_height        = 1080;
+unsigned int pixelation_factor = 1;  // for testing the animations, this is gonna be 1
 
-const float outline_width = 0.2f;
+GLFWwindow* window;
 
 // camera
-//Camera camera();
+// Camera camera();
+//glm::mat4 view =
+//    glm::lookAt(glm::vec3(-10.0f, 0.0f, 10.0f), glm::vec3(-10.0f, 0.0f, 10.0f) + glm::vec3(0.707107, 0, -0.707107),
+//                glm::vec3(1.0f, 0.0f, 1.0f));
 glm::mat4 view =
-    glm::lookAt(glm::vec3(-10.0f, 0.0f, 10.0f), glm::vec3(-10.0f, 0.0f, 10.0f) + glm::vec3(0.707107, 0, -0.707107),
-                glm::vec3(1.0f, 0.0f, 1.0f));
+    glm::lookAt(glm::vec3(0.0f, -10.0f, 10.0f), glm::vec3(0.0f, -10.0f, 10.0f) + glm::vec3(0.0f, 1.0f, -1.0f),
+                glm::vec3(0.0f, 1.0f, 1.0f));
+glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)scr_width / (float)scr_height, 0.1f, 100.0f);
 
 // timing
 float deltaTime = 0.0f;
@@ -42,21 +47,18 @@ GLuint fbo, color_rbo, depth_stencil_rbo;
 
 bool outlines_enabled = false;
 
-//proc_anim::HumanoidSkeleton character;
+// proc_anim::HumanoidSkeleton character;
 
 Shader ourShader;
 Shader outlineShader;
 
-Model ourModel;
+Model       ourModel;
+const float outline_width = 0.2f;
 
-GLFWwindow* window;
-
-float rot = 0.0f;
+Creature natsu;
 
 int main()
 {
-    // glfw: initialize and configure
-    // ------------------------------
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -69,9 +71,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);  // uncomment this statement to fix compilation on OS X
 #endif
 
-    // glfw window creation
-    // --------------------
-    window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+    window = glfwCreateWindow(scr_width, scr_height, "LearnOpenGL", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -80,12 +80,11 @@ int main()
     }
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glfwSetKeyCallback(window, processInput);
 
-    // tell GLFW to capture our mouse
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    // tell GLFW to capture our mouse and disable the cursor in the window
+    // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-    // glad: load all OpenGL function pointers
-    // ---------------------------------------
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
@@ -94,12 +93,12 @@ int main()
 
     glGenRenderbuffers(1, &color_rbo);
     glBindRenderbuffer(GL_RENDERBUFFER, color_rbo);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_RGBA, SCR_WIDTH / pixelation_factor, SCR_HEIGHT / pixelation_factor);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_RGBA, scr_width / pixelation_factor, scr_height / pixelation_factor);
 
     glGenRenderbuffers(1, &depth_stencil_rbo);
     glBindRenderbuffer(GL_RENDERBUFFER, depth_stencil_rbo);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, SCR_WIDTH / pixelation_factor,
-                          SCR_HEIGHT / pixelation_factor);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, scr_width / pixelation_factor,
+                          scr_height / pixelation_factor);
 
     glGenFramebuffers(1, &fbo);
     glBindFramebuffer(GL_FRAMEBUFFER, fbo);
@@ -110,8 +109,6 @@ int main()
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
         std::cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << std::endl;
 
-    // configure global opengl state
-    // -----------------------------
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glEnable(GL_STENCIL_TEST);
@@ -119,37 +116,29 @@ int main()
     glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
     // glDisable(GL_DEPTH_TEST);
 
-    // build and compile shaders
-    // -------------------------
+    glClearColor(0.0f, 0.1f, 0.1f, 1.0f);
+
     ourShader     = Shader("1.model_loading.vs", "1.model_loading.fs");
     outlineShader = Shader("outline-shading.vs", "outline-shading.fs");
 
-    // load models
-    // -----------
-    // Model ourModel("resources/objects/nanosuit/nanosuit.obj");
-    ourModel = Model("resources/objects/Natsu/Natsu Dragneel.dae");
+    // ourModel = Model("resources/objects/Natsu/Natsu Dragneel.dae");
+    natsu = Creature("resources/objects/Natsu/Natsu Dragneel.dae");
+    natsu.set_scale(0.2f);
+
+    change_pixelation_factor(pixelation_factor);
 
     // draw in wireframe
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-    // render loop
-    // -----------
     while (!glfwWindowShouldClose(window))
     {
-        // per-frame time logic
-        // --------------------
         float currentFrame = glfwGetTime();
         deltaTime          = currentFrame - lastFrame;
         lastFrame          = currentFrame;
 
-        // input
-        // -----
-        processInput(window);
+        // update
+        update(deltaTime);
 
-        rot += 0.01f;
-
-        // render
-        // ------
         render();
 
         glfwPollEvents();
@@ -157,111 +146,64 @@ int main()
 
     glDeleteFramebuffers(1, &fbo);
 
-    // glfw: terminate, clearing all previously allocated GLFW resources.
-    // ------------------------------------------------------------------
     glfwTerminate();
     return 0;
 }
 
+void update(float dt) { natsu.update(dt); }
+
 void render()
 {
-    glViewport(0, 0, SCR_WIDTH / pixelation_factor, SCR_HEIGHT / pixelation_factor);
     glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-    glClearColor(0.0f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
-    glEnable(GL_STENCIL_TEST);
-    glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
-    // glDepthFunc(GL_LEQUAL);
+    natsu.render(projection, view, ourShader, outlineShader, outlines_enabled, outline_width);
 
-    // glEnable(GL_BLEND);
-	// WTF?
-    glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-    //camera.GetViewMatrix();
-    glm::mat4 model      = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.0f));  // translate it down so it's at the center of the scene
-    model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));        // it's a bit too big for our scene, so scale it down
-    model = glm::rotate(model, rot, glm::vec3(0.0f, 0.0f, 1.0f));
-
-    // glDepthFunc(GL_GEQUAL);
-    glStencilFunc(GL_ALWAYS, 1, 0xFF);  // all fragments should update the stencil buffer
-    glStencilMask(0xFF);                // enable writing to the stencil buffer
-    {
-        ourShader.use();
-        ourShader.setMat4("projection", projection);
-        ourShader.setMat4("view", view);
-        ourShader.setMat4("model", model);
-        ourModel.Draw(ourShader);
-    }
-
-    // @Max, 7/12/19, commented out outlining to better debug
-    // @Max, 7/15/19, probably gonna do outlining by scaling the 2d sprite and painting it black then painting
-    // the real sprite to the screen rather than this nonsense, it will be far easier
-    // glDepthFunc(GL_LEQUAL);
-    if (outlines_enabled)
-    {
-        glStencilFunc(GL_NOTEQUAL, 1, 0xFF);  // all fragments should update the stencil buffer
-        glStencilMask(0x00);                  // enable writing to the stencil buffer
-        glDisable(GL_DEPTH_TEST);
-        {
-            outlineShader.use();
-            outlineShader.setMat4("projection", projection);
-            outlineShader.setMat4("view", view);
-            outlineShader.setMat4("model", model);
-            outlineShader.setFloat("outline_width", outline_width);
-            ourModel.Draw(outlineShader);
-        }
-    }
-
-    glStencilMask(0xFF);
-    glEnable(GL_DEPTH_TEST);
-
-    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);  // back to default
-                                                // glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-    // glClear(GL_COLOR_BUFFER_BIT);
-    // glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
-
-    glBlitFramebuffer(0, 0, SCR_WIDTH / pixelation_factor, SCR_HEIGHT / pixelation_factor, 0, 0, SCR_WIDTH, SCR_HEIGHT,
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    glBlitFramebuffer(0, 0, scr_width / pixelation_factor, scr_height / pixelation_factor, 0, 0, scr_width, scr_height,
                       GL_COLOR_BUFFER_BIT, GL_NEAREST);
 
     GLenum err;
     if ((err = glGetError()) != GL_NO_ERROR) std::cout << err << std::endl;
 
-    // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-    // -------------------------------------------------------------------------------
     glfwSwapBuffers(window);
 }
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
-void processInput(GLFWwindow* window)
+void processInput(GLFWwindow* Window, int Key, int Scancode, int Action, int Mods)
 {
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) glfwSetWindowShouldClose(window, true);
+    if (Action == GLFW_PRESS)
+    {
+        if (GLFW_KEY_ESCAPE == Key) glfwSetWindowShouldClose(window, true);
 
-    //if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-    //    proc_anim::stop_velocity_up(&character);
-    //if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-    //    proc_anim::stop_velocity_down(&character);
-    //if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-    //    proc_anim::stop_velocity_left(&character);
-    //if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-    //    proc_anim::stop_velocity_right(&character);
+        if (GLFW_KEY_W == Key) natsu.set_unit_velocity_up(0, 0);
+        if (GLFW_KEY_S == Key) natsu.set_unit_velocity_down(0, 0);
+        if (GLFW_KEY_A == Key) natsu.set_unit_velocity_left(0, 0);
+        if (GLFW_KEY_D == Key) natsu.set_unit_velocity_right(0, 0);
+    }
+    else if (Action == GLFW_RELEASE)
+    {
+        if (GLFW_KEY_W == Key) natsu.stop_velocity_up(0, 0);
+        if (GLFW_KEY_S == Key) natsu.stop_velocity_down(0, 0);
+        if (GLFW_KEY_A == Key) natsu.stop_velocity_left(0, 0);
+        if (GLFW_KEY_D == Key) natsu.stop_velocity_right(0, 0);
+    }
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
 // ---------------------------------------------------------------------------------------------
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
-    // make sure the viewport matches the new window dimensions; note that width and
-    // height will be significantly larger than specified on retina displays.
-    glViewport(0, 0, width, height);
-    // SCR_WIDTH = width;
-    // SCR_HEIGHT = width;
+    scr_width  = width;
+    scr_height = width;
+    glViewport(0, 0, scr_width / pixelation_factor, scr_height / pixelation_factor);
+    projection = glm::perspective(glm::radians(45.0f), (float)scr_width / (float)scr_height, 0.1f, 100.0f);
 }
 
-void change_pixelation_factor(int new_value) {
-
+void change_pixelation_factor(int new_value)
+{
+    pixelation_factor = new_value;
+    glViewport(0, 0, scr_width / pixelation_factor, scr_height / pixelation_factor);
 }

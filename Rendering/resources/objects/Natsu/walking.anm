@@ -1,0 +1,13 @@
+walking
+{
+    m=5
+    r=true
+    f=sin???
+    
+    //Armature_Shoulder_L: z;-10;0 z;10;5 sin
+    //Armature_Shoulder_R: z;-10;0 z;10;5 sin
+    Armature_Thigh_L: z;15;0 z;-15;5 sin
+    Armature_Thigh_R: z;-15;0 z;15;5 sin
+    Armature_Shin_L: z;-15;0 z;-5;5 sin
+    Armature_Shin_R: z;-10;0 z;0;5 sin
+}

@@ -16,9 +16,11 @@
 #include <unordered_map>
 #include <vector>
 
+#include "mesh.h"
+
 using namespace std;
 
-class animation
+class Animation
 {
   public:
     enum functions
@@ -28,7 +30,8 @@ class animation
         sin
     };
 
-    struct frame
+  private:
+    struct Frame
     {
         int       next_frame;
         float     end_time;
@@ -38,7 +41,7 @@ class animation
         functions function;
     };
 
-    vector<frame>  animation_frames;
+    vector<Frame>  animation_frames;
     vector<string> affected_joints;
     vector<int>    current_frame_index;
     functions      function;
@@ -49,15 +52,17 @@ class animation
 
     float current_time;
 
-    animation(vector<string> joint_names, vector<float> x_rotations, vector<float> y_rotations, vector<float> z_rotations,
-              vector<float> times, functions function, float max_time, float cancellable_before, float cancellable_after,
-              bool reversible)
+	// bool repeat (part of animation manager)
+    Animation(vector<string> affected_joints, vector<float> x_rotations, vector<float> y_rotations,
+              vector<float> z_rotations, vector<float> times, functions function, float max_time, float cancellable_before,
+              float cancellable_after, bool reversible)
         : function(function),
           reversible(reversible),
           current_time(0),
           cancellable_before(cancellable_before),
           cancellable_after(cancellable_after),
-          max_time(max_time)
+          max_time(max_time),
+          affected_joints(affected_joints)
     {
         /*key_frames.reserve(joint_names.size());
         for (int i = 0; i < joint_names.size(); i++)
@@ -67,7 +72,9 @@ class animation
         key_frames[i] = state{joint_names[i], x_rotations[i], y_rotations[i], z_rotations[i], times[i]};*/
     }
 
-	// load animation from file
-	// parse animation from text
-	// apply animation to mesh
+    void start_animation(Mesh mesh) {}
+
+    // load animation from file
+    // parse animation from text
+    // apply animation to mesh
 };
