@@ -32,12 +32,17 @@ class Animation
 
     struct Frame
     {
-        int       next_frame = -1;
-        float     start_time;
-        float     x_rotation;  // radians
-        float     y_rotation;  // radians
-        float     z_rotation;  // radians
-        //functions function;
+        int   next_frame = -1;
+        float start_time;
+        float x_rotation;
+        float y_rotation;
+        float z_rotation;
+
+        float x_translation;
+        float y_translation;
+        float z_translation;
+
+        // functions function;
     };
 
   private:

@@ -113,6 +113,9 @@ class Animation_Manager
                      1.0f) /
                     2.0f;
 
+                // should do an if for efficiency if (next_frame.angle == current_frame.angle) set angle to angle or dont do
+                // the cos normalizing
+
                 Joint& affected_joint = editable->get_joint(current_anim->affected_joints[i]);
 
                 affected_joint.set_x_axis_rotation(cos_func * (next_frame.x_rotation - current_frame.x_rotation) +
@@ -121,16 +124,25 @@ class Animation_Manager
                 affected_joint.set_y_axis_rotation(cos_func * (next_frame.y_rotation - current_frame.y_rotation) +
                                                    current_frame.y_rotation);
 
-                auto zzz = cos_func * (next_frame.z_rotation - current_frame.z_rotation) + current_frame.z_rotation;
-                cout << "Setting Z on " << current_anim->affected_joints[i] << " to :" << zzz << endl;
                 affected_joint.set_z_axis_rotation(cos_func * (next_frame.z_rotation - current_frame.z_rotation) +
                                                    current_frame.z_rotation);
+
+                affected_joint.set_x_translation(cos_func * (next_frame.x_translation - current_frame.x_translation) +
+                                                 current_frame.x_translation);
+
+                affected_joint.set_y_translation(cos_func * (next_frame.y_translation - current_frame.y_translation) +
+                                                 current_frame.y_translation);
+
+                affected_joint.set_z_translation(cos_func * (next_frame.z_translation - current_frame.z_translation) +
+                                                 current_frame.z_translation);
 
                 // I think this works for decresing angles?
                 // (-cos(current_time/max_time)+1)*(next_frame_angle-current_frame_angle)+current_frame_angle;
             }
         }
     }
+
+    void buffer_animation(Animation* new_animation) { buffered_anim = new_animation; }
 };
 
 // to align the animations transition time we need to find the points of intersection between 2 3D surfaces

@@ -29,6 +29,7 @@ class Joint
     glm::mat3   direction_vectors;
 
     glm::vec3 rotations = glm::vec3(0.0);
+    glm::vec3 translations = glm::vec3(0.0);
 
     glm::vec3 min_rotations = glm::vec3(-numeric_limits<float>::max());  // glm::vec3(-6.28318530718f);
     glm::vec3 max_rotations = glm::vec3(numeric_limits<float>::max());   // glm::vec3(6.28318530718f);
@@ -59,6 +60,12 @@ class Joint
     void set_x_axis_rotation(float val) { rotations[0] = glm::radians(val); }
     void set_y_axis_rotation(float val) { rotations[1] = glm::radians(val); }
     void set_z_axis_rotation(float val) { rotations[2] = glm::radians(val); }
+
+    void set_rotations(glm::vec3 val) { rotations = val; }
+
+	void set_x_translation(float val) { translations[0] = val; }
+    void set_y_translation(float val) { translations[1] = val; }
+    void set_z_translation(float val) { translations[2] = val; }
 
     void animate_x_axis_rotation(float val) { rotations[0] += val; }
     void animate_y_axis_rotation(float val) { rotations[1] += val; }
@@ -92,6 +99,8 @@ class Joint
         }
         else
             transformation_matrix = offset_matrix_inv * rotation_matrix * offset_matrix;
+
+		transformation_matrix = glm::translate(transformation_matrix, translations);
 
         transform_calculated = true;
 

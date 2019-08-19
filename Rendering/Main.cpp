@@ -13,6 +13,7 @@
 #include "creature.h"
 #include "model.h"
 #include "shader.h"
+#include "camera.h"
 
 #include <iostream>
 
@@ -34,9 +35,10 @@ GLFWwindow* window;
 //glm::mat4 view =
 //    glm::lookAt(glm::vec3(-10.0f, 0.0f, 10.0f), glm::vec3(-10.0f, 0.0f, 10.0f) + glm::vec3(0.707107, 0, -0.707107),
 //                glm::vec3(1.0f, 0.0f, 1.0f));
-glm::mat4 view =
-    glm::lookAt(glm::vec3(0.0f, -10.0f, 10.0f), glm::vec3(0.0f, -10.0f, 10.0f) + glm::vec3(0.0f, 1.0f, -1.0f),
-                glm::vec3(0.0f, 1.0f, 1.0f));
+Camera    camera(glm::vec3(0.0f, -5.0f, 5.0f));
+//glm::mat4 view =
+//    glm::lookAt(glm::vec3(0.0f, -10.0f, 10.0f), glm::vec3(0.0f, -10.0f, 10.0f) + glm::vec3(0.0f, 1.0f, -1.0f),
+//                glm::vec3(0.0f, 1.0f, 1.0f));
 glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)scr_width / (float)scr_height, 0.1f, 100.0f);
 
 // timing
@@ -71,7 +73,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);  // uncomment this statement to fix compilation on OS X
 #endif
 
-    window = glfwCreateWindow(scr_width, scr_height, "LearnOpenGL", NULL, NULL);
+    window = glfwCreateWindow(scr_width, scr_height, "Roguelite", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -121,9 +123,10 @@ int main()
     ourShader     = Shader("1.model_loading.vs", "1.model_loading.fs");
     outlineShader = Shader("outline-shading.vs", "outline-shading.fs");
 
-    // ourModel = Model("resources/objects/Natsu/Natsu Dragneel.dae");
     natsu = Creature("resources/objects/Natsu/Natsu Dragneel.dae");
-    natsu.set_scale(0.2f);
+    natsu.set_scale(0.1f);
+
+	camera.lock_camera_to(&natsu);
 
     change_pixelation_factor(pixelation_factor);
 
@@ -157,7 +160,7 @@ void render()
     glBindFramebuffer(GL_FRAMEBUFFER, fbo);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-    natsu.render(projection, view, ourShader, outlineShader, outlines_enabled, outline_width);
+    natsu.render(projection, camera.get_view_matrix(), ourShader, outlineShader, outlines_enabled, outline_width);
 
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -178,17 +181,17 @@ void processInput(GLFWwindow* Window, int Key, int Scancode, int Action, int Mod
     {
         if (GLFW_KEY_ESCAPE == Key) glfwSetWindowShouldClose(window, true);
 
-        if (GLFW_KEY_W == Key) natsu.set_unit_velocity_up(0, 0);
-        if (GLFW_KEY_S == Key) natsu.set_unit_velocity_down(0, 0);
-        if (GLFW_KEY_A == Key) natsu.set_unit_velocity_left(0, 0);
-        if (GLFW_KEY_D == Key) natsu.set_unit_velocity_right(0, 0);
+        if (GLFW_KEY_W == Key) natsu.set_unit_velocity_up(NULL, NULL);
+        if (GLFW_KEY_S == Key) natsu.set_unit_velocity_down(NULL, NULL);
+        if (GLFW_KEY_A == Key) natsu.set_unit_velocity_left(NULL, NULL);
+        if (GLFW_KEY_D == Key) natsu.set_unit_velocity_right(NULL, NULL);
     }
     else if (Action == GLFW_RELEASE)
     {
-        if (GLFW_KEY_W == Key) natsu.stop_velocity_up(0, 0);
-        if (GLFW_KEY_S == Key) natsu.stop_velocity_down(0, 0);
-        if (GLFW_KEY_A == Key) natsu.stop_velocity_left(0, 0);
-        if (GLFW_KEY_D == Key) natsu.stop_velocity_right(0, 0);
+        if (GLFW_KEY_W == Key) natsu.stop_velocity_up(NULL, NULL);
+        if (GLFW_KEY_S == Key) natsu.stop_velocity_down(NULL, NULL);
+        if (GLFW_KEY_A == Key) natsu.stop_velocity_left(NULL, NULL);
+        if (GLFW_KEY_D == Key) natsu.stop_velocity_right(NULL, NULL);
     }
 }
 

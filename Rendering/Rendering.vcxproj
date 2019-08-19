@@ -136,7 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h" />
+    <ClInclude Include="animations_registry.h" />
     <ClInclude Include="animation_manager.h" />
+    <ClInclude Include="camera.h" />
     <ClInclude Include="creature.h" />
     <ClInclude Include="joint.h" />
     <ClInclude Include="matrix_helper.h" />
