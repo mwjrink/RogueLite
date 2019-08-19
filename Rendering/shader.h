@@ -97,7 +97,7 @@ class Shader
     }
     // activate the shader
     // ------------------------------------------------------------------------
-    void use() { glUseProgram(ID); }
+    void use() const { glUseProgram(ID); }
     // utility uniform functions
     // ------------------------------------------------------------------------
     void setBool(const std::string& name, bool value) const

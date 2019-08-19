@@ -123,11 +123,14 @@ class Mesh
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
 
+        //joints[joints_map["Armature_Thigh_L"]].set_z_axis_rotation(-90.0f);
+        //joints[joints_map["Armature_Upper_Arm_R"]].set_z_axis_rotation(-90.0f);
+
         for (auto i = 0; i < this->joints.size(); i++) joints[i].clear_transform();
-		// these must be separate because the method refers to the parent of the joint, which needs to be cleared
+        // these must be separate because the method refers to the parent of the joint, which needs to be cleared
         for (auto i = 0; i < this->joints.size(); i++) transforms[i] = joints[i].create_transform_matrices();
 
-		// upload the joint transforms uniform
+        // upload the joint transforms uniform
         glUniformMatrix4fv(glGetUniformLocation(shader.ID, "jointTransforms"), 13, GL_FALSE, glm::value_ptr(transforms[0]));
 
         // draw mesh
@@ -138,6 +141,8 @@ class Mesh
         // always good practice to set everything back to defaults once configured.
         glActiveTexture(GL_TEXTURE0);
     }
+	
+    Joint& get_joint(string name) { return joints[joints_map[name]]; }
 
   private:
     /*  Render data  */

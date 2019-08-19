@@ -7,7 +7,9 @@
 #include "model.h"
 #include "shader.h"
 
-void render_model(Model model, glm::mat4 model_matrix, glm::mat4 projection, glm::mat4 view, Shader shader, Shader outline_shader, bool outlines_enabled, float outline_width)
+void render_model(Model& model, const glm::mat4& model_matrix, const glm::mat4& projection, const glm::mat4& view,
+                  Shader& shader, Shader& outline_shader, const bool& outlines_enabled,
+                  const float& outline_width)
 {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);

@@ -19,7 +19,7 @@ class Joint
 
     std::string name;
 
-    Joint* parent = nullptr;
+    Joint*         parent = nullptr;
     vector<Joint*> children;
 
     glm::mat4 offset_matrix;
@@ -41,15 +41,12 @@ class Joint
 
     // queue for animation progression?
 
-    // technically min and max rotations should be passed in here too, but IDK how to do this easily so I will figure this out later :(
-    // the right way to do this is to make a keyframe for the minimums and maximums then reading those angles in (FUCK THAT
-    // THOUGH)
-    Joint(unsigned int ID, std::string name, glm::mat4 offset_matrix)//, glm::mat4 bone_transform)
-        : ID(ID),
-          name(name),
-          offset_matrix(offset_matrix),
-          offset_matrix_inv(glm::inverse(offset_matrix))
-		//, bone_transform(bone_transform)
+    // technically min and max rotations should be passed in here too, but IDK how to do this easily so I will figure this
+    // out later :( the right way to do this is to make a keyframe for the minimums and maximums then reading those angles in
+    // (FUCK THAT THOUGH)
+    Joint(unsigned int ID, std::string name, glm::mat4 offset_matrix)  //, glm::mat4 bone_transform)
+        : ID(ID), name(name), offset_matrix(offset_matrix), offset_matrix_inv(glm::inverse(offset_matrix))
+    //, bone_transform(bone_transform)
     {
     }
 
@@ -59,9 +56,9 @@ class Joint
         children.push_back(child);
     }
 
-    void set_x_axis_rotation(float val) { rotations[0] = val; }
-    void set_y_axis_rotation(float val) { rotations[1] = val; }
-    void set_z_axis_rotation(float val) { rotations[2] = val; }
+    void set_x_axis_rotation(float val) { rotations[0] = glm::radians(val); }
+    void set_y_axis_rotation(float val) { rotations[1] = glm::radians(val); }
+    void set_z_axis_rotation(float val) { rotations[2] = glm::radians(val); }
 
     void animate_x_axis_rotation(float val) { rotations[0] += val; }
     void animate_y_axis_rotation(float val) { rotations[1] += val; }

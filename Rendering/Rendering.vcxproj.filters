@@ -50,6 +50,9 @@
     <ClInclude Include="matrix_helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="animation_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="1.model_loading.vs">
