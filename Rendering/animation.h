@@ -42,7 +42,7 @@ class Animation
         float y_translation;
         float z_translation;
 
-        // functions function;
+        functions function;
     };
 
   private:

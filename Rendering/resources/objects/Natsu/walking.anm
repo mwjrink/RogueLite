@@ -26,6 +26,19 @@ walking
     Armature_Shin_L: z;0;0 z;-75;2.5 z;-75;5 z;-45;7.5 z;0;10
     Armature_Shin_R: z;-75;0 z;-45;2.5 z;0;5 z;-75;7.5 z;-75;10
     // Add spine translations
+
+    Armature_Thigh_L: z;-45;0, -45;0.3, 45;0.35, -45;0.6, -45;0.7
+    Armature_Thigh_R: z;45;0, -45;0.25, -45;0.35, -45;0.65, 45;0.7
+    Armature_Shin_L: z;-10;0, -20;0.1, 0;0.25, -30;0.35, -90;0.45, -90;0.6, -10;0.7
+    Armature_Shin_R: z;-30;0, -90;0.1, -90;0.25, -10;0.35, -20;0.45, 0;0.6, -30;0.7
+    Armature_Spine: y;-30;0,  30;0.35, -30;0.7
+    Armature_Head:
+    Armature_Shoulder_L:
+    Armature_Shoulder_R:
+    Armature_Upper_Arm_L:
+    Armature_Upper_Arm_R:
+    Armature_Lower_Arm_L:
+    Armature_Lower_Arm_R:
 }
 
 Armature_Spine

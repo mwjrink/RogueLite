@@ -74,7 +74,7 @@ class Creature
 
         // Testing Animations
         
-        animations["running"] = get_running_animation();
+        animations["running"] = get_new_running_animation();
 
         // Animation_Manager(Animation* current_anim, Animation* buffered_anim, Animation* default_anim, Mesh* editable, bool
         // repeating)

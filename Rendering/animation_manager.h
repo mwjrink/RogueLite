@@ -106,38 +106,72 @@ class Animation_Manager
                     else
                         break;
                 }
+                if (next_frame.function == Animation::functions::sin)
+                {
+                    auto cos_func = (-cos(((current_time - current_frame.start_time) /
+                                           (next_frame.start_time - current_frame.start_time)) *
+                                          PI) +
+                                     1.0f) /
+                                    2.0f;
 
-                auto cos_func =
-                    (-cos(((current_time - current_frame.start_time) / (next_frame.start_time - current_frame.start_time)) *
-                          PI) +
-                     1.0f) /
-                    2.0f;
+                    // should do an if for efficiency if (next_frame.angle == current_frame.angle) set angle to angle or dont
+                    // do the cos normalizing
 
-                // should do an if for efficiency if (next_frame.angle == current_frame.angle) set angle to angle or dont do
-                // the cos normalizing
+                    Joint& affected_joint = editable->get_joint(current_anim->affected_joints[i]);
 
-                Joint& affected_joint = editable->get_joint(current_anim->affected_joints[i]);
+                    affected_joint.set_x_axis_rotation(cos_func * (next_frame.x_rotation - current_frame.x_rotation) +
+                                                       current_frame.x_rotation);
 
-                affected_joint.set_x_axis_rotation(cos_func * (next_frame.x_rotation - current_frame.x_rotation) +
-                                                   current_frame.x_rotation);
+                    affected_joint.set_y_axis_rotation(cos_func * (next_frame.y_rotation - current_frame.y_rotation) +
+                                                       current_frame.y_rotation);
 
-                affected_joint.set_y_axis_rotation(cos_func * (next_frame.y_rotation - current_frame.y_rotation) +
-                                                   current_frame.y_rotation);
+                    affected_joint.set_z_axis_rotation(cos_func * (next_frame.z_rotation - current_frame.z_rotation) +
+                                                       current_frame.z_rotation);
 
-                affected_joint.set_z_axis_rotation(cos_func * (next_frame.z_rotation - current_frame.z_rotation) +
-                                                   current_frame.z_rotation);
+                    affected_joint.set_x_translation(cos_func * (next_frame.x_translation - current_frame.x_translation) +
+                                                     current_frame.x_translation);
 
-                affected_joint.set_x_translation(cos_func * (next_frame.x_translation - current_frame.x_translation) +
-                                                 current_frame.x_translation);
+                    affected_joint.set_y_translation(cos_func * (next_frame.y_translation - current_frame.y_translation) +
+                                                     current_frame.y_translation);
 
-                affected_joint.set_y_translation(cos_func * (next_frame.y_translation - current_frame.y_translation) +
-                                                 current_frame.y_translation);
+                    affected_joint.set_z_translation(cos_func * (next_frame.z_translation - current_frame.z_translation) +
+                                                     current_frame.z_translation);
 
-                affected_joint.set_z_translation(cos_func * (next_frame.z_translation - current_frame.z_translation) +
-                                                 current_frame.z_translation);
+                }
+                else if (next_frame.function == Animation::functions::lin)
+                {
+                    Joint& affected_joint = editable->get_joint(current_anim->affected_joints[i]);
 
-                // I think this works for decresing angles?
-                // (-cos(current_time/max_time)+1)*(next_frame_angle-current_frame_angle)+current_frame_angle;
+                    affected_joint.set_x_axis_rotation((current_time - current_frame.start_time) /
+                                                           (next_frame.start_time - current_frame.start_time) *
+                                                           (next_frame.x_rotation - current_frame.x_rotation) +
+                                                       current_frame.x_rotation);
+
+                    affected_joint.set_y_axis_rotation((current_time - current_frame.start_time) /
+                                                           (next_frame.start_time - current_frame.start_time) *
+                                                           (next_frame.y_rotation - current_frame.y_rotation) +
+                                                       current_frame.y_rotation);
+
+                    affected_joint.set_z_axis_rotation((current_time - current_frame.start_time) /
+                                                           (next_frame.start_time - current_frame.start_time) *
+                                                           (next_frame.z_rotation - current_frame.z_rotation) +
+                                                       current_frame.z_rotation);
+
+                    affected_joint.set_x_translation((current_time - current_frame.start_time) /
+                                                         (next_frame.start_time - current_frame.start_time) *
+                                                         (next_frame.x_translation - current_frame.x_translation) +
+                                                     current_frame.x_translation);
+
+                    affected_joint.set_y_translation((current_time - current_frame.start_time) /
+                                                         (next_frame.start_time - current_frame.start_time) *
+                                                         (next_frame.y_translation - current_frame.y_translation) +
+                                                     current_frame.y_translation);
+
+                    affected_joint.set_z_translation((current_time - current_frame.start_time) /
+                                                         (next_frame.start_time - current_frame.start_time) *
+                                                         (next_frame.z_translation - current_frame.z_translation) +
+                                                     current_frame.z_translation);
+				}
             }
         }
     }
