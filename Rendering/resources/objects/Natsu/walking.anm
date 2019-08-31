@@ -27,8 +27,8 @@ walking
     Armature_Shin_R: z;-75;0 z;-45;2.5 z;0;5 z;-75;7.5 z;-75;10
     // Add spine translations
 
-    Armature_Thigh_L: z;-45;0, -45;0.3, 45;0.35, -45;0.6, -45;0.7
-    Armature_Thigh_R: z;45;0, -45;0.25, -45;0.35, -45;0.65, 45;0.7
+    Armature_Thigh_L: z;-45;0, 45;0.35, -45;0.7
+    Armature_Thigh_R: z;45;0, -45;0.35, 45;0.7
     Armature_Shin_L: z;-10;0, -20;0.1, 0;0.25, -30;0.35, -90;0.45, -90;0.6, -10;0.7
     Armature_Shin_R: z;-30;0, -90;0.1, -90;0.25, -10;0.35, -20;0.45, 0;0.6, -30;0.7
     Armature_Spine: y;-30;0,  30;0.35, -30;0.7
@@ -39,6 +39,37 @@ walking
     Armature_Upper_Arm_R:
     Armature_Lower_Arm_L:
     Armature_Lower_Arm_R:
+
+    // Roll
+    // dive into Roll
+    // legs bent, preparing to jump
+    Armature_Thigh_L: z;-45
+    Armature_Thigh_R: z;-45
+    Armature_Shin_L: z;-30
+    Armature_Shin_R: z;-30
+
+    // jump arms go up above head
+    Armature_Thigh_L: z;-10
+    Armature_Thigh_R: z;-10
+    Armature_Shin_L: z;0
+    Armature_Shin_R: z;0
+
+    Armature_Upper_Arm_L:
+    Armature_Upper_Arm_R:
+    Armature_Lower_Arm_L:
+    Armature_Lower_Arm_R:
+
+        Armature_Spine: y;-30;0,  30;0.35, -30;0.7
+    Armature_Head:
+
+    // land, arms hit ground
+
+    // tuck
+
+    // extend and stand, arms go down
+
+    // basic sword swing (two hands, overhand)
+
 }
 
 Armature_Spine

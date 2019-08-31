@@ -63,7 +63,7 @@ class Creature
 
   public:
     // TODO @Max, remove this later, this is currently just so I can make a global variable then assign the value in the
-    // contructor
+    // constructor
     Creature() {}
 
     Creature(string model_name) : model(model_name), max_health(100), current_health(100), speed(3.0f)
@@ -78,7 +78,7 @@ class Creature
 
         // Animation_Manager(Animation* current_anim, Animation* buffered_anim, Animation* default_anim, Mesh* editable, bool
         // repeating)
-        animation_manager = Animation_Manager(&animations["running"], nullptr, nullptr, &model.meshes[0], true);
+        animation_manager = Animation_Manager(&animations["running"], nullptr, nullptr, &model.meshes[0], true, 360.0f);
     }
 
     glm::vec3& get_position() { return position; }

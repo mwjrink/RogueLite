@@ -61,6 +61,10 @@ class Joint
     void set_y_axis_rotation(float val) { rotations[1] = glm::radians(val); }
     void set_z_axis_rotation(float val) { rotations[2] = glm::radians(val); }
 
+	float get_x_axis_rotation() { return glm::degrees(rotations[0]); }
+    float get_y_axis_rotation() { return glm::degrees(rotations[1]); }
+    float get_z_axis_rotation() { return glm::degrees(rotations[2]); }
+
     void set_rotations(glm::vec3 val) { rotations = val; }
 
 	void set_x_translation(float val) { translations[0] = val; }

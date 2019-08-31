@@ -107,7 +107,7 @@ Animation get_new_running_animation()
 
     animation_frames.push_back(Animation::Frame{7, 0.0f, 0.0f, 0.0f, -10.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
     animation_frames.push_back(Animation::Frame{8, 0.1f, 0.0f, 0.0f, -20.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
-    animation_frames.push_back(Animation::Frame{9, 0.25f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
+    animation_frames.push_back(Animation::Frame{9, 0.25f, 0.0f, 0.0f, -10.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
     animation_frames.push_back(Animation::Frame{10, 0.35f, 0.0f, 0.0f, -30.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
     animation_frames.push_back(Animation::Frame{11, 0.45f, 0.0f, 0.0f, -90.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
     animation_frames.push_back(Animation::Frame{12, 0.6f, 0.0f, 0.0f, -90.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
@@ -118,7 +118,7 @@ Animation get_new_running_animation()
     animation_frames.push_back(Animation::Frame{16, 0.25f, 0.0f, 0.0f, -90.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
     animation_frames.push_back(Animation::Frame{17, 0.35f, 0.0f, 0.0f, -10.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
     animation_frames.push_back(Animation::Frame{18, 0.45f, 0.0f, 0.0f, -20.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
-    animation_frames.push_back(Animation::Frame{19, 0.6f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
+    animation_frames.push_back(Animation::Frame{19, 0.6f, 0.0f, 0.0f, -10.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
     animation_frames.push_back(Animation::Frame{-1, 0.7f, 0.0f, 0.0f, -30.0f, 0.0f, 0.0f, 0.0f, Animation::functions::sin});
 
     animation_frames.push_back(
