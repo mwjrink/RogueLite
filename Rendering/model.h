@@ -235,9 +235,9 @@ class Model
                 }
 
             joints.push_back(Joint(i, mesh->mBones[i]->mName.C_Str(), convertMatrix(mesh->mBones[i]->mOffsetMatrix)
-				//,
-                                   //convertMatrix(mine.back()->mTransformation)
-			));
+                                   //,
+                                   // convertMatrix(mine.back()->mTransformation)
+                                   ));
         }
 
         vector<pair<int, int>> parent_children;
@@ -254,6 +254,45 @@ class Model
                             parent_children.push_back(pair<int, int>(l, k));
                             break;
                         }
+
+        vector<Animation> animations = vector<Animation>();
+        for (auto i = 0; i < scene.mNumAnimations; i++)
+        {
+            // aiAnimation
+            // aiNodeAnim ** 	mChannels;  	        // The node animation channels.
+            // double 	        mDuration;  	        // Duration of the animation in ticks.
+            // aiMeshAnim ** 	mMeshChannels;  	    // The mesh animation channels.
+            // aiString 	    mName;                  // The name of the animation.
+            // unsigned int 	mNumChannels;           // The number of bone animation channels.
+            // unsigned int 	mNumMeshChannels;       // The number of mesh animation channels.
+            // double 	        mTicksPerSecond;        // Ticks per second.
+
+            auto animation   = Animation();
+            auto aiAnimation = scene.mAnimations[i];
+            auto duration    = aiAnimation.mDuration / aiAnimation.mTicksPerSecond;
+
+            for (auto i = 0; i < aiAnimation.mNumChannels; i++)
+            {
+                auto aiNodeAnim = aiAnimation.mChannels[i];
+
+                // is mNodeName the name of the joint?
+
+                // ignore scaling keys for now?
+
+                
+            }
+
+            // aiNodeAnim
+            // aiString 	    mNodeName           // The name of the node affected by this animation.
+            // unsigned int 	mNumPositionKeys    // The number of position keys.
+            // unsigned int 	mNumRotationKeys    // The number of rotation keys.
+            // unsigned int 	mNumScalingKeys     // The number of scaling keys.
+            // aiVectorKey * 	mPositionKeys       // The position keys of this animation channel.
+            // aiAnimBehaviour 	mPostState          // Defines how the animation behaves after the last key was processed.
+            // aiAnimBehaviour 	mPreState           // Defines how the animation behaves before the first key is encountered.
+            // aiQuatKey * 	    mRotationKeys       // The rotation keys of this animation channel.
+            // aiVectorKey * 	mScalingKeys        // The scaling keys of this animation channel.
+        }
 
         // 1. diffuse maps
         vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
