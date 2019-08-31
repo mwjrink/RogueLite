@@ -70,26 +70,27 @@ class Animation_Manager
 
                 Joint& affected_joint = editable->get_joint(current_anim->affected_joints[i]);
 
-                if (affected_joint.get_x_axis_rotation() < transition_to.x_rotation)
+                // TODO: @Max; .quat.x is completely wrong I just want it to stop yelling at me about errors
+                if (affected_joint.get_x_axis_rotation() < transition_to.quat.x)
                 {
                     affected_joint.set_x_axis_rotation(
-                        min(affected_joint.get_x_axis_rotation() + maximum_angular_velocity, transition_to.x_rotation));
+                        min(affected_joint.get_x_axis_rotation() + maximum_angular_velocity, transition_to.quat.x));
 
                     transitioned = false;
                 }
 
-                if (affected_joint.get_y_axis_rotation() < transition_to.y_rotation)
+                if (affected_joint.get_y_axis_rotation() < transition_to.quat.x)
                 {
                     affected_joint.set_y_axis_rotation(
-                        min(affected_joint.get_y_axis_rotation() + maximum_angular_velocity, transition_to.y_rotation));
+                        min(affected_joint.get_y_axis_rotation() + maximum_angular_velocity, transition_to.quat.x));
 
                     transitioned = false;
                 }
 
-                if (affected_joint.get_z_axis_rotation() < transition_to.z_rotation)
+                if (affected_joint.get_z_axis_rotation() < transition_to.quat.x)
                 {
                     affected_joint.set_z_axis_rotation(
-                        min(affected_joint.get_z_axis_rotation() + maximum_angular_velocity, transition_to.z_rotation));
+                        min(affected_joint.get_z_axis_rotation() + maximum_angular_velocity, transition_to.quat.x));
 
                     transitioned = false;
                 }
@@ -116,9 +117,10 @@ class Animation_Manager
                 while (final_frame.next_frame != -1) final_frame = current_anim->animation_frames[final_frame.next_frame];
 
                 Joint& affected_joint = editable->get_joint(current_anim->affected_joints[i]);
-                affected_joint.set_x_axis_rotation(final_frame.x_rotation);
-                affected_joint.set_y_axis_rotation(final_frame.y_rotation);
-                affected_joint.set_z_axis_rotation(final_frame.z_rotation);
+                // TODO: @Max; .quat.x is completely wrong I just want it to stop yelling at me about errors
+                affected_joint.set_x_axis_rotation(final_frame.quat.x);
+                affected_joint.set_y_axis_rotation(final_frame.quat.x);
+                affected_joint.set_z_axis_rotation(final_frame.quat.x);
             }
 
             if (!repeating)
@@ -138,9 +140,9 @@ class Animation_Manager
                     if (current_frame.next_frame < 0)
                     {
                         // 12 is brighter
-                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+                        //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
                         cout << "ERROR, animation does not have a final frame." << endl;
-                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // I think this is the default
+                        //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // I think this is the default
                         return;
                     }
 

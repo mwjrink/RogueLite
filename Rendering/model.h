@@ -234,10 +234,7 @@ class Model
                     break;
                 }
 
-            joints.push_back(Joint(i, mesh->mBones[i]->mName.C_Str(), convertMatrix(mesh->mBones[i]->mOffsetMatrix)
-                                   //,
-                                   // convertMatrix(mine.back()->mTransformation)
-                                   ));
+            joints.push_back(Joint(i, mesh->mBones[i]->mName.C_Str(), convertMatrix(mesh->mBones[i]->mOffsetMatrix)));
         }
 
         vector<pair<int, int>> parent_children;
@@ -256,7 +253,7 @@ class Model
                         }
 
         vector<Animation> animations = vector<Animation>();
-        for (auto i = 0; i < scene.mNumAnimations; i++)
+        for (auto i = 0; i < scene->mNumAnimations; i++)
         {
             // aiAnimation
             // aiNodeAnim ** 	mChannels;  	        // The node animation channels.
@@ -267,20 +264,47 @@ class Model
             // unsigned int 	mNumMeshChannels;       // The number of mesh animation channels.
             // double 	        mTicksPerSecond;        // Ticks per second.
 
-            auto animation   = Animation();
-            auto aiAnimation = scene.mAnimations[i];
-            auto duration    = aiAnimation.mDuration / aiAnimation.mTicksPerSecond;
+            auto aiAnimation = scene->mAnimations[i];
+            auto duration    = aiAnimation->mDuration / aiAnimation->mTicksPerSecond;
+            
+            vector<Animation::index> indexer = vector<Animation::index>();
+            
+            vector<Animation::Rotation_Frame> rotation_frames = vector<Animation::Rotation_Frame>();
+            vector<Animation::Position_Frame> position_frames = vector<Animation::Position_Frame>();
+            vector<Animation::Scale_Frame> scale_frames = vector<Animation::Scale_Frame>();
 
-            for (auto i = 0; i < aiAnimation.mNumChannels; i++)
+            for (auto j = 0; j < aiAnimation->mNumChannels; j++)
             {
-                auto aiNodeAnim = aiAnimation.mChannels[i];
+                auto aiNodeAnim = aiAnimation->mChannels[j];
+                auto rotation_frame_start_index = rotation_frames.size();
+                auto position_frame_start_index = position_frames.size();
+                auto scale_frame_start_index = scale_frames.size();
 
-                // is mNodeName the name of the joint?
-
-                // ignore scaling keys for now?
-
+                for (auto k = 0; k < aiNodeAnim->mNumRotationKeys; k++)
+                {
+                    auto rotation_key = aiNodeAnim->mRotationKeys[k];
+                    auto scale_key = aiNodeAnim->mScalingKeys[k];
+                    auto position_key = aiNodeAnim->mPositionKeys[k];
+                    
+                    auto quat = glm::quat(rotation_key.mValue.w, rotation_key.mValue.x, rotation_key.mValue.y, rotation_key.mValue.z);
+                    auto scale = glm::vec3(scale_key.x, scale_key.y, scale_key.z);
+                    auto position = glm::vec3(position_key.x,position_key.y,position_key.z);
+                    
+                    rotation_frames.push_back(Animation::Rotation_Frame{rotation_key.mTime, quat});
+                    position_frames.push_back(Animation::Position_Frame{scale_key.mTime, scale});
+                    scale_frames.push_back(Animation::Scale_Frame{position_key.mTime, position});
+                }
                 
+                indexer.push_back(Animation::index{aiNodeAnim.mNodeName, rotation_frame_start_index, position_frame_start_index, scale_frame_start_index});
             }
+            
+            indexer.shrink_to_fit();
+            rotation_frames.shrink_to_fit();
+            position_frames.shrink_to_fit();
+            scale_frames.shrink_to_fit();
+            
+            // TODO: @Max; aiAnimation.mName // use as key?
+            animations.push_back(Animation(duration, indexer, rotation_frames, position_frames, scale_frames));
 
             // aiNodeAnim
             // aiString 	    mNodeName           // The name of the node affected by this animation.
@@ -292,6 +316,10 @@ class Model
             // aiAnimBehaviour 	mPreState           // Defines how the animation behaves before the first key is encountered.
             // aiQuatKey * 	    mRotationKeys       // The rotation keys of this animation channel.
             // aiVectorKey * 	mScalingKeys        // The scaling keys of this animation channel.
+            
+            // vector<Frame> animation_frames, vector<string> affected_joints, vector<int> current_frame_index,
+            // functions function, bool reversible, float cancellable_before, float cancellable_after, float max_time
+            //animations.push_back(Animation());
         }
 
         // 1. diffuse maps
@@ -308,6 +336,7 @@ class Model
         textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
         // return a mesh object created from the extracted mesh data
+        // TODO: @Max; pass in animations vector; // maybe pass in a pointer to the vector somewhere on the heap and reference it every time this skeleton is used
         return Mesh(vertices, indices, textures, joints, parent_children);
     }
 
