@@ -5,7 +5,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/quaternion.hpp>
 
-#include <String>
+#include <string>
 #include <algorithm>
 #include <iostream>
 #include <limits>
@@ -26,9 +26,9 @@ class Joint
     glm::mat4 offset_matrix;
     glm::mat4 offset_matrix_inv;
 
-    glm::quat rotation = glm::quat(0.0);
-    glm::vec3 translation = glm::vec3(0.0);
-    glm::vec3 scale = glm::vec3(0.0);
+    glm::quat rotation;
+    glm::vec3 translation;
+    glm::vec3 scale;
 
     glm::mat4 transformation_matrix;
     bool      transform_calculated = false;
@@ -54,12 +54,16 @@ class Joint
         rotation = quat;
     }
     
+    glm::quat get_rotation() {
+        return rotation;
+    }
+    
     void set_translation(glm::vec3& position){
         translation = position;
     }
     
-    void set_scale(glm::vec3& scale){
-        scale = position;
+    void set_scale(glm::vec3& pscale){
+        scale = pscale;
     }
 
     glm::mat4 create_transform_matrices()

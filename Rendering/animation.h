@@ -42,7 +42,7 @@ public:
     
     struct Rotation_Frame
     {
-        //int   next_frame = -1;
+        int   next_frame = -1;
         float time_stamp;
         glm::quat quat;
         //functions function;
@@ -50,7 +50,7 @@ public:
     
     struct Position_Frame
     {
-        //int   next_frame = -1;
+        int   next_frame = -1;
         float time_stamp;
         glm::vec3 position;
         //functions function;
@@ -58,7 +58,7 @@ public:
     
     struct Scale_Frame
     {
-        //int   next_frame = -1;
+        int   next_frame = -1;
         float time_stamp;
         glm::vec3 scale;
         //functions function;

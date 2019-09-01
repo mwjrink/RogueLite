@@ -2,7 +2,7 @@
 
 //#include <glad/glad.h>  // holds all OpenGL type declarations
 //
-//#include <glm/glm.hpp>
+#include <glm/glm.hpp>
 //#include <glm/gtc/matrix_transform.hpp>
 //#include <glm/gtx/string_cast.hpp>
 
@@ -63,34 +63,19 @@ class Animation_Manager
         if (transitioning)
         {
             bool transitioned = true;
-            for (auto i = 0; i < current_anim->affected_joints.size(); i++)
+            for (auto i = 0; i < current_anim->indexer.size(); i++)
             {
-                auto transition_to   = buffered_anim->animation_frames[current_anim->current_frame_index[i]];
+                auto transition_to   = buffered_anim->rotation_frames[buffered_anim->indexer[i].rotation_frame_index];
                 // while (final_frame.next_frame != -1) final_frame = current_anim->animation_frames[final_frame.next_frame];
 
-                Joint& affected_joint = editable->get_joint(current_anim->affected_joints[i]);
+                Joint& affected_joint = editable->get_joint(current_anim->indexer[i].joint_name);
 
                 // TODO: @Max; .quat.x is completely wrong I just want it to stop yelling at me about errors
-                if (affected_joint.get_x_axis_rotation() < transition_to.quat.x)
+                if (affected_joint.get_rotation() != transition_to.quat)
                 {
-                    affected_joint.set_x_axis_rotation(
-                        min(affected_joint.get_x_axis_rotation() + maximum_angular_velocity, transition_to.quat.x));
-
-                    transitioned = false;
-                }
-
-                if (affected_joint.get_y_axis_rotation() < transition_to.quat.x)
-                {
-                    affected_joint.set_y_axis_rotation(
-                        min(affected_joint.get_y_axis_rotation() + maximum_angular_velocity, transition_to.quat.x));
-
-                    transitioned = false;
-                }
-
-                if (affected_joint.get_z_axis_rotation() < transition_to.quat.x)
-                {
-                    affected_joint.set_z_axis_rotation(
-                        min(affected_joint.get_z_axis_rotation() + maximum_angular_velocity, transition_to.quat.x));
+            // min(affected_joint.get_x_axis_rotation() + maximum_angular_velocity * dt, transition_to.quat.x));
+                    auto angle_current = glm::angle(affected_joint.get_rotation());
+                    affected_joint.set_rotation(glm::slerp(affected_joint.get_rotation(), transition_to.quat, ));
 
                     transitioned = false;
                 }
@@ -107,21 +92,21 @@ class Animation_Manager
                 transitioning = false;
 			}
         }
-        else if (current_time >= current_anim->max_time)
+        else if (current_time >= current_anim->duration)
         {
             // Move mesh to final frame of motion
 
-            for (auto i = 0; i < current_anim->affected_joints.size(); i++)
-            {
-                auto final_frame = current_anim->animation_frames[current_anim->current_frame_index[i]];
-                while (final_frame.next_frame != -1) final_frame = current_anim->animation_frames[final_frame.next_frame];
-
-                Joint& affected_joint = editable->get_joint(current_anim->affected_joints[i]);
-                // TODO: @Max; .quat.x is completely wrong I just want it to stop yelling at me about errors
-                affected_joint.set_x_axis_rotation(final_frame.quat.x);
-                affected_joint.set_y_axis_rotation(final_frame.quat.x);
-                affected_joint.set_z_axis_rotation(final_frame.quat.x);
-            }
+//            for (auto i = 0; i < current_anim->indexer.size(); i++)
+//            {
+//                auto final_frame = current_anim->rotation_frames[current_anim->indexer[i].rotation_frame_index];
+//                while (final_frame.next_frame != -1) final_frame = current_anim->animation_frames[final_frame.next_frame];
+//
+//                Joint& affected_joint = editable->get_joint(current_anim->affected_joints[i]);
+//                // TODO: @Max; .quat.x is completely wrong I just want it to stop yelling at me about errors
+//                affected_joint.set_x_axis_rotation(final_frame.quat.x);
+//                affected_joint.set_y_axis_rotation(final_frame.quat.x);
+//                affected_joint.set_z_axis_rotation(final_frame.quat.x);
+//            }
 
             if (!repeating)
                 if (buffered_anim == nullptr) buffered_anim = default_anim;
@@ -130,10 +115,10 @@ class Animation_Manager
         }
         else
         {
-            for (auto i = 0; i < current_anim->affected_joints.size(); i++)
+            for (auto i = 0; i < current_anim->indexer.size(); i++)
             {
-                auto             current_frame = current_anim->animation_frames[current_anim->current_frame_index[i]];
-                Animation::Frame next_frame;
+                auto             current_frame = current_anim->rotation_frames[current_anim->indexer[i].rotation_frame_index];
+                Animation::Rotation_Frame next_frame;
 
                 while (true)
                 {
@@ -146,15 +131,15 @@ class Animation_Manager
                         return;
                     }
 
-                    next_frame = current_anim->animation_frames[current_frame.next_frame];
+                    next_frame = current_anim->rotation_frames[current_frame.next_frame];
 
-                    if (next_frame.start_time <= current_time)
+                    if (next_frame.time_stamp <= current_time)
                         current_frame = next_frame;
                     else
                         break;
                 }
 
-                Joint& affected_joint = editable->get_joint(current_anim->affected_joints[i]);
+                Joint& affected_joint = editable->get_joint(current_anim->indexer[i].joint_name);
 
                 frame_transition(affected_joint, current_frame, next_frame, false);
             }
@@ -168,69 +153,15 @@ class Animation_Manager
     }
 
   private:
-    void frame_transition(Joint& affected_joint, Animation::Frame current_frame, Animation::Frame next_frame, bool asap)
+    void frame_transition(Joint& affected_joint, Animation::Rotation_Frame& current_rotation_frame, Animation::Rotation_Frame& next_rotation_frame, Animation::Position_Frame current_position_frame, Animation::Position_Frame next_position_frame, Animation::Scale_Frame current_scale_frame, Animation::Scale_Frame next_scale_frame, bool asap)
     {
-        if (next_frame.function == Animation::functions::sin)
-        {
-            auto cos_func =
-                (-cos(((current_time - current_frame.start_time) / (next_frame.start_time - current_frame.start_time)) *
-                      PI) +
-                 1.0f) /
-                2.0f;
-
-            // should do an if for efficiency if (next_frame.angle == current_frame.angle) set angle to angle or dont
-            // do the cos normalizing
-
-            affected_joint.set_x_axis_rotation(cos_func * (next_frame.x_rotation - current_frame.x_rotation) +
-                                               current_frame.x_rotation);
-
-            affected_joint.set_y_axis_rotation(cos_func * (next_frame.y_rotation - current_frame.y_rotation) +
-                                               current_frame.y_rotation);
-
-            affected_joint.set_z_axis_rotation(cos_func * (next_frame.z_rotation - current_frame.z_rotation) +
-                                               current_frame.z_rotation);
-
-            affected_joint.set_x_translation(cos_func * (next_frame.x_translation - current_frame.x_translation) +
-                                             current_frame.x_translation);
-
-            affected_joint.set_y_translation(cos_func * (next_frame.y_translation - current_frame.y_translation) +
-                                             current_frame.y_translation);
-
-            affected_joint.set_z_translation(cos_func * (next_frame.z_translation - current_frame.z_translation) +
-                                             current_frame.z_translation);
-        }
-        else if (next_frame.function == Animation::functions::lin)
-        {
-            affected_joint.set_x_axis_rotation((current_time - current_frame.start_time) /
-                                                   (next_frame.start_time - current_frame.start_time) *
-                                                   (next_frame.x_rotation - current_frame.x_rotation) +
-                                               current_frame.x_rotation);
-
-            affected_joint.set_y_axis_rotation((current_time - current_frame.start_time) /
-                                                   (next_frame.start_time - current_frame.start_time) *
-                                                   (next_frame.y_rotation - current_frame.y_rotation) +
-                                               current_frame.y_rotation);
-
-            affected_joint.set_z_axis_rotation((current_time - current_frame.start_time) /
-                                                   (next_frame.start_time - current_frame.start_time) *
-                                                   (next_frame.z_rotation - current_frame.z_rotation) +
-                                               current_frame.z_rotation);
-
-            affected_joint.set_x_translation((current_time - current_frame.start_time) /
-                                                 (next_frame.start_time - current_frame.start_time) *
-                                                 (next_frame.x_translation - current_frame.x_translation) +
-                                             current_frame.x_translation);
-
-            affected_joint.set_y_translation((current_time - current_frame.start_time) /
-                                                 (next_frame.start_time - current_frame.start_time) *
-                                                 (next_frame.y_translation - current_frame.y_translation) +
-                                             current_frame.y_translation);
-
-            affected_joint.set_z_translation((current_time - current_frame.start_time) /
-                                                 (next_frame.start_time - current_frame.start_time) *
-                                                 (next_frame.z_translation - current_frame.z_translation) +
-                                             current_frame.z_translation);
-        }
+        auto percent_time_delta =;
+        
+        affected_joint.set_rotation(glm::slerp(current_rotation_frame.quat, next_rotation_frame.quat, (current_time - current_rotation_frame.time_stamp)/(next_rotation_frame.time_stamp - current_rotation_frame.time_stamp)));
+        
+        affected_joint.set_scale(glm::mix(current_scale_frame.scale, next_scale_frame.scale, (current_time - current_scale_frame.time_stamp)/(next_scale_frame.time_stamp - current_scale_frame.time_stamp)));
+        
+        affected_joint.set_position(glm::mix(current_position_frame.position, next_position_frame.position,(current_time - current_position_frame.time_stamp)/(next_position_frame.time_stamp - current_position_frame.time_stamp)));
     }
 };
 

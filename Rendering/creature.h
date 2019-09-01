@@ -4,7 +4,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include <String>
+#include <string>
 #include <algorithm>
 #include <iostream>
 #include <limits>
@@ -16,7 +16,6 @@
 #include "model.h"
 #include "render_helper.h"
 #include "shader.h"
-#include "animations_registry.h"
 
 #define amax(x, y) (std::abs(x) < std::abs(y)) ? y : x
 #define PI 3.14159265359f
@@ -74,7 +73,7 @@ class Creature
 
         // Testing Animations
         
-        animations["running"] = get_new_running_animation();
+        //animations["running"] = get_new_running_animation();
 
         // Animation_Manager(Animation* current_anim, Animation* buffered_anim, Animation* default_anim, Mesh* editable, bool
         // repeating)
@@ -120,7 +119,7 @@ class Creature
         auto model_matrix = glm::mat4(1.0f);
         model_matrix      = glm::translate(model_matrix, position);
         model_matrix =
-            glm::scale(model_matrix, glm::vec3(scale, scale, scale));  // it's a bit too big for our scene, so scale it down
+            glm::scale(model_matrix, glm::vec3(scale, scale, scale));
 
         auto rot_mat  = glm::mat4(1.0);
         rot_mat[0][0] = -direction.y;

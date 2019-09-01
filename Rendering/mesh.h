@@ -10,6 +10,7 @@
 
 #include "joint.h"
 #include "shader.h"
+#inlcude "animation.h"
 
 #include <fstream>
 #include <iostream>
@@ -63,7 +64,7 @@ class Mesh
     /*  Functions  */
     // constructor
     Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures, vector<Joint>& joints,
-         vector<pair<int, int>> parent_children)
+         vector<pair<int, int>> parent_children, Animations* animations)
         : vertices(vertices), indices(indices), textures(textures), joints(joints)
     {
         // this is necessary because the memory locations of the joints specifically are different because the vector is
