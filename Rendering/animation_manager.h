@@ -65,7 +65,7 @@ class Animation_Manager
             bool transitioned = true;
             for (auto i = 0; i < current_anim->indexer.size(); i++)
             {
-                auto transition_to   = buffered_anim->rotation_frames[buffered_anim->indexer[i].rotation_frame_index];
+                auto transition_to = buffered_anim->rotation_frames[buffered_anim->indexer[i].rotation_frame_index];
                 // while (final_frame.next_frame != -1) final_frame = current_anim->animation_frames[final_frame.next_frame];
 
                 Joint& affected_joint = editable->get_joint(current_anim->indexer[i].joint_name);
@@ -73,15 +73,19 @@ class Animation_Manager
                 // TODO: @Max; .quat.x is completely wrong I just want it to stop yelling at me about errors
                 if (affected_joint.get_rotation() != transition_to.quat)
                 {
-            // min(affected_joint.get_x_axis_rotation() + maximum_angular_velocity * dt, transition_to.quat.x));
+                    // min(affected_joint.get_x_axis_rotation() + maximum_angular_velocity * dt, transition_to.quat.x));
                     auto angle_current = glm::angle(affected_joint.get_rotation());
-                    affected_joint.set_rotation(glm::slerp(affected_joint.get_rotation(), transition_to.quat, ));
+                    auto angle_then    = glm::angle(transition_to.quat);
+
+					auto percent = (maximum_angular_velocity) / (angle_then - angle_current);
+
+                    affected_joint.set_rotation(glm::slerp(affected_joint.get_rotation(), transition_to.quat, percent >= 1.0f ? 1.0f : percent));
 
                     transitioned = false;
                 }
             }
 
-			if (transitioned)
+            if (transitioned)
             {
                 if (buffered_anim != nullptr)
                     current_anim = buffered_anim;
@@ -90,23 +94,25 @@ class Animation_Manager
                 // this should only be necessary so that buffered_anim doesn't get repeated indefinitely
                 buffered_anim = nullptr;
                 transitioning = false;
-			}
+            }
         }
         else if (current_time >= current_anim->duration)
         {
             // Move mesh to final frame of motion
 
-//            for (auto i = 0; i < current_anim->indexer.size(); i++)
-//            {
-//                auto final_frame = current_anim->rotation_frames[current_anim->indexer[i].rotation_frame_index];
-//                while (final_frame.next_frame != -1) final_frame = current_anim->animation_frames[final_frame.next_frame];
-//
-//                Joint& affected_joint = editable->get_joint(current_anim->affected_joints[i]);
-//                // TODO: @Max; .quat.x is completely wrong I just want it to stop yelling at me about errors
-//                affected_joint.set_x_axis_rotation(final_frame.quat.x);
-//                affected_joint.set_y_axis_rotation(final_frame.quat.x);
-//                affected_joint.set_z_axis_rotation(final_frame.quat.x);
-//            }
+            //            for (auto i = 0; i < current_anim->indexer.size(); i++)
+            //            {
+            //                auto final_frame =
+            //                current_anim->rotation_frames[current_anim->indexer[i].rotation_frame_index]; while
+            //                (final_frame.next_frame != -1) final_frame =
+            //                current_anim->animation_frames[final_frame.next_frame];
+            //
+            //                Joint& affected_joint = editable->get_joint(current_anim->affected_joints[i]);
+            //                // TODO: @Max; .quat.x is completely wrong I just want it to stop yelling at me about errors
+            //                affected_joint.set_x_axis_rotation(final_frame.quat.x);
+            //                affected_joint.set_y_axis_rotation(final_frame.quat.x);
+            //                affected_joint.set_z_axis_rotation(final_frame.quat.x);
+            //            }
 
             if (!repeating)
                 if (buffered_anim == nullptr) buffered_anim = default_anim;
@@ -117,31 +123,76 @@ class Animation_Manager
         {
             for (auto i = 0; i < current_anim->indexer.size(); i++)
             {
-                auto             current_frame = current_anim->rotation_frames[current_anim->indexer[i].rotation_frame_index];
-                Animation::Rotation_Frame next_frame;
+                Joint& affected_joint = editable->get_joint(current_anim->indexer[i].joint_name);
+
+                auto current_rotation_frame = current_anim->rotation_frames[current_anim->indexer[i].rotation_frame_index];
+                Animation::Rotation_Frame next_rotation_frame;
+
+                auto current_position_frame = current_anim->position_frames[current_anim->indexer[i].position_frame_index];
+                Animation::Position_Frame next_position_frame;
+
+                auto current_scale_frame = current_anim->scale_frames[current_anim->indexer[i].scale_frame_index];
+                Animation::Scale_Frame next_scale_frame;
 
                 while (true)
                 {
-                    if (current_frame.next_frame < 0)
+                    if (current_rotation_frame.next_frame < 0)
                     {
                         // 12 is brighter
-                        //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
                         cout << "ERROR, animation does not have a final frame." << endl;
-                        //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // I think this is the default
+                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // I think this is the default
                         return;
                     }
 
-                    next_frame = current_anim->rotation_frames[current_frame.next_frame];
+                    next_rotation_frame = current_anim->rotation_frames[current_rotation_frame.next_frame];
 
-                    if (next_frame.time_stamp <= current_time)
-                        current_frame = next_frame;
+                    if (next_rotation_frame.time_stamp <= current_time)
+                        current_rotation_frame = next_rotation_frame;
                     else
                         break;
                 }
 
-                Joint& affected_joint = editable->get_joint(current_anim->indexer[i].joint_name);
+                while (true)
+                {
+                    if (current_position_frame.next_frame < 0)
+                    {
+                        // 12 is brighter
+                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+                        cout << "ERROR, animation does not have a final frame." << endl;
+                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // I think this is the default
+                        return;
+                    }
 
-                frame_transition(affected_joint, current_frame, next_frame, false);
+                    next_position_frame = current_anim->position_frames[current_position_frame.next_frame];
+
+                    if (next_position_frame.time_stamp <= current_time)
+                        current_position_frame = next_position_frame;
+                    else
+                        break;
+                }
+
+                while (true)
+                {
+                    if (current_scale_frame.next_frame < 0)
+                    {
+                        // 12 is brighter
+                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+                        cout << "ERROR, animation does not have a final frame." << endl;
+                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // I think this is the default
+                        return;
+                    }
+
+                    next_scale_frame = current_anim->scale_frames[current_scale_frame.next_frame];
+
+                    if (next_scale_frame.time_stamp <= current_time)
+                        current_scale_frame = next_scale_frame;
+                    else
+                        break;
+                }
+
+                frame_transition(affected_joint, current_rotation_frame, next_rotation_frame, current_position_frame,
+                                 next_position_frame, current_scale_frame, next_scale_frame, false);
             }
         }
     }
@@ -153,15 +204,22 @@ class Animation_Manager
     }
 
   private:
-    void frame_transition(Joint& affected_joint, Animation::Rotation_Frame& current_rotation_frame, Animation::Rotation_Frame& next_rotation_frame, Animation::Position_Frame current_position_frame, Animation::Position_Frame next_position_frame, Animation::Scale_Frame current_scale_frame, Animation::Scale_Frame next_scale_frame, bool asap)
+    void frame_transition(Joint& affected_joint, Animation::Rotation_Frame& current_rotation_frame,
+                          Animation::Rotation_Frame& next_rotation_frame, Animation::Position_Frame current_position_frame,
+                          Animation::Position_Frame next_position_frame, Animation::Scale_Frame current_scale_frame,
+                          Animation::Scale_Frame next_scale_frame, bool asap)
     {
-        auto percent_time_delta =;
-        
-        affected_joint.set_rotation(glm::slerp(current_rotation_frame.quat, next_rotation_frame.quat, (current_time - current_rotation_frame.time_stamp)/(next_rotation_frame.time_stamp - current_rotation_frame.time_stamp)));
-        
-        affected_joint.set_scale(glm::mix(current_scale_frame.scale, next_scale_frame.scale, (current_time - current_scale_frame.time_stamp)/(next_scale_frame.time_stamp - current_scale_frame.time_stamp)));
-        
-        affected_joint.set_position(glm::mix(current_position_frame.position, next_position_frame.position,(current_time - current_position_frame.time_stamp)/(next_position_frame.time_stamp - current_position_frame.time_stamp)));
+        affected_joint.set_rotation(glm::slerp(current_rotation_frame.quat, next_rotation_frame.quat,
+                                               (current_time - current_rotation_frame.time_stamp) /
+                                                   (next_rotation_frame.time_stamp - current_rotation_frame.time_stamp)));
+
+        affected_joint.set_scale(glm::mix(current_scale_frame.scale, next_scale_frame.scale,
+                                          (current_time - current_scale_frame.time_stamp) /
+                                              (next_scale_frame.time_stamp - current_scale_frame.time_stamp)));
+
+        affected_joint.set_position(glm::mix(current_position_frame.position, next_position_frame.position,
+                                             (current_time - current_position_frame.time_stamp) /
+                                                 (next_position_frame.time_stamp - current_position_frame.time_stamp)));
     }
 };
 

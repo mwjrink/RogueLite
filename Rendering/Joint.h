@@ -5,10 +5,10 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/quaternion.hpp>
 
-#include <string>
 #include <algorithm>
 #include <iostream>
 #include <limits>
+#include <string>
 #include <vector>
 
 using namespace std;
@@ -49,35 +49,26 @@ class Joint
         child->parent = this;
         children.push_back(child);
     }
-    
-    void set_rotation(glm::quat& quat) {
-        rotation = quat;
-    }
-    
-    glm::quat get_rotation() {
-        return rotation;
-    }
-    
-    void set_translation(glm::vec3& position){
-        translation = position;
-    }
-    
-    void set_scale(glm::vec3& pscale){
-        scale = pscale;
-    }
+
+    glm::quat get_rotation() { return rotation; }
+
+    void set_rotation(const glm::quat& quat) { rotation = quat; }
+
+    void set_position(const glm::vec3& position) { translation = position; }
+
+    void set_scale(const glm::vec3& pscale) { scale = pscale; }
 
     glm::mat4 create_transform_matrices()
     {
         if (transform_calculated) return transformation_matrix;
 
         auto transform = glm::toMat4(rotation);
-        transform = glm::translate(transform, translation);
-        transform = glm::scale(transform, scale);
-        
+        transform      = glm::translate(transform, translation);
+        transform      = glm::scale(transform, scale);
+
         if (parent != nullptr)
         {
-            transformation_matrix =
-                parent->create_transform_matrices() * offset_matrix_inv * transform * offset_matrix;
+            transformation_matrix = parent->create_transform_matrices() * offset_matrix_inv * transform * offset_matrix;
         }
         else
             transformation_matrix = offset_matrix_inv * transform * offset_matrix;
