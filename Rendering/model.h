@@ -252,7 +252,7 @@ class Model
                             break;
                         }
 
-        vector<Animation> animations = new vector<Animation>();
+        vector<Animation> animations = vector<Animation>();
         for (auto i = 0; i < scene->mNumAnimations; i++)
         {
             // aiAnimation
@@ -288,10 +288,10 @@ class Model
                                           rotation_key.mValue.z);
 
                     if (k == aiNodeAnim->mNumRotationKeys - 1)
-                        rotation_frames.push_back(Animation::Rotation_Frame{-1, rotation_key.mTime, quat});
+                        rotation_frames.push_back(Animation::Rotation_Frame{-1, static_cast<float>(rotation_key.mTime), quat});
                     else
                         rotation_frames.push_back(
-                            Animation::Rotation_Frame{rotation_frames.size(), rotation_key.mTime, quat});
+                            Animation::Rotation_Frame{static_cast<int>(rotation_frames.size()), static_cast<float>(rotation_key.mTime), quat});
                 }
 
                 for (auto k = 0; k < aiNodeAnim->mNumPositionKeys; k++)
@@ -301,10 +301,10 @@ class Model
                     auto position = glm::vec3(position_key.mValue.x, position_key.mValue.y, position_key.mValue.z);
 
                     if (k == aiNodeAnim->mNumRotationKeys - 1)
-                        position_frames.push_back(Animation::Position_Frame{-1, scale_key.mTime, position});
+                        position_frames.push_back(Animation::Position_Frame{-1, static_cast<float>(position_key.mTime), position});
                     else
                         position_frames.push_back(
-                            Animation::Position_Frame{position_frames.size(), scale_key.mTime, position});
+                            Animation::Position_Frame{static_cast<int>(position_frames.size()), static_cast<float>(position_key.mTime), position});
                 }
 
                 for (auto k = 0; k < aiNodeAnim->mNumScalingKeys; k++)
@@ -314,13 +314,13 @@ class Model
                     auto scale = glm::vec3(scale_key.mValue.x, scale_key.mValue.y, scale_key.mValue.z);
 
                     if (k == aiNodeAnim->mNumRotationKeys - 1)
-                        scale_frames.push_back(Animation::Scale_Frame{-1, position_key.mTime, scale});
+                        scale_frames.push_back(Animation::Scale_Frame{-1, static_cast<float>(scale_key.mTime), scale});
                     else
-                        scale_frames.push_back(Animation::Scale_Frame{scale_frames.size(), position_key.mTime, scale});
+                        scale_frames.push_back(Animation::Scale_Frame{static_cast<int>(scale_frames.size()), static_cast<float>(scale_key.mTime), scale});
                 }
 
-                indexer.push_back(Animation::index{aiNodeAnim.mNodeName, rotation_frame_start_index,
-                                                   position_frame_start_index, scale_frame_start_index});
+                indexer.push_back(Animation::index{aiNodeAnim->mNodeName.C_Str(), static_cast<int>(rotation_frame_start_index),
+                                                   static_cast<int>(position_frame_start_index), static_cast<int>(scale_frame_start_index)});
             }
 
             indexer.shrink_to_fit();
@@ -329,7 +329,7 @@ class Model
             scale_frames.shrink_to_fit();
 
             // TODO: @Max; aiAnimation.mName // use as key?
-            animations->push_back(Animation(duration, indexer, rotation_frames, position_frames, scale_frames));
+            animations.push_back(Animation(duration, indexer, rotation_frames, position_frames, scale_frames));
 
             // aiNodeAnim
             // aiString 	    mNodeName           // The name of the node affected by this animation.
@@ -363,6 +363,9 @@ class Model
         // return a mesh object created from the extracted mesh data
         // TODO: @Max; pass in animations vector; // maybe pass in a pointer to the vector somewhere on the heap and
         // reference it every time this skeleton is used
+        
+//        Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures, vector<Joint>& joints,
+//             vector<pair<int, int>> parent_children, Animation animations)
         return Mesh(vertices, indices, textures, joints, parent_children, animations);
     }
 

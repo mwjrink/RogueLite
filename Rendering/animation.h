@@ -16,8 +16,6 @@
 #include <unordered_map>
 #include <vector>
 
-#include "mesh.h"
-
 using namespace std;
 
 class Animation
