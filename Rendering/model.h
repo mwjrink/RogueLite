@@ -252,7 +252,7 @@ class Model
                             break;
                         }
 
-        vector<Animation> animations = new vector<Animation>();
+        auto animations = vector<Animation>();
         for (auto i = 0; i < scene->mNumAnimations; i++)
         {
             // aiAnimation
@@ -301,10 +301,10 @@ class Model
                     auto position = glm::vec3(position_key.mValue.x, position_key.mValue.y, position_key.mValue.z);
 
                     if (k == aiNodeAnim->mNumRotationKeys - 1)
-                        position_frames.push_back(Animation::Position_Frame{-1, scale_key.mTime, position});
+                        position_frames.push_back(Animation::Position_Frame{-1, position_key.mTime, position});
                     else
                         position_frames.push_back(
-                            Animation::Position_Frame{position_frames.size(), scale_key.mTime, position});
+                            Animation::Position_Frame{position_frames.size(), position_key.mTime, position});
                 }
 
                 for (auto k = 0; k < aiNodeAnim->mNumScalingKeys; k++)
@@ -314,12 +314,12 @@ class Model
                     auto scale = glm::vec3(scale_key.mValue.x, scale_key.mValue.y, scale_key.mValue.z);
 
                     if (k == aiNodeAnim->mNumRotationKeys - 1)
-                        scale_frames.push_back(Animation::Scale_Frame{-1, position_key.mTime, scale});
+                        scale_frames.push_back(Animation::Scale_Frame{-1, scale_key.mTime, scale});
                     else
-                        scale_frames.push_back(Animation::Scale_Frame{scale_frames.size(), position_key.mTime, scale});
+                        scale_frames.push_back(Animation::Scale_Frame{scale_frames.size(), scale_key.mTime, scale});
                 }
 
-                indexer.push_back(Animation::index{aiNodeAnim.mNodeName, rotation_frame_start_index,
+                indexer.push_back(Animation::index{aiNodeAnim->mNodeName.C_Str(), rotation_frame_start_index,
                                                    position_frame_start_index, scale_frame_start_index});
             }
 
@@ -329,7 +329,7 @@ class Model
             scale_frames.shrink_to_fit();
 
             // TODO: @Max; aiAnimation.mName // use as key?
-            animations->push_back(Animation(duration, indexer, rotation_frames, position_frames, scale_frames));
+            animations.push_back(Animation(duration, indexer, rotation_frames, position_frames, scale_frames));
 
             // aiNodeAnim
             // aiString 	    mNodeName           // The name of the node affected by this animation.

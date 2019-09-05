@@ -8,9 +8,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/string_cast.hpp>
 
+#include "animation.h"
 #include "joint.h"
 #include "shader.h"
-#inlcude "animation.h"
 
 #include <fstream>
 #include <iostream>
@@ -64,7 +64,7 @@ class Mesh
     /*  Functions  */
     // constructor
     Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures, vector<Joint>& joints,
-         vector<pair<int, int>> parent_children, Animations* animations)
+         vector<pair<int, int>> parent_children, vector<Animation> animations)
         : vertices(vertices), indices(indices), textures(textures), joints(joints)
     {
         // this is necessary because the memory locations of the joints specifically are different because the vector is
@@ -124,8 +124,8 @@ class Mesh
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
 
-        //joints[joints_map["Armature_Thigh_L"]].set_z_axis_rotation(-90.0f);
-        //joints[joints_map["Armature_Upper_Arm_R"]].set_z_axis_rotation(-90.0f);
+        // joints[joints_map["Armature_Thigh_L"]].set_z_axis_rotation(-90.0f);
+        // joints[joints_map["Armature_Upper_Arm_R"]].set_z_axis_rotation(-90.0f);
 
         for (auto i = 0; i < this->joints.size(); i++) joints[i].clear_transform();
         // these must be separate because the method refers to the parent of the joint, which needs to be cleared
@@ -142,7 +142,7 @@ class Mesh
         // always good practice to set everything back to defaults once configured.
         glActiveTexture(GL_TEXTURE0);
     }
-	
+
     Joint& get_joint(string name) { return joints[joints_map[name]]; }
 
   private:
