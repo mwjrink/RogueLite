@@ -11,6 +11,7 @@
 #include "animation.h"
 #include "joint.h"
 #include "shader.h"
+#include "animation.h"
 
 #include <fstream>
 #include <iostream>
